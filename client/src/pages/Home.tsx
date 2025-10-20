@@ -1,14 +1,13 @@
-import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import AITracksSection from "@/components/AITracksSection";
-import DebateEventsSection from "@/components/DebateEventsSection";
-import CareerFairSection from "@/components/CareerFairSection";
-import GallerySection from "@/components/GallerySection";
-import ResourcesSection from "@/components/ResourcesSection";
-import FAQSection from "@/components/FAQSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
+import Header from "@/components/layout/Header";
+import HeroSection from "@/components/sections/HeroSection";
+import AboutSection from "@/components/sections/AboutSection";
+import ServicesSection from "@/components/sections/ServicesSection";
+import ServicesHighlightSection from "@/components/sections/ServicesHighlightSection";
+import ResourceHubSection from "@/components/sections/ResourceHubSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import FAQSection from "@/components/sections/FAQSection";
+import ContactSection from "@/components/sections/ContactSection";
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (
@@ -17,17 +16,17 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
-        <div id="tracks">
-          <AITracksSection />
+        <ServicesSection />
+        <div id="services-highlight">
+          <ServicesHighlightSection />
         </div>
-        <div id="debates">
-          <DebateEventsSection />
+        <div id="resources">
+          <ResourceHubSection />
         </div>
-        <div id="careers">
-          <CareerFairSection />
+        <div id="testimonials">
+          <TestimonialsSection />
         </div>
-        <GallerySection />
-        <ResourcesSection />
+
         <FAQSection />
         <ContactSection />
       </main>

@@ -1,18 +1,18 @@
-# Legal Tech Bro AI Platform - Design Guidelines
+# Mustarred - Legal Compliance Platform Design Guidelines
 
 ## Design Approach
 
-**Reference-Based Approach** drawing inspiration from modern tech community platforms:
-- **The Engineer Network**: Section structure and community-focused layout
-- **Linear**: Clean typography, precise spacing, dark theme excellence
-- **GitHub**: Code-inspired aesthetics, developer-friendly UI
-- **Vercel**: Sophisticated dark mode with subtle gradients
+**Reference-Based Approach** drawing inspiration from professional legal and compliance platforms:
+- **Modern Law Firms**: Clean, trustworthy, professional aesthetics
+- **Compliance Platforms**: Clear information hierarchy, security-focused design
+- **Business Consulting**: Sophisticated, corporate-friendly interface
+- **Startup Tools**: Approachable yet professional, growth-oriented
 
 **Core Principles:**
-1. Professional yet approachable AI/legal tech aesthetic
-2. Code-inspired visual elements without overwhelming users
-3. Clear information hierarchy for diverse content types
-4. Community-first design fostering engagement
+1. Professional and trustworthy legal services aesthetic
+2. Clear compliance-focused visual hierarchy
+3. Startup-friendly approachable design
+4. Security and trust-first visual language
 
 ---
 
@@ -24,20 +24,20 @@
 - **Background Tertiary**: 220 12% 16% (card backgrounds)
 
 ### Brand Colors
-- **Primary (Legal Tech Bro Blue)**: 217 91% 60% (vibrant professional blue)
+- **Primary (Mustarred Blue)**: 217 91% 60% (professional trust blue)
 - **Primary Hover**: 217 91% 55%
-- **Accent**: 280 70% 65% (purple for AI elements - debates, featured content)
+- **Accent**: 142 76% 45% (green for compliance success, certifications)
 
 ### Semantic Colors
-- **Success**: 142 76% 45% (career opportunities, confirmed events)
-- **Warning**: 38 92% 50% (upcoming deadlines)
+- **Success**: 142 76% 45% (compliance achieved, certifications)
+- **Warning**: 38 92% 50% (compliance deadlines, requirements)
 - **Text Primary**: 0 0% 98% (high contrast white)
 - **Text Secondary**: 220 9% 65% (muted for descriptions)
-- **Text Tertiary**: 220 9% 45% (metadata, timestamps)
+- **Text Tertiary**: 220 9% 45% (metadata, service details)
 
 ### Gradients (Subtle Use)
 - **Hero Background**: Radial gradient from 217 91% 60% 10% to transparent
-- **Section Dividers**: Linear gradient 217 91% 60% 5% to 280 70% 65% 5%
+- **Service Cards**: Linear gradient 217 91% 60% 5% to 142 76% 45% 5%
 
 ---
 
@@ -83,60 +83,61 @@
 
 ### Hero Section
 - **Full viewport height** (min-h-screen) with centered content
-- Animated code snippets background (AI/ML Python code floating subtly)
-- Legal Tech Bro logo prominent but not oversized (h-16 md:h-20)
-- Hero headline with gradient text effect (bg-gradient-to-r from-primary to-accent bg-clip-text)
-- Statistics row (Active Members, AI Debates Hosted, Career Opportunities)
-- Dual CTAs: Primary "Join Community" + Secondary "Explore Debates"
+- Background image with startup/business theme
+- Mustarred branding prominent but professional
+- Hero headline: "Building a startup is hard enough" + "Get ahead with simple compliance"
+- Tagline: "Your trusted advisor to startups on law, policy and compliance"
+- Primary CTA: "Our Services"
 - Scroll indicator at bottom
 
 ### Cards (Universal Pattern)
-- **Debate Cards**: Border with hover glow effect (border border-tertiary hover:border-primary/50 transition-all)
-- **Career Fair Cards**: Company logo, role title, experience level badge, location
-- **Resource Cards**: Icon, title, description, "Explore" CTA with arrow
-- **Project Showcase**: Image thumbnail, title, tech tags, creator info
+- **Service Cards**: Clean borders with professional icons (Lock, FileCheck, Building2, Handshake)
+- **Compliance Cards**: Certification badges, progress indicators, status
+- **Resource Cards**: Icon, title, description, "Learn More" CTA
+- **Case Studies**: Client logo, challenge, solution, results
 
-### AI Discussion Tracks
-- 6 specialized tracks in grid layout
-- Each track: Icon, name, description, member count, "Join Track" button
-- Tracks: AI Ethics, Legal AI, AI Policy, Machine Learning, Generative AI, AI Safety
+### About/Services Section
+- 4 core service areas in grid layout
+- Each service: Professional icon, name, detailed description
+- Services: Data Protection & Security, Regulatory Compliance, Corporate Governance & IP, Transaction Advisory
 
-### Debate Events Section
-- **Upcoming Debates** timeline view with date markers
-- Each debate: Topic, participants (avatars), date/time, "Register" CTA
-- **Past Debates** archive with "Watch Recording" links
-- Filter by topic category
+### Compliance Certifications Section
+- **Available Certifications** showcase (ISO, SOC, PCI-DSS, NDPA, HIPAA)
+- Each cert: Logo, name, description, "Get Certified" CTA
+- Progress tracking for ongoing certifications
+- Success stories and testimonials
 
-### Career Fair Section
-- Company showcase grid
-- Filters: Role type, experience level, location
-- **Job cards** with: Company logo, role, requirements snippet, apply button
-- "Post Opportunity" CTA for employers
+### Legal Services Section
+- Service category breakdown
+- **Incorporation & Governance**: Company setup, board management
+- **Compliance & Licensing**: CBN, NCC licensing, AML/KYC
+- **IP & Transactions**: Patents, M&A, joint ventures
 
-### Gallery/Showcase
-- Masonry grid layout for varied content sizes
-- Category tabs: All, AI Tools, Research, Projects, Innovations
-- Hover overlay with title and creator on images
+### Client Success Stories
+- Case study cards with client testimonials
+- Before/after compliance status
+- Certification achievements and timelines
 
 ### Resources Hub
-- Category cards with curated tools/frameworks
-- Categories: LLMs, AI Ethics Tools, Legal Tech AI, ML Frameworks, Datasets
-- Each resource: Logo, name, description, external link icon
+- Category cards with compliance resources
+- Categories: Compliance Guides, Legal Templates, Certification Prep, Regulatory Updates
+- Each resource: Icon, title, description, download/view link
 
-### Events Calendar
-- Month view with event cards on dates
-- Event types color-coded (Debate, Workshop, Career Fair)
-- Modal with full details on click
+### Contact/Consultation Section
+- Professional contact form
+- Service selection dropdown
+- Consultation booking calendar integration
+- Contact information and office locations
 
 ### FAQ Accordion
 - Questions with expand/collapse interaction
-- Categories: Getting Started, Debates, Career Fair, Contributions
+- Categories: Getting Started, Certifications, Compliance, Legal Services
 
 ### Footer
-- 4-column layout: About, Quick Links, Resources, Connect
-- Newsletter signup form with inline validation
-- Social media icons (X, LinkedIn, GitHub, Discord)
-- Legal Tech Bro logo and tagline
+- 4-column layout: Services, Resources, Company, Contact
+- Newsletter signup for compliance updates
+- Professional social media (LinkedIn, Twitter)
+- Mustarred logo and legal disclaimer
 
 ---
 
@@ -144,12 +145,12 @@
 
 **Required Images:**
 
-1. **Hero Background**: Abstract AI-themed image or animated code visualization (full-width, subtle overlay)
-2. **About Section**: Professional photo of ltbplatform founder/team (circular or rounded rectangle)
-3. **Debate Thumbnails**: Event-specific graphics or speaker headshots
-4. **Career Fair Company Logos**: High-res company branding
-5. **Showcase Gallery**: Member project screenshots, tool interfaces, research visuals
-6. **Resource Icons**: Technology/framework logos (LLM providers, AI tools)
+1. **Hero Background**: Professional startup/business building image (startupbuilding.webp)
+2. **About Section**: Professional team photo or office space
+3. **Service Icons**: Professional icons for legal services (mail.png, medal.png, shake.png)
+4. **Certification Logos**: ISO, SOC, PCI-DSS, NDPA, HIPAA official logos
+5. **Client Testimonials**: Professional headshots or company logos
+6. **Resource Graphics**: Legal document templates, compliance checklists
 
 **Image Treatment:**
 - All images with rounded corners (rounded-lg to rounded-2xl)
@@ -191,9 +192,9 @@
 
 ## Unique Design Elements
 
-- **Code snippet decorations**: Floating JavaScript/Python AI code in hero background
-- **Debate topic cards**: Distinctive "vs" visual separator between participant positions
-- **Career level badges**: Color-coded chips (Junior: green, Mid: blue, Senior: purple)
-- **AI track icons**: Custom icon set representing each specialization
+- **Compliance progress bars**: Visual indicators for certification progress
+- **Service category icons**: Professional legal service representations (Lock, FileCheck, Building2, Handshake)
+- **Certification badges**: Official certification logos with status indicators
+- **Legal document previews**: Template previews with professional styling
 
-This design creates a sophisticated, professional platform that balances the technical nature of AI with the approachability needed for community building.
+This design creates a trustworthy, professional platform that communicates expertise in legal compliance while remaining approachable for startup founders and business leaders.
