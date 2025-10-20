@@ -23,44 +23,64 @@ export default function Footer() {
                         <h4 className="font-semibold mb-4">Quick Links</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
                             <li>
-                                <a
-                                    href="#home"
-                                    className="hover:text-foreground transition-colors"
+                                <button
+                                    onClick={() => window.location.href = '/'}
+                                    className="hover:text-foreground transition-colors text-left"
                                 >
                                     Home
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#about"
-                                    className="hover:text-foreground transition-colors"
+                                <button
+                                    onClick={() => {
+                                        window.location.href = '/';
+                                        setTimeout(() => {
+                                            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                                        }, 100);
+                                    }}
+                                    className="hover:text-foreground transition-colors text-left"
                                 >
                                     About Us
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#services"
-                                    className="hover:text-foreground transition-colors"
+                                <button
+                                    onClick={() => {
+                                        window.location.href = '/';
+                                        setTimeout(() => {
+                                            document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                                        }, 100);
+                                    }}
+                                    className="hover:text-foreground transition-colors text-left"
                                 >
                                     Services
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#testimonials"
-                                    className="hover:text-foreground transition-colors"
+                                <button
+                                    onClick={() => {
+                                        window.location.href = '/';
+                                        setTimeout(() => {
+                                            document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' });
+                                        }, 100);
+                                    }}
+                                    className="hover:text-foreground transition-colors text-left"
                                 >
                                     Testimonials
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#contact"
-                                    className="hover:text-foreground transition-colors"
+                                <button
+                                    onClick={() => {
+                                        window.location.href = '/';
+                                        setTimeout(() => {
+                                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                                        }, 100);
+                                    }}
+                                    className="hover:text-foreground transition-colors text-left"
                                 >
                                     Contact
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </div>
