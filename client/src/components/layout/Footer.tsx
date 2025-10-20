@@ -1,4 +1,4 @@
-import logoPath from "@assets/1646692958457.jpeg";
+import logoPath from "@assets/logolatest.png";
 
 export default function Footer() {
     return (
@@ -6,13 +6,12 @@ export default function Footer() {
             <div className="max-w-7xl mx-auto px-6 md:px-8">
                 <div className="grid md:grid-cols-4 gap-6 mb-6">
                     <div>
-                        <div className="flex items-center gap-3 mb-4">
+                        <div className="flex items-center mb-4">
                             <img
                                 src={logoPath}
-                                alt="Legal Tech Bro"
-                                className="h-10 w-10 rounded-md border border-border shadow-sm"
+                                alt="Mustarred"
+                                className="h-24 w-auto object-contain"
                             />
-                            <span className="font-bold text-lg">Mustarred</span>
                         </div>
                         <p className="text-sm text-muted-foreground">
                             Providing strategic solutions to help scale African

@@ -84,7 +84,7 @@ export default function BlogPost() {
   return (
     <div className="min-h-screen">
       <BlogHeader />
-      <main className="pt-16">
+      <main className="pt-24">
         <article className="max-w-4xl mx-auto px-6 md:px-8 py-16">
           {/* Back Button */}
           <Button 

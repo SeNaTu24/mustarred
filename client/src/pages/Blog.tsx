@@ -75,7 +75,7 @@ export default function Blog() {
   return (
     <div className="min-h-screen">
       <BlogHeader />
-      <main className="pt-16">
+      <main className="pt-24">
         {/* Hero Section */}
         <section className="py-16 md:py-24 bg-background">
           <div className="max-w-7xl mx-auto px-6 md:px-8 text-center">

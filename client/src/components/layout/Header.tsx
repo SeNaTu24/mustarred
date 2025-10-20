@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import logoPath from "@assets/1646692958457.jpeg";
+import logoPath from "@assets/logolatest.png";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -33,10 +33,9 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.location.href = '/'}>
-            <img src={logoPath} alt="Mustarred-logo" className="h-10 w-10 rounded-md border border-border shadow-sm" />
-            <span className="font-bold text-lg hidden sm:inline">Mustarred</span>
+        <div className="flex items-center justify-between h-24">
+          <div className="flex items-center cursor-pointer" onClick={() => window.location.href = '/'}>
+            <img src={logoPath} alt="Mustarred-logo" className="h-32 w-auto object-contain" />
           </div>
 
           <nav className="hidden md:flex items-center gap-6">

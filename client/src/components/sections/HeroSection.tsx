@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
-import logoPath from "@assets/1646692958457.jpeg";
+import logoPath from "@assets/logolatest.png";
 import heroImage from "@assets/startupbuilding.webp";
 import { useState, useEffect } from "react";
 
