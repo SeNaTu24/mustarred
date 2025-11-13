@@ -16,7 +16,7 @@ export default function FAQSection() {
           </h2>
           <p className="text-lg text-muted-foreground">
             Got questions? We've got answers. Find everything you need to know about
-            our legal and compliance services.
+            our compliance services.
           </p>
         </div>
 

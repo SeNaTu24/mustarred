@@ -31,8 +31,8 @@ export const services = [
 export const servicesHighlight = [
     {
         image: "/assets/mail.png",
-        name: "Legal Consultation",
-        description: "Expert legal advice tailored to your business needs."
+        name: "Hands-On Consultation",
+        description: "Expert advice tailored to your business needs."
     },
     {
         image: "/assets/medal.png",
@@ -42,6 +42,6 @@ export const servicesHighlight = [
     {
         image: "/assets/shake.png",
         name: "Partnership Success",
-        description: "Build lasting partnerships with trusted legal guidance."
+        description: "Build lasting partnerships with trusted expert guidance."
     }
 ];

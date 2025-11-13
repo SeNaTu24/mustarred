@@ -249,7 +249,7 @@ export default function Blog() {
                   </h3>
                   <p className="text-muted-foreground mb-6">
                     Stay ahead of the curve with the latest compliance
-                    insights, regulatory updates, and legal guidance
+                    insights, regulatory updates, and expert guidance
                     delivered to your inbox.
                   </p>
 
@@ -267,7 +267,7 @@ export default function Blog() {
                       </Button>
                     </div>
                     <p className="text-xs text-muted-foreground">
-                      Join 2K+ business professionals who stay compliant
+                      Join 10K+ business professionals who stay compliant
                       and ahead of the curve
                     </p>
                   </div>

@@ -78,11 +78,11 @@ export default function HeroSection() {
         }
       `}</style>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-8 text-center mt-72">
 
 
         <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-          <span className="bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
+          <span style={{color: '#4B4ACF'}}>
             Building a startup is hard enough
           </span>
           <br />

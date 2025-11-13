@@ -5,7 +5,7 @@ export const testimonials = [
     position: "CEO of XYZ Tech"
   },
   {
-    quote: "Highly knowledgeable and responsive, Mustarred has been a trusted legal partner for my technology startup. I highly recommend their services.",
+    quote: "Highly knowledgeable and responsive, Mustarred has been a trusted partner for my technology startup. I highly recommend their services.",
     author: "Sarah L.",
     position: "Founder of ABC Software"
   }
