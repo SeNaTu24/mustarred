@@ -25,11 +25,7 @@ export default function AboutSection() {
                             </h3>
                         </div>
                         <p className="text-muted-foreground leading-relaxed">
-                            Set up a privacy program for your business. Audit
-                            your privacy program, ROPA management, DSR management,
-                            DPIA, PIA and Privacy Review. Internal training on
-                            privacy and data protection. Certifications (ISO,
-                            SOC, HIPAA).
+                            Build and maintain a strong privacy framework for your business. Learn how to set up and audit privacy programs, manage ROPA and DSR processes, and conduct DPIAs, PIAs, and privacy reviews. Strengthen internal compliance through staff training and align your systems with global standards such as ISO, SOC, and HIPAA.
                         </p>
                     </Card>
                     <Card className="p-8" data-testid="card-mission">
@@ -40,12 +36,7 @@ export default function AboutSection() {
                             </h3>
                         </div>
                         <p className="text-muted-foreground leading-relaxed">
-                            Get tailored assistance with your licensing efforts with
-                            the CBN, NCC, etc. Comprehensive
-                            AML/Fraud/transaction screening compliance
-                            implementation and audit for your business and a
-                            professional handholding through the remediation
-                            process. Internal trainings on AML/KYC compliance.
+                            Develop the competence to navigate licensing and regulatory frameworks with agencies such as the CBN, NCC, etc.. Gain hands-on experience in AML, fraud, and transaction-screening compliance implementation and audits, with practical guidance through the remediation process. Includes internal AML/KYC training.
                         </p>
                     </Card>
                     <Card className="p-8" data-testid="card-mission">
@@ -56,8 +47,7 @@ export default function AboutSection() {
                             </h3>
                         </div>
                         <p className="text-muted-foreground leading-relaxed">
-                            Incorporation Trademark and patent Board Appraisal
-                            Company secretarial services
+                            Understand how to establish and manage corporate structures that promote accountability and protect innovation. Learn about company incorporation, trademark and patent registration, board appraisal, and company secretarial best practices.
                         </p>
                     </Card>
                     <Card className="p-8" data-testid="card-mission">
@@ -68,8 +58,7 @@ export default function AboutSection() {
                             </h3>
                         </div>
                         <p className="text-muted-foreground leading-relaxed">
-                            Mergers and acquisitions Joint ventures Technology
-                            licensing
+                            Gain insight into structuring and managing high-value business transactions. Explore mergers and acquisitions, joint ventures, and technology licensing with a focus on compliance, due diligence, and strategic alignment.
                         </p>
                     </Card>
 

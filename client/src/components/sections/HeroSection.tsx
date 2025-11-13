@@ -94,7 +94,7 @@ export default function HeroSection() {
 
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
           Crest your industry with a trusted partner, Mustarred.
-          Your trusted advisor to startups on law, policy and compliance.
+          Your trusted advisor to startups on policy and compliance.
         </p>
         
         <div className="flex justify-center items-center mb-12">
