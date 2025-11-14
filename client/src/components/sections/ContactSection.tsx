@@ -1,16 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Mail, MessageSquare } from "lucide-react";
 import { SiX, SiLinkedin, SiInstagram } from "react-icons/si";
-import { useState } from "react";
+import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 
 export default function ContactSection() {
-    const [email, setEmail] = useState("");
-
-    const handleSubscribe = () => {
-        console.log("Newsletter subscription:", email);
-        setEmail("");
-    };
 
     return (
         <section id="contact" className="py-8 md:py-12 bg-card/30">
@@ -92,40 +85,7 @@ export default function ContactSection() {
                     </div>
 
                     <div>
-                        <div className="p-8 rounded-lg bg-card">
-                            <h3 className="text-2xl font-bold mb-4">
-                                Subscribe to our Newsletter
-                            </h3>
-                            <p className="text-muted-foreground mb-6">
-                                Stay ahead of the curve with the latest compliance
-                                insights, regulatory updates, and expert guidance
-                                delivered to your inbox.
-                            </p>
-
-                            <div className="space-y-4">
-                                <div className="flex gap-2">
-                                    <Input
-                                        type="email"
-                                        placeholder="Enter your email"
-                                        value={email}
-                                        onChange={(e) =>
-                                            setEmail(e.target.value)
-                                        }
-                                        data-testid="input-newsletter-email"
-                                    />
-                                    <Button
-                                        onClick={handleSubscribe}
-                                        data-testid="button-subscribe"
-                                    >
-                                        Subscribe
-                                    </Button>
-                                </div>
-                                <p className="text-xs text-muted-foreground">
-                                    Join 10K+ business professionals who stay compliant
-                                    and ahead of the curve
-                                </p>
-                            </div>
-                        </div>
+                        <MailchimpNewsletter />
                     </div>
                 </div>
             </div>

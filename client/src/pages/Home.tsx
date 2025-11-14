@@ -15,8 +15,8 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
-        <AboutSection />
         <ServicesSection />
+        <AboutSection />
         <div id="services-highlight">
           <ServicesHighlightSection />
         </div>

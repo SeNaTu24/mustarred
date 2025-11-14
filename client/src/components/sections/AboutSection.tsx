@@ -36,7 +36,7 @@ export default function AboutSection() {
                             </h3>
                         </div>
                         <p className="text-muted-foreground leading-relaxed">
-                            Develop the competence to navigate licensing and regulatory frameworks with agencies such as the CBN, NCC, etc.. Gain hands-on experience in AML, fraud, and transaction-screening compliance implementation and audits, with practical guidance through the remediation process. Includes internal AML/KYC training.
+                            Develop the competence to navigate licensing and regulatory frameworks with agencies such as the CBN, NCC, etc. Gain hands-on experience in AML, fraud, and transaction-screening compliance implementation and audits, with practical guidance through the remediation process. Includes internal AML/KYC training.
                         </p>
                     </Card>
                     <Card className="p-8" data-testid="card-mission">

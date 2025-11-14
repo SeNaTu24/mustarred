@@ -3,9 +3,9 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ArrowLeft, Share2, Mail, MessageSquare } from "lucide-react";
-import { Input } from "@/components/ui/input";
 import { SiX, SiLinkedin, SiInstagram } from "react-icons/si";
 import { useParams } from "wouter";
+import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import ReactMarkdown from "react-markdown";
 import ndprImage from "@assets/ndpr_article_img.webp";
 
@@ -266,35 +266,7 @@ export default function BlogPost() {
               </div>
 
               <div>
-                <div className="p-8 rounded-lg bg-card">
-                  <h3 className="text-2xl font-bold mb-4">
-                    Subscribe to our Newsletter
-                  </h3>
-                  <p className="text-muted-foreground mb-6">
-                    Stay ahead of the curve with the latest compliance
-                    insights, regulatory updates, and expert guidance
-                    delivered to your inbox.
-                  </p>
-
-                  <div className="space-y-4">
-                    <div className="flex gap-2">
-                      <Input
-                        type="email"
-                        placeholder="Enter your email"
-                        data-testid="input-newsletter-email"
-                      />
-                      <Button
-                        data-testid="button-subscribe"
-                      >
-                        Subscribe
-                      </Button>
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      Join 10K+ business professionals who stay compliant
-                      and ahead of the curve
-                    </p>
-                  </div>
-                </div>
+                <MailchimpNewsletter />
               </div>
             </div>
           </div>
