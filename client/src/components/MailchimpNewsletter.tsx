@@ -7,41 +7,31 @@ export default function MailchimpNewsletter() {
   const [firstName, setFirstName] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
 
-    // Create a hidden form and submit it to bypass CORS issues
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = 'https://mustarred.us12.list-manage.com/subscribe/post?u=cdd12424c1d674fa391e8e63e&id=22107e23a3&f_id=00f4e7e0f0';
-    form.target = '_blank';
+    const formData = new FormData();
+    formData.append('EMAIL', email);
+    formData.append('FNAME', firstName);
+    formData.append('tags', '12386815');
 
-    const emailInput = document.createElement('input');
-    emailInput.type = 'hidden';
-    emailInput.name = 'EMAIL';
-    emailInput.value = email;
-    form.appendChild(emailInput);
-
-    const fnameInput = document.createElement('input');
-    fnameInput.type = 'hidden';
-    fnameInput.name = 'FNAME';
-    fnameInput.value = firstName;
-    form.appendChild(fnameInput);
-
-    const tagsInput = document.createElement('input');
-    tagsInput.type = 'hidden';
-    tagsInput.name = 'tags';
-    tagsInput.value = '12386815';
-    form.appendChild(tagsInput);
-
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
-
-    setStatus('success');
-    setEmail('');
-    setFirstName('');
+    try {
+      const response = await fetch(
+        'https://mustarred.us12.list-manage.com/subscribe/post?u=cdd12424c1d674fa391e8e63e&id=22107e23a3&f_id=00f4e7e0f0',
+        {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors'
+        }
+      );
+      
+      setStatus('success');
+      setEmail('');
+      setFirstName('');
+    } catch (error) {
+      setStatus('error');
+    }
   };
 
   return (
