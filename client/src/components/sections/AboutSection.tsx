@@ -3,7 +3,8 @@ import { Lock, FileCheck, Building2, Handshake } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 export default function AboutSection() {
-    const [visibleCards, setVisibleCards] = useState(new Set());
+    const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+
     const cardRefs = useRef<(HTMLDivElement | null)[]>([]); // Corrected type here
 
     useEffect(() => {
