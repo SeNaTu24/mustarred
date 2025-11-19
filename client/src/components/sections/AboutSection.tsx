@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 export default function AboutSection() {
     const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
 
-    const cardRefs = useRef<(HTMLDivElement | null)[]>([]); // Corrected type here
+    const cardRefs = useRef<HTMLDivElement[]>([]);
 
     useEffect(() => {
         const observers = cardRefs.current.map((ref, index) => {
@@ -87,7 +87,9 @@ export default function AboutSection() {
 
                 <div className="grid grid-cols-1 gap-8 md:gap-12">
                     <Card
-                        ref={(el) => (cardRefs.current[0] = el as HTMLDivElement | null)}
+                        ref={(el) => {
+                            if (el) cardRefs.current[0] = el;
+                        }}
                         className={`overflow-hidden h-64 transition-all duration-700 transform ${
                             visibleCards.has(0)
                                 ? "opacity-100 translate-y-0"
@@ -166,9 +168,11 @@ export default function AboutSection() {
                         </div>
                     </Card>
                     <Card
-                        ref={(el) => (cardRefs.current[1] = el as HTMLDivElement | null)}
+                        ref={(el) => {
+                            if (el) cardRefs.current[1] = el;
+                        }}
                         className={`overflow-hidden h-64 transition-all duration-700 transform ${
-                            visibleCards.has(1)
+                            visibleCards.has(0)
                                 ? "opacity-100 translate-y-0"
                                 : "opacity-0 translate-y-8"
                         }`}
@@ -247,9 +251,11 @@ export default function AboutSection() {
                         </div>
                     </Card>
                     <Card
-                        ref={(el) => (cardRefs.current[2] = el as HTMLDivElement | null)}
+                        ref={(el) => {
+                            if (el) cardRefs.current[2] = el;
+                        }}
                         className={`overflow-hidden h-64 transition-all duration-700 transform ${
-                            visibleCards.has(2)
+                            visibleCards.has(0)
                                 ? "opacity-100 translate-y-0"
                                 : "opacity-0 translate-y-8"
                         }`}
@@ -328,9 +334,11 @@ export default function AboutSection() {
                         </div>
                     </Card>
                     <Card
-                        ref={(el) => (cardRefs.current[3] = el as HTMLDivElement | null)}
+                        ref={(el) => {
+                            if (el) cardRefs.current[3] = el;
+                        }}
                         className={`overflow-hidden h-64 transition-all duration-700 transform ${
-                            visibleCards.has(3)
+                            visibleCards.has(0)
                                 ? "opacity-100 translate-y-0"
                                 : "opacity-0 translate-y-8"
                         }`}

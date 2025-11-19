@@ -7,7 +7,6 @@ import Home from "@/pages/Home";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import NotFound from "@/pages/not-found";
-// import Chatbot from "@/components/Chatbot"; // Removed this line
 
 function Router() {
     return (
@@ -26,7 +25,6 @@ function App() {
             <TooltipProvider>
                 <Toaster />
                 <Router />
-                {/* <Chatbot /> */} {/* Removed this line */}
             </TooltipProvider>
         </QueryClientProvider>
     );
