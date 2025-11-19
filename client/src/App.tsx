@@ -7,29 +7,29 @@ import Home from "@/pages/Home";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import NotFound from "@/pages/not-found";
-import Chatbot from "@/components/Chatbot";
+// import Chatbot from "@/components/Chatbot"; // Removed this line
 
 function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/blog" component={Blog} />
-      <Route path="/blog/:id" component={BlogPost} />
-      <Route component={NotFound} />
-    </Switch>
-  );
+    return (
+        <Switch>
+            <Route path="/" component={Home} />
+            <Route path="/blog" component={Blog} />
+            <Route path="/blog/:id" component={BlogPost} />
+            <Route component={NotFound} />
+        </Switch>
+    );
 }
 
 function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-        <Chatbot />
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
+    return (
+        <QueryClientProvider client={queryClient}>
+            <TooltipProvider>
+                <Toaster />
+                <Router />
+                {/* <Chatbot /> */} {/* Removed this line */}
+            </TooltipProvider>
+        </QueryClientProvider>
+    );
 }
 
 export default App;
