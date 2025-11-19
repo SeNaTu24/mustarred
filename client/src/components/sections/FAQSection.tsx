@@ -1,36 +1,73 @@
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
 } from "@/components/ui/accordion";
 import { faqs } from "@/data/faqs";
 
 export default function FAQSection() {
-  return (
-    <section id="faq" className="py-8 md:py-12 bg-background">
-      <div className="max-w-4xl mx-auto px-6 md:px-8">
-        <div className="text-center mb-10">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Got questions? We've got answers. Find everything you need to know about
-            our compliance services.
-          </p>
-        </div>
+    return (
+        <section id="faq" className="py-8 md:py-12 bg-white">
+            <div className="max-w-4xl mx-auto px-6 md:px-8">
+                <div className="text-center mb-8">
+                    <h2
+                        className="mb-4"
+                        style={{
+                            color: "black",
+                            fontFamily: "Satoshi, sans-serif",
+                            fontSize: "48px",
+                            fontWeight: "700",
+                        }}
+                    >
+                        Frequently Asked Questions
+                    </h2>
+                    <p
+                        className="leading-relaxed text-muted-foreground"
+                        style={{
+                            fontFamily: "Satoshi, sans-serif",
+                            fontSize: "18px",
+                            fontWeight: "400",
+                        }}
+                    >
+                        Got questions? We've got answers. Find everything you
+                        need to know about our compliance services.
+                    </p>
+                </div>
 
-        <Accordion type="single" collapsible className="w-full">
-          {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`item-${i}`} data-testid={`faq-item-${i}`}>
-              <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
-    </section>
-  );
+                <Accordion type="single" collapsible className="w-full">
+                    {faqs.map((faq, i) => (
+                        <AccordionItem
+                            key={i}
+                            value={`item-${i}`}
+                            data-testid={`faq-item-${i}`}
+                        >
+                            <AccordionTrigger
+                                className="text-left py-4 hover:no-underline"
+                                style={{
+                                    color: "hsl(var(--brand-text))",
+                                    fontFamily: "Satoshi, sans-serif",
+                                    fontSize: "18px",
+                                    fontWeight: "600",
+                                }}
+                            >
+                                {faq.question}
+                            </AccordionTrigger>
+                            <AccordionContent
+                                className="pb-4 leading-relaxed"
+                                style={{
+                                    color: "hsl(var(--brand-text))",
+                                    fontFamily: "Satoshi, sans-serif",
+                                    fontSize: "16px",
+                                    fontWeight: "400",
+                                }}
+                            >
+                                {faq.answer}
+                            </AccordionContent>
+                        </AccordionItem>
+                    ))}
+                </Accordion>
+            </div>
+        </section>
+    );
 }

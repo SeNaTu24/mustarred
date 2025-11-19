@@ -4,3 +4,12 @@ dist
 server/public
 vite.config.ts.*
 *.tar.gz
+Editor Configuration (VS Code)
+.vscode/
+
+# Temporary files
+next-article.txt
+
+# Chatbot component and its data
+client/src/components/Chatbot.tsx
+client/src/data/chatbot-knowledge.ts

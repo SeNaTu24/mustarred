@@ -1,12 +1,80 @@
 import { Card } from "@/components/ui/card";
 import { Lock, FileCheck, Building2, Handshake } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 
 export default function AboutSection() {
+    const [visibleCards, setVisibleCards] = useState(new Set());
+    const cardRefs = useRef([]);
+
+    useEffect(() => {
+        const observers = cardRefs.current.map((ref, index) => {
+            if (!ref) return null;
+
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            setVisibleCards(
+                                (prev) => new Set([...prev, index])
+                            );
+                        }, index * 200);
+                    }
+                },
+                { threshold: 0.2 }
+            );
+
+            observer.observe(ref);
+            return observer;
+        });
+
+        return () => {
+            observers.forEach((observer) => observer?.disconnect());
+        };
+    }, []);
+
     return (
-        <section id="about" className="py-16 md:py-24 bg-background">
+        <section id="about" className="pt-4 pb-8 md:pt-6 md:pb-12 bg-white">
+            <style>{`
+                @keyframes gradient-shift {
+                    0%, 100% {
+                        background-position: 0% 50%;
+                    }
+                    50% {
+                        background-position: 100% 50%;
+                    }
+                }
+                
+                @keyframes float-orb {
+                    0%, 100% {
+                        transform: translate(0, 0) scale(1);
+                        opacity: 0.3;
+                    }
+                    50% {
+                        transform: translate(10px, -10px) scale(1.1);
+                        opacity: 0.5;
+                    }
+                }
+                
+                .animated-purple-bg {
+                    background: linear-gradient(
+                        135deg,
+                        #2a1a4a 0%,
+                        #1a0d33 25%,
+                        #0d0520 50%,
+                        #1a0d33 75%,
+                        #2a1a4a 100%
+                    );
+                    background-size: 200% 200%;
+                    animation: gradient-shift 8s ease infinite;
+                }
+                
+                .floating-orb {
+                    animation: float-orb 4s ease-in-out infinite;
+                }
+            `}</style>
             <div className="max-w-7xl mx-auto px-6 md:px-8">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                <div className="text-center mb-6">
+                    <h2 className="text-5xl md:text-6xl font-bold mb-4">
                         Scale confidently with the right Security
                         Certifications.
                     </h2>
@@ -16,50 +84,328 @@ export default function AboutSection() {
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-                    <Card className="p-8" data-testid="card-mission">
-                        <div className="flex items-center gap-3 mb-4">
-                            <Lock className="h-8 w-8 text-primary" />
-                            <h3 className="text-2xl font-semibold">
-                                Data Protection and Security
-                            </h3>
+                <div className="grid grid-cols-1 gap-8 md:gap-12">
+                    <Card
+                        ref={(el) => (cardRefs.current[0] = el)}
+                        className={`overflow-hidden h-64 transition-all duration-700 transform ${
+                            visibleCards.has(0)
+                                ? "opacity-100 translate-y-0"
+                                : "opacity-0 translate-y-8"
+                        }`}
+                        data-testid="card-mission"
+                    >
+                        <div className="flex h-full">
+                            <div
+                                className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="absolute top-4 right-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb" />
+                                <div className="flex flex-col items-start gap-2 w-full relative z-10">
+                                    <div className="p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                                        <Lock className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:drop-shadow-lg transition-all duration-300" />
+                                    </div>
+                                    <h3 className="text-3xl sm:text-5xl font-bold leading-none w-full text-white">
+                                        Data Protection and Security
+                                    </h3>
+                                </div>
+                            </div>
+                            <div className="p-4 sm:p-6 w-1/2 bg-white">
+                                <div className="leading-relaxed space-y-1 sm:space-y-2 text-xs sm:text-base font-light text-black">
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Build and maintain a strong privacy
+                                        framework for your business.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Learn how to set up and audit privacy
+                                        programs.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Manage ROPA and DSR processes, and
+                                        conduct DPIAs, PIAs, and privacy
+                                        reviews.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Strengthen internal compliance through
+                                        staff training.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Align your systems with global
+                                        standards such as ISO, SOC, and HIPAA.
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        <p className="text-muted-foreground leading-relaxed">
-                            Build and maintain a strong privacy framework for your business. Learn how to set up and audit privacy programs, manage ROPA and DSR processes, and conduct DPIAs, PIAs, and privacy reviews. Strengthen internal compliance through staff training and align your systems with global standards such as ISO, SOC, and HIPAA.
-                        </p>
                     </Card>
-                    <Card className="p-8" data-testid="card-mission">
-                        <div className="flex items-center gap-3 mb-4">
-                            <FileCheck className="h-8 w-8 text-primary" />
-                            <h3 className="text-2xl font-semibold">
-                                Regulatory Compliance and Licensing
-                            </h3>
+                    <Card
+                        ref={(el) => (cardRefs.current[1] = el)}
+                        className={`overflow-hidden h-64 transition-all duration-700 transform ${
+                            visibleCards.has(1)
+                                ? "opacity-100 translate-y-0"
+                                : "opacity-0 translate-y-8"
+                        }`}
+                        data-testid="card-mission"
+                    >
+                        <div className="flex h-full">
+                            <div className="p-4 sm:p-6 w-1/2 bg-white">
+                                <div className="leading-relaxed space-y-1 sm:space-y-2 text-xs sm:text-base font-light text-black">
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Develop competence to navigate
+                                        licensing and regulatory frameworks.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Work with agencies such as the CBN,
+                                        NCC, etc.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Gain hands-on experience in AML,
+                                        fraud, and transaction-screening
+                                        compliance.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Implementation and audits with
+                                        practical guidance through remediation.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Includes internal AML/KYC training.
+                                    </span>
+                                </div>
+                            </div>
+                            <div
+                                className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="absolute bottom-4 left-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb" style={{ animationDelay: '1s' }} />
+                                <div className="flex flex-col items-start gap-2 w-full relative z-10">
+                                    <div className="p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                                        <FileCheck className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:drop-shadow-lg transition-all duration-300" />
+                                    </div>
+                                    <h3 className="text-3xl sm:text-5xl font-bold leading-none w-full text-white">
+                                        Regulatory Compliance and Licensing
+                                    </h3>
+                                </div>
+                            </div>
                         </div>
-                        <p className="text-muted-foreground leading-relaxed">
-                            Develop the competence to navigate licensing and regulatory frameworks with agencies such as the CBN, NCC, etc. Gain hands-on experience in AML, fraud, and transaction-screening compliance implementation and audits, with practical guidance through the remediation process. Includes internal AML/KYC training.
-                        </p>
                     </Card>
-                    <Card className="p-8" data-testid="card-mission">
-                        <div className="flex items-center gap-3 mb-4">
-                            <Building2 className="h-8 w-8 text-primary" />
-                            <h3 className="text-2xl font-semibold">
-                                Corporate Governance & IP
-                            </h3>
+                    <Card
+                        ref={(el) => (cardRefs.current[2] = el)}
+                        className={`overflow-hidden h-64 transition-all duration-700 transform ${
+                            visibleCards.has(2)
+                                ? "opacity-100 translate-y-0"
+                                : "opacity-0 translate-y-8"
+                        }`}
+                        data-testid="card-mission"
+                    >
+                        <div className="flex h-full">
+                            <div
+                                className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="absolute top-4 left-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb" style={{ animationDelay: '2s' }} />
+                                <div className="flex flex-col items-start gap-2 w-full relative z-10">
+                                    <div className="p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                                        <Building2 className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:drop-shadow-lg transition-all duration-300" />
+                                    </div>
+                                    <h3 className="text-3xl sm:text-5xl font-bold leading-none w-full text-white">
+                                        Corporate Governance & IP
+                                    </h3>
+                                </div>
+                            </div>
+                            <div className="p-4 sm:p-6 w-1/2 bg-white">
+                                <div className="leading-relaxed space-y-1 sm:space-y-2 text-xs sm:text-base font-light text-black">
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Establish and manage corporate
+                                        structures that promote accountability.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Protect innovation through proper
+                                        structuring.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Learn about company incorporation
+                                        processes.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Trademark and patent registration
+                                        guidance.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Board appraisal and company
+                                        secretarial best practices.
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        <p className="text-muted-foreground leading-relaxed">
-                            Understand how to establish and manage corporate structures that promote accountability and protect innovation. Learn about company incorporation, trademark and patent registration, board appraisal, and company secretarial best practices.
-                        </p>
                     </Card>
-                    <Card className="p-8" data-testid="card-mission">
-                        <div className="flex items-center gap-3 mb-4">
-                            <Handshake className="h-8 w-8 text-primary" />
-                            <h3 className="text-2xl font-semibold">
-                                Transaction Advisory
-                            </h3>
+                    <Card
+                        ref={(el) => (cardRefs.current[3] = el)}
+                        className={`overflow-hidden h-64 transition-all duration-700 transform ${
+                            visibleCards.has(3)
+                                ? "opacity-100 translate-y-0"
+                                : "opacity-0 translate-y-8"
+                        }`}
+                        data-testid="card-mission"
+                    >
+                        <div className="flex h-full">
+                            <div className="p-4 sm:p-6 w-1/2 bg-white">
+                                <div className="leading-relaxed space-y-1 sm:space-y-2 text-xs sm:text-base font-light text-black">
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Gain insight into structuring and
+                                        managing high-value business
+                                        transactions.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Explore mergers and acquisitions
+                                        opportunities.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Navigate joint ventures and technology
+                                        licensing.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Focus on compliance and due diligence
+                                        processes.
+                                    </span>
+                                    <span
+                                        style={{
+                                            textIndent: "-1em",
+                                            paddingLeft: "1em",
+                                            display: "block",
+                                        }}
+                                    >
+                                        → Ensure strategic alignment in all
+                                        transactions.
+                                    </span>
+                                </div>
+                            </div>
+                            <div
+                                className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="absolute bottom-4 right-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb" style={{ animationDelay: '3s' }} />
+                                <div className="flex flex-col items-start gap-2 w-full relative z-10">
+                                    <div className="p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                                        <Handshake className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:drop-shadow-lg transition-all duration-300" />
+                                    </div>
+                                    <h3 className="text-3xl sm:text-5xl font-bold leading-none w-full text-white">
+                                        Transaction Advisory
+                                    </h3>
+                                </div>
+                            </div>
                         </div>
-                        <p className="text-muted-foreground leading-relaxed">
-                            Gain insight into structuring and managing high-value business transactions. Explore mergers and acquisitions, joint ventures, and technology licensing with a focus on compliance, due diligence, and strategic alignment.
-                        </p>
                     </Card>
 
                     {/* <Card className="p-8" data-testid="card-vision">
@@ -77,8 +423,6 @@ export default function AboutSection() {
                         </p>
                     </Card> */}
                 </div>
-
-
             </div>
         </section>
     );

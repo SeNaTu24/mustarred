@@ -1,8 +1,25 @@
 import logoPath from "@assets/logolatest.png";
 
 export default function Footer() {
+    const handleFooterNavigation = (href: string) => {
+        if (href.startsWith("#")) {
+            const id = href.replace("#", "");
+            const el = document.getElementById(id);
+            
+            // If we're on the homepage and element exists, scroll to it
+            if (el && window.location.pathname === "/") {
+                el.scrollIntoView({ behavior: "smooth" });
+            } else {
+                // If we're on another page, go to homepage with hash
+                window.location.href = `/${href}`;
+            }
+        } else {
+            window.location.href = href;
+        }
+    };
+
     return (
-        <footer className="bg-card border-t border-border py-8">
+        <footer className="bg-white border-t border-border py-8 mt-0">
             <div className="max-w-7xl mx-auto px-6 md:px-8">
                 <div className="grid md:grid-cols-4 gap-6 mb-6">
                     <div>
@@ -14,8 +31,7 @@ export default function Footer() {
                             />
                         </div>
                         <p className="text-sm text-muted-foreground">
-                            Providing strategic solutions to help scale African
-                            startups.
+                            ...for the startups that scale
                         </p>
                     </div>
 
@@ -24,7 +40,7 @@ export default function Footer() {
                         <ul className="space-y-2 text-sm text-muted-foreground">
                             <li>
                                 <button
-                                    onClick={() => window.location.href = '/'}
+                                    onClick={() => handleFooterNavigation("/")}
                                     className="hover:text-foreground transition-colors text-left"
                                 >
                                     Home
@@ -32,12 +48,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <button
-                                    onClick={() => {
-                                        window.location.href = '/';
-                                        setTimeout(() => {
-                                            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-                                        }, 100);
-                                    }}
+                                    onClick={() => handleFooterNavigation("#about")}
                                     className="hover:text-foreground transition-colors text-left"
                                 >
                                     About Us
@@ -45,12 +56,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <button
-                                    onClick={() => {
-                                        window.location.href = '/';
-                                        setTimeout(() => {
-                                            document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-                                        }, 100);
-                                    }}
+                                    onClick={() => handleFooterNavigation("#services")}
                                     className="hover:text-foreground transition-colors text-left"
                                 >
                                     Services
@@ -58,12 +64,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <button
-                                    onClick={() => {
-                                        window.location.href = '/';
-                                        setTimeout(() => {
-                                            document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' });
-                                        }, 100);
-                                    }}
+                                    onClick={() => handleFooterNavigation("#testimonials")}
                                     className="hover:text-foreground transition-colors text-left"
                                 >
                                     Testimonials
@@ -71,12 +72,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <button
-                                    onClick={() => {
-                                        window.location.href = '/';
-                                        setTimeout(() => {
-                                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                                        }, 100);
-                                    }}
+                                    onClick={() => handleFooterNavigation("#contact")}
                                     className="hover:text-foreground transition-colors text-left"
                                 >
                                     Contact
@@ -89,20 +85,20 @@ export default function Footer() {
                         <h4 className="font-semibold mb-4">Resources</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
                             <li>
-                                <a
-                                    href="#"
+                                <button
+                                    onClick={() => handleFooterNavigation("/blog")}
                                     className="hover:text-foreground transition-colors"
                                 >
                                     Blog
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#faq"
+                                <button
+                                    onClick={() => handleFooterNavigation("#faq")}
                                     className="hover:text-foreground transition-colors"
                                 >
                                     FAQ
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </div>

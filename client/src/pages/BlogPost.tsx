@@ -2,57 +2,17 @@ import BlogHeader from "@/components/layout/BlogHeader";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, ArrowLeft, Share2, Mail, MessageSquare } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Share2, Mail, MessageSquare, Download } from "lucide-react";
 import { SiX, SiLinkedin, SiInstagram } from "react-icons/si";
 import { useParams } from "wouter";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import ReactMarkdown from "react-markdown";
-import ndprImage from "@assets/ndpr_article_img.webp";
-
-
-const blogPosts = {
-  "1": {
-    id: 1,
-    title: "Understanding NDPR Compliance for Nigerian Startups",
-    content: `
-## Introduction
-
-The Nigeria Data Protection Regulation (NDPR) is a comprehensive data protection law that governs the processing of personal data in Nigeria. For startups operating in Nigeria, understanding and complying with NDPR is crucial for avoiding penalties and building trust with customers.
-
-## Key Requirements
-
-NDPR requires organizations to:
-
-- Obtain consent before processing personal data
-- Implement appropriate security measures
-- Appoint a Data Protection Officer (DPO)
-- Conduct Data Protection Impact Assessments (DPIA)
-- Report data breaches within 72 hours
-
-## Implementation Steps
-
-To achieve NDPR compliance, startups should:
-
-1. Conduct a data audit to understand what personal data you collect
-2. Update privacy policies and consent mechanisms
-3. Implement technical and organizational security measures
-4. Train staff on data protection principles
-5. Establish procedures for handling data subject requests
-
-## Conclusion
-
-NDPR compliance is not just about avoiding penalties—it's about building a foundation of trust with your customers and stakeholders. By implementing proper data protection measures, startups can demonstrate their commitment to privacy and security.
-    `,
-    category: "Data Protection",
-    date: "2024-01-15",
-    readTime: "5 min read",
-    author: "Mustarred Team"
-  }
-};
+import { getPostById } from "@/data/blog-posts";
+import { formatDate } from "@/data/blog-config";
 
 export default function BlogPost() {
   const { id } = useParams<{ id: string }>();
-  const post = blogPosts[id as keyof typeof blogPosts];
+  const post = getPostById(id!);
 
   if (!post) {
     return (
@@ -73,13 +33,7 @@ export default function BlogPost() {
     );
   }
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
+
 
   return (
     <div className="min-h-screen">
@@ -110,7 +64,7 @@ export default function BlogPost() {
               </div>
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            <h1 className="font-bold mb-6 leading-tight" style={{ fontFamily: 'Satoshi, sans-serif', fontSize: '40px' }}>
               {post.title}
             </h1>
             
@@ -139,19 +93,51 @@ export default function BlogPost() {
           </header>
 
           {/* Article Image */}
-          {post.id === 1 && (
-            <div className="mb-12">
-              <img 
-                src={ndprImage} 
-                alt="NDPR Compliance Guide" 
-                className="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg"
-              />
-            </div>
-          )}
+          <div className="mb-8 md:mb-12">
+            <img 
+              src={post.image} 
+              alt={post.title} 
+              className="w-full h-48 md:h-64 lg:h-80 object-cover rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02]"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+              loading="lazy"
+            />
+          </div>
+          
+
 
           {/* Article Content */}
-          <div className="prose prose-lg max-w-none dark:prose-invert">
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+          <div className="prose prose-sm md:prose-lg max-w-none dark:prose-invert text-foreground" style={{ fontFamily: 'Satoshi, sans-serif' }}>
+            <ReactMarkdown 
+              components={{
+                p: ({ children }) => <p className="text-foreground mb-4 leading-relaxed">{children}</p>,
+                h1: ({ children }) => <h1 className="text-foreground font-bold text-xl md:text-2xl mb-4 mt-8">{children}</h1>,
+                h2: ({ children }) => <h2 className="text-foreground font-bold text-lg md:text-xl mb-3 mt-6">{children}</h2>,
+                h3: ({ children }) => <h3 className="text-foreground font-semibold text-base md:text-lg mb-2 mt-4">{children}</h3>,
+                li: ({ children }) => <li className="text-foreground mb-1 leading-relaxed">{children}</li>,
+                strong: ({ children }) => <strong className="text-foreground font-semibold">{children}</strong>,
+                ul: ({ children }) => <ul className="mb-4 pl-6">{children}</ul>,
+                ol: ({ children }) => <ol className="mb-4 pl-6">{children}</ol>,
+                blockquote: ({ children }) => (
+                  <blockquote className="border-l-4 border-primary pl-4 italic my-4 text-muted-foreground">
+                    {children}
+                  </blockquote>
+                ),
+                a: ({ href, children }) => (
+                  <a 
+                    href={href} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary/80 underline transition-colors duration-200"
+                  >
+                    {children}
+                  </a>
+                )
+              }}
+            >
+              {post.content}
+            </ReactMarkdown>
           </div>
 
           {/* Article Footer */}

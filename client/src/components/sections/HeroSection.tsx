@@ -5,120 +5,386 @@ import heroImage from "@assets/startupbuilding.webp";
 import { useState, useEffect } from "react";
 
 export default function HeroSection() {
-  const [typewriterText, setTypewriterText] = useState("");
-  const fullText = "Get ahead with simple compliance";
-  
-  useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= fullText.length) {
-        setTypewriterText(fullText.slice(0, index));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 100);
-    
-    return () => clearInterval(timer);
-  }, []);
+    const codeSnippets = [
+        "import { ai } from 'future'",
+        "const debate = await ethics.discuss()",
+        "function transform() { return innovation }",
+        "class LegalAI { analyze(case) {} }",
+        "export default Intelligence",
+        "if (curious) { join() }",
+        "const community = new Network()",
+        "async debate(topic) => insights",
+    ];
 
-  const codeSnippets = [
-    "import { ai } from 'future'",
-    "const debate = await ethics.discuss()",
-    "function transform() { return innovation }",
-    "class LegalAI { analyze(case) {} }",
-    "export default Intelligence",
-    "if (curious) { join() }",
-    "const community = new Network()",
-    "async debate(topic) => insights",
-  ];
+    const scrollToAbout = () => {
+        document
+            .getElementById("about")
+            ?.scrollIntoView({ behavior: "smooth" });
+    };
 
-  const scrollToAbout = () => {
-    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-  };
+    return (
+        <section
+            id="home"
+            className="relative min-h-screen flex items-center justify-center overflow-hidden animated-purple-bg py-16 md:py-24"
+            style={{ maxHeight: '100vh' }}
+        >
+            {/* Web3 Grid Pattern */}
+            <div className="absolute inset-0 pointer-events-none opacity-20" style={{ overflow: 'hidden' }}>
+                <div className="web3-grid" />
+            </div>
 
-  return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Full section background image */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: `url(${heroImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        opacity: 0.4,
-        filter: 'blur(0.5px)'
-      }} />
-      
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-background/60 pointer-events-none" />
-      
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-        {codeSnippets.map((snippet, i) => (
-          <div
-            key={i}
-            className="absolute font-mono text-xs md:text-sm text-primary/40 whitespace-nowrap"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animation: `float ${15 + Math.random() * 10}s linear infinite`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          >
-            {snippet}
-          </div>
-        ))}
-      </div>
+            {/* Floating Nodes */}
+            <div className="absolute inset-0 pointer-events-none" style={{ overflow: 'hidden' }}>
+                {Array.from({ length: 8 }).map((_, i) => (
+                    <div
+                        key={i}
+                        className="absolute web3-node"
+                        style={{
+                            top: `${25 + i * 12}%`,
+                            left: `${15 + i * 10}%`,
+                            animationDelay: `${i * 0.5}s`,
+                        }}
+                    />
+                ))}
+            </div>
 
-      <style>{`
-        @keyframes float {
-          0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-          10% { opacity: 0.3; }
-          90% { opacity: 0.3; }
-          100% { transform: translate(-100px, -100px) rotate(5deg); opacity: 0; }
+            {/* Connection Lines */}
+            <div className="absolute inset-0 pointer-events-none opacity-30" style={{ overflow: 'hidden' }}>
+                {Array.from({ length: 6 }).map((_, i) => (
+                    <div
+                        key={i}
+                        className="absolute connection-line"
+                        style={{
+                            top: `${30 + i * 8}%`,
+                            left: `${20 + i * 12}%`,
+                            transform: `rotate(${i * 30}deg)`,
+                            animationDelay: `${i * 0.8}s`,
+                        }}
+                    />
+                ))}
+            </div>
+
+            {/* Subtle Particles */}
+            <div className="absolute inset-0 pointer-events-none" style={{ overflow: 'hidden' }}>
+                {Array.from({ length: 35 }).map((_, i) => (
+                    <div
+                        key={i}
+                        className="absolute subtle-particle"
+                        style={{
+                            top: `${Math.random() * 100}%`,
+                            left: `${Math.random() * 100}%`,
+                            animationDelay: `${Math.random() * 4}s`,
+                        }}
+                    />
+                ))}
+            </div>
+
+            {/* Energy Waves */}
+            <div className="absolute inset-0 pointer-events-none" style={{ overflow: 'hidden' }}>
+                {Array.from({ length: 4 }).map((_, i) => (
+                    <div
+                        key={i}
+                        className="absolute energy-wave"
+                        style={{
+                            top: "50%",
+                            left: "50%",
+                            animationDelay: `${i * 1.5}s`,
+                        }}
+                    />
+                ))}
+            </div>
+
+            {/* Floating Orbs */}
+            <div className="absolute inset-0 pointer-events-none" style={{ overflow: 'hidden' }}>
+                {Array.from({ length: 6 }).map((_, i) => (
+                    <div
+                        key={i}
+                        className="absolute floating-orb"
+                        style={{
+                            top: `${20 + Math.random() * 60}%`,
+                            left: `${10 + Math.random() * 80}%`,
+                            animationDelay: `${Math.random() * 3}s`,
+                        }}
+                    />
+                ))}
+            </div>
+
+            <style>{`
+        @keyframes node-pulse {
+          0%, 100% { opacity: 0.7; transform: scale(1) rotate(0deg); box-shadow: 0 0 15px rgba(164, 159, 231, 0.6); }
+          33% { opacity: 0.9; transform: scale(1.2) rotate(120deg); box-shadow: 0 0 25px rgba(164, 159, 231, 0.9); }
+          66% { opacity: 1; transform: scale(1.4) rotate(240deg); box-shadow: 0 0 30px rgba(100, 255, 200, 0.7); }
+        }
+        
+        @keyframes line-flow {
+          0% { opacity: 0.2; transform: scaleX(0) rotateZ(0deg); }
+          25% { opacity: 0.6; transform: scaleX(0.5) rotateZ(90deg); }
+          50% { opacity: 1; transform: scaleX(1.3) rotateZ(180deg); }
+          75% { opacity: 0.8; transform: scaleX(1) rotateZ(270deg); }
+          100% { opacity: 0.2; transform: scaleX(0) rotateZ(360deg); }
+        }
+        
+        @keyframes particle-float {
+          0% { opacity: 0.4; transform: translateY(0px) translateX(0px) scale(1) rotate(0deg); }
+          25% { opacity: 0.8; transform: translateY(-20px) translateX(10px) scale(1.2) rotate(90deg); }
+          50% { opacity: 1; transform: translateY(-40px) translateX(-5px) scale(1.6) rotate(180deg); }
+          75% { opacity: 0.7; transform: translateY(-20px) translateX(-15px) scale(1.3) rotate(270deg); }
+          100% { opacity: 0.4; transform: translateY(0px) translateX(0px) scale(1) rotate(360deg); }
+        }
+        
+        @keyframes energy-wave {
+          0% { opacity: 0.8; transform: translate(-50%, -50%) scale(0.5); }
+          50% { opacity: 0.4; transform: translate(-50%, -50%) scale(2); }
+          100% { opacity: 0; transform: translate(-50%, -50%) scale(4); }
+        }
+        
+        @keyframes orb-drift {
+          0%, 100% { opacity: 0.6; transform: translateY(0px) translateX(0px) scale(1); }
+          33% { opacity: 0.9; transform: translateY(-25px) translateX(15px) scale(1.3); }
+          66% { opacity: 0.7; transform: translateY(-10px) translateX(-20px) scale(0.8); }
+        }
+        
+        .web3-grid {
+          width: 100%;
+          height: 100%;
+          background-image: 
+            linear-gradient(rgba(164, 159, 231, 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(164, 159, 231, 0.3) 1px, transparent 1px);
+          background-size: 80px 80px;
+          background-position: 0 0, 0 0;
+        }
+        
+        .web3-node {
+          width: 16px;
+          height: 16px;
+          background: radial-gradient(circle, rgba(164, 159, 231, 0.9), rgba(164, 159, 231, 0.4), transparent);
+          border: 2px solid rgba(164, 159, 231, 0.7);
+          border-radius: 50%;
+          animation: node-pulse 3s ease-in-out infinite;
+        }
+        
+        .connection-line {
+          width: 120px;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, rgba(164, 159, 231, 0.8), rgba(100, 255, 200, 0.6), transparent);
+          animation: line-flow 4s ease-in-out infinite;
+          border-radius: 1px;
+        }
+        
+        .subtle-particle {
+          width: 4px;
+          height: 4px;
+          background: rgba(164, 159, 231, 0.8);
+          border-radius: 50%;
+          animation: particle-float 4s ease-in-out infinite;
+          box-shadow: 0 0 12px rgba(164, 159, 231, 0.7);
+        }
+        
+        .energy-wave {
+          width: 100px;
+          height: 100px;
+          border: 2px solid rgba(164, 159, 231, 0.4);
+          border-radius: 50%;
+          animation: energy-wave 6s ease-out infinite;
+        }
+        
+        .floating-orb {
+          width: 12px;
+          height: 12px;
+          background: radial-gradient(circle, rgba(100, 255, 200, 0.8), rgba(164, 159, 231, 0.4), transparent);
+          border-radius: 50%;
+          animation: orb-drift 7s ease-in-out infinite;
+          box-shadow: 0 0 15px rgba(100, 255, 200, 0.5);
+        }
+        
+        @keyframes fade-in-up {
+          0% { 
+            opacity: 0; 
+            transform: translateY(20px) scale(0.95); 
+          }
+          100% { 
+            opacity: 1; 
+            transform: translateY(0) scale(1); 
+          }
+        }
+        
+        .animate-fade-in-up {
+          animation: fade-in-up 0.6s ease-out forwards;
+        }
+        
+        @keyframes hero-entrance {
+          0% { 
+            opacity: 0; 
+            transform: translateY(-50px) scale(0.5) rotateX(90deg);
+            text-shadow: 0 0 0 transparent;
+            filter: blur(10px);
+          }
+          30% {
+            opacity: 0.3;
+            transform: translateY(-20px) scale(0.8) rotateX(45deg);
+            text-shadow: 0 0 30px hsl(var(--brand-primary) / 0.8);
+            filter: blur(5px);
+          }
+          70% {
+            opacity: 0.8;
+            transform: translateY(5px) scale(1.2) rotateX(-10deg);
+            text-shadow: 0 0 40px hsl(var(--brand-primary) / 1), 0 0 80px hsl(var(--brand-accent) / 0.5);
+            filter: blur(0px);
+          }
+          100% { 
+            opacity: 1; 
+            transform: translateY(0) scale(1) rotateX(0deg);
+            text-shadow: 0 0 20px hsl(var(--brand-primary) / 0.6), 0 0 40px hsl(var(--brand-accent) / 0.3);
+            filter: blur(0px);
+          }
+        }
+        
+        @keyframes ken-burns {
+          0% { 
+            transform: scale(1) translateX(0) translateY(0);
+          }
+          25% {
+            transform: scale(1.05) translateX(-2%) translateY(-1%);
+          }
+          50% {
+            transform: scale(1.08) translateX(1%) translateY(-2%);
+          }
+          75% {
+            transform: scale(1.05) translateX(-1%) translateY(1%);
+          }
+          100% { 
+            transform: scale(1) translateX(0) translateY(0);
+          }
+        }
+        
+        @keyframes purple-gradient {
+          0% {
+            background: linear-gradient(45deg, #2D1B69, #663399, #4B0082);
+          }
+          33% {
+            background: linear-gradient(45deg, #4B0082, #2D1B69, #663399);
+          }
+          66% {
+            background: linear-gradient(45deg, #663399, #4B0082, #2D1B69);
+          }
+          100% {
+            background: linear-gradient(45deg, #2D1B69, #663399, #4B0082);
+          }
+        }
+        
+        @keyframes bg-shift {
+          0%, 100% { background: radial-gradient(ellipse at 30% 40%, #2a1a4a 0%, #1a0d33 60%, #0d0520 100%); }
+          50% { background: radial-gradient(ellipse at 70% 60%, #2d1b4a 0%, #1c0f35 60%, #0f0622 100%); }
+        }
+        
+        .animated-purple-bg {
+          animation: bg-shift 8s ease-in-out infinite;
+        }
+        
+        @keyframes text-glow {
+          0%, 100% {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(164, 159, 231, 0.3), 0 0 60px rgba(164, 159, 231, 0.2);
+          }
+          50% {
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(164, 159, 231, 0.5), 0 0 90px rgba(164, 159, 231, 0.3);
+          }
+        }
+        
+        .text-glow-effect {
+          animation: text-glow 3s ease-in-out infinite;
+        }
+        
+        .animate-ken-burns {
+          animation: ken-burns 20s ease-in-out infinite;
+        }
+        
+        .modern-button {
+          background: linear-gradient(135deg, hsl(var(--brand-primary)) 0%, hsl(var(--brand-primary) / 0.9) 100%);
+          border: 1px solid hsl(var(--brand-primary) / 0.3);
+          border-radius: 8px;
+          box-shadow: 0 2px 8px hsl(var(--brand-primary) / 0.2), 0 1px 2px rgba(0,0,0,0.05);
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .modern-button:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px hsl(var(--brand-primary) / 0.3), 0 2px 4px rgba(0,0,0,0.1);
+          border-color: hsl(var(--brand-primary) / 0.5);
+        }
+        
+        .modern-button:active {
+          transform: translateY(0);
+          box-shadow: 0 2px 4px hsl(var(--brand-primary) / 0.2);
         }
       `}</style>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-8 text-center mt-72">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-8 text-center pt-72 md:pt-80">
+                {/* <h1 className="text-white tracking-tight mb-6" style={{ fontFamily: 'Satoshi, sans-serif', fontSize: '80px', lineHeight: '80px', fontWeight: '700', textShadow: '0 4px 8px rgba(0, 0, 0, 0.5)' }}>
+                    Building a <span style={{ color: '#FFD700' }}>startup</span><br />is hard enough
+                </h1> */}
 
+                <h1
+                    className="text-white tracking-tight mb-6"
+                    style={{
+                        fontFamily: "Satoshi, sans-serif",
+                        fontSize: "50px",
+                        lineHeight: "80px",
+                        fontWeight: "700",
+                        textShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
+                    }}
+                >
+                    {/* Building a <span style={{ color: '#FFD700' }}>startup</span><br />is hard enough */}
+                    Solving High Stakes Challenges <br /> Requires{" "}
+                    <span style={{ color: "#FFD700" }}>
+                        Data-Driven Precision
+                    </span>
+                    <br />
+                </h1>
 
-        <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-          <span style={{color: '#4B4ACF'}}>
-            Building a startup is hard enough
-          </span>
-          <br />
-          <span className="text-2xl md:text-3xl font-normal text-foreground">
-            {typewriterText}
-            <span className="animate-pulse">|</span>
-          </span>
-        </h1>
+                <p
+                    className="max-w-3xl mx-auto mb-12 text-white"
+                    style={{
+                        fontFamily: "Satoshi, sans-serif",
+                        fontSize: "18px",
+                        lineHeight: "27px",
+                        fontWeight: "400",
+                        textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
+                    }}
+                >
+                    {/* Move fast. Skip the regulatory and compliance chaos with Mustarred. */}
+                    We combine our robust intelligence and problem-solving
+                    capacities to help organisations develop excellent
+                    regulatory, compliance, and security frameworks.
+                </p>
 
-        <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
-          Crest your industry with a trusted partner, Mustarred.
-          Turn complexity into confidence and scale faster with a trusted partner.
-        </p>
-        
-        <div className="flex justify-center items-center mb-12">
-          <Button 
-            variant="outline" 
-            size="lg" 
-            className="px-8 py-3 text-lg"
-            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Our Services
-          </Button>
-        </div>
+                <div className="flex justify-center items-center mb-8">
+                    <Button
+                        className="modern-button px-8 py-3 relative overflow-hidden group"
+                        style={{
+                            fontFamily: "Satoshi, sans-serif",
+                            fontSize: "16px",
+                            fontWeight: "600",
+                        }}
+                        onClick={() =>
+                            document
+                                .getElementById("services")
+                                ?.scrollIntoView({ behavior: "smooth" })
+                        }
+                    >
+                        <span className="relative z-10">Start Scaling</span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
+                    </Button>
+                </div>
 
-
-
-        <button
-          onClick={scrollToAbout}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-muted-foreground hover-elevate active-elevate-2 p-2 rounded-full"
-          aria-label="Scroll to content"
-          data-testid="button-scroll-down"
-        >
-          <ArrowDown className="h-6 w-6 animate-bounce" />
-        </button>
-      </div>
-    </section>
-  );
+                <button
+                    onClick={scrollToAbout}
+                    className="absolute bottom-12 left-1/2 -translate-x-1/2 text-muted-foreground hover-elevate active-elevate-2 p-2 rounded-full"
+                    aria-label="Scroll to content"
+                    data-testid="button-scroll-down"
+                >
+                    <ArrowDown className="h-6 w-6 animate-bounce" />
+                </button>
+            </div>
+        </section>
+    );
 }
