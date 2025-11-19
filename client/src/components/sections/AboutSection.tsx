@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 export default function AboutSection() {
     const [visibleCards, setVisibleCards] = useState(new Set());
-    const cardRefs = useRef([]);
+    const cardRefs = useRef<(HTMLDivElement | null)[]>([]); // Corrected type here
 
     useEffect(() => {
         const observers = cardRefs.current.map((ref, index) => {
@@ -95,9 +95,7 @@ export default function AboutSection() {
                         data-testid="card-mission"
                     >
                         <div className="flex h-full">
-                            <div
-                                className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
-                            >
+                            <div className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg">
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <div className="absolute top-4 right-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb" />
                                 <div className="flex flex-col items-start gap-2 w-full relative z-10">
@@ -230,11 +228,12 @@ export default function AboutSection() {
                                     </span>
                                 </div>
                             </div>
-                            <div
-                                className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
-                            >
+                            <div className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg">
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <div className="absolute bottom-4 left-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb" style={{ animationDelay: '1s' }} />
+                                <div
+                                    className="absolute bottom-4 left-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb"
+                                    style={{ animationDelay: "1s" }}
+                                />
                                 <div className="flex flex-col items-start gap-2 w-full relative z-10">
                                     <div className="p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
                                         <FileCheck className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:drop-shadow-lg transition-all duration-300" />
@@ -256,11 +255,12 @@ export default function AboutSection() {
                         data-testid="card-mission"
                     >
                         <div className="flex h-full">
-                            <div
-                                className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
-                            >
+                            <div className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg">
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <div className="absolute top-4 left-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb" style={{ animationDelay: '2s' }} />
+                                <div
+                                    className="absolute top-4 left-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb"
+                                    style={{ animationDelay: "2s" }}
+                                />
                                 <div className="flex flex-col items-start gap-2 w-full relative z-10">
                                     <div className="p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
                                         <Building2 className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:drop-shadow-lg transition-all duration-300" />
@@ -391,11 +391,12 @@ export default function AboutSection() {
                                     </span>
                                 </div>
                             </div>
-                            <div
-                                className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
-                            >
+                            <div className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg">
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <div className="absolute bottom-4 right-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb" style={{ animationDelay: '3s' }} />
+                                <div
+                                    className="absolute bottom-4 right-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb"
+                                    style={{ animationDelay: "3s" }}
+                                />
                                 <div className="flex flex-col items-start gap-2 w-full relative z-10">
                                     <div className="p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
                                         <Handshake className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:drop-shadow-lg transition-all duration-300" />
