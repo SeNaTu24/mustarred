@@ -87,7 +87,7 @@ export default function AboutSection() {
 
                 <div className="grid grid-cols-1 gap-8 md:gap-12">
                     <Card
-                        ref={(el) => (cardRefs.current[0] = el)}
+                        ref={(el) => (cardRefs.current[0] = el as HTMLDivElement | null)}
                         className={`overflow-hidden h-64 transition-all duration-700 transform ${
                             visibleCards.has(0)
                                 ? "opacity-100 translate-y-0"
@@ -166,7 +166,7 @@ export default function AboutSection() {
                         </div>
                     </Card>
                     <Card
-                        ref={(el) => (cardRefs.current[1] = el)}
+                        ref={(el) => (cardRefs.current[1] = el as HTMLDivElement | null)}
                         className={`overflow-hidden h-64 transition-all duration-700 transform ${
                             visibleCards.has(1)
                                 ? "opacity-100 translate-y-0"
@@ -247,7 +247,7 @@ export default function AboutSection() {
                         </div>
                     </Card>
                     <Card
-                        ref={(el) => (cardRefs.current[2] = el)}
+                        ref={(el) => (cardRefs.current[2] = el as HTMLDivElement | null)}
                         className={`overflow-hidden h-64 transition-all duration-700 transform ${
                             visibleCards.has(2)
                                 ? "opacity-100 translate-y-0"
@@ -328,7 +328,7 @@ export default function AboutSection() {
                         </div>
                     </Card>
                     <Card
-                        ref={(el) => (cardRefs.current[3] = el)}
+                        ref={(el) => (cardRefs.current[3] = el as HTMLDivElement | null)}
                         className={`overflow-hidden h-64 transition-all duration-700 transform ${
                             visibleCards.has(3)
                                 ? "opacity-100 translate-y-0"
