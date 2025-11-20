@@ -318,40 +318,32 @@ export default function HeroSection() {
         }
       `}</style>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-8 text-center pt-72 md:pt-80">
-                {/* <h1 className="text-white tracking-tight mb-6" style={{ fontFamily: 'Satoshi, sans-serif', fontSize: '80px', lineHeight: '80px', fontWeight: '700', textShadow: '0 4px 8px rgba(0, 0, 0, 0.5)' }}>
-                    Building a <span style={{ color: '#FFD700' }}>startup</span><br />is hard enough
-                </h1> */}
-
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 text-center pt-16 sm:pt-24 lg:pt-32 xl:pt-72">
                 <h1
-                    className="text-white tracking-tight mb-6"
+                    className="text-white tracking-tight mb-4 sm:mb-6"
                     style={{
                         fontFamily: "Satoshi, sans-serif",
-                        fontSize: "50px",
-                        lineHeight: "80px",
+                        fontSize: "clamp(1.75rem, 5vw, 3.125rem)",
+                        lineHeight: "1.2",
                         fontWeight: "700",
-                        textShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
+                        textShadow: "0 2px 4px rgba(0, 0, 0, 0.5)",
                     }}
                 >
-                    {/* Building a <span style={{ color: '#FFD700' }}>startup</span><br />is hard enough */}
                     Solving High Stakes Challenges <br /> Requires{" "}
                     <span style={{ color: "#FFD700" }}>
                         Data-Driven Precision
                     </span>
-                    <br />
                 </h1>
 
                 <p
-                    className="max-w-3xl mx-auto mb-12 text-white"
+                    className="max-w-3xl mx-auto mb-8 sm:mb-12 text-white text-sm sm:text-base lg:text-lg"
                     style={{
                         fontFamily: "Satoshi, sans-serif",
-                        fontSize: "18px",
-                        lineHeight: "27px",
+                        lineHeight: "1.5",
                         fontWeight: "400",
-                        textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
+                        textShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
                     }}
                 >
-                    {/* Move fast. Skip the regulatory and compliance chaos with Mustarred. */}
                     We combine our robust intelligence and problem-solving
                     capacities to help organisations develop excellent
                     regulatory, compliance, and security frameworks.

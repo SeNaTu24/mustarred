@@ -21,9 +21,16 @@ export default function Home() {
       setTimeout(() => {
         const element = document.getElementById(id);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
+          const headerOffset = 80; // Account for fixed header height
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
         }
-      }, 100);
+      }, 300); // Increased timeout for better mobile rendering
     } else {
       // If no hash, scroll to top
       window.scrollTo(0, 0);

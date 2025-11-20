@@ -56,8 +56,8 @@ export default function Header() {
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/90 border-b border-gray-200">
-            <div className="max-w-7xl mx-auto px-6 md:px-8">
-                <div className="flex items-center justify-between h-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16 sm:h-20">
                     <div
                         className="flex items-center cursor-pointer"
                         onClick={() => (window.location.href = "/")}
@@ -65,11 +65,11 @@ export default function Header() {
                         <img
                             src={logoPath}
                             alt="Mustarred-logo"
-                            className="h-32 w-auto object-contain"
+                            className="h-12 w-auto object-contain sm:h-16 lg:h-20"
                         />
                     </div>
 
-                    <nav className="hidden md:flex items-center gap-8">
+                    <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
                         {navLinks.map((link, i) => (
                             <a
                                 key={i}
@@ -78,7 +78,7 @@ export default function Header() {
                                     e.preventDefault();
                                     handleNavigation(link.href);
                                 }}
-                                className="font-heading text-sm font-medium transition-colors duration-300 hover:underline underline-offset-4"
+                                className="font-heading text-xs sm:text-sm font-medium transition-colors duration-300 hover:underline underline-offset-4 whitespace-nowrap"
                                 data-testid={`nav-${link.label
                                     .toLowerCase()
                                     .replace(/\s+/g, "-")}`}
@@ -90,7 +90,7 @@ export default function Header() {
 
                     <div className="flex items-center gap-2">
                         <Button
-                            className="hidden md:inline-flex font-heading"
+                            className="hidden lg:inline-flex font-heading text-sm px-3 py-2 xl:px-4"
                             data-testid="button-header-contact"
                             onClick={() => scrollToSection("#contact")}
                         >
@@ -99,7 +99,7 @@ export default function Header() {
                         <Button
                             variant="ghost"
                             size="icon"
-                            className="md:hidden"
+                            className="lg:hidden"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             data-testid="button-mobile-menu"
                         >
@@ -113,8 +113,8 @@ export default function Header() {
                 </div>
 
                 {mobileMenuOpen && (
-                    <div className="md:hidden border-t border-border py-4">
-                        <nav className="flex flex-col gap-4">
+                    <div className="lg:hidden border-t border-border py-4">
+                        <nav className="flex flex-col gap-3">
                             {navLinks.map((link, i) => (
                                 <a
                                     key={i}
@@ -123,13 +123,13 @@ export default function Header() {
                                         e.preventDefault();
                                         handleNavigation(link.href);
                                     }}
-                                    className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left"
+                                    className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left py-1"
                                 >
                                     {link.label}
                                 </a>
                             ))}
                             <Button
-                                className="w-full mt-2"
+                                className="w-full mt-3 text-sm"
                                 data-testid="button-mobile-contact"
                                 onClick={() => scrollToSection("#contact")}
                             >
