@@ -57,7 +57,7 @@ export default function Header() {
     return (
         <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/90 border-b border-gray-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16 sm:h-20">
+                <div className="flex items-center justify-between h-16 sm:h-20 lg:h-24">
                     <div
                         className="flex items-center cursor-pointer"
                         onClick={() => (window.location.href = "/")}
@@ -65,11 +65,11 @@ export default function Header() {
                         <img
                             src={logoPath}
                             alt="Mustarred-logo"
-                            className="h-12 w-auto object-contain sm:h-16 lg:h-20"
+                            className="h-14 w-auto object-contain sm:h-16 md:h-20 lg:h-24 xl:h-32"
                         />
                     </div>
 
-                    <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+                    <nav className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
                         {navLinks.map((link, i) => (
                             <a
                                 key={i}
@@ -90,16 +90,16 @@ export default function Header() {
 
                     <div className="flex items-center gap-2">
                         <Button
-                            className="hidden lg:inline-flex font-heading text-sm px-3 py-2 xl:px-4"
+                            className="hidden md:inline-flex font-heading text-xs px-2 py-1"
                             data-testid="button-header-contact"
                             onClick={() => scrollToSection("#contact")}
                         >
-                            Contact Us
+                            Contact
                         </Button>
                         <Button
                             variant="ghost"
                             size="icon"
-                            className="lg:hidden"
+                            className="md:hidden"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             data-testid="button-mobile-menu"
                         >
