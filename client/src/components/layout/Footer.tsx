@@ -21,8 +21,8 @@ export default function Footer() {
     return (
         <footer className="bg-white border-t border-border py-8 mt-0">
             <div className="max-w-7xl mx-auto px-6 md:px-8">
-                <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-                    <div>
+                <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+                    <div className="sm:col-span-1">
                         <div className="flex items-center mb-4">
                             <img
                                 src={logoPath}
@@ -81,11 +81,10 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-8 mb-6">
-                        <div className="flex-1">
-                            <h4 className="font-semibold mb-4">Resources</h4>
-                            <ul className="space-y-2 text-sm text-muted-foreground">
-                                <li>
+                    <div>
+                        <h4 className="font-semibold mb-4">Resources</h4>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                            <li>
                                 <button
                                         onClick={() => handleFooterNavigation("/blog")}
                                         className="hover:text-foreground transition-colors"
@@ -102,7 +101,6 @@ export default function Footer() {
                                 </button>
                             </li>
                         </ul>
-                        </div>
                     </div>
 
                     <div>
