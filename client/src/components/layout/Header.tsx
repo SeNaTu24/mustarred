@@ -25,7 +25,7 @@ export default function Header() {
         if (href.startsWith("#")) {
             const id = href.replace("#", "");
             const el = document.getElementById(id);
-            
+
             // If we're on the homepage and element exists, scroll to it
             if (el && window.location.pathname === "/") {
                 el.scrollIntoView({ behavior: "smooth" });
@@ -44,7 +44,7 @@ export default function Header() {
     const scrollToSection = (href: string) => {
         const id = href.replace("#", "");
         const el = document.getElementById(id);
-        
+
         // If we're on the homepage and element exists, scroll to it
         if (el && window.location.pathname === "/") {
             el.scrollIntoView({ behavior: "smooth" });
@@ -90,11 +90,11 @@ export default function Header() {
 
                     <div className="flex items-center gap-2">
                         <Button
-                            className="hidden md:inline-flex font-heading text-xs px-2 py-1"
+                            className="hidden md:inline-flex font-heading text-sm px-4 py-2"
                             data-testid="button-header-contact"
                             onClick={() => scrollToSection("#contact")}
                         >
-                            Contact
+                            Contact Us
                         </Button>
                         <Button
                             variant="ghost"
