@@ -21,13 +21,13 @@ export default function Footer() {
     return (
         <footer className="bg-white border-t border-border py-8 mt-0">
             <div className="max-w-7xl mx-auto px-6 md:px-8">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-6">
                     <div>
                         <div className="flex items-center mb-4">
                             <img
                                 src={logoPath}
                                 alt="Mustarred"
-                                className="h-24 w-auto object-contain"
+                                className="h-20 w-auto object-contain"
                             />
                         </div>
                         <p className="text-sm text-muted-foreground">
