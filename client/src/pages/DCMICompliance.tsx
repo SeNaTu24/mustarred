@@ -263,8 +263,6 @@ export default function DCMICompliance() {
     setErrors(newErrors);
   };
 
-
-
   const updateFormData = (field: keyof FormData, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
     validateField(field, value);
