@@ -54,7 +54,7 @@ export default function ServicesSection() {
                     {services.slice(0, 3).map((service, i) => (
                         <div
                             key={i}
-                            ref={(el) => (itemRefs.current[i] = el)}
+                            ref={(el) => { if (el) itemRefs.current[i] = el; }}
                             className={`bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-center ${
                                 visibleItems.has(i)
                                     ? "opacity-100 translate-y-0"

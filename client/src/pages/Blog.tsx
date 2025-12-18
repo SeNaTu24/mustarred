@@ -21,7 +21,7 @@ import { Input } from "@/components/ui/input";
 import { SiX, SiLinkedin, SiInstagram } from "react-icons/si";
 import React, { useState } from "react";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
-import { blogPosts, getPostsByCategory } from "@/data/blog-posts";
+import { getPostsByCategory } from "@/data/blog-posts";
 import { BLOG_CATEGORIES } from "@/data/blog-config";
 import { formatDate } from "@/data/blog-config";
 import { BlogCategory } from "@/data/blog-types";

@@ -2,7 +2,7 @@ import BlogHeader from "@/components/layout/BlogHeader";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, ArrowLeft, Share2, Mail, MessageSquare, Download } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Share2, Mail, MessageSquare } from "lucide-react";
 import { SiX, SiLinkedin, SiInstagram } from "react-icons/si";
 import { useParams } from "wouter";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
