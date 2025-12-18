@@ -17,7 +17,7 @@ export default function MailchimpNewsletter() {
     formData.append('tags', '12386815');
 
     try {
-      const response = await fetch(
+      await fetch(
         'https://mustarred.us12.list-manage.com/subscribe/post?u=cdd12424c1d674fa391e8e63e&id=22107e23a3&f_id=00f4e7e0f0',
         {
           method: 'POST',

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import logoPath from "/assets/brand/logo.png";
+// Logo path will be used directly
 
 export default function BlogHeader() {
     return (
@@ -8,7 +8,7 @@ export default function BlogHeader() {
                 <div className="flex items-center justify-between h-24">
                     <div className="flex items-center cursor-pointer" onClick={() => window.location.href = '/'}>
                         <img
-                            src={logoPath}
+                            src="/assets/brand/logo.png"
                             alt="Mustarred"
                             className="h-32 w-auto object-contain"
                         />

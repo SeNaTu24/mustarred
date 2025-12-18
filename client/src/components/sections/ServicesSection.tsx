@@ -1,18 +1,11 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { services } from "@/data/services";
 import { useState, useEffect, useRef } from "react";
 
 export default function ServicesSection() {
     const [visibleItems, setVisibleItems] = useState(new Set());
-    const [hoveredItem, setHoveredItem] = useState<number | null>(null);
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-    const smallerTitleServices = new Set([
-        "Data Protection and Security",
-        "Regulatory Compliance and Licensing",
-        "Corporate Governance & IP",
-        "Transaction Advisory",
-    ]);
     const images = ["/compliance.webp", "/security.jpg", "/research.jpg"];
+
 
     useEffect(() => {
         const observers = itemRefs.current.map((ref, index) => {

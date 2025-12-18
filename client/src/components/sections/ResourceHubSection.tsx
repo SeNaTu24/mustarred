@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, FileText, Download } from "lucide-react";
+import { FileText, Download } from "lucide-react";
 import { complianceTools } from "@/data/resources";
 import { useState } from "react";
 import EbookDownloadModal from "@/components/EbookDownloadModal";

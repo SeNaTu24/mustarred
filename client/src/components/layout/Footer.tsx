@@ -1,4 +1,4 @@
-import logoPath from "/assets/brand/logo.png";
+// Logo path will be used directly
 
 export default function Footer() {
     const handleFooterNavigation = (href: string) => {
@@ -25,7 +25,7 @@ export default function Footer() {
                     <div>
                         <div className="flex items-center mb-4">
                             <img
-                                src={logoPath}
+                                src="/assets/brand/logo.png"
                                 alt="Mustarred"
                                 className="h-24 w-auto object-contain"
                             />
