@@ -263,17 +263,7 @@ export default function DCMICompliance() {
     setErrors(newErrors);
   };
 
-  const sanitizeInput = (value: string): string => {
-    return value
-      .replace(/<script[^>]*>.*?<\/script>/gi, '') // Remove script tags
-      .replace(/<[^>]*>/g, '') // Remove HTML tags
-      .replace(/javascript:/gi, '') // Remove javascript: protocol
-      .replace(/on\w+\s*=/gi, '') // Remove event handlers
-      .replace(/data:/gi, '') // Remove data: protocol
-      .replace(/vbscript:/gi, '') // Remove vbscript: protocol
-      .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '') // Remove control characters but keep spaces (\x20) and tabs (\x09)
-      .trim();
-  };
+
 
   const updateFormData = (field: keyof FormData, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -306,7 +296,7 @@ export default function DCMICompliance() {
            formData.collectionReasons.length > 0 && formData.renewalReminders !== null;
   };
 
-  const sendEmailWithRetry = async (emailData, maxRetries = 3) => {
+  const sendEmailWithRetry = async (emailData: any, maxRetries = 3) => {
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
         const result = await fetch('https://formsubmit.co/solusesi03@gmail.com', {
@@ -324,11 +314,11 @@ export default function DCMICompliance() {
         throw new Error(`HTTP ${result.status}`);
         
       } catch (error) {
-        console.log(`❌ FormSubmit attempt ${attempt} failed:`, error.message);
+        console.log(`❌ FormSubmit attempt ${attempt} failed:`, (error as Error).message);
         console.log('Full error:', error);
         
         if (attempt === maxRetries) {
-          throw new Error(`Failed after ${maxRetries} attempts: ${error.message}`);
+          throw new Error(`Failed after ${maxRetries} attempts: ${(error as Error).message}`);
         }
         
         // Wait before retry: 2s, 4s, 6s
@@ -337,7 +327,7 @@ export default function DCMICompliance() {
     }
   };
 
-  const sendToMakeFallback = async (formData) => {
+  const sendToMakeFallback = async (formData: any) => {
     try {
       // Make.com webhook URL
       const makeWebhookUrl = 'https://hook.eu2.make.com/lbhfkmyseeu7f2cnrtf262fhtp1fvyt2';
