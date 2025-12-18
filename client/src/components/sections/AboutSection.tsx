@@ -168,15 +168,15 @@ export default function AboutSection() {
                     </Card>
                     <Card
                         ref={(el) => { if (el) cardRefs.current[1] = el; }}
-                        className={`overflow-hidden h-64 transition-all duration-700 transform ${
+                        className={`overflow-hidden h-auto md:h-64 transition-all duration-700 transform ${
                             visibleCards.has(1)
                                 ? "opacity-100 translate-y-0"
                                 : "opacity-0 translate-y-8"
                         }`}
                         data-testid="card-mission"
                     >
-                        <div className="flex h-full">
-                            <div className="p-4 sm:p-6 w-1/2 bg-white">
+                        <div className="flex flex-col md:flex-row h-full">
+                            <div className="p-4 sm:p-6 w-full md:w-1/2 bg-white">
                                 <div className="leading-relaxed space-y-1 sm:space-y-2 text-xs sm:text-base font-light text-black">
                                     <span
                                         style={{
@@ -248,14 +248,14 @@ export default function AboutSection() {
                     </Card>
                     <Card
                         ref={(el) => { if (el) cardRefs.current[2] = el; }}
-                        className={`overflow-hidden h-64 transition-all duration-700 transform ${
+                        className={`overflow-hidden h-auto md:h-64 transition-all duration-700 transform ${
                             visibleCards.has(2)
                                 ? "opacity-100 translate-y-0"
                                 : "opacity-0 translate-y-8"
                         }`}
                         data-testid="card-mission"
                     >
-                        <div className="flex h-full">
+                        <div className="flex flex-col md:flex-row h-full">
                             <div
                                 className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
                             >
@@ -328,14 +328,14 @@ export default function AboutSection() {
                     </Card>
                     <Card
                         ref={(el) => { if (el) cardRefs.current[3] = el; }}
-                        className={`overflow-hidden h-64 transition-all duration-700 transform ${
+                        className={`overflow-hidden h-auto md:h-64 transition-all duration-700 transform ${
                             visibleCards.has(3)
                                 ? "opacity-100 translate-y-0"
                                 : "opacity-0 translate-y-8"
                         }`}
                         data-testid="card-mission"
                     >
-                        <div className="flex h-full">
+                        <div className="flex flex-col md:flex-row h-full">
                             <div className="p-4 sm:p-6 w-1/2 bg-white">
                                 <div className="leading-relaxed space-y-1 sm:space-y-2 text-xs sm:text-base font-light text-black">
                                     <span
