@@ -74,7 +74,7 @@ export default function AboutSection() {
             `}</style>
             <div className="max-w-7xl mx-auto px-6 md:px-8">
                 <div className="text-center mb-6">
-                    <h2 className="text-5xl md:text-6xl font-bold mb-4">
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
                         Scale confidently with the right Security
                         Certifications.
                     </h2>
@@ -87,16 +87,16 @@ export default function AboutSection() {
                 <div className="grid grid-cols-1 gap-8 md:gap-12">
                     <Card
                         ref={(el) => { if (el) cardRefs.current[0] = el; }}
-                        className={`overflow-hidden h-64 transition-all duration-700 transform ${
+                        className={`overflow-hidden h-auto md:h-64 transition-all duration-700 transform ${
                             visibleCards.has(0)
                                 ? "opacity-100 translate-y-0"
                                 : "opacity-0 translate-y-8"
                         }`}
                         data-testid="card-mission"
                     >
-                        <div className="flex h-full">
+                        <div className="flex flex-col md:flex-row h-full">
                             <div
-                                className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
+                                className="p-4 sm:p-12 w-full md:w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <div className="absolute top-4 right-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb" />
@@ -104,13 +104,13 @@ export default function AboutSection() {
                                     <div className="p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
                                         <Lock className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:drop-shadow-lg transition-all duration-300" />
                                     </div>
-                                    <h3 className="text-3xl sm:text-5xl font-bold leading-none w-full text-white">
+                                    <h3 className="text-xl md:text-3xl lg:text-5xl font-bold leading-none w-full text-white">
                                         Data Protection and Security
                                     </h3>
                                 </div>
                             </div>
-                            <div className="p-4 sm:p-6 w-1/2 bg-white">
-                                <div className="leading-relaxed space-y-1 sm:space-y-2 text-xs sm:text-base font-light text-black">
+                            <div className="p-4 sm:p-6 w-full md:w-1/2 bg-white">
+                                <div className="leading-relaxed space-y-1 sm:space-y-2 text-sm md:text-xs lg:text-base font-light text-black">
                                     <span
                                         style={{
                                             textIndent: "-1em",
