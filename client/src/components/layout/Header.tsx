@@ -45,7 +45,7 @@ export default function Header() {
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/90 border-b border-gray-200">
-            <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="max-w-7xl mx-auto pl-2 pr-6 md:pl-4 md:pr-8">
                 <div className="flex items-center justify-between h-24">
                     <div
                         className="flex items-center cursor-pointer"
