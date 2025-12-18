@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 export default function AboutSection() {
     const [visibleCards, setVisibleCards] = useState(new Set());
-    const cardRefs = useRef([]);
+    const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
         const observers = cardRefs.current.map((ref, index) => {
