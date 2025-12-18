@@ -1459,19 +1459,21 @@ export default function DCMICompliance() {
                                             <h3 className="text-2xl font-bold mb-4">
                                                 ₦100,000
                                             </h3>
-                                            <p className="text-lg mb-6">
-                                                Kindly pay ₦100,000 to finalize
-                                                your submission. We will deliver
-                                                your certificate in 5 working
-                                                days and send you your tailored
-                                                compliance documents.
-                                            </p>
+                                            <div className="bg-white/95 rounded-lg p-6 mb-6">
+                                                <p className="text-lg text-gray-800 mb-4">
+                                                    Kindly pay ₦100,000 to finalize
+                                                    your submission. We will deliver
+                                                    your certificate in 5 working
+                                                    days and send you your tailored
+                                                    compliance documents.
+                                                </p>
+                                            </div>
 
-                                            <div className="bg-white/10 rounded-lg p-4 mb-6">
-                                                <h4 className="font-semibold mb-2">
+                                            <div className="bg-white/95 rounded-lg p-4 mb-6">
+                                                <h4 className="font-semibold mb-2 text-gray-800">
                                                     What's included:
                                                 </h4>
-                                                <ul className="text-sm space-y-1">
+                                                <ul className="text-sm space-y-1 text-gray-700">
                                                     <li>
                                                         ✓ DCMI/DCPMI
                                                         Registration Certificate
