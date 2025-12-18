@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import logoPath from "/assets/brand/logo.png";
+// Logo path will be used directly
 import { useState, useCallback, useMemo } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -41,18 +41,7 @@ export default function Header() {
         setMobileMenuOpen(false);
     }, []);
 
-    const scrollToSection = (href: string) => {
-        const id = href.replace("#", "");
-        const el = document.getElementById(id);
 
-        // If we're on the homepage and element exists, scroll to it
-        if (el && window.location.pathname === "/") {
-            el.scrollIntoView({ behavior: "smooth" });
-        } else {
-            // If we're on another page, go to homepage with hash
-            window.location.href = `/${href}`;
-        }
-    };
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/90 border-b border-gray-200">
@@ -63,7 +52,7 @@ export default function Header() {
                         onClick={() => (window.location.href = "/")}
                     >
                         <img
-                            src={logoPath}
+                            src="/assets/brand/logo.png"
                             alt="Mustarred-logo"
                             className="h-32 w-auto object-contain"
                         />

@@ -1,12 +1,8 @@
 import { servicesHighlight } from "@/data/services";
-import mailImage from "/assets/images/mail.png";
-import medalImage from "/assets/images/medal.png";
-import shakeImage from "/assets/images/shake.png";
-
 const imageMap = {
-    "/assets/mail.png": mailImage,
-    "/assets/medal.png": medalImage,
-    "/assets/shake.png": shakeImage,
+    "/assets/mail.png": "/assets/images/mail.png",
+    "/assets/medal.png": "/assets/images/medal.png",
+    "/assets/shake.png": "/assets/images/shake.png",
 };
 
 export default function ServicesHighlightSection() {

@@ -1,21 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
-import logoPath from "/assets/brand/logo.png";
-import heroImage from "/assets/images/startupbuilding.webp";
-import { useState, useEffect } from "react";
-
 export default function HeroSection() {
-    const codeSnippets = [
-        "import { ai } from 'future'",
-        "const debate = await ethics.discuss()",
-        "function transform() { return innovation }",
-        "class LegalAI { analyze(case) {} }",
-        "export default Intelligence",
-        "if (curious) { join() }",
-        "const community = new Network()",
-        "async debate(topic) => insights",
-    ];
-
     const scrollToAbout = () => {
         document
             .getElementById("about")
@@ -23,6 +8,7 @@ export default function HeroSection() {
     };
 
     return (
+
         <section
             id="home"
             className="relative min-h-screen flex items-center justify-center overflow-hidden animated-purple-bg py-16 md:py-24"
