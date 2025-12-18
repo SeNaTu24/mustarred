@@ -45,7 +45,7 @@ export default function FAQSection() {
                                     color: "hsl(var(--brand-text))",
                                     fontFamily: "Satoshi, sans-serif",
                                     fontSize: "18px",
-                                    fontWeight: "600",
+                                    fontWeight: "400",
                                 }}
                             >
                                 {faq.question}

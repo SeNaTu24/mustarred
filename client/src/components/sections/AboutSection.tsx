@@ -86,7 +86,9 @@ export default function AboutSection() {
 
                 <div className="grid grid-cols-1 gap-8 md:gap-12">
                     <Card
-                        ref={(el) => { if (el) cardRefs.current[0] = el; }}
+                        ref={(el) => {
+                            if (el) cardRefs.current[0] = el;
+                        }}
                         className={`overflow-hidden h-auto md:h-64 transition-all duration-700 transform ${
                             visibleCards.has(0)
                                 ? "opacity-100 translate-y-0"
@@ -95,9 +97,7 @@ export default function AboutSection() {
                         data-testid="card-mission"
                     >
                         <div className="flex flex-col md:flex-row h-full">
-                            <div
-                                className="p-4 sm:p-12 w-full md:w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
-                            >
+                            <div className="p-4 sm:p-12 w-full md:w-1/2 flex items-center relative overflow-hidden group animated-purple-bg">
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <div className="absolute top-4 right-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb" />
                                 <div className="flex flex-col items-start gap-2 w-full relative z-10">
@@ -167,7 +167,9 @@ export default function AboutSection() {
                         </div>
                     </Card>
                     <Card
-                        ref={(el) => { if (el) cardRefs.current[1] = el; }}
+                        ref={(el) => {
+                            if (el) cardRefs.current[1] = el;
+                        }}
                         className={`overflow-hidden h-auto md:h-64 transition-all duration-700 transform ${
                             visibleCards.has(1)
                                 ? "opacity-100 translate-y-0"
@@ -176,8 +178,23 @@ export default function AboutSection() {
                         data-testid="card-mission"
                     >
                         <div className="flex flex-col md:flex-row h-full">
-                            <div className="p-4 sm:p-6 w-full md:w-1/2 bg-white">
-                                <div className="leading-relaxed space-y-1 sm:space-y-2 text-xs sm:text-base font-light text-black">
+                            <div className="p-4 sm:p-12 w-full md:w-1/2 flex items-center relative overflow-hidden group animated-purple-bg md:order-2">
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div
+                                    className="absolute bottom-4 right-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb"
+                                    style={{ animationDelay: "1s" }}
+                                />
+                                <div className="flex flex-col items-start gap-2 w-full relative z-10">
+                                    <div className="p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                                        <FileCheck className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:drop-shadow-lg transition-all duration-300" />
+                                    </div>
+                                    <h3 className="text-xl md:text-3xl lg:text-5xl font-bold leading-none w-full text-white">
+                                        Regulatory Compliance and Licensing
+                                    </h3>
+                                </div>
+                            </div>
+                            <div className="p-4 sm:p-6 w-full md:w-1/2 bg-white md:order-1">
+                                <div className="leading-relaxed space-y-1 sm:space-y-2 text-sm md:text-xs lg:text-base font-light text-black">
                                     <span
                                         style={{
                                             textIndent: "-1em",
@@ -230,24 +247,12 @@ export default function AboutSection() {
                                     </span>
                                 </div>
                             </div>
-                            <div
-                                className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
-                            >
-                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <div className="absolute bottom-4 left-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb" style={{ animationDelay: '1s' }} />
-                                <div className="flex flex-col items-start gap-2 w-full relative z-10">
-                                    <div className="p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
-                                        <FileCheck className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:drop-shadow-lg transition-all duration-300" />
-                                    </div>
-                                    <h3 className="text-3xl sm:text-5xl font-bold leading-none w-full text-white">
-                                        Regulatory Compliance and Licensing
-                                    </h3>
-                                </div>
-                            </div>
                         </div>
                     </Card>
                     <Card
-                        ref={(el) => { if (el) cardRefs.current[2] = el; }}
+                        ref={(el) => {
+                            if (el) cardRefs.current[2] = el;
+                        }}
                         className={`overflow-hidden h-auto md:h-64 transition-all duration-700 transform ${
                             visibleCards.has(2)
                                 ? "opacity-100 translate-y-0"
@@ -256,22 +261,23 @@ export default function AboutSection() {
                         data-testid="card-mission"
                     >
                         <div className="flex flex-col md:flex-row h-full">
-                            <div
-                                className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
-                            >
+                            <div className="p-4 sm:p-12 w-full md:w-1/2 flex items-center relative overflow-hidden group animated-purple-bg">
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <div className="absolute top-4 left-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb" style={{ animationDelay: '2s' }} />
+                                <div
+                                    className="absolute top-4 left-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb"
+                                    style={{ animationDelay: "2s" }}
+                                />
                                 <div className="flex flex-col items-start gap-2 w-full relative z-10">
                                     <div className="p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
                                         <Building2 className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:drop-shadow-lg transition-all duration-300" />
                                     </div>
-                                    <h3 className="text-3xl sm:text-5xl font-bold leading-none w-full text-white">
+                                    <h3 className="text-xl md:text-3xl lg:text-5xl font-bold leading-none w-full text-white">
                                         Corporate Governance & IP
                                     </h3>
                                 </div>
                             </div>
-                            <div className="p-4 sm:p-6 w-1/2 bg-white">
-                                <div className="leading-relaxed space-y-1 sm:space-y-2 text-xs sm:text-base font-light text-black">
+                            <div className="p-4 sm:p-6 w-full md:w-1/2 bg-white">
+                                <div className="leading-relaxed space-y-1 sm:space-y-2 text-sm md:text-xs lg:text-base font-light text-black">
                                     <span
                                         style={{
                                             textIndent: "-1em",
@@ -327,7 +333,9 @@ export default function AboutSection() {
                         </div>
                     </Card>
                     <Card
-                        ref={(el) => { if (el) cardRefs.current[3] = el; }}
+                        ref={(el) => {
+                            if (el) cardRefs.current[3] = el;
+                        }}
                         className={`overflow-hidden h-auto md:h-64 transition-all duration-700 transform ${
                             visibleCards.has(3)
                                 ? "opacity-100 translate-y-0"
@@ -336,8 +344,23 @@ export default function AboutSection() {
                         data-testid="card-mission"
                     >
                         <div className="flex flex-col md:flex-row h-full">
-                            <div className="p-4 sm:p-6 w-1/2 bg-white">
-                                <div className="leading-relaxed space-y-1 sm:space-y-2 text-xs sm:text-base font-light text-black">
+                            <div className="p-4 sm:p-12 w-full md:w-1/2 flex items-center relative overflow-hidden group animated-purple-bg md:order-1">
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div
+                                    className="absolute bottom-4 right-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb"
+                                    style={{ animationDelay: "3s" }}
+                                />
+                                <div className="flex flex-col items-start gap-2 w-full relative z-10">
+                                    <div className="p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                                        <Handshake className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:drop-shadow-lg transition-all duration-300" />
+                                    </div>
+                                    <h3 className="text-xl md:text-3xl lg:text-5xl font-bold leading-none w-full text-white">
+                                        Transaction Advisory
+                                    </h3>
+                                </div>
+                            </div>
+                            <div className="p-4 sm:p-6 w-full md:w-1/2 bg-white md:order-2">
+                                <div className="leading-relaxed space-y-1 sm:space-y-2 text-sm md:text-xs lg:text-base font-light text-black">
                                     <span
                                         style={{
                                             textIndent: "-1em",
@@ -391,37 +414,8 @@ export default function AboutSection() {
                                     </span>
                                 </div>
                             </div>
-                            <div
-                                className="p-4 sm:p-12 w-1/2 flex items-center relative overflow-hidden group animated-purple-bg"
-                            >
-                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <div className="absolute bottom-4 right-4 w-32 h-32 bg-purple-400/10 rounded-full blur-3xl floating-orb" style={{ animationDelay: '3s' }} />
-                                <div className="flex flex-col items-start gap-2 w-full relative z-10">
-                                    <div className="p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
-                                        <Handshake className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:drop-shadow-lg transition-all duration-300" />
-                                    </div>
-                                    <h3 className="text-3xl sm:text-5xl font-bold leading-none w-full text-white">
-                                        Transaction Advisory
-                                    </h3>
-                                </div>
-                            </div>
                         </div>
                     </Card>
-
-                    {/* <Card className="p-8" data-testid="card-vision">
-                        <div className="flex items-center gap-3 mb-4">
-                            <Eye className="h-8 w-8 text-accent" />
-                            <h3 className="text-2xl font-semibold">
-                                Our Vision
-                            </h3>
-                        </div>
-                        <p className="text-muted-foreground leading-relaxed">
-                            To become the leading global community where AI
-                            professionals are inspired, challenged, and equipped
-                            to build ethical, innovative solutions that shape
-                            the future of technology and society.
-                        </p>
-                    </Card> */}
                 </div>
             </div>
         </section>

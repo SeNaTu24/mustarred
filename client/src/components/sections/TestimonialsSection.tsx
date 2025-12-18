@@ -7,7 +7,7 @@ export default function TestimonialsSection() {
         <section id="testimonials" className="py-8 md:py-12 bg-white">
             <div className="max-w-7xl mx-auto px-6 md:px-8">
                 <div className="text-center mb-6">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground dark:text-blue-400">
+                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground dark:text-blue-400">
                         Some of our clients say:
                     </h2>
                 </div>

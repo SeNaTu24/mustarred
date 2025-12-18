@@ -9,10 +9,10 @@ export default function ContactSection() {
             <div className="max-w-7xl mx-auto px-6 md:px-8">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
                     <div>
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                        <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4">
                             Let's Connect
                         </h2>
-                        <p className="text-lg text-muted-foreground mb-6">
+                        <p className="text-base md:text-lg text-muted-foreground mb-6">
                             Ready to protect your business? Contact us for a
                             consultation or to learn more about how we can
                             assist you.
