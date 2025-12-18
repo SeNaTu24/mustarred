@@ -12,7 +12,6 @@ import Services from "@/pages/Services";
 import Consultation from "@/pages/Consultation";
 import DCMICompliance from "@/pages/DCMICompliance";
 import NotFound from "@/pages/not-found";
-import Chatbot from "@/components/Chatbot";
 
 function Router() {
     return (
@@ -36,7 +35,6 @@ function App() {
                 <TooltipProvider>
                     <Toaster />
                     <Router />
-                    <Chatbot />
                 </TooltipProvider>
             </QueryClientProvider>
         </ErrorBoundary>
