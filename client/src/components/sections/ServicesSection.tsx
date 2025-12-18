@@ -12,7 +12,7 @@ export default function ServicesSection() {
         "Corporate Governance & IP",
         "Transaction Advisory",
     ]);
-    const images = ["/compliance2.webp", "/security1.jpg", "/research1.jpg"];
+    const images = ["/compliance.webp", "/security.jpg", "/research.jpg"];
 
     useEffect(() => {
         const observers = itemRefs.current.map((ref, index) => {
@@ -57,47 +57,50 @@ export default function ServicesSection() {
                         </p>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 items-stretch">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                     {services.slice(0, 3).map((service, i) => (
                         <div
                             key={i}
                             ref={(el) => (itemRefs.current[i] = el)}
-                            className={`relative transition-all duration-700 ease-out w-full flex flex-col items-stretch bg-white ${
+                            className={`bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-center ${
                                 visibleItems.has(i)
                                     ? "opacity-100 translate-y-0"
                                     : "opacity-0 translate-y-8"
-                            } ${
-                                hoveredItem === i
-                                    ? "shadow-[0_0_0_4px_#FFD7004D]"
-                                    : "shadow-none"
                             }`}
                             style={{ transitionDelay: `${i * 150}ms` }}
-                            onMouseEnter={() => setHoveredItem(i)}
-                            onMouseLeave={() => setHoveredItem(null)}
                         >
-                            <div
-                                className="w-full overflow-hidden"
-                                style={{ height: "18rem" }}
-                            >
+                            <div className="h-48 overflow-hidden rounded-lg mb-6">
                                 <img
                                     src={images[i]}
                                     alt={service.name}
-                                    className="object-cover w-full h-full block"
+                                    className="w-full h-full object-cover"
                                 />
                             </div>
-                            <div className={`p-4`}>
-                                <h3
-                                    className={`mb-1 text-[24px] leading-[28px] font-bold tracking-normal`}
-                                >
-                                    {service.name}
-                                </h3>
-                                <p className={`leading-normal text-[20px]`}>
-                                    {service.description}
-                                </p>
-                            </div>
+                            <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                                {service.name}
+                            </h3>
+                            <p className="text-gray-600 mb-6">
+                                {service.description}
+                            </p>
+                            <button
+                                onClick={() => window.location.href = '/services'}
+                                className="text-[#4b4ba3] font-semibold hover:underline"
+                            >
+                                Learn More →
+                            </button>
                         </div>
                     ))}
                 </div>
+                
+                <div className="text-center">
+                    <button
+                        onClick={() => window.location.href = '/services'}
+                        className="bg-[#4b4ba3] text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-[#3a3a8a] transition-colors"
+                    >
+                        View All Services
+                    </button>
+                </div>
+
                 {/* Second row of cards removed as requested */}
             </div>
         </section>

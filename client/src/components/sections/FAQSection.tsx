@@ -12,9 +12,8 @@ export default function FAQSection() {
             <div className="max-w-4xl mx-auto px-6 md:px-8">
                 <div className="text-center mb-8">
                     <h2
-                        className="mb-4 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold"
+                        className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-black leading-tight"
                         style={{
-                            color: "black",
                             fontFamily: "Satoshi, sans-serif",
                         }}
                     >

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import logoPath from "@assets/logolatest.png";
+import logoPath from "/assets/brand/logo.png";
 
 export default function BlogHeader() {
     return (
@@ -30,7 +30,10 @@ export default function BlogHeader() {
                     </nav>
 
                     <Button
-                        onClick={() => window.open('https://mail.google.com/mail/?view=cm&to=info@mustarred.com', '_blank')}
+                        onClick={() => {
+                            const newWindow = window.open('https://mail.google.com/mail/?view=cm&to=info@mustarred.com', '_blank');
+                            if (newWindow) newWindow.opener = null;
+                        }}
                     >
                         Contact Us
                     </Button>

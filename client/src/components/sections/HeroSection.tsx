@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
-import logoPath from "@assets/logolatest.png";
-import heroImage from "@assets/startupbuilding.webp";
+import logoPath from "/assets/brand/logo.png";
+import heroImage from "/assets/images/startupbuilding.webp";
 import { useState, useEffect } from "react";
 
 export default function HeroSection() {
@@ -318,43 +318,39 @@ export default function HeroSection() {
         }
       `}</style>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 text-center pt-16 sm:pt-24 lg:pt-32 xl:pt-72">
-                <h1
-                    className="text-white tracking-tight mb-4 sm:mb-6"
-                    style={{
+            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8 text-center pt-32 sm:pt-48 md:pt-64 lg:pt-72">
+                <h1 className="text-white tracking-tight mb-4 md:mb-6 px-2">
+                    <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight md:leading-normal font-bold" style={{
                         fontFamily: "Satoshi, sans-serif",
-                        fontSize: "clamp(1.75rem, 5vw, 3.125rem)",
-                        lineHeight: "1.2",
-                        fontWeight: "700",
-                        textShadow: "0 2px 4px rgba(0, 0, 0, 0.5)",
-                    }}
-                >
-                    Solving High Stakes Challenges <br /> Requires{" "}
-                    <span style={{ color: "#FFD700" }}>
-                        Data-Driven Precision
+                        textShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
+                    }}>
+                        Solving High Stakes Challenges
+                    </span>
+                    <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight md:leading-normal font-bold" style={{
+                        fontFamily: "Satoshi, sans-serif",
+                        textShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
+                    }}>
+                        Requires{" "}
+                        <span style={{ color: "#FFD700" }}>
+                            Data-Driven Precision
+                        </span>
                     </span>
                 </h1>
 
-                <p
-                    className="max-w-3xl mx-auto mb-8 sm:mb-12 text-white text-sm sm:text-base lg:text-lg"
-                    style={{
-                        fontFamily: "Satoshi, sans-serif",
-                        lineHeight: "1.5",
-                        fontWeight: "400",
-                        textShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
-                    }}
-                >
+                <p className="max-w-3xl mx-auto mb-8 md:mb-12 text-white px-4 text-sm sm:text-base md:text-lg leading-relaxed" style={{
+                    fontFamily: "Satoshi, sans-serif",
+                    textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
+                }}>
                     We combine our robust intelligence and problem-solving
                     capacities to help organisations develop excellent
                     regulatory, compliance, and security frameworks.
                 </p>
 
-                <div className="flex justify-center items-center mb-8">
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-3 md:gap-4 mb-8 px-4">
                     <Button
-                        className="modern-button px-8 py-3 relative overflow-hidden group"
+                        className="modern-button w-full sm:w-auto px-6 md:px-8 py-2.5 md:py-3 relative overflow-hidden group text-sm md:text-base"
                         style={{
                             fontFamily: "Satoshi, sans-serif",
-                            fontSize: "16px",
                             fontWeight: "600",
                         }}
                         onClick={() =>
@@ -365,6 +361,17 @@ export default function HeroSection() {
                     >
                         <span className="relative z-10">Start Scaling</span>
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
+                    </Button>
+                    
+                    <Button
+                        className="w-full sm:w-auto bg-white/10 border-2 border-white text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-white/20 transition-all duration-300 backdrop-blur-sm text-sm md:text-base"
+                        style={{
+                            fontFamily: "Satoshi, sans-serif",
+                            fontWeight: "600",
+                        }}
+                        onClick={() => window.location.href = '/dcmi-compliance'}
+                    >
+                        Get NDPA Compliant
                     </Button>
                 </div>
 

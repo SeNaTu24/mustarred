@@ -19,6 +19,18 @@ type RawBlogPost = Omit<BlogPost, 'readTime'>;
 
 const rawBlogPosts: RawBlogPost[] = [
   {
+    id: "vaspa-partnership-2026",
+    title: "Mustarred Partners with VASPA for 2026 Mastermind Builders' Luncheon",
+    excerpt: "We are pleased to partner with VASPA as a sponsor of the 2026 Mastermind Builders' Luncheon, standing alongside builders advancing Nigeria's blockchain ecosystem. As the industry continues to evolve, strong compliance, security, and governance frameworks remain critical to building a resilient and sustainable virtual asset ecosystem.\n\nWe remain committed to supporting businesses and stakeholders shaping Nigeria's blockchain and Web3 landscape with bespoke compliance and security expertise",
+    content: `We are pleased to partner with VASPA as a sponsor of the 2026 Mastermind Builders' Luncheon, standing alongside builders advancing Nigeria's blockchain ecosystem. As the industry continues to evolve, strong compliance, security, and governance frameworks remain critical to building a resilient and sustainable virtual asset ecosystem.
+
+We remain committed to supporting businesses and stakeholders shaping Nigeria's blockchain and Web3 landscape with bespoke compliance and security expertise`,
+    author: "Mustarred Team",
+    date: "2025-12-17",
+    category: "Mustarred Insights",
+    image: "/assets/images/blog/musta1.png",
+  },
+  {
     id: "regulatory-roundup-may-2025",
     title: "The Scoop: Regulatory Roundup (May 2025)",
     excerpt: "A comprehensive monthly digest of regulatory developments across Africa and beyond, covering data protection initiatives, digital asset regulations, fintech innovations, and major policy shifts from May 2025.",
@@ -86,7 +98,7 @@ The shutdown is part of a [growing trend across Africa](https://techpoint.africa
     author: "Mustarred Team",
     date: "2025-05-24",
     category: "Compliance",
-    image: "/tamara2.avif",
+    image: "/assets/images/blog/tamara2.avif",
   },
   {
     id: "regulatory-roundup-july-2025",
@@ -188,7 +200,7 @@ Nigeria officially joined BRICS as a partner country in January 2025, a category
     author: "Mustarred Team",
     date: "2025-07-18",
     category: "Compliance",
-    image: "/tamara1.avif",
+    image: "/assets/images/blog/tamara1.avif",
   },
   {
     id: "cbn-exposure-draft",
@@ -297,7 +309,7 @@ FIs have 12 months from the issuance of the final standard to fully implement an
     author: "Mustarred Team",
     date: "2025-05-27",
     category: "Banking & Finance",
-    image: "/cbnexposure.webp",
+    image: "/assets/images/blog/cbnexposure.webp",
 
 
   },
@@ -513,7 +525,7 @@ For expert guidance on developing compliance frameworks tailored to your specifi
     author: "Mustarred Team",
     date: "2025-05-24",
     category: "Corporate Governance",
-    image: "/tamara2.webp",
+    image: "/assets/images/blog/tamara2.webp",
 
 
   }

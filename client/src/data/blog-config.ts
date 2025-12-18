@@ -18,7 +18,8 @@ export const BLOG_CATEGORIES: readonly BlogCategory[] = [
   'Data Protection',
   'Banking & Finance', 
   'Compliance',
-  'Corporate Governance'
+  'Corporate Governance',
+  'Mustarred Insights'
 ] as const;
 
 /**

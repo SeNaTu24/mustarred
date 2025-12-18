@@ -60,15 +60,19 @@ const addToRemoveQueue = (toastId: string) => {
     return
   }
 
-  const timeout = setTimeout(() => {
-    toastTimeouts.delete(toastId)
-    dispatch({
-      type: "REMOVE_TOAST",
-      toastId: toastId,
-    })
-  }, TOAST_REMOVE_DELAY)
+  try {
+    const timeout = setTimeout(() => {
+      toastTimeouts.delete(toastId)
+      dispatch({
+        type: "REMOVE_TOAST",
+        toastId: toastId,
+      })
+    }, TOAST_REMOVE_DELAY)
 
-  toastTimeouts.set(toastId, timeout)
+    toastTimeouts.set(toastId, timeout)
+  } catch (error) {
+    console.error('Failed to set toast timeout:', error)
+  }
 }
 
 export const reducer = (state: State, action: Action): State => {
@@ -172,12 +176,16 @@ function useToast() {
   const [state, setState] = React.useState<State>(memoryState)
 
   React.useEffect(() => {
-    listeners.push(setState)
-    return () => {
-      const index = listeners.indexOf(setState)
-      if (index > -1) {
-        listeners.splice(index, 1)
+    try {
+      listeners.push(setState)
+      return () => {
+        const index = listeners.indexOf(setState)
+        if (index > -1) {
+          listeners.splice(index, 1)
+        }
       }
+    } catch (error) {
+      console.error('Failed to manage toast listeners:', error)
     }
   }, [state])
 

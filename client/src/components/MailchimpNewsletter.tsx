@@ -30,7 +30,13 @@ export default function MailchimpNewsletter() {
       setEmail('');
       setFirstName('');
     } catch (error) {
+      console.error('Newsletter subscription failed:', error);
       setStatus('error');
+    } finally {
+      // Ensure loading state is cleared
+      if (status === 'loading') {
+        setTimeout(() => setStatus('idle'), 100);
+      }
     }
   };
 

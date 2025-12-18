@@ -1,82 +1,94 @@
 # Mustarred - Legal Compliance Platform
 
+> **Turn complexity into confidence and scale faster**
+
+Professional legal compliance platform for African businesses and startups.
+
 ## 🚀 Quick Start
+
 ```bash
 cd client
 npm install
 npm run dev
 ```
 
-## 📁 Project Structure
-```
-mustarrd/
-├── client/                 # Frontend React app
-│   ├── public/            # Static assets
-│   │   ├── images/        # Article images
-│   │   └── *.webp         # Blog images
-│   ├── src/
-│   │   ├── components/    # Reusable UI components
-│   │   │   ├── layout/    # Layout components
-│   │   │   ├── sections/  # Page sections
-│   │   │   └── ui/        # Base UI components
-│   │   ├── data/          # Data & configuration
-│   │   ├── pages/         # Page components
-│   │   ├── lib/           # Utilities & helpers
-│   │   └── styles/        # Global styles
-│   └── package.json
-├── design_guidelines.md   # Brand guidelines
-└── README.md             # This file
-```
+Visit `http://localhost:5173` to see your application.
 
-## 🆕 Adding New Content
+## 📁 Project Overview
 
-### Blog Articles
-1. **Add Images:** Place in `client/public/` (use .webp format)
-2. **Add Content:** Edit `client/src/data/blog-posts.ts`
-3. **Categories:** Data Protection, Banking & Finance, Compliance, Corporate Governance
+- **Frontend**: React + TypeScript + Tailwind CSS
+- **Routing**: Wouter (lightweight React router)
+- **UI Components**: Radix UI + Custom components
+- **Email Service**: EmailJS integration
+- **Blog System**: 4 real articles with auto read-time
+- **Chatbot**: Knowledge base system
 
-### Brand Assets
-- **Colors:** See `client/src/index.css` CSS variables
-- **Fonts:** Satoshi (primary), system fallbacks
-- **Logo:** Update in `client/public/`
+## 🎯 Key Features
 
-## 🛠️ Development Guidelines
-
-### Code Standards
-- **TypeScript:** Strict mode enabled
-- **Components:** Functional components with hooks
-- **Styling:** Tailwind CSS + CSS variables
-- **State:** React hooks (useState, useEffect)
-
-### File Naming
-- **Components:** PascalCase (`BlogPost.tsx`)
-- **Files:** kebab-case (`blog-posts.ts`)
-- **Images:** kebab-case (`article-name.webp`)
-
-## 🎨 Design System
-- **Primary:** Lavender Blue (#a49fe7)
-- **Accent:** Deep Indigo (#4b4ba3)
-- **Typography:** Satoshi font family
-- **Spacing:** Tailwind scale (4, 8, 16, 24, 32...)
-
-## 📱 Responsive Design
-- **Mobile First:** Base styles for mobile
-- **Breakpoints:** sm(640px), md(768px), lg(1024px), xl(1280px)
-- **Testing:** Test on mobile, tablet, desktop
-
-## 🔧 Key Features
-- ✅ Blog system with auto read-time
+- ✅ Professional blog system
+- ✅ Contact forms with EmailJS
 - ✅ Newsletter integration (Mailchimp)
-- ✅ Chatbot with knowledge base
-- ✅ Contact forms
+- ✅ AI chatbot with knowledge base
+- ✅ Responsive design
 - ✅ SEO optimized
 - ✅ Performance optimized
 
-## 🚀 Deployment
+## 📚 Documentation
+
+All documentation is in the `/docs` folder:
+
+- **[Project Structure](docs/PROJECT_STRUCTURE.md)** - Complete directory guide
+- **[Developer Guide](docs/DEVELOPER_GUIDE.md)** - Development standards
+- **[Scaling Guide](docs/SCALING_GUIDE.md)** - Future scaling strategy
+- **[EmailJS Setup](docs/EMAILJS_SETUP.md)** - Email configuration
+
+## 🛠️ Development
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+
+### Commands
 ```bash
+# Development
+npm run dev
+
+# Build for production
 npm run build
-# Deploy dist/ folder to hosting platform
+
+# Type checking
+npm run check
+
+# Preview production build
+npm run preview
 ```
 
+## 📝 Adding Content
+
+### Blog Articles
+1. Add images to `client/public/assets/images/blog/`
+2. Edit `client/src/data/blog-posts.ts`
+3. Follow guide in `client/src/data/README.md`
+
+### Brand Updates
+- Colors: `client/src/index.css`
+- Logo: `client/public/assets/brand/`
+- Icons: `client/public/assets/icons/`
+
+## 🚀 Deployment
+
+The project is ready for deployment to:
+- Netlify (recommended)
+- Vercel
+- Any static hosting service
+
+Build command: `npm run build`
+Publish directory: `dist`
+
 ## 📞 Support
-For development questions, refer to component documentation in respective folders.
+
+For development questions, check the documentation in `/docs` folder or refer to component-specific README files.
+
+---
+
+**Mustarred Team** - Legal compliance made simple for African businesses.

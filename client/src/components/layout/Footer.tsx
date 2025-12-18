@@ -1,4 +1,4 @@
-import logoPath from "@assets/logolatest.png";
+import logoPath from "/assets/brand/logo.png";
 
 export default function Footer() {
     const handleFooterNavigation = (href: string) => {
@@ -21,13 +21,13 @@ export default function Footer() {
     return (
         <footer className="bg-white border-t border-border py-8 mt-0">
             <div className="max-w-7xl mx-auto px-6 md:px-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-6">
+                <div className="grid md:grid-cols-4 gap-6 mb-6">
                     <div>
                         <div className="flex items-center mb-4">
                             <img
                                 src={logoPath}
                                 alt="Mustarred"
-                                className="h-20 w-auto object-contain"
+                                className="h-24 w-auto object-contain"
                             />
                         </div>
                         <p className="text-sm text-muted-foreground">
@@ -40,42 +40,42 @@ export default function Footer() {
                         <ul className="space-y-2 text-sm text-muted-foreground">
                             <li>
                                 <button
-                                        onClick={() => handleFooterNavigation("/")}
-                                        className="hover:text-foreground transition-colors text-left"
-                                    >
-                                        Home
+                                    onClick={() => handleFooterNavigation("/")}
+                                    className="hover:text-foreground transition-colors text-left"
+                                >
+                                    Home
                                 </button>
                             </li>
                             <li>
                                 <button
-                                        onClick={() => handleFooterNavigation("#about")}
-                                        className="hover:text-foreground transition-colors text-left"
-                                    >
-                                        About Us
+                                    onClick={() => handleFooterNavigation("#about")}
+                                    className="hover:text-foreground transition-colors text-left"
+                                >
+                                    About Us
                                 </button>
                             </li>
                             <li>
                                 <button
-                                        onClick={() => handleFooterNavigation("#services")}
-                                        className="hover:text-foreground transition-colors text-left"
-                                    >
-                                        Services
+                                    onClick={() => handleFooterNavigation("#services")}
+                                    className="hover:text-foreground transition-colors text-left"
+                                >
+                                    Services
                                 </button>
                             </li>
                             <li>
                                 <button
-                                        onClick={() => handleFooterNavigation("#testimonials")}
-                                        className="hover:text-foreground transition-colors text-left"
-                                    >
-                                        Testimonials
+                                    onClick={() => handleFooterNavigation("#testimonials")}
+                                    className="hover:text-foreground transition-colors text-left"
+                                >
+                                    Testimonials
                                 </button>
                             </li>
                             <li>
                                 <button
-                                        onClick={() => handleFooterNavigation("#contact")}
-                                        className="hover:text-foreground transition-colors text-left"
-                                    >
-                                        Contact
+                                    onClick={() => handleFooterNavigation("#contact")}
+                                    className="hover:text-foreground transition-colors text-left"
+                                >
+                                    Contact
                                 </button>
                             </li>
                         </ul>
@@ -86,18 +86,18 @@ export default function Footer() {
                         <ul className="space-y-2 text-sm text-muted-foreground">
                             <li>
                                 <button
-                                        onClick={() => handleFooterNavigation("/blog")}
-                                        className="hover:text-foreground transition-colors"
+                                    onClick={() => handleFooterNavigation("/blog")}
+                                    className="hover:text-foreground transition-colors"
                                 >
-                                        Blog
+                                    Blog
                                 </button>
                             </li>
                             <li>
                                 <button
-                                        onClick={() => handleFooterNavigation("#faq")}
-                                        className="hover:text-foreground transition-colors"
+                                    onClick={() => handleFooterNavigation("#faq")}
+                                    className="hover:text-foreground transition-colors"
                                 >
-                                        FAQ
+                                    FAQ
                                 </button>
                             </li>
                         </ul>

@@ -108,7 +108,7 @@ export default function Blog() {
                             {filteredPosts.map((post) => (
                                 <Card
                                     key={post.id}
-                                    className="hover-elevate flex flex-col h-full transition-all duration-300 hover:shadow-lg"
+                                    className="hover-elevate flex flex-col h-full transition-all duration-300 hover:shadow-lg overflow-hidden"
                                 >
                                     <CardHeader className="space-y-3 p-4 md:p-6">
                                         <div className="flex items-center justify-between">

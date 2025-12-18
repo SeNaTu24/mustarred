@@ -1,21 +1,21 @@
 import { Button } from "@/components/ui/button";
-import logoPath from "@assets/logolatest.png";
-import { useState } from "react";
+import logoPath from "/assets/brand/logo.png";
+import { useState, useCallback, useMemo } from "react";
 import { Menu, X } from "lucide-react";
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-    const navLinks = [
+    const navLinks = useMemo(() => [
         { label: "Home", href: "#home" },
-        { label: "About Us", href: "#about" },
-        { label: "Services", href: "#services" },
+        { label: "About Us", href: "/about" },
+        { label: "Services", href: "/services" },
         { label: "Blog", href: "/blog" },
         { label: "Testimonials", href: "#testimonials" },
         { label: "FAQ", href: "#faq" },
-    ];
+    ], []);
 
-    const handleNavigation = (href: string) => {
+    const handleNavigation = useCallback((href: string) => {
         if (href.startsWith("/")) {
             window.location.href = href;
             setMobileMenuOpen(false);
@@ -39,7 +39,7 @@ export default function Header() {
 
         window.location.href = href;
         setMobileMenuOpen(false);
-    };
+    }, []);
 
     const scrollToSection = (href: string) => {
         const id = href.replace("#", "");
@@ -56,8 +56,8 @@ export default function Header() {
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/90 border-b border-gray-200">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16 sm:h-20 lg:h-24">
+            <div className="max-w-7xl mx-auto px-6 md:px-8">
+                <div className="flex items-center justify-between h-24">
                     <div
                         className="flex items-center cursor-pointer"
                         onClick={() => (window.location.href = "/")}
@@ -65,11 +65,11 @@ export default function Header() {
                         <img
                             src={logoPath}
                             alt="Mustarred-logo"
-                            className="h-14 w-auto object-contain sm:h-16 md:h-20 lg:h-24 xl:h-32"
+                            className="h-32 w-auto object-contain"
                         />
                     </div>
 
-                    <nav className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
+                    <nav className="hidden md:flex items-center gap-8">
                         {navLinks.map((link, i) => (
                             <a
                                 key={i}
@@ -78,7 +78,7 @@ export default function Header() {
                                     e.preventDefault();
                                     handleNavigation(link.href);
                                 }}
-                                className="font-heading text-xs sm:text-sm font-medium transition-colors duration-300 hover:underline underline-offset-4 whitespace-nowrap"
+                                className="font-heading text-sm font-medium transition-colors duration-300 hover:underline underline-offset-4"
                                 data-testid={`nav-${link.label
                                     .toLowerCase()
                                     .replace(/\s+/g, "-")}`}
@@ -90,9 +90,12 @@ export default function Header() {
 
                     <div className="flex items-center gap-2">
                         <Button
-                            className="hidden md:inline-flex font-heading text-sm px-4 py-2"
+                            className="hidden md:inline-flex font-heading"
                             data-testid="button-header-contact"
-                            onClick={() => scrollToSection("#contact")}
+                            onClick={() => {
+                                const newWindow = window.open('https://mail.google.com/mail/?view=cm&to=info@mustarred.com', '_blank');
+                                if (newWindow) newWindow.opener = null;
+                            }}
                         >
                             Contact Us
                         </Button>
@@ -113,8 +116,8 @@ export default function Header() {
                 </div>
 
                 {mobileMenuOpen && (
-                    <div className="lg:hidden border-t border-border py-4">
-                        <nav className="flex flex-col gap-3">
+                    <div className="md:hidden border-t border-border py-4">
+                        <nav className="flex flex-col gap-4">
                             {navLinks.map((link, i) => (
                                 <a
                                     key={i}
@@ -123,15 +126,18 @@ export default function Header() {
                                         e.preventDefault();
                                         handleNavigation(link.href);
                                     }}
-                                    className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left py-1"
+                                    className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left"
                                 >
                                     {link.label}
                                 </a>
                             ))}
                             <Button
-                                className="w-full mt-3 text-sm"
+                                className="w-full mt-2"
                                 data-testid="button-mobile-contact"
-                                onClick={() => scrollToSection("#contact")}
+                                onClick={() => {
+                                    const newWindow = window.open('https://mail.google.com/mail/?view=cm&to=info@mustarred.com', '_blank');
+                                    if (newWindow) newWindow.opener = null;
+                                }}
                             >
                                 Contact Us
                             </Button>

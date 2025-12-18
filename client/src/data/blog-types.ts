@@ -24,7 +24,8 @@ export type BlogCategory =
   | 'Data Protection' 
   | 'Banking & Finance' 
   | 'Compliance' 
-  | 'Corporate Governance';
+  | 'Corporate Governance'
+  | 'Mustarred Insights';
 
 export interface BlogConfig {
   postsPerPage: number;
