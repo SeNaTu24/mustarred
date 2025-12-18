@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cd client && vite --host",
     "build": "cd client && tsc && vite build",
-    "vercel-build": "cd client && npm install && npm run build",
+    "vercel-build": "cd client && tsc && vite build",
     "preview": "cd client && vite preview --host",
     "check": "cd client && tsc --noEmit",
     "lint": "cd client && eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
