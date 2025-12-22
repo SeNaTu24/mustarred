@@ -40,8 +40,8 @@ export default function EbookDownloadModal({ isOpen, onClose }: EbookDownloadMod
 
       // Trigger PDF download
       const link = document.createElement('a');
-      link.href = '/assets/resources/gaid-2025-guidelines.pdf';
-      link.download = 'GAID-2025-Guidelines.pdf';
+      link.href = '/assets/resources/Are You GAID-Ready 3.pdf';
+      link.download = 'Are-You-GAID-Ready.pdf';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
