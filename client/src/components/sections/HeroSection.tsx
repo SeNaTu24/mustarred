@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import { useModal } from "@/contexts/ModalContext";
+
 export default function HeroSection() {
+    const { openModal } = useModal();
     const scrollToAbout = () => {
         document
             .getElementById("about")
@@ -8,11 +11,10 @@ export default function HeroSection() {
     };
 
     return (
-
         <section
             id="home"
-            className="relative min-h-screen flex items-center justify-center overflow-hidden animated-purple-bg py-16 md:py-24"
-            style={{ maxHeight: '100vh' }}
+            className="relative min-h-screen flex items-center justify-center overflow-hidden animated-purple-bg py-8 sm:py-12 md:py-16 lg:py-24"
+            style={{ minHeight: 'calc(100vh - 32px)', paddingTop: '150px' }}
         >
             {/* Web3 Grid Pattern */}
             <div className="absolute inset-0 pointer-events-none opacity-20" style={{ overflow: 'hidden' }}>
@@ -304,7 +306,7 @@ export default function HeroSection() {
         }
       `}</style>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8 text-center pt-32 sm:pt-48 md:pt-64 lg:pt-72">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8 text-center">
                 <h1 className="text-white tracking-tight mb-4 md:mb-6 px-2">
                     <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight md:leading-normal font-bold" style={{
                         fontFamily: "Satoshi, sans-serif",
@@ -339,13 +341,9 @@ export default function HeroSection() {
                             fontFamily: "Satoshi, sans-serif",
                             fontWeight: "600",
                         }}
-                        onClick={() =>
-                            document
-                                .getElementById("services")
-                                ?.scrollIntoView({ behavior: "smooth" })
-                        }
+                        onClick={() => openModal("Talk to an Expert", "Get expert guidance for your compliance needs")}
                     >
-                        <span className="relative z-10">Start Scaling</span>
+                        <span className="relative z-10">Talk to an Expert</span>
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
                     </Button>
                     

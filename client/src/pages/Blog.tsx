@@ -16,11 +16,13 @@ import {
     Search,
     Mail,
     MessageSquare,
+    Download,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { SiX, SiLinkedin, SiInstagram } from "react-icons/si";
 import React, { useState } from "react";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
+import EbookDownloadModal from "@/components/EbookDownloadModal";
 import { getPostsByCategory } from "@/data/blog-posts";
 import { BLOG_CATEGORIES } from "@/data/blog-config";
 import { formatDate } from "@/data/blog-config";
@@ -30,6 +32,7 @@ export default function Blog() {
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCategory, setSelectedCategory] =
         useState<BlogCategory>("All");
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     // Optimized filtering with better performance
     const filteredPosts = React.useMemo(() => {
@@ -51,7 +54,7 @@ export default function Blog() {
     return (
         <div className="min-h-screen">
             <Header />
-            <main className="pt-24">
+            <main className="pt-16 sm:pt-20 md:pt-24">
                 {/* Hero Section */}
                 <section className="py-16 md:py-24 bg-background">
                     <div className="max-w-7xl mx-auto px-6 md:px-8 text-center">
@@ -101,56 +104,143 @@ export default function Blog() {
                     </div>
                 </section>
 
-                {/* Blog Posts */}
-                <section className="py-16 bg-card/30">
+                {/* Featured PDF Download Section - SPOTLIGHT */}
+                <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-100">
                     <div className="max-w-7xl mx-auto px-6 md:px-8">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                            {filteredPosts.map((post) => (
-                                <Card
-                                    key={post.id}
-                                    className="hover-elevate flex flex-col h-full transition-all duration-300 hover:shadow-lg overflow-hidden"
+                        <div className="text-center mb-8">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
+                                Essential GAID 2025 Compliance Guide
+                            </h2>
+                            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                                Get ahead of regulatory requirements with our comprehensive guide
+                            </p>
+                        </div>
+
+                        <Card className="max-w-4xl mx-auto overflow-hidden shadow-2xl border-2 border-blue-200">
+                            <div className="flex flex-col lg:flex-row">
+                                <div 
+                                    className="lg:w-1/2 h-64 lg:h-auto bg-cover bg-center bg-no-repeat relative"
+                                    style={{
+                                        backgroundImage: 'url(/assets/images/blog/gaidImage.PNG)'
+                                    }}
                                 >
-                                    <CardHeader className="space-y-3 p-4 md:p-6">
-                                        <div className="flex items-center justify-between">
-                                            <Badge
-                                                variant="secondary"
-                                                className="w-fit text-xs"
-                                            >
+                                    <div className="absolute inset-0 bg-black/20"></div>
+                                    <div className="absolute top-4 left-4">
+                                        <Badge className="bg-blue-600 text-white">
+                                            Featured Resource
+                                        </Badge>
+                                    </div>
+                                    <div className="absolute bottom-4 right-4">
+                                        <Badge variant="outline" className="bg-white/90">
+                                            Free Download
+                                        </Badge>
+                                    </div>
+                                </div>
+                                <div className="lg:w-1/2 p-6 lg:p-8">
+                                    <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">
+                                        Are You GAID-Ready?
+                                    </h3>
+                                    <p className="text-lg text-gray-700 mb-6">
+                                        Essential GAID 2025 Guidelines for DPOS and SMES
+                                    </p>
+                                    <div className="mb-6">
+                                        <h4 className="font-semibold text-gray-900 mb-3">
+                                            What's Inside:
+                                        </h4>
+                                        <div className="space-y-2 text-sm text-gray-600">
+                                            <div className="flex items-start">
+                                                <span className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                                <span>Definition of Acronyms</span>
+                                            </div>
+                                            <div className="flex items-start">
+                                                <span className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                                <span>Introduction & Governance Registration</span>
+                                            </div>
+                                            <div className="flex items-start">
+                                                <span className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                                <span>Core Processing Principles & Lawful Bases</span>
+                                            </div>
+                                            <div className="flex items-start">
+                                                <span className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                                <span>Technical & Operational Measures</span>
+                                            </div>
+                                            <div className="flex items-start">
+                                                <span className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                                <span>Transparency & Data Subject Rights</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <Button
+                                        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold"
+                                        onClick={() => setIsModalOpen(true)}
+                                    >
+                                        <Download className="h-5 w-5 mr-2" />
+                                        Download Free Guide
+                                    </Button>
+                                </div>
+                            </div>
+                        </Card>
+                    </div>
+                </section>
+
+                {/* Blog Posts */}
+                <section className="py-16 bg-white">
+                    <div className="max-w-7xl mx-auto px-6 md:px-8">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
+                                Latest Articles
+                            </h2>
+                            <p className="text-lg text-muted-foreground">
+                                Stay updated with regulatory insights and industry trends
+                            </p>
+                        </div>
+                        
+                        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                            {filteredPosts.map((post) => (
+                                <div
+                                    key={post.id}
+                                    className="break-inside-avoid bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+                                >
+                                    <div 
+                                        className="h-48 bg-cover bg-center"
+                                        style={{
+                                            backgroundImage: `url(${post.image})`,
+                                        }}
+                                    ></div>
+                                    
+                                    <div className="p-4">
+                                        <div className="mb-2">
+                                            <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">
                                                 {post.category}
-                                            </Badge>
-                                            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                                                <Clock className="h-3 w-3" />
+                                            </span>
+                                        </div>
+                                        
+                                        <h3 className="text-lg font-bold text-gray-900 mb-2">
+                                            {post.title}
+                                        </h3>
+                                        
+                                        <div className="flex items-center gap-4 text-xs text-gray-500 mb-3">
+                                            <div className="flex items-center">
+                                                <Calendar className="h-3 w-3 mr-1" />
+                                                {formatDate(post.date)}
+                                            </div>
+                                            <div className="flex items-center">
+                                                <Clock className="h-3 w-3 mr-1" />
                                                 {post.readTime}
                                             </div>
                                         </div>
-                                        <CardTitle className="text-lg md:text-xl leading-tight line-clamp-2">
-                                            {post.title}
-                                        </CardTitle>
-                                    </CardHeader>
-                                    <CardContent className="space-y-4 flex-grow p-4 md:p-6 pt-0">
-                                        <p className="text-muted-foreground leading-relaxed text-sm md:text-base line-clamp-3">
-                                            {post.excerpt}
-                                        </p>
-                                        <div className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground">
-                                            <Calendar className="h-3 w-3 md:h-4 md:w-4" />
-                                            {formatDate(post.date)}
-                                            <span>•</span>
-                                            <span>{post.author}</span>
-                                        </div>
-                                    </CardContent>
-                                    <CardFooter className="mt-auto p-4 md:p-6 pt-0">
+                                        
                                         <Button
                                             variant="outline"
-                                            className="w-full transition-all duration-200 hover:bg-primary hover:text-primary-foreground"
-                                            onClick={() =>
-                                                (window.location.href = `/blog/${post.id}`)
-                                            }
+                                            size="sm"
+                                            className="w-full"
+                                            onClick={() => window.location.href = `/blog/${post.id}?from=blog`}
                                         >
-                                            Read Article
-                                            <ArrowRight className="h-4 w-4 ml-2" />
+                                            Read More
+                                            <ArrowRight className="ml-1 h-4 w-4" />
                                         </Button>
-                                    </CardFooter>
-                                </Card>
+                                    </div>
+                                </div>
                             ))}
                         </div>
 
@@ -260,6 +350,11 @@ export default function Blog() {
                 </section>
             </main>
             <Footer />
+            
+            <EbookDownloadModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
         </div>
     );
 }

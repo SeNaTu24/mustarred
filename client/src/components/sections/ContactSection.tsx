@@ -1,11 +1,17 @@
 import { Button } from "@/components/ui/button";
-import { Mail, MessageSquare } from "lucide-react";
+import { Mail, MessageSquare, Download } from "lucide-react";
 import { SiX, SiLinkedin, SiInstagram } from "react-icons/si";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
+import { useModal } from "@/contexts/ModalContext";
 
-export default function ContactSection() {
+interface ContactSectionProps {
+    onResourcesClick?: () => void;
+}
+
+export default function ContactSection({ onResourcesClick }: ContactSectionProps) {
+    const { openModal } = useModal();
     return (
-        <section id="contact" className="py-8 md:py-12 bg-white">
+        <section id="contact" className="py-12 md:py-16 bg-white">
             <div className="max-w-7xl mx-auto px-6 md:px-8">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
                     <div>
@@ -24,18 +30,26 @@ export default function ContactSection() {
                                     <MessageSquare className="h-5 w-5 text-primary" />
                                     Get in Touch
                                 </h3>
-                                <Button
-                                    size="lg"
-                                    data-testid="button-contact"
-                                    onClick={() =>
-                                        window.open(
-                                            "https://mail.google.com/mail/?view=cm&to=info@mustarred.com",
-                                            "_blank"
-                                        )
-                                    }
-                                >
-                                    Contact Us
-                                </Button>
+                                <div className="flex flex-col sm:flex-row gap-3">
+                                    <Button
+                                        size="lg"
+                                        data-testid="button-contact"
+                                        onClick={() => openModal("Contact Us", "Get in touch with our team")}
+                                    >
+                                        Contact Us
+                                    </Button>
+                                    {onResourcesClick && (
+                                        <Button
+                                            variant="outline"
+                                            size="lg"
+                                            onClick={onResourcesClick}
+                                            className="flex items-center gap-2"
+                                        >
+                                            <Download className="h-4 w-4" />
+                                            Free Resources
+                                        </Button>
+                                    )}
+                                </div>
                             </div>
 
                             <div>
@@ -43,14 +57,12 @@ export default function ContactSection() {
                                     <Mail className="h-5 w-5 text-primary" />
                                     Email
                                 </h3>
-                                <a
-                                    href="https://mail.google.com/mail/?view=cm&to=info@mustarred.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-muted-foreground hover:text-primary transition-colors"
+                                <button
+                                    onClick={() => openModal("Contact Us", "Send us an email")}
+                                    className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                                 >
                                     info@mustarred.com
-                                </a>
+                                </button>
                             </div>
 
                             <div>

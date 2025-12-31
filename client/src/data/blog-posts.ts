@@ -25,7 +25,7 @@ const rawBlogPosts: RawBlogPost[] = [
     content: `We are pleased to partner with VASPA as a sponsor of the 2026 Mastermind Builders' Luncheon, standing alongside builders advancing Nigeria's blockchain ecosystem. As the industry continues to evolve, strong compliance, security, and governance frameworks remain critical to building a resilient and sustainable virtual asset ecosystem.
 
 We remain committed to supporting businesses and stakeholders shaping Nigeria's blockchain and Web3 landscape with bespoke compliance and security expertise`,
-    author: "Mustarred Team",
+    author: "Admin Mustarred",
     date: "2025-12-17",
     category: "Mustarred Insights",
     image: "/assets/images/blog/musta1.png",
@@ -95,7 +95,7 @@ Two ministries, the Ministry of Communication, Innovation, and Digital Economy a
 Authorities have blocked access to X (formerly Twitter) for the third time since 2020. The shutdown came on the heels of a hack of the official account of the police account force and the publication of a tweet that falsely claimed President Samia Suluhu Hassan had died. This marks Tanzania's third X clampdown since 2020. The country previously blocked the platform during the 2020 elections for 11 days and again in 2024 for 1 day. The current shutdown, which began on May 21, brings the total number of days X has been blocked in Tanzania to 19 days.
 
 The shutdown is part of a [growing trend across Africa](https://techpoint.africa/news/tanzania-blocks-x-after-police-hack/) where digital restrictions are used to curb unrest and control narratives. The estimated economic cost of the 19-day disruption is about $16.5 million (TZS 44.6 billion). Observers say such shutdowns stifle dissent, harm businesses, and erode public trust, costing Africa $1.5B in 2024 alone.`,
-    author: "Mustarred Team",
+    author: "Admin Mustarred",
     date: "2025-05-24",
     category: "Compliance",
     image: "/assets/images/blog/tamara2.avif",
@@ -197,7 +197,7 @@ BRICS, originally comprising Brazil, Russia, India, China, and South Africa, now
 United States (US) President Donald Trump has [announced a 10 percent tariff](https://businessday.ng/business-economy/article/nigeria-to-face-new-10-us-tariffs-from-trump-over-brics-partnership/) on Nigerian goods, citing the country's new partner-country status with BRICS. The move, described as retaliatory, was disclosed on Trump's Truth Social account.
 
 Nigeria officially joined BRICS as a partner country in January 2025, a category created to expand global south representation. The US has not specified which BRICS policies it considers anti-American, but trade analysts warn of heightened global tensions. The decision reflects growing geopolitical frictions and may affect Nigeria's export outlook in the US markets.`,
-    author: "Mustarred Team",
+    author: "Admin Mustarred",
     date: "2025-07-18",
     category: "Compliance",
     image: "/assets/images/blog/tamara1.avif",
@@ -306,7 +306,7 @@ c. Ensure that any third-party service provider used complies with all applicabl
 ## Implementation Timeline
 
 FIs have 12 months from the issuance of the final standard to fully implement and align with the requirements.`,
-    author: "Mustarred Team",
+    author: "Admin Mustarred",
     date: "2025-05-27",
     category: "Banking & Finance",
     image: "/assets/images/blog/cbnexposure.webp",
@@ -522,7 +522,7 @@ To begin building or enhancing your compliance framework:
 5. Establish ongoing monitoring and improvement processes
 
 For expert guidance on developing compliance frameworks tailored to your specific business needs, contact our compliance specialists.`,
-    author: "Mustarred Team",
+    author: "Admin Mustarred",
     date: "2025-05-24",
     category: "Corporate Governance",
     image: "/assets/images/blog/tamara2.webp",

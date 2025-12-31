@@ -1,23 +1,33 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, User, Bot } from 'lucide-react';
+import { MessageCircle, X, User, Bot, Building, Shield, FileText, Phone, DollarSign, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { findBestMatch } from '@/data/chatbot-knowledge';
 
 interface Message {
   id: string;
   text: string;
   isBot: boolean;
   timestamp: Date;
+  buttons?: QuickReply[];
 }
 
-const greeting = "Hi! I'm Mustarred's business advisory assistant. I help startups with data protection, compliance, corporate governance, and transaction advisory. How can I assist you today?";
+interface QuickReply {
+  text: string;
+  action: string;
+}
 
-const defaultResponse = "I understand you're asking about that. While I can help with general information about our services, our expert team can provide detailed guidance specific to your situation.";
+const greeting = "Welcome to Mustarred! I'm here to help you with business advisory services. What would you like to know about?";
+
+const quickReplies: QuickReply[] = [
+  { text: "Company Incorporation", action: "incorporation" },
+  { text: "Data Protection (NDPR)", action: "ndpr" },
+  { text: "Compliance Services", action: "compliance" },
+  { text: "Corporate Governance", action: "governance" },
+  { text: "Contact Our Team", action: "contact" },
+];
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -31,74 +41,128 @@ export default function Chatbot() {
 
   useEffect(() => {
     if (isOpen && messages.length === 0) {
-      addBotMessage(greeting);
+      addBotMessage(greeting, quickReplies);
     }
   }, [isOpen]);
 
-  const addMessage = (text: string, isBot: boolean) => {
+  const addMessage = (text: string, isBot: boolean, buttons?: QuickReply[]) => {
     const newMessage: Message = {
       id: Date.now().toString(),
       text,
       isBot,
-      timestamp: new Date()
+      timestamp: new Date(),
+      buttons
     };
     setMessages(prev => [...prev, newMessage]);
   };
 
-  const addBotMessage = (text: string, suggestTeam: boolean = false) => {
+  const addBotMessage = (text: string, buttons?: QuickReply[]) => {
     setIsTyping(true);
     setTimeout(() => {
-      addMessage(text, true);
+      addMessage(text, true, buttons);
       setIsTyping(false);
-      
-      // Only suggest speaking to team when explicitly requested
-      if (suggestTeam) {
-        setTimeout(() => {
-          addMessage("Would you like to speak with one of our experts for personalized guidance? They can provide detailed answers specific to your business needs.", true);
-        }, 1500);
-      }
     }, 1000);
   };
 
-  const getBotResponse = (userMessage: string): { response: string; suggestTeam: boolean } => {
-    // Handle greetings
-    if (userMessage.toLowerCase().includes('hello') || userMessage.toLowerCase().includes('hi') || userMessage.toLowerCase().includes('hey')) {
-      return { response: greeting, suggestTeam: false };
-    }
+  const handleQuickReply = (action: string, text: string) => {
+    // Add user message
+    addMessage(text, false);
     
-    // Try to find a match in knowledge base
-    const match = findBestMatch(userMessage);
-    
-    if (match) {
-      // Suggest team for pricing or complex queries
-      const suggestTeam = match.category === 'pricing' || match.category === 'contact';
-      return { response: match.response, suggestTeam };
-    }
-    
-    // Default response if no match found - suggest team for unknown queries
-    return { response: defaultResponse, suggestTeam: true };
-  };
-
-  const handleSendMessage = () => {
-    if (!inputValue.trim()) return;
-
-    addMessage(inputValue, false);
-    const { response, suggestTeam } = getBotResponse(inputValue);
-    addBotMessage(response, suggestTeam);
-    setInputValue('');
-  };
-
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSendMessage();
-    }
-  };
-
-  const handleContactTeam = () => {
-    const newWindow = window.open('https://mail.google.com/mail/?view=cm&to=info@mustarred.com', '_blank');
-    if (newWindow) {
-      newWindow.opener = null;
+    // Handle different actions
+    switch (action) {
+      case 'incorporation':
+        addBotMessage(
+          "Great! I can help you with company incorporation. This involves registering your business with the Corporate Affairs Commission (CAC).\n\nWe'll need detailed information including company names, shareholders, directors, and required documents.\n\nWould you like to start the incorporation process?",
+          [
+            { text: "Start Incorporation Process", action: "start_incorporation" },
+            { text: "Learn More About Incorporation", action: "incorporation_info" },
+            { text: "Back to Main Menu", action: "main_menu" }
+          ]
+        );
+        break;
+        
+      case 'start_incorporation':
+        window.location.href = '/incorporation';
+        addBotMessage(
+          "Perfect! I've redirected you to our secure incorporation form. Please fill out all the required information and we'll get started on your company registration right away.",
+          [{ text: "Back to Main Menu", action: "main_menu" }]
+        );
+        break;
+        
+      case 'incorporation_info':
+        addBotMessage(
+          "Company incorporation includes:\n\n• Business name reservation\n• Memorandum & Articles of Association\n• CAC registration\n• Tax identification numbers\n• Bank account opening support\n\nTypical timeline: 2-3 weeks\nStarting from ₦150,000",
+          [
+            { text: "Start Incorporation Now", action: "start_incorporation" },
+            { text: "Back to Main Menu", action: "main_menu" }
+          ]
+        );
+        break;
+        
+      case 'ndpr':
+        addBotMessage(
+          "NDPR (Nigeria Data Protection Regulation) compliance is essential for any business handling personal data.\n\nWe help with:\n• Privacy policy drafting\n• Data protection audits\n• Consent management\n• Regulatory filings\n• Staff training\n\nTimeline: 2-4 weeks",
+          [
+            { text: "Get NDPR Quote", action: "contact" },
+            { text: "Back to Main Menu", action: "main_menu" }
+          ]
+        );
+        break;
+        
+      case 'compliance':
+        addBotMessage(
+          "Our compliance services include:\n\n• Regulatory licensing (CBN, NCC, etc.)\n• AML/KYC implementation\n• ISO certifications\n• SOC 2 compliance\n• PCI-DSS certification\n• Ongoing compliance monitoring",
+          [
+            { text: "Discuss My Requirements", action: "contact" },
+            { text: "Back to Main Menu", action: "main_menu" }
+          ]
+        );
+        break;
+        
+      case 'governance':
+        addBotMessage(
+          "Corporate governance services:\n\n• Board structure setup\n• Policy development\n• Risk management\n• Internal controls\n• Regulatory reporting\n• Company secretarial services",
+          [
+            { text: "Learn More", action: "contact" },
+            { text: "Back to Main Menu", action: "main_menu" }
+          ]
+        );
+        break;
+        
+      case 'pricing':
+        addBotMessage(
+          "Our pricing varies based on your specific needs:\n\n• Company Incorporation: From ₦150,000\n• NDPR Compliance: From ₦200,000\n• ISO Certification: From ₦500,000\n• Custom packages available\n\nContact our team for a personalized quote.",
+          [
+            { text: "Get Custom Quote", action: "contact" },
+            { text: "Back to Main Menu", action: "main_menu" }
+          ]
+        );
+        break;
+        
+      case 'timeline':
+        addBotMessage(
+          "Typical project timelines:\n\n• Company Incorporation: 2-3 weeks\n• NDPR Compliance: 2-4 weeks\n• ISO Certification: 3-6 months\n• Corporate Governance Setup: 4-6 weeks\n\nTimelines may vary based on complexity and document readiness.",
+          [
+            { text: "Discuss My Project", action: "contact" },
+            { text: "Back to Main Menu", action: "main_menu" }
+          ]
+        );
+        break;
+        
+      case 'contact':
+        window.open('https://mail.google.com/mail/?view=cm&to=info@mustarred.com&su=Business Advisory Inquiry', '_blank');
+        addBotMessage(
+          "Perfect! I've opened your email client to contact our team directly. You can also reach us at:\n\ninfo@mustarred.com\n\nOur experts will respond within 24 hours.",
+          [{ text: "Back to Main Menu", action: "main_menu" }]
+        );
+        break;
+        
+      case 'main_menu':
+        addBotMessage("How else can I help you today?", quickReplies);
+        break;
+        
+      default:
+        addBotMessage("I'm not sure about that. Let me show you what I can help with:", quickReplies);
     }
   };
 
@@ -129,7 +193,7 @@ export default function Chatbot() {
                 </div>
                 <div>
                   <h3 className="font-heading font-semibold text-white">Mustarred Assistant</h3>
-                  <p className="text-xs text-white/80">Business Advisory Support</p>
+                  <p className="text-xs text-white/80">Professional Business Advisory</p>
                 </div>
               </div>
             </div>
@@ -138,28 +202,46 @@ export default function Chatbot() {
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex gap-3 ${message.isBot ? 'justify-start' : 'justify-end'}`}
-              >
-                {message.isBot && (
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{backgroundColor: 'hsl(var(--brand-accent) / 0.2)'}}>
-                    <Bot className="h-4 w-4" style={{color: 'hsl(var(--brand-primary))'}} />
-                  </div>
-                )}
+              <div key={message.id}>
                 <div
-                  className={`max-w-[80%] p-3 rounded-lg whitespace-pre-line ${
-                    message.isBot
-                      ? 'bg-gray-100 text-gray-800'
-                      : 'text-white'
-                  }`}
-                  style={!message.isBot ? {background: 'linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-accent)))'} : {}}
+                  className={`flex gap-3 ${message.isBot ? 'justify-start' : 'justify-end'}`}
                 >
-                  {message.text}
+                  {message.isBot && (
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{backgroundColor: 'hsl(var(--brand-accent) / 0.2)'}}>
+                      <Bot className="h-4 w-4" style={{color: 'hsl(var(--brand-primary))'}} />
+                    </div>
+                  )}
+                  <div
+                    className={`max-w-[80%] p-3 rounded-lg whitespace-pre-line ${
+                      message.isBot
+                        ? 'bg-gray-100 text-gray-800'
+                        : 'text-white'
+                    }`}
+                    style={!message.isBot ? {background: 'linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-accent)))'} : {}}
+                  >
+                    {message.text}
+                  </div>
+                  {!message.isBot && (
+                    <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center flex-shrink-0">
+                      <User className="h-4 w-4 text-gray-600" />
+                    </div>
+                  )}
                 </div>
-                {!message.isBot && (
-                  <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center flex-shrink-0">
-                    <User className="h-4 w-4 text-gray-600" />
+                
+                {/* Quick Reply Buttons */}
+                {message.isBot && message.buttons && (
+                  <div className="flex flex-wrap gap-2 mt-3 ml-11">
+                    {message.buttons.map((button, index) => (
+                      <Button
+                        key={index}
+                        variant="outline"
+                        size="sm"
+                        className="text-xs h-8 hover:bg-gray-50 border-gray-300"
+                        onClick={() => handleQuickReply(button.action, button.text)}
+                      >
+                        {button.text}
+                      </Button>
+                    ))}
                   </div>
                 )}
               </div>
@@ -182,29 +264,9 @@ export default function Chatbot() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input */}
-          <div className="p-4 border-t">
-            <div className="flex gap-2 mb-2">
-              <input
-                type="text"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Ask about our services..."
-                className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
-              />
-              <Button onClick={handleSendMessage} size="sm">
-                <Send className="h-4 w-4" />
-              </Button>
-            </div>
-            <Button 
-              onClick={handleContactTeam}
-              variant="outline" 
-              size="sm" 
-              className="w-full text-xs"
-            >
-              💬 Speak with Our Team
-            </Button>
+          {/* Footer */}
+          <div className="p-4 border-t text-center">
+            <p className="text-xs text-gray-500">Choose an option above to continue</p>
           </div>
         </div>
       )}

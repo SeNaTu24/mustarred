@@ -23,8 +23,8 @@ export default function AboutUs() {
             <section className="relative bg-[#1e1038] pt-32 pb-20">
                 <div className="absolute inset-0 bg-black/10"></div>
                 <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-                        About <span className="text-[#d4d1f4]">Mustarred</span>
+                    <h1 className="text-5xl md:text-5xl font-bold text-white mb-6">
+                        About Mustarred
                     </h1>
                     <p className="text-xl md:text-2xl text-white/95 leading-relaxed">
                         Transforming African startups through expert compliance

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 export default function ServicesSection() {
     const [visibleItems, setVisibleItems] = useState(new Set());
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-    const images = ["/compliance.webp", "/security.jpg", "/research.jpg"];
+    const images = ["/assets/images/datapro.avif", "/assets/images/privacyprogram.avif", "/compliance.webp", "/assets/images/startupadvisory.avif", "/assets/images/cybersecurity.avif", "/research.jpg"];
 
 
     useEffect(() => {
@@ -30,7 +30,7 @@ export default function ServicesSection() {
     }, []);
 
     return (
-        <section id="services" className="py-8 md:py-12 bg-white">
+        <section id="services" className="py-6 md:py-8 bg-white">
             <div className="max-w-7xl mx-auto px-6 md:px-8">
                 <div className="text-center mb-6">
                     <h2
@@ -50,8 +50,8 @@ export default function ServicesSection() {
                         </p>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                    {services.slice(0, 3).map((service, i) => (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                    {services.slice(0, 6).map((service, i) => (
                         <div
                             key={i}
                             ref={(el) => { if (el) itemRefs.current[i] = el; }}

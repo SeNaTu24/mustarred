@@ -38,6 +38,27 @@ export default function EbookDownloadModal({ isOpen, onClose }: EbookDownloadMod
         body: formSubmitData
       });
 
+      // If user wants newsletter, add them to Mailchimp
+      if (formData.newsletter) {
+        try {
+          const mailchimpData = new FormData();
+          mailchimpData.append('EMAIL', formData.email);
+          mailchimpData.append('FNAME', formData.name);
+          mailchimpData.append('tags', '12386815'); // PDF download tag
+          
+          await fetch(
+            'https://mustarred.us12.list-manage.com/subscribe/post?u=cdd12424c1d674fa391e8e63e&id=22107e23a3&f_id=00f4e7e0f0',
+            {
+              method: 'POST',
+              body: mailchimpData,
+              mode: 'no-cors'
+            }
+          );
+        } catch (mailchimpError) {
+          console.log('Mailchimp subscription failed:', mailchimpError);
+        }
+      }
+
       // Trigger PDF download
       const link = document.createElement('a');
       link.href = '/assets/resources/Are You GAID-Ready 3.pdf';

@@ -17,14 +17,14 @@ export default function FAQSection() {
                             fontFamily: "Satoshi, sans-serif",
                         }}
                     >
-                        Frequently Asked Questions
+                        {/* Frequently Asked Questions */}
                     </h2>
                     <p
                         className="leading-relaxed text-muted-foreground"
                         style={{
                             fontFamily: "Satoshi, sans-serif",
                             fontSize: "18px",
-                            fontWeight: "400",
+                            fontWeight: "bolder",
                         }}
                     >
                         Got questions? We've got answers. Find everything you

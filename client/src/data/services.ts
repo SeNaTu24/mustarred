@@ -1,21 +1,39 @@
-import { Shield, Lock, FileCheck, Building2, Handshake } from "lucide-react";
+import { Shield, Lock, FileCheck, Building2, Handshake, Users } from "lucide-react";
 
 export const services = [
     {
         icon: Shield,
-        name: "Compliance",
+        name: "Training for Data Protection & Privacy",
         description:
             "Comprehensive compliance solutions for your business needs.",
     },
     {
         icon: Lock,
-        name: "Security",
+        name: "Privacy Programme Implementation",
         description:
             "Secure your data with industry-standard protection measures.",
     },
     {
         icon: FileCheck,
-        name: "Research",
+        name: "Regulatory and Product Compliance",
+        description:
+            "Navigate complex regulatory requirements with expert guidance.",
+    },
+    {
+        icon: Shield,
+        name: "Startup Advisory",
+        description:
+            "Comprehensive compliance solutions for your business needs.",
+    },
+    {
+        icon: Lock,
+        name: "Cybersecurity Services",
+        description:
+            "Secure your data with industry-standard protection measures.",
+    },
+    {
+        icon: FileCheck,
+        name: "Policy & Research Services",
         description:
             "Navigate complex regulatory requirements with expert guidance.",
     },

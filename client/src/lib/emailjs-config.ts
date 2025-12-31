@@ -12,12 +12,14 @@ export const EMAILJS_CONFIG = {
   PUBLIC_KEY: 'sTmhLIpzjZZoM56Wn',
   
   // Replace with your actual service ID
-  SERVICE_ID: 'service_mustarred',
+  SERVICE_ID: 'service_4io2z7i',
   
   // Template IDs (create these in EmailJS dashboard)
   TEMPLATES: {
     BIG_TABLE: 'template_bigtable',
-    PAYMENT: 'template_payment'
+    PAYMENT: 'template_payment',
+    CONTACT_FORM: 'template_k3fp92l',
+    USER_CONFIRMATION: 'template_7ic3qk7'
   }
 };
 

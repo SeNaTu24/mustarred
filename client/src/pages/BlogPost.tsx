@@ -11,7 +11,7 @@ import {
     MessageSquare,
 } from "lucide-react";
 import { SiX, SiLinkedin, SiInstagram } from "react-icons/si";
-import { useParams } from "wouter";
+import { useParams, useLocation } from "wouter";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import ReactMarkdown from "react-markdown";
 import { getPostById } from "@/data/blog-posts";
@@ -19,7 +19,13 @@ import { formatDate } from "@/data/blog-config";
 
 export default function BlogPost() {
     const { id } = useParams<{ id: string }>();
+    const [location] = useLocation();
     const post = getPostById(id!);
+    
+    // Determine back URL based on query parameter or default to /our-insights
+    const searchParams = new URLSearchParams(location.split('?')[1]);
+    const from = searchParams.get('from');
+    const backUrl = from === 'blog' ? '/blog' : '/our-insights';
 
     if (!post) {
         return (
@@ -34,7 +40,7 @@ export default function BlogPost() {
                             The article you're looking for doesn't exist.
                         </p>
                         <Button
-                            onClick={() => (window.location.href = "/blog")}
+                            onClick={() => (window.location.href = backUrl)}
                         >
                             <ArrowLeft className="h-4 w-4 mr-2" />
                             Back to Blog
@@ -55,10 +61,10 @@ export default function BlogPost() {
                     <Button
                         variant="ghost"
                         className="mb-8"
-                        onClick={() => (window.location.href = "/blog")}
+                        onClick={() => (window.location.href = backUrl)}
                     >
                         <ArrowLeft className="h-4 w-4 mr-2" />
-                        Back to Blog
+                        Back to {from === 'blog' ? 'Blog' : 'Insights'}
                     </Button>
 
                     {/* Article Header */}
@@ -84,7 +90,7 @@ export default function BlogPost() {
 
                         <div className="flex items-center justify-between">
                             <p className="text-muted-foreground">
-                                By {post.author}
+                                {post.author}
                             </p>
                             <Button
                                 variant="outline"
@@ -280,7 +286,7 @@ export default function BlogPost() {
                         <div className="flex items-center justify-between">
                             <Button
                                 variant="outline"
-                                onClick={() => (window.location.href = "/blog")}
+                                onClick={() => (window.location.href = backUrl)}
                             >
                                 <ArrowLeft className="h-4 w-4 mr-2" />
                                 More Articles

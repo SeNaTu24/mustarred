@@ -91,6 +91,12 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      backgroundImage: {
+        'gradient-subtle-1': 'linear-gradient(135deg, #ffffff 0%, #f9fafb 50%, #f3f4f6 100%)',
+        'gradient-subtle-2': 'linear-gradient(135deg, #ffffff 0%, #faf5ff 50%, #f5f3ff 100%)',
+        'gradient-subtle-3': 'linear-gradient(to bottom, #ffffff 0%, #fafafa 100%)',
+        'gradient-subtle-radial': 'radial-gradient(circle at top right, #faf5ff 0%, #ffffff 50%, #ffffff 100%)',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

@@ -10,3 +10,6 @@ Editor Configuration (VS Code)
 # Temporary files
 next-article.txt
 
+# Chatbot files (work in progress)
+client/src/components/Chatbot.tsx
+client/src/data/chatbot-knowledge.ts

@@ -1,18 +1,25 @@
 import { Button } from "@/components/ui/button";
 // Logo path will be used directly
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useModal } from "@/contexts/ModalContext";
 
 export default function Header() {
+    const { openModal } = useModal();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isHomePage, setIsHomePage] = useState(false);
+
+    useEffect(() => {
+        setIsHomePage(window.location.pathname === '/');
+    }, []);
 
     const navLinks = useMemo(() => [
         { label: "Home", href: "#home" },
         { label: "About Us", href: "/about" },
         { label: "Services", href: "/services" },
-        { label: "Blog", href: "/blog" },
+        { label: "Get Certified", href: "/training" },
+        { label: "Our Insights", href: "/our-insights" },
         { label: "Testimonials", href: "#testimonials" },
-        { label: "FAQ", href: "#faq" },
     ], []);
 
     const handleNavigation = useCallback((href: string) => {
@@ -44,9 +51,25 @@ export default function Header() {
 
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/90 border-b border-gray-200">
-            <div className="max-w-7xl mx-auto pl-2 pr-6 md:pl-4 md:pr-8">
-                <div className="flex items-center justify-between h-24">
+        <header className={`fixed left-0 right-0 z-50 backdrop-blur-md bg-white/95 border-b border-gray-200 shadow-sm ${isHomePage ? 'top-0' : 'top-0'}`}>
+            {isHomePage && (
+                <div className="relative overflow-hidden text-white py-2 text-center text-sm" style={{backgroundColor: 'rgb(30,17,56)'}}>
+                    {/* Animated background */}
+                    <div className="absolute inset-0 opacity-20">
+                        <div className="absolute w-32 h-32 bg-purple-500 rounded-full blur-2xl animate-pulse" style={{left: '-10%', top: '-50%'}}></div>
+                        <div className="absolute w-24 h-24 bg-blue-500 rounded-full blur-xl animate-bounce" style={{right: '-5%', top: '-30%', animationDelay: '1s'}}></div>
+                    </div>
+                    
+                    <div className="relative animate-pulse">
+                        📊 Are You GAID-Ready? 
+                        <a href="/our-insights" className="text-yellow-300 hover:text-yellow-200 underline ml-1 transition-colors">
+                            Download guide →
+                        </a>
+                    </div>
+                </div>
+            )}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                <div className="flex items-center justify-between h-16 sm:h-20 md:h-24">
                     <div
                         className="flex items-center cursor-pointer"
                         onClick={() => (window.location.href = "/")}
@@ -54,7 +77,7 @@ export default function Header() {
                         <img
                             src="/assets/brand/logo.png"
                             alt="Mustarred-logo"
-                            className="h-32 w-auto object-contain"
+                            className="h-12 sm:h-16 md:h-20 lg:h-32 w-auto object-contain"
                         />
                     </div>
 
@@ -81,10 +104,7 @@ export default function Header() {
                         <Button
                             className="hidden md:inline-flex font-heading"
                             data-testid="button-header-contact"
-                            onClick={() => {
-                                const newWindow = window.open('https://mail.google.com/mail/?view=cm&to=info@mustarred.com', '_blank');
-                                if (newWindow) newWindow.opener = null;
-                            }}
+                            onClick={() => openModal("Contact Us", "Get in touch with our team")}
                         >
                             Contact Us
                         </Button>
@@ -123,10 +143,7 @@ export default function Header() {
                             <Button
                                 className="w-full mt-2"
                                 data-testid="button-mobile-contact"
-                                onClick={() => {
-                                    const newWindow = window.open('https://mail.google.com/mail/?view=cm&to=info@mustarred.com', '_blank');
-                                    if (newWindow) newWindow.opener = null;
-                                }}
+                                onClick={() => openModal("Contact Us", "Get in touch with our team")}
                             >
                                 Contact Us
                             </Button>

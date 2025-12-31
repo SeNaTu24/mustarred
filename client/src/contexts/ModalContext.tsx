@@ -1,0 +1,244 @@
+import React, { createContext, useContext, useState } from 'react';
+import * as Dialog from "@radix-ui/react-dialog";
+import { Button } from "@/components/ui/button";
+import { Check, X } from "lucide-react";
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '@/lib/emailjs-config';
+
+interface FormData {
+    name: string;
+    email: string;
+    phone: string;
+    company: string;
+    message: string;
+    selectedResource?: string;
+}
+
+interface ModalContextType {
+    openModal: (title: string, description?: string) => void;
+}
+
+const ModalContext = createContext<ModalContextType | undefined>(undefined);
+
+export function ModalProvider({ children }: { children: React.ReactNode }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const [modalTitle, setModalTitle] = useState("");
+    const [modalDescription, setModalDescription] = useState("");
+    const [formData, setFormData] = useState<FormData>({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+        selectedResource: ""
+    });
+    const [showThankYou, setShowThankYou] = useState(false);
+
+    const openModal = (title: string, description?: string) => {
+        setModalTitle(title);
+        setModalDescription(description || "");
+        setIsOpen(true);
+        setShowThankYou(false);
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        // If it's GAID download, trigger download immediately
+        if (modalDescription?.includes("GAID")) {
+            // Try multiple download methods
+            const fileName = 'Are You GAID-Ready 3.pdf';
+            const filePath = `/assets/resources/${encodeURIComponent(fileName)}`;
+            
+            // Method 1: Create download link
+            const link = document.createElement('a');
+            link.href = filePath;
+            link.download = fileName;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Method 2: Fallback to window.open
+            setTimeout(() => {
+                window.open(filePath, '_blank');
+            }, 100);
+            
+            setShowThankYou(true);
+        } else {
+            // For other forms, try to send email
+            try {
+                await emailjs.send(
+                    EMAILJS_CONFIG.SERVICE_ID,
+                    EMAILJS_CONFIG.TEMPLATES.CONTACT_FORM,
+                    {
+                        name: formData.name,
+                        email: formData.email,
+                        title: modalTitle,
+                        message: formData.message
+                    },
+                    EMAILJS_CONFIG.PUBLIC_KEY
+                );
+                setShowThankYou(true);
+            } catch (error) {
+                console.error('Failed to send email:', error);
+                alert('Failed to send email. Please try again or contact us directly.');
+                return;
+            }
+        }
+        
+        setTimeout(() => {
+            setIsOpen(false);
+            setShowThankYou(false);
+            setFormData({ name: "", email: "", phone: "", company: "", message: "", selectedResource: "" });
+            document.getElementById("more-content")?.scrollIntoView({ behavior: "smooth" });
+        }, 3000);
+    };
+
+    return (
+        <ModalContext.Provider value={{ openModal }}>
+            {children}
+            
+            <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
+                <Dialog.Portal>
+                    <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50" />
+                    <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl p-8 w-full max-w-md shadow-2xl z-50">
+                        <Dialog.Close className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full">
+                            <X className="h-4 w-4" />
+                        </Dialog.Close>
+                        
+                        {!showThankYou ? (
+                            <>
+                                <Dialog.Title className="text-2xl font-bold text-gray-900 mb-2">
+                                    {modalTitle}
+                                </Dialog.Title>
+                                {modalDescription && (
+                                    <Dialog.Description className="text-gray-600 mb-6">
+                                        {modalDescription}
+                                    </Dialog.Description>
+                                )}
+                                
+                                <form onSubmit={handleSubmit} className="space-y-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                            Full Name *
+                                        </label>
+                                        <input
+                                            type="text"
+                                            required
+                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+                                            value={formData.name}
+                                            onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                            Email Address *
+                                        </label>
+                                        <input
+                                            type="email"
+                                            required
+                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+                                            value={formData.email}
+                                            onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                            Phone Number
+                                        </label>
+                                        <input
+                                            type="tel"
+                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+                                            value={formData.phone}
+                                            onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                            Company
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+                                            value={formData.company}
+                                            onChange={(e) => setFormData({...formData, company: e.target.value})}
+                                        />
+                                    </div>
+                                    {!modalDescription?.includes("GAID") && (
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                                {modalTitle.includes("Resource") ? "Which resources do you need?" : "How can we help you?"} *
+                                            </label>
+                                            {modalTitle.includes("Resource") ? (
+                                                <select
+                                                    required
+                                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+                                                    value={formData.selectedResource}
+                                                    onChange={(e) => setFormData({...formData, selectedResource: e.target.value})}
+                                                >
+                                                    <option value="">Select a resource...</option>
+                                                    <option value="GAID Compliance Guide">GAID Compliance Guide</option>
+                                                    <option value="Data Protection Templates">Data Protection Templates</option>
+                                                    <option value="Privacy Policy Template">Privacy Policy Template</option>
+                                                    <option value="Terms of Service Template">Terms of Service Template</option>
+                                                    <option value="Cookie Policy Template">Cookie Policy Template</option>
+                                                    <option value="GDPR Compliance Checklist">GDPR Compliance Checklist</option>
+                                                    <option value="AI Governance Framework">AI Governance Framework</option>
+                                                    <option value="Risk Assessment Template">Risk Assessment Template</option>
+                                                    <option value="All Resources Package">All Resources Package</option>
+                                                </select>
+                                            ) : (
+                                                <textarea
+                                                    required
+                                                    rows={3}
+                                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent resize-none"
+                                                    placeholder="Tell us about your needs..."
+                                                    value={formData.message}
+                                                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                                                />
+                                            )}
+                                        </div>
+                                    )}
+                                    <Button
+                                        type="submit"
+                                        className="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3 mt-6"
+                                    >
+                                        {modalDescription?.includes("GAID") ? "Download Now" : "Submit Request"}
+                                    </Button>
+                                </form>
+                            </>
+                        ) : (
+                            <div className="text-center py-8">
+                                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <Check className="h-8 w-8 text-green-600" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                                    Thank You!
+                                </h3>
+                                <p className="text-gray-600 mb-4">
+                                    {modalDescription?.includes("GAID") 
+                                        ? `Download should start automatically. Check your downloads folder!`
+                                        : `Thank you for your submission. Our team will contact you within 24 hours.`
+                                    }
+                                </p>
+                                <p className="text-sm text-gray-500">
+                                    Discover more about our services below...
+                                </p>
+                            </div>
+                        )}
+                    </Dialog.Content>
+                </Dialog.Portal>
+            </Dialog.Root>
+        </ModalContext.Provider>
+    );
+}
+
+export function useModal() {
+    const context = useContext(ModalContext);
+    if (context === undefined) {
+        throw new Error('useModal must be used within a ModalProvider');
+    }
+    return context;
+}
