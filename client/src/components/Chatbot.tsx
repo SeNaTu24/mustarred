@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, User, Bot, Building, Shield, FileText, Phone, DollarSign, Clock } from 'lucide-react';
+import { MessageCircle, X, User, Bot, Building, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface Message {

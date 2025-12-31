@@ -1,4 +1,4 @@
-import { Shield, Lock, FileCheck, Building2, Handshake, Users } from "lucide-react";
+import { Shield, Lock, FileCheck, Building2, Handshake } from "lucide-react";
 
 export const services = [
     {

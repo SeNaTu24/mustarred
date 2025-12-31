@@ -1,6 +1,4 @@
-import { Card } from "@/components/ui/card";
 import { Lock, FileCheck, Building2, Handshake } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
 
 export default function AboutSection() {
     return (

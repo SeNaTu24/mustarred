@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { X, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { complianceTools } from '@/data/resources';
