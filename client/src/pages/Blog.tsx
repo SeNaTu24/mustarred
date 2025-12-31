@@ -113,64 +113,64 @@ export default function Blog() {
                         </div>
 
                         <Card className="max-w-4xl mx-auto overflow-hidden shadow-2xl border-2 border-blue-200">
-                            <div className="flex flex-col lg:flex-row">
+                            <div className="flex flex-col">
                                 <div 
-                                    className="lg:w-1/2 h-64 lg:h-auto bg-cover bg-center bg-no-repeat relative"
+                                    className="h-48 sm:h-56 md:h-64 lg:h-80 bg-cover bg-center bg-no-repeat relative"
                                     style={{
                                         backgroundImage: 'url(/assets/images/blog/gaidImage.PNG)'
                                     }}
                                 >
                                     <div className="absolute inset-0 bg-black/20"></div>
-                                    <div className="absolute top-4 left-4">
-                                        <Badge className="bg-blue-600 text-white">
+                                    <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
+                                        <Badge className="bg-blue-600 text-white text-xs">
                                             Featured Resource
                                         </Badge>
                                     </div>
-                                    <div className="absolute bottom-4 right-4">
-                                        <Badge variant="outline" className="bg-white/90">
+                                    <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4">
+                                        <Badge variant="outline" className="bg-white/90 text-xs">
                                             Free Download
                                         </Badge>
                                     </div>
                                 </div>
-                                <div className="lg:w-1/2 p-6 lg:p-8">
-                                    <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">
+                                <div className="p-4 sm:p-6 lg:p-8">
+                                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
                                         Are You GAID-Ready?
                                     </h3>
-                                    <p className="text-lg text-gray-700 mb-6">
+                                    <p className="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6">
                                         Essential GAID 2025 Guidelines for DPOS and SMES
                                     </p>
-                                    <div className="mb-6">
-                                        <h4 className="font-semibold text-gray-900 mb-3">
+                                    <div className="mb-4 sm:mb-6">
+                                        <h4 className="font-semibold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">
                                             What's Inside:
                                         </h4>
-                                        <div className="space-y-2 text-sm text-gray-600">
+                                        <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600">
                                             <div className="flex items-start">
-                                                <span className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 sm:mr-3 mt-1.5 sm:mt-2 flex-shrink-0"></span>
                                                 <span>Definition of Acronyms</span>
                                             </div>
                                             <div className="flex items-start">
-                                                <span className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 sm:mr-3 mt-1.5 sm:mt-2 flex-shrink-0"></span>
                                                 <span>Introduction & Governance Registration</span>
                                             </div>
                                             <div className="flex items-start">
-                                                <span className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 sm:mr-3 mt-1.5 sm:mt-2 flex-shrink-0"></span>
                                                 <span>Core Processing Principles & Lawful Bases</span>
                                             </div>
                                             <div className="flex items-start">
-                                                <span className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 sm:mr-3 mt-1.5 sm:mt-2 flex-shrink-0"></span>
                                                 <span>Technical & Operational Measures</span>
                                             </div>
                                             <div className="flex items-start">
-                                                <span className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 sm:mr-3 mt-1.5 sm:mt-2 flex-shrink-0"></span>
                                                 <span>Transparency & Data Subject Rights</span>
                                             </div>
                                         </div>
                                     </div>
                                     <Button
-                                        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold"
+                                        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 sm:py-3 text-sm sm:text-base font-semibold"
                                         onClick={() => setIsModalOpen(true)}
                                     >
-                                        <Download className="h-5 w-5 mr-2" />
+                                        <Download className="h-4 w-4 mr-2" />
                                         Download Free Guide
                                     </Button>
                                 </div>

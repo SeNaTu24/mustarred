@@ -301,17 +301,17 @@ export default function DCMICompliance() {
         return (
             <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
                 <Card className="w-full max-w-2xl text-center shadow-xl">
-                    <CardContent className="p-12">
-                        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8">
-                            <CheckCircle className="w-10 h-10 text-green-600" />
+                    <CardContent className="p-4 sm:p-6 md:p-8 lg:p-12">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 sm:mb-8">
+                            <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-green-600" />
                         </div>
-                        <h1 className="text-4xl font-bold text-gray-900 mb-6">Payment Successful!</h1>
-                        <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">Payment Successful!</h1>
+                        <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 leading-relaxed">
                             Your DCMI/DCPMI registration is being processed. You will receive your certificate and compliance documents within 5 working days.
                         </p>
-                        <div className="bg-gray-50 rounded-lg p-6 mb-8">
-                            <h3 className="font-semibold text-gray-900 mb-4">What happens next:</h3>
-                            <ul className="text-left text-gray-600 space-y-2">
+                        <div className="bg-gray-50 rounded-lg p-4 sm:p-6 mb-6 sm:mb-8">
+                            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">What happens next:</h3>
+                            <ul className="text-left text-sm sm:text-base text-gray-600 space-y-1 sm:space-y-2">
                                 <li>✓ DCMI/DCPMI Registration Certificate (5 working days)</li>
                                 <li>✓ Tailored Privacy Notice for your business</li>
                                 <li>✓ Data Processing Agreement (DPA)</li>
@@ -319,7 +319,7 @@ export default function DCMICompliance() {
                                 <li>✓ Data Retention Policy</li>
                             </ul>
                         </div>
-                        <Button onClick={() => window.location.href = '/'} className="w-full">
+                        <Button onClick={() => window.location.href = '/'} className="w-full sm:w-auto px-8 sm:px-12">
                             Return to Homepage
                         </Button>
                     </CardContent>
@@ -332,63 +332,63 @@ export default function DCMICompliance() {
         return (
             <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
                 <Card className="w-full max-w-2xl text-center shadow-xl">
-                    <CardContent className="p-12">
-                        <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-8">
-                            <span className="text-3xl">🎉</span>
+                    <CardContent className="p-4 sm:p-6 md:p-8 lg:p-12">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 sm:mb-8">
+                            <span className="text-2xl sm:text-3xl">🎉</span>
                         </div>
-                        <h1 className="text-4xl font-bold text-gray-900 mb-6">Welcome to the big table!</h1>
-                        <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">Welcome to the big table!</h1>
+                        <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 leading-relaxed">
                             Your business is operating at a level where the NDPC requires additional compliance steps such as a Compliance Audit Return (CAR).
                         </p>
-                        <p className="text-lg text-gray-600 mb-8">
+                        <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8">
                             This is a great sign; it means your business is growing and handling data on a larger scale.
                         </p>
-                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-                            <p className="text-blue-800 font-medium">
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 sm:p-6 mb-6 sm:mb-8">
+                            <p className="text-sm sm:text-base text-blue-800 font-medium">
                                 Our team will reach out within one business day to guide you through your specific requirements and provide a tailored compliance plan.
                             </p>
                         </div>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button onClick={() => window.location.href = '/'} className="flex-1">
+                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+                            <Button onClick={() => window.location.href = '/'} className="flex-1 w-full sm:w-auto">
                                 Return to Homepage
                             </Button>
                             <Button 
                                 variant="outline" 
                                 onClick={() => setShowBackConfirmation(true)}
-                                className="flex-1"
+                                className="flex-1 w-full sm:w-auto"
                             >
                                 <ArrowLeft className="h-4 w-4 mr-2" />
                                 Back to Form
                             </Button>
                         </div>
 
-                        {showBackConfirmation && (
-                            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                                <Card className="max-w-md w-full">
-                                    <CardContent className="p-6">
-                                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Return to Form?</h3>
-                                        <p className="text-gray-600 mb-6">
-                                            Are you sure you want to go back? Your progress will be saved and you can modify your responses.
-                                        </p>
-                                        <div className="flex gap-3">
-                                            <Button variant="outline" onClick={() => setShowBackConfirmation(false)} className="flex-1">
-                                                Cancel
-                                            </Button>
-                                            <Button 
-                                                onClick={() => {
-                                                    setShowBackConfirmation(false);
-                                                    setShowBigTable(false);
-                                                    setCurrentStep(1);
-                                                }}
-                                                className="flex-1"
-                                            >
-                                                Yes, Go Back
-                                            </Button>
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            </div>
-                        )}
+                                        {showBackConfirmation && (
+                                            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                                                <Card className="max-w-md w-full">
+                                                    <CardContent className="p-4 sm:p-6">
+                                                        <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Return to Form?</h3>
+                                                        <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
+                                                            Are you sure you want to go back? Your progress will be saved and you can modify your responses.
+                                                        </p>
+                                                        <div className="flex flex-col sm:flex-row gap-3">
+                                                            <Button variant="outline" onClick={() => setShowBackConfirmation(false)} className="flex-1 w-full sm:w-auto">
+                                                                Cancel
+                                                            </Button>
+                                                            <Button 
+                                                                onClick={() => {
+                                                                    setShowBackConfirmation(false);
+                                                                    setShowBigTable(false);
+                                                                    setCurrentStep(1);
+                                                                }}
+                                                                className="flex-1 w-full sm:w-auto"
+                                                            >
+                                                                Yes, Go Back
+                                                            </Button>
+                                                        </div>
+                                                    </CardContent>
+                                                </Card>
+                                            </div>
+                                        )}
                     </CardContent>
                 </Card>
             </div>
@@ -396,20 +396,20 @@ export default function DCMICompliance() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-4 sm:py-8">
             <div className="max-w-4xl mx-auto px-4">
                 {/* Header */}
-                <div className="mb-8">
+                <div className="mb-6 sm:mb-8">
                     <Button 
                         variant="ghost" 
                         onClick={() => window.history.back()}
-                        className="mb-4 hover:bg-white/50"
+                        className="mb-4 hover:bg-white/50 text-sm sm:text-base"
                     >
                         <ArrowLeft className="w-4 h-4 mr-2" />
                         Back
                     </Button>
-                    <h1 className="text-4xl font-bold text-gray-900 mb-2">DCMI/DCPMI Registration</h1>
-                    <p className="text-gray-600">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">DCMI/DCPMI Registration</h1>
+                    <p className="text-sm sm:text-base text-gray-600">
                         Complete your Nigeria Data Protection Act compliance registration
                     </p>
                 </div>
@@ -417,26 +417,26 @@ export default function DCMICompliance() {
                 {/* Welcome Screen */}
                 {currentStep === 0 && (
                     <Card className="shadow-xl border-0">
-                        <CardContent className="p-12 text-center">
-                            <h1 className="text-4xl font-bold text-gray-900 mb-6">🎉 Congratulations!</h1>
-                            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                        <CardContent className="p-4 sm:p-6 md:p-8 lg:p-12 text-center">
+                            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">🎉 Congratulations!</h1>
+                            <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 leading-relaxed">
                                 You have taken the first step toward being compliant with the Nigeria Data Protection Act (NDPA) 2023 and the General Application and Implementation Directive (GAID) 2025.
                             </p>
 
-                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8 text-left">
-                                <p className="text-gray-700 mb-4">
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 sm:p-6 mb-6 sm:mb-8 text-left">
+                                <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4">
                                     Completing this quick form will serve as a vehicle to help you meet your compliance obligation to register as a Data Controller/Processor of Major Importance (DCMI/DCPMI) if you have processed over 200 personal data in the last 6 months.
                                 </p>
-                                <p className="text-gray-700">
+                                <p className="text-sm sm:text-base text-gray-700">
                                     This is also a strong business decision because when customers know their data is protected, they maintain loyalty to your business, and you maintain a predictable scale.
                                 </p>
                             </div>
 
-                            <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
-                                <h3 className="font-semibold text-gray-900 mb-4">
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-4 sm:p-6 mb-6 sm:mb-8">
+                                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
                                     After completing the form and payment, you will receive:
                                 </h3>
-                                <ul className="text-left text-gray-700 space-y-2">
+                                <ul className="text-left text-sm sm:text-base text-gray-700 space-y-1 sm:space-y-2">
                                     <li>✓ Your DCMI/DCPMI Registration Certificate (within 5 working days)</li>
                                     <li>✓ A tailored Privacy Notice for your business</li>
                                     <li>✓ A Data Processing Agreement (DPA) to sign with your partners</li>
@@ -445,11 +445,11 @@ export default function DCMICompliance() {
                                 </ul>
                             </div>
 
-                            <p className="text-lg font-semibold text-gray-900 mb-8">
+                            <p className="text-base sm:text-lg font-semibold text-gray-900 mb-6 sm:mb-8">
                                 Let's begin! This takes under 5 minutes.
                             </p>
 
-                            <Button onClick={() => setCurrentStep(1)} size="lg" className="px-12">
+                            <Button onClick={() => setCurrentStep(1)} size="lg" className="px-8 sm:px-12 w-full sm:w-auto">
                                 Start Registration →
                             </Button>
                         </CardContent>
@@ -460,26 +460,26 @@ export default function DCMICompliance() {
                 {currentStep > 0 && (
                     <>
                         {/* Progress Steps */}
-                        <div className="mb-8">
-                            <div className="flex items-center justify-between">
+                        <div className="mb-6 sm:mb-8">
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
                                 {steps.map((step, index) => {
                                     const Icon = step.icon;
                                     const isActive = currentStep === step.id;
                                     const isCompleted = currentStep > step.id;
                                     
                                     return (
-                                        <div key={step.id} className="flex items-center">
-                                            <div className={`flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300 ${
+                                        <div key={step.id} className="flex items-center w-full sm:w-auto">
+                                            <div className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 transition-all duration-300 ${
                                                 isCompleted 
                                                     ? 'bg-green-500 border-green-500 text-white' 
                                                     : isActive 
                                                         ? 'bg-blue-500 border-blue-500 text-white' 
                                                         : 'bg-white border-gray-300 text-gray-400'
                                             }`}>
-                                                {isCompleted ? <CheckCircle className="w-6 h-6" /> : <Icon className="w-6 h-6" />}
+                                                {isCompleted ? <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" /> : <Icon className="w-5 h-5 sm:w-6 sm:h-6" />}
                                             </div>
-                                            <div className="ml-3">
-                                                <p className={`text-sm font-medium ${isActive ? 'text-blue-600' : isCompleted ? 'text-green-600' : 'text-gray-500'}`}>
+                                            <div className="ml-3 flex-1">
+                                                <p className={`text-xs sm:text-sm font-medium ${isActive ? 'text-blue-600' : isCompleted ? 'text-green-600' : 'text-gray-500'}`}>
                                                     Step {step.id}
                                                 </p>
                                                 <p className={`text-xs ${isActive ? 'text-blue-600' : isCompleted ? 'text-green-600' : 'text-gray-400'}`}>
@@ -487,7 +487,7 @@ export default function DCMICompliance() {
                                                 </p>
                                             </div>
                                             {index < steps.length - 1 && (
-                                                <div className={`flex-1 h-0.5 mx-4 ${isCompleted ? 'bg-green-500' : 'bg-gray-300'}`} />
+                                                <div className={`hidden sm:block flex-1 h-0.5 mx-4 ${isCompleted ? 'bg-green-500' : 'bg-gray-300'}`} />
                                             )}
                                         </div>
                                     );
@@ -498,11 +498,11 @@ export default function DCMICompliance() {
                         {/* Form Card */}
                         <Card className="shadow-xl border-0">
                             <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-t-lg">
-                                <CardTitle className="text-xl">
+                                <CardTitle className="text-lg sm:text-xl">
                                     {steps.find(s => s.id === currentStep)?.title}
                                 </CardTitle>
                             </CardHeader>
-                            <CardContent className="p-8">
+                            <CardContent className="p-4 sm:p-6 md:p-8">
                                 {/* Step 1: About You */}
                                 {currentStep === 1 && (
                                     <div className="space-y-6">
@@ -858,17 +858,17 @@ export default function DCMICompliance() {
                                 {/* Step 4: Payment */}
                                 {currentStep === 4 && (
                                     <div className="text-center">
-                                        <div className="bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl p-8 text-white mb-8">
-                                            <h3 className="text-3xl font-bold mb-4">₦100,000</h3>
-                                            <div className="bg-white/95 rounded-lg p-6 mb-6">
-                                                <p className="text-lg text-gray-800 mb-4">
+                                        <div className="bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl p-4 sm:p-6 md:p-8 text-white mb-6 sm:mb-8">
+                                            <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">₦100,000</h3>
+                                            <div className="bg-white/95 rounded-lg p-4 sm:p-6 mb-4 sm:mb-6">
+                                                <p className="text-sm sm:text-base md:text-lg text-gray-800 mb-3 sm:mb-4">
                                                     Kindly pay ₦100,000 to finalize your submission. We will deliver your certificate in 5 working days and send you your tailored compliance documents.
                                                 </p>
                                             </div>
 
-                                            <div className="bg-white/95 rounded-lg p-4">
-                                                <h4 className="font-semibold mb-2 text-gray-800">What's included:</h4>
-                                                <ul className="text-sm space-y-1 text-gray-700">
+                                            <div className="bg-white/95 rounded-lg p-3 sm:p-4">
+                                                <h4 className="text-sm sm:text-base font-semibold mb-2 text-gray-800">What's included:</h4>
+                                                <ul className="text-xs sm:text-sm space-y-1 text-gray-700">
                                                     <li>✓ DCMI/DCPMI Registration Certificate</li>
                                                     <li>✓ Tailored Privacy Notice</li>
                                                     <li>✓ Data Processing Agreement (DPA)</li>
@@ -880,8 +880,8 @@ export default function DCMICompliance() {
 
                                         {submitError && (
                                             <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-                                                <p className="text-red-700 mb-3">{submitError}</p>
-                                                <Button variant="outline" onClick={() => setSubmitError(null)}>
+                                                <p className="text-sm sm:text-base text-red-700 mb-3">{submitError}</p>
+                                                <Button variant="outline" onClick={() => setSubmitError(null)} className="w-full sm:w-auto">
                                                     Try Again
                                                 </Button>
                                             </div>
@@ -891,30 +891,30 @@ export default function DCMICompliance() {
                                             onClick={handleSubmit}
                                             disabled={isSubmitting}
                                             size="lg"
-                                            className="w-full sm:w-auto px-12"
+                                            className="w-full sm:w-auto px-8 sm:px-12"
                                         >
                                             {isSubmitting ? (
                                                 <>
-                                                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-2"></div>
-                                                    Submitting...
+                                                    <div className="animate-spin rounded-full h-5 w-5 sm:h-6 sm:w-6 border-b-2 border-white mr-2"></div>
+                                                    <span className="text-sm sm:text-base">Submitting...</span>
                                                 </>
                                             ) : (
-                                                "Submit Registration"
+                                                <span className="text-sm sm:text-base">Submit Registration</span>
                                             )}
                                         </Button>
-                                        <p className="text-sm text-gray-500 mt-4">
+                                        <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4">
                                             Secure payment processing • 256-bit SSL encryption
                                         </p>
                                     </div>
                                 )}
 
                                 {/* Navigation Buttons */}
-                                <div className="flex justify-between pt-8 border-t border-gray-200">
+                                <div className="flex flex-col sm:flex-row justify-between gap-4 pt-6 sm:pt-8 border-t border-gray-200">
                                     <Button 
                                         variant="outline" 
                                         onClick={prevStep}
                                         disabled={currentStep === 1}
-                                        className="px-8"
+                                        className="px-6 sm:px-8 w-full sm:w-auto order-2 sm:order-1"
                                     >
                                         <ArrowLeft className="w-4 h-4 mr-2" />
                                         Previous
@@ -923,7 +923,7 @@ export default function DCMICompliance() {
                                     {currentStep < 4 && (
                                         <Button 
                                             onClick={nextStep}
-                                            className="px-8"
+                                            className="px-6 sm:px-8 w-full sm:w-auto order-1 sm:order-2"
                                         >
                                             Next Step
                                             <ArrowRight className="w-4 h-4 ml-2" />

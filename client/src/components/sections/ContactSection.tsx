@@ -11,30 +11,31 @@ interface ContactSectionProps {
 export default function ContactSection({ onResourcesClick }: ContactSectionProps) {
     const { openModal } = useModal();
     return (
-        <section id="contact" className="py-12 md:py-16 bg-white">
-            <div className="max-w-7xl mx-auto px-6 md:px-8">
-                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <section id="contact" className="py-8 sm:py-12 md:py-16 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
                     <div>
-                        <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4">
                             Let's Connect
                         </h2>
-                        <p className="text-base md:text-lg text-muted-foreground mb-6">
+                        <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-4 sm:mb-6">
                             Ready to protect your business? Contact us for a
                             consultation or to learn more about how we can
                             assist you.
                         </p>
 
-                        <div className="space-y-6">
+                        <div className="space-y-4 sm:space-y-6">
                             <div>
-                                <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                                    <MessageSquare className="h-5 w-5 text-primary" />
+                                <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-center gap-2">
+                                    <MessageSquare className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                                     Get in Touch
                                 </h3>
-                                <div className="flex flex-col sm:flex-row gap-3">
+                                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                                     <Button
                                         size="lg"
                                         data-testid="button-contact"
                                         onClick={() => openModal("Contact Us", "Get in touch with our team")}
+                                        className="w-full sm:w-auto text-sm sm:text-base"
                                     >
                                         Contact Us
                                     </Button>
@@ -43,9 +44,9 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                                             variant="outline"
                                             size="lg"
                                             onClick={onResourcesClick}
-                                            className="flex items-center gap-2"
+                                            className="flex items-center gap-2 w-full sm:w-auto text-sm sm:text-base"
                                         >
-                                            <Download className="h-4 w-4" />
+                                            <Download className="h-3 w-3 sm:h-4 sm:w-4" />
                                             Free Resources
                                         </Button>
                                     )}
@@ -53,23 +54,23 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                             </div>
 
                             <div>
-                                <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                                    <Mail className="h-5 w-5 text-primary" />
+                                <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-center gap-2">
+                                    <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                                     Email
                                 </h3>
                                 <button
                                     onClick={() => openModal("Contact Us", "Send us an email")}
-                                    className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+                                    className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                                 >
                                     info@mustarred.com
                                 </button>
                             </div>
 
                             <div>
-                                <h3 className="text-lg font-semibold mb-4">
+                                <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
                                     Follow Us
                                 </h3>
-                                <div className="flex gap-4">
+                                <div className="flex gap-3 sm:gap-4">
                                     {[
                                         {
                                             icon: SiX,
@@ -93,10 +94,10 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             aria-label={social.label}
-                                            className="p-3 rounded-lg bg-card hover-elevate active-elevate-2"
+                                            className="p-2 sm:p-3 rounded-lg bg-card hover-elevate active-elevate-2"
                                             data-testid={`link-social-${social.label.toLowerCase()}`}
                                         >
-                                            <social.icon className="h-5 w-5" />
+                                            <social.icon className="h-4 w-4 sm:h-5 sm:w-5" />
                                         </a>
                                     ))}
                                 </div>

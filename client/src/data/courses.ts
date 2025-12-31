@@ -116,7 +116,7 @@ export const courses: Course[] = [
     description: 'Get both the Certified Lead AI Risk Manager and Certified Artificial Intelligence Professional courses in one comprehensive bundle.',
     price: 1000,
     isBundle: true,
-    savings: 200,
+    savings: 100,
     includes: [
       'Instructor-led training for both courses',
       'All course materials',

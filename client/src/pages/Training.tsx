@@ -51,7 +51,7 @@ export default function Training() {
             <Header />
             <main className="bg-white" style={{ paddingTop: "96px" }}>
                 {/* Hero Section */}
-                <section className="relative py-20 md:py-32 bg-slate-900 text-white overflow-hidden">
+                <section className="relative py-12 sm:py-16 md:py-20 lg:py-32 bg-slate-900 text-white overflow-hidden">
                     <div className="absolute inset-0 opacity-60">
                         <img src="/pecb.png" alt="" className="w-full h-full object-cover" />
                     </div>
@@ -59,37 +59,37 @@ export default function Training() {
                     
                     <div className="relative max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
                         <div className="text-center">
-                            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-8">
-                                <Award className="h-4 w-4" />
+                            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 md:mb-8">
+                                <Award className="h-3 w-3 sm:h-4 sm:w-4" />
                                 Official PECB Training Partner
                             </div>
                             
-                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
-                                Professional 
-                                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                            <h1 className="text-2xl sm:text-3xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight">
+                                <span className="block sm:inline">Professional</span>{" "}
+                                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent block sm:inline">
                                     Certifications
                                 </span>
                             </h1>
                             
-                            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                            <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-gray-300 mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed">
                                 Advance your career with globally recognized certifications in AI, Data Protection, and Governance
                             </p>
                             
-                            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center mb-8 sm:mb-12 md:mb-16">
                                 <Button
                                     size="lg"
-                                    className="bg-white text-white hover:bg-gray-100 hover:scale-105 font-semibold px-8 py-4 text-lg shadow-xl transition-all duration-300"
+                                    className="bg-white text-slate-900 hover:bg-gray-100 hover:scale-105 font-semibold px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg shadow-xl transition-all duration-300"
                                     onClick={() =>
                                         document.getElementById("courses")?.scrollIntoView({ behavior: "smooth" })
                                     }
                                 >
-                                    <Play className="h-5 w-5 mr-2" />
+                                    <Play className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                                     Explore Courses
                                 </Button>
                                 <Button
                                     size="lg"
                                     variant="outline"
-                                    className="border-2 border-white text-white hover:bg-white hover:text-white hover:scale-105 px-8 py-4 text-lg transition-all duration-300"
+                                    className="border-2 border-white text-white hover:bg-white hover:text-slate-900 hover:scale-105 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg transition-all duration-300"
                                     onClick={() => openModal("Training Information", "Get expert guidance on our certification programs")}
                                 >
                                     Talk to Expert
@@ -97,18 +97,18 @@ export default function Training() {
                             </div>
                             
                             {/* Stats */}
-                            <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+                            <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-2xl mx-auto">
                                 <div className="text-center">
-                                    <div className="text-3xl font-bold text-white mb-2">{count1}+</div>
-                                    <div className="text-gray-400 text-sm">Professionals Certified</div>
+                                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2">{count1}+</div>
+                                    <div className="text-gray-400 text-xs sm:text-sm">Professionals Certified</div>
                                 </div>
                                 <div className="text-center">
-                                    <div className="text-3xl font-bold text-white mb-2">{count2}+</div>
-                                    <div className="text-gray-400 text-sm">Course Programs</div>
+                                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2">{count2}+</div>
+                                    <div className="text-gray-400 text-xs sm:text-sm">Course Programs</div>
                                 </div>
                                 <div className="text-center">
-                                    <div className="text-3xl font-bold text-white mb-2">{count3}%</div>
-                                    <div className="text-gray-400 text-sm">Success Rate</div>
+                                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2">{count3}%</div>
+                                    <div className="text-gray-400 text-xs sm:text-sm">Success Rate</div>
                                 </div>
                             </div>
                         </div>
@@ -116,26 +116,26 @@ export default function Training() {
                 </section>
 
                 {/* Courses Section */}
-                <section id="courses" className="py-20 bg-white">
+                <section id="courses" className="py-12 sm:py-16 md:py-20 bg-white">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 text-gray-900">
                                 Choose Your Path
                             </h2>
-                            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
                                 Select from our comprehensive certification programs
                             </p>
                         </div>
 
                         <Tabs.Root value={selectedCategory} onValueChange={(value) => setSelectedCategory(value as any)}>
                             {/* Simple Tab Navigation */}
-                            <div className="flex justify-center mb-12">
-                                <Tabs.List className="flex bg-gray-100 rounded-2xl p-2">
+                            <div className="flex flex-col sm:flex-row justify-center mb-8 sm:mb-10 md:mb-12">
+                                <Tabs.List className="flex flex-col sm:flex-row bg-gray-100 rounded-2xl p-2 gap-2 sm:gap-0">
                                     {courseCategories.map((category) => (
                                         <Tabs.Trigger
                                             key={category.id}
                                             value={category.id}
-                                            className="px-8 py-4 rounded-xl font-semibold transition-all data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm text-gray-600"
+                                            className="px-3 sm:px-4 py-2 sm:py-3 rounded-xl font-semibold transition-all data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm text-gray-600 text-center w-full sm:w-auto text-xs sm:text-sm"
                                         >
                                             {category.name}
                                         </Tabs.Trigger>

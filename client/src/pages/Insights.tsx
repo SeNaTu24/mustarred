@@ -48,69 +48,69 @@ export default function Insights() {
             {/* Featured Resource Spotlight */}
             <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-100">
                 <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <div className="flex items-center gap-3 mb-6">
-                                <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    <div className="grid lg:grid-cols-2 gap-8 items-center">
+                        <div className="order-2 lg:order-1">
+                            <div className="flex flex-wrap items-center gap-2 mb-4">
+                                <span className="bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">
                                     Featured Resource
                                 </span>
-                                <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                <span className="bg-green-600 text-white px-2 py-1 rounded-full text-xs font-medium">
                                     Free Download
                                 </span>
                             </div>
                             
-                            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3">
                                 Are You GAID-Ready?
                             </h2>
                             
-                            <p className="text-xl text-gray-700 mb-8">
+                            <p className="text-lg md:text-xl text-gray-700 mb-6">
                                 Essential GAID 2025 Guidelines for DPOS and SMES
                             </p>
 
-                            <div className="mb-8">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                            <div className="mb-6">
+                                <h3 className="text-base font-semibold text-gray-900 mb-3">
                                     What's Inside:
                                 </h3>
-                                <ul className="space-y-2">
+                                <ul className="space-y-2 text-sm">
                                     <li className="flex items-start text-gray-700">
-                                        <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2"></div>
-                                        Definition of Acronyms
+                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-2 flex-shrink-0"></div>
+                                        <span>Definition of Acronyms</span>
                                     </li>
                                     <li className="flex items-start text-gray-700">
-                                        <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2"></div>
-                                        Introduction & Governance Registration
+                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-2 flex-shrink-0"></div>
+                                        <span>Introduction & Governance Registration</span>
                                     </li>
                                     <li className="flex items-start text-gray-700">
-                                        <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2"></div>
-                                        Core Processing Principles & Lawful Bases
+                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-2 flex-shrink-0"></div>
+                                        <span>Core Processing Principles & Lawful Bases</span>
                                     </li>
                                     <li className="flex items-start text-gray-700">
-                                        <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2"></div>
-                                        Technical & Operational Measures
+                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-2 flex-shrink-0"></div>
+                                        <span>Technical & Operational Measures</span>
                                     </li>
                                     <li className="flex items-start text-gray-700">
-                                        <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 mt-2"></div>
-                                        Transparency & Data Subject Rights
+                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-2 flex-shrink-0"></div>
+                                        <span>Transparency & Data Subject Rights</span>
                                     </li>
                                 </ul>
                             </div>
 
                             <Button
                                 size="lg"
-                                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4"
+                                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 w-full sm:w-auto"
                                 onClick={() => openModal("Free Resources", "I'd like to download the GAID 2025 Guidelines")}
                             >
-                                <Download className="mr-3 h-5 w-5" />
+                                <Download className="mr-2 h-4 w-4" />
                                 Download Free Guide
                             </Button>
                         </div>
 
-                        <div className="relative">
+                        <div className="relative order-1 lg:order-2">
                             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                                 <img
                                     src="/assets/images/blog/gaidImage.PNG"
                                     alt="GAID Guidelines"
-                                    className="w-full h-96 object-cover"
+                                    className="w-full h-64 md:h-96 object-cover"
                                 />
                             </div>
                         </div>
@@ -149,7 +149,7 @@ export default function Insights() {
                                         {post.title}
                                     </h3>
                                     
-                                    <div className="flex items-center gap-4 text-xs text-gray-500 mb-3">
+                                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs text-gray-500 mb-3">
                                         <div className="flex items-center">
                                             <Calendar className="h-3 w-3 mr-1" />
                                             {new Date(post.date).toLocaleDateString()}

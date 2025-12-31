@@ -17,7 +17,7 @@ export default function Header() {
         { label: "Home", href: "#home" },
         { label: "About Us", href: "/about" },
         { label: "Services", href: "/services" },
-        { label: "Get Certified", href: "/training" },
+        { label: "Our Training", href: "/training" },
         { label: "Our Insights", href: "/our-insights" },
         { label: "Testimonials", href: "#testimonials" },
     ], []);
@@ -60,7 +60,7 @@ export default function Header() {
                         <div className="absolute w-24 h-24 bg-blue-500 rounded-full blur-xl animate-bounce" style={{right: '-5%', top: '-30%', animationDelay: '1s'}}></div>
                     </div>
                     
-                    <div className="relative animate-pulse">
+                    <div className="relative animate-marquee whitespace-nowrap">
                         📊 Are You GAID-Ready? 
                         <a href="/our-insights" className="text-yellow-300 hover:text-yellow-200 underline ml-1 transition-colors">
                             Download guide →
@@ -77,7 +77,7 @@ export default function Header() {
                         <img
                             src="/assets/brand/logo.png"
                             alt="Mustarred-logo"
-                            className="h-12 sm:h-16 md:h-20 lg:h-32 w-auto object-contain"
+                            className="h-16 sm:h-20 md:h-20 lg:h-32 w-auto object-contain"
                         />
                     </div>
 

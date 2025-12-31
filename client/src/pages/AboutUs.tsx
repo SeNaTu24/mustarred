@@ -20,13 +20,13 @@ export default function AboutUs() {
             <Header />
 
             {/* Hero Banner */}
-            <section className="relative bg-[#1e1038] pt-32 pb-20">
+            <section className="relative bg-[#1e1038] pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20">
                 <div className="absolute inset-0 bg-black/10"></div>
-                <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-                    <h1 className="text-5xl md:text-5xl font-bold text-white mb-6">
+                <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
                         About Mustarred
                     </h1>
-                    <p className="text-xl md:text-2xl text-white/95 leading-relaxed">
+                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 leading-relaxed">
                         Transforming African startups through expert compliance
                         guidance
                     </p>
@@ -34,14 +34,14 @@ export default function AboutUs() {
             </section>
 
             {/* Story Section */}
-            <section className="py-24 bg-white">
-                <div className="max-w-6xl mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6">
+                    <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
                         <div>
-                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 md:mb-8">
                                 Our Story
                             </h2>
-                            <div className="space-y-6 text-base md:text-lg text-gray-700 leading-relaxed">
+                            <div className="space-y-4 sm:space-y-6 text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
                                 <p>
                                     Founded with a vision to democratize
                                     business compliance across Africa, Mustarred
@@ -65,37 +65,37 @@ export default function AboutUs() {
                             </div>
                         </div>
                         <div className="relative w-full">
-                            <div className="bg-gradient-to-br from-[#a49fe7]/20 to-[#4b4ba3]/20 rounded-3xl p-16 w-full">
-                                <div className="grid grid-cols-2 gap-12">
+                            <div className="bg-gradient-to-br from-[#a49fe7]/20 to-[#4b4ba3]/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 w-full">
+                                <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12">
                                     <div className="text-center">
-                                        <div className="text-3xl md:text-5xl font-black text-[#4b4ba3] mb-4">
+                                        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#4b4ba3] mb-2 sm:mb-4">
                                             500+
                                         </div>
-                                        <div className="text-lg md:text-xl font-semibold text-gray-700">
+                                        <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold text-gray-700">
                                             Startups Guided
                                         </div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="text-3xl md:text-5xl font-black text-[#4b4ba3] mb-4">
+                                        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#4b4ba3] mb-2 sm:mb-4">
                                             15+
                                         </div>
-                                        <div className="text-lg md:text-xl font-semibold text-gray-700">
+                                        <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold text-gray-700">
                                             African Countries
                                         </div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="text-3xl md:text-5xl font-black text-[#4b4ba3] mb-4">
+                                        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#4b4ba3] mb-2 sm:mb-4">
                                             98%
                                         </div>
-                                        <div className="text-lg md:text-xl font-semibold text-gray-700">
+                                        <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold text-gray-700">
                                             Success Rate
                                         </div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="text-3xl md:text-5xl font-black text-[#4b4ba3] mb-4">
+                                        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#4b4ba3] mb-2 sm:mb-4">
                                             24/7
                                         </div>
-                                        <div className="text-lg md:text-xl font-semibold text-gray-700">
+                                        <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold text-gray-700">
                                             Support
                                         </div>
                                     </div>
@@ -107,54 +107,54 @@ export default function AboutUs() {
             </section>
 
             {/* Values Grid */}
-            <section className="py-24 bg-[#f5f5fa]">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#f5f5fa]">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <div className="text-center mb-8 sm:mb-12 md:mb-16">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">
                             Our Core Values
                         </h2>
-                        <p className="text-lg md:text-xl text-gray-600">
+                        <p className="text-base sm:text-lg md:text-xl text-gray-600">
                             The principles that guide everything we do
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow">
-                            <div className="w-14 h-14 bg-[#a49fe7] rounded-lg flex items-center justify-center mb-6">
-                                <Shield className="h-7 w-7 text-white" />
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+                        <div className="bg-white rounded-xl p-4 sm:p-6 md:p-8 shadow-sm hover:shadow-lg transition-shadow">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-[#a49fe7] rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+                                <Shield className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-white" />
                             </div>
-                            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 sm:mb-4">
                                 Integrity
                             </h3>
-                            <p className="text-gray-600 leading-relaxed">
+                            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                                 We maintain the highest ethical standards in all
                                 our advisory services, ensuring transparent and
                                 honest guidance for every client.
                             </p>
                         </div>
 
-                        <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow">
-                            <div className="w-14 h-14 bg-[#4b4ba3] rounded-lg flex items-center justify-center mb-6">
-                                <Lightbulb className="h-7 w-7 text-white" />
+                        <div className="bg-white rounded-xl p-4 sm:p-6 md:p-8 shadow-sm hover:shadow-lg transition-shadow">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-[#4b4ba3] rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+                                <Lightbulb className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-white" />
                             </div>
-                            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 sm:mb-4">
                                 Innovation
                             </h3>
-                            <p className="text-gray-600 leading-relaxed">
+                            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                                 We continuously evolve our methodologies to stay
                                 ahead of regulatory changes and provide
                                 cutting-edge compliance solutions.
                             </p>
                         </div>
 
-                        <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow">
-                            <div className="w-14 h-14 bg-[#a49fe7] rounded-lg flex items-center justify-center mb-6">
-                                <Globe className="h-7 w-7 text-white" />
+                        <div className="bg-white rounded-xl p-4 sm:p-6 md:p-8 shadow-sm hover:shadow-lg transition-shadow sm:col-span-2 lg:col-span-1">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-[#a49fe7] rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+                                <Globe className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-white" />
                             </div>
-                            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 sm:mb-4">
                                 Pan-African Focus
                             </h3>
-                            <p className="text-gray-600 leading-relaxed">
+                            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                                 Deep understanding of diverse African markets
                                 enables us to provide contextually relevant
                                 advice across the continent.

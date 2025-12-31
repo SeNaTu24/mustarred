@@ -103,78 +103,78 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
             <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
                 <Dialog.Portal>
                     <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50" />
-                    <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl p-8 w-full max-w-md shadow-2xl z-50">
-                        <Dialog.Close className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full">
+                    <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl p-4 sm:p-6 md:p-8 w-full max-w-sm sm:max-w-md mx-4 shadow-2xl z-50 max-h-[90vh] overflow-y-auto">
+                        <Dialog.Close className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 hover:bg-gray-100 rounded-full">
                             <X className="h-4 w-4" />
                         </Dialog.Close>
                         
                         {!showThankYou ? (
                             <>
-                                <Dialog.Title className="text-2xl font-bold text-gray-900 mb-2">
+                                <Dialog.Title className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 pr-8">
                                     {modalTitle}
                                 </Dialog.Title>
                                 {modalDescription && (
-                                    <Dialog.Description className="text-gray-600 mb-6">
+                                    <Dialog.Description className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
                                         {modalDescription}
                                     </Dialog.Description>
                                 )}
                                 
-                                <form onSubmit={handleSubmit} className="space-y-4">
+                                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                                             Full Name *
                                         </label>
                                         <input
                                             type="text"
                                             required
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+                                            className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
                                             value={formData.name}
                                             onChange={(e) => setFormData({...formData, name: e.target.value})}
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                                             Email Address *
                                         </label>
                                         <input
                                             type="email"
                                             required
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+                                            className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
                                             value={formData.email}
                                             onChange={(e) => setFormData({...formData, email: e.target.value})}
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                                             Phone Number
                                         </label>
                                         <input
                                             type="tel"
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+                                            className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
                                             value={formData.phone}
                                             onChange={(e) => setFormData({...formData, phone: e.target.value})}
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                                             Company
                                         </label>
                                         <input
                                             type="text"
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+                                            className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
                                             value={formData.company}
                                             onChange={(e) => setFormData({...formData, company: e.target.value})}
                                         />
                                     </div>
                                     {!modalDescription?.includes("GAID") && (
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                                                 {modalTitle.includes("Resource") ? "Which resources do you need?" : "How can we help you?"} *
                                             </label>
                                             {modalTitle.includes("Resource") ? (
                                                 <select
                                                     required
-                                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+                                                    className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
                                                     value={formData.selectedResource}
                                                     onChange={(e) => setFormData({...formData, selectedResource: e.target.value})}
                                                 >
@@ -193,7 +193,7 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
                                                 <textarea
                                                     required
                                                     rows={3}
-                                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent resize-none"
+                                                    className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent resize-none"
                                                     placeholder="Tell us about your needs..."
                                                     value={formData.message}
                                                     onChange={(e) => setFormData({...formData, message: e.target.value})}
@@ -203,27 +203,27 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
                                     )}
                                     <Button
                                         type="submit"
-                                        className="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3 mt-6"
+                                        className="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-2.5 sm:py-3 mt-4 sm:mt-6 text-sm sm:text-base"
                                     >
                                         {modalDescription?.includes("GAID") ? "Download Now" : "Submit Request"}
                                     </Button>
                                 </form>
                             </>
                         ) : (
-                            <div className="text-center py-8">
-                                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <Check className="h-8 w-8 text-green-600" />
+                            <div className="text-center py-6 sm:py-8">
+                                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                                    <Check className="h-6 w-6 sm:h-8 sm:w-8 text-green-600" />
                                 </div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">
                                     Thank You!
                                 </h3>
-                                <p className="text-gray-600 mb-4">
+                                <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4">
                                     {modalDescription?.includes("GAID") 
                                         ? `Download should start automatically. Check your downloads folder!`
                                         : `Thank you for your submission. Our team will contact you within 24 hours.`
                                     }
                                 </p>
-                                <p className="text-sm text-gray-500">
+                                <p className="text-xs sm:text-sm text-gray-500">
                                     Discover more about our services below...
                                 </p>
                             </div>
