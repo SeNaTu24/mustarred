@@ -1,5 +1,3 @@
-import { Lock, FileCheck, Building2, Handshake } from "lucide-react";
-
 export default function AboutSection() {
     return (
         <section id="about" className="pt-2 pb-4 md:pt-3 md:pb-6 bg-white">
