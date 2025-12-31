@@ -6,7 +6,7 @@ import * as Tabs from "@radix-ui/react-tabs";
 import * as Accordion from "@radix-ui/react-accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, Award, BookOpen, Users, ChevronDown, Star, Clock, Globe, Shield, ArrowRight, Play } from "lucide-react";
+import { Check, Award, ChevronDown, Star, ArrowRight, Play } from "lucide-react";
 import { useModal } from "@/contexts/ModalContext";
 
 export default function Training() {

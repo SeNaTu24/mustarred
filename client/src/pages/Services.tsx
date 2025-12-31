@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 import { Shield, Lock, FileCheck, Users, Target, Search, ArrowRight, CheckCircle, Sparkles, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useModal } from "@/contexts/ModalContext";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import {
     Dialog,

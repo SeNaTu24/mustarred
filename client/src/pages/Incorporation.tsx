@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft, Upload, Check, AlertCircle, Building, Users, FileText, CreditCard } from 'lucide-react';
+import { ArrowLeft, Upload, Check, AlertCircle, Building, Users, FileText } from 'lucide-react';
 
 interface FormData {
   proposedNames: string[];

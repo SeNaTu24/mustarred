@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { CheckCircle, ArrowLeft, ArrowRight, AlertCircle, Shield, FileText, CreditCard, Users } from "lucide-react";
+import { useState } from "react";
+import { CheckCircle, ArrowLeft, ArrowRight, AlertCircle, Shield, FileText, Users } from "lucide-react";
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Footer from "@/components/layout/Footer";
@@ -37,12 +37,7 @@ export default function DCMICompliance() {
     const [showBigTable, setShowBigTable] = useState(false);
     const [errors, setErrors] = useState<ValidationErrors>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isNavigating, setIsNavigating] = useState(false);
     const [submitError, setSubmitError] = useState<string | null>(null);
-    const [lastSaved, setLastSaved] = useState<Date | null>(null);
-    const [isOnline, setIsOnline] = useState(navigator.onLine);
-    const [submissionAttempts, setSubmissionAttempts] = useState(0);
-    const [lastSubmissionTime, setLastSubmissionTime] = useState<number>(0);
     const [showBackConfirmation, setShowBackConfirmation] = useState(false);
     const [formData, setFormData] = useState<FormData>({
         fullName: "",
@@ -65,7 +60,7 @@ export default function DCMICompliance() {
         { id: 1, title: 'About You', icon: Users },
         { id: 2, title: 'Quick Check', icon: Shield },
         { id: 3, title: 'Registration Details', icon: FileText },
-        { id: 4, title: 'Payment', icon: CreditCard }
+        { id: 4, title: 'Payment', icon: Shield }
     ];
 
     const validateEmail = (email: string) => {
