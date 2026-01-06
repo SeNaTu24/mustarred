@@ -44,28 +44,69 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
-        // If it's GAID download, trigger download immediately
+        // If it's GAID download, send email notification and trigger download
         if (modalDescription?.includes("GAID")) {
-            // Try multiple download methods
-            const fileName = 'Are You GAID-Ready 3.pdf';
-            const filePath = `/assets/resources/${encodeURIComponent(fileName)}`;
-            
-            // Method 1: Create download link
-            const link = document.createElement('a');
-            link.href = filePath;
-            link.download = fileName;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Method 2: Fallback to window.open
-            setTimeout(() => {
-                window.open(filePath, '_blank');
-            }, 100);
-            
-            setShowThankYou(true);
+            try {
+                // Send email notification via EmailJS
+                const emailMessage = `
+New GAID PDF Download Request
+
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone || 'Not provided'}
+Company: ${formData.company || 'Not provided'}
+Resource: GAID 2025 Guidelines
+Time: ${new Date().toLocaleString()}
+                `.trim();
+
+                await emailjs.send(
+                    EMAILJS_CONFIG.SERVICE_ID,
+                    EMAILJS_CONFIG.TEMPLATES.CONTACT_FORM,
+                    {
+                        to_email: 'info@mustarred.com',
+                        from_name: formData.name,
+                        from_email: formData.email,
+                        subject: '🎯 New GAID PDF Download',
+                        message: emailMessage
+                    },
+                    EMAILJS_CONFIG.PUBLIC_KEY
+                );
+                
+                // Trigger PDF download
+                const fileName = 'Are You GAID-Ready 3.pdf';
+                const filePath = `/assets/resources/${encodeURIComponent(fileName)}`;
+                
+                // Method 1: Create download link
+                const link = document.createElement('a');
+                link.href = filePath;
+                link.download = fileName;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Method 2: Fallback to window.open
+                setTimeout(() => {
+                    window.open(filePath, '_blank');
+                }, 100);
+                
+                setShowThankYou(true);
+            } catch (error) {
+                console.error('GAID email notification failed:', error);
+                // Still show success and download even if email fails
+                setShowThankYou(true);
+                
+                // Trigger download anyway
+                const fileName = 'Are You GAID-Ready 3.pdf';
+                const filePath = `/assets/resources/${encodeURIComponent(fileName)}`;
+                const link = document.createElement('a');
+                link.href = filePath;
+                link.download = fileName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
         } else {
             // For other forms, try to send email
             try {

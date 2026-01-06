@@ -4,6 +4,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { X, Download } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '@/lib/emailjs-config';
 
 interface EbookDownloadModalProps {
   isOpen: boolean;
@@ -23,20 +25,31 @@ export default function EbookDownloadModal({ isOpen, onClose }: EbookDownloadMod
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Submit form data (you can integrate with your email service here)
-    const formSubmitData = new FormData();
-    formSubmitData.append('name', formData.name);
-    formSubmitData.append('email', formData.email);
-    formSubmitData.append('profession', formData.profession);
-    formSubmitData.append('newsletter', formData.newsletter ? 'Yes' : 'No');
-    formSubmitData.append('resource', 'GAID 2025 Guidelines');
-
     try {
-      // Submit to FormSubmit or your preferred service
-      await fetch('https://formsubmit.co/solusesi03@gmail.com', {
-        method: 'POST',
-        body: formSubmitData
-      });
+      // Send email notification via EmailJS
+      const emailMessage = `
+New GAID PDF Download from Blog Page
+
+Name: ${formData.name}
+Email: ${formData.email}
+Profession: ${formData.profession}
+Newsletter Subscription: ${formData.newsletter ? 'Yes' : 'No'}
+Resource: GAID 2025 Guidelines
+Time: ${new Date().toLocaleString()}
+      `.trim();
+
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATES.CONTACT_FORM,
+        {
+          to_email: 'info@mustarred.com',
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: '🎯 New GAID PDF Download (Blog)',
+          message: emailMessage
+        },
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
 
       // If user wants newsletter, add them to Mailchimp
       if (formData.newsletter) {
@@ -72,6 +85,7 @@ export default function EbookDownloadModal({ isOpen, onClose }: EbookDownloadMod
       setFormData({ name: '', email: '', profession: '', newsletter: false });
     } catch (error) {
       console.error('Form submission failed:', error);
+      alert('Failed to send notification. Please try again or contact us directly.');
     } finally {
       setIsSubmitting(false);
     }
