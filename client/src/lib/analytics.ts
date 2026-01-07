@@ -32,3 +32,11 @@ export const trackDownload = (fileName: string) => {
     event_label: fileName
   });
 };
+
+export const trackPageView = (path: string) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('config', 'G-RQ3J9MKB9E', {
+      page_path: path
+    });
+  }
+};

@@ -262,11 +262,12 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply font-sans antialiased text-foreground;
+    @apply font-sans antialiased;
+    color: hsl(var(--foreground));
     font-family: var(--font-sans);
     overflow-x: hidden;
     background-color: white;
@@ -366,7 +367,8 @@
   }
 
   p {
-    @apply leading-relaxed text-muted-foreground;
+    @apply leading-relaxed;
+    color: hsl(var(--muted-foreground));
   }
 
   /* Refined Button Styles */
