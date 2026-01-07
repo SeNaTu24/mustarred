@@ -156,7 +156,7 @@ export default function Home() {
             </div>
             
             <div className="overflow-hidden">
-              <div className="flex animate-scroll gap-8 sm:gap-10 md:gap-12">
+              <div className="flex animate-scroll-reverse gap-8 sm:gap-10 md:gap-12">
                 <img
                   src="/assets/icons/heala_logo.svg"
                   alt="Heala"

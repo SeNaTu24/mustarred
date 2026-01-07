@@ -337,7 +337,7 @@ export default function HeroSection() {
 
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-3 md:gap-4 mb-8 px-4">
                     <Button
-                        className="modern-button w-full sm:w-auto px-6 md:px-8 py-2.5 md:py-3 relative overflow-hidden group text-sm md:text-base"
+                        className="modern-button w-full sm:w-auto px-4 sm:px-6 md:px-8 py-2.5 md:py-3 relative overflow-hidden group text-sm md:text-base"
                         style={{
                             fontFamily: "Satoshi, sans-serif",
                             fontWeight: "600",
@@ -355,7 +355,7 @@ export default function HeroSection() {
                     </Button>
                     
                     <Button
-                        className="w-full sm:w-auto bg-white/10 border-2 border-white text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-white/20 transition-all duration-300 backdrop-blur-sm text-sm md:text-base"
+                        className="w-full sm:w-auto bg-white/10 border-2 border-white text-white px-4 sm:px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-white/20 transition-all duration-300 backdrop-blur-sm text-sm md:text-base"
                         style={{
                             fontFamily: "Satoshi, sans-serif",
                             fontWeight: "600",
