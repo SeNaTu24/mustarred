@@ -35,7 +35,7 @@ export const trackDownload = (fileName: string) => {
 
 export const trackPageView = (path: string) => {
   if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('config', 'G-RQ3J9MKB9E', {
+    window.gtag('config', 'G-3FP1X9YM92', {
       page_path: path
     });
   }
