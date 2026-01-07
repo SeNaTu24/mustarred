@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { useModal } from "@/contexts/ModalContext";
+import { trackEvent } from '@/lib/analytics';
 
 export default function HeroSection() {
     const { openModal } = useModal();
@@ -341,7 +342,13 @@ export default function HeroSection() {
                             fontFamily: "Satoshi, sans-serif",
                             fontWeight: "600",
                         }}
-                        onClick={() => openModal("Talk to an Expert", "Get expert guidance for your compliance needs")}
+                        onClick={() => {
+                            trackEvent('cta_click', {
+                                event_category: 'engagement',
+                                event_label: 'Talk to Expert - Hero'
+                            });
+                            openModal("Talk to an Expert", "Get expert guidance for your compliance needs");
+                        }}
                     >
                         <span className="relative z-10">Talk to an Expert</span>
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
@@ -353,7 +360,13 @@ export default function HeroSection() {
                             fontFamily: "Satoshi, sans-serif",
                             fontWeight: "600",
                         }}
-                        onClick={() => window.location.href = '/dcmi-compliance'}
+                        onClick={() => {
+                            trackEvent('cta_click', {
+                                event_category: 'engagement',
+                                event_label: 'Get NDPA Compliant - Hero'
+                            });
+                            window.location.href = '/dcmi-compliance';
+                        }}
                     >
                         Get NDPA Compliant
                     </Button>

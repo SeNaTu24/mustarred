@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Footer from "@/components/layout/Footer";
 import { secureStorage } from "@/lib/storage";
+import { trackEvent, trackFormSubmit } from '@/lib/analytics';
 
 interface FormData {
     // Section 1: About You
@@ -249,6 +250,7 @@ export default function DCMICompliance() {
     const handleSubmit = async () => {
         if (!validateStep(4)) return;
         
+        trackFormSubmit('DCMI Registration');
         setIsSubmitting(true);
         setSubmitError(null);
 
@@ -449,7 +451,13 @@ export default function DCMICompliance() {
                                 Let's begin! This takes under 5 minutes.
                             </p>
 
-                            <Button onClick={() => setCurrentStep(1)} size="lg" className="px-8 sm:px-12 w-full sm:w-auto">
+                            <Button onClick={() => {
+                                trackEvent('dcmi_start', {
+                                    event_category: 'conversion',
+                                    event_label: 'DCMI Registration Start'
+                                });
+                                setCurrentStep(1);
+                            }} size="lg" className="px-8 sm:px-12 w-full sm:w-auto">
                                 Start Registration →
                             </Button>
                         </CardContent>

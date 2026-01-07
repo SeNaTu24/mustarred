@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { trackFormSubmit } from '@/lib/analytics';
 
 export default function MailchimpNewsletter() {
   const [email, setEmail] = useState('');
@@ -10,6 +11,8 @@ export default function MailchimpNewsletter() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
+    
+    trackFormSubmit('Newsletter Signup');
 
     const formData = new FormData();
     formData.append('EMAIL', email);

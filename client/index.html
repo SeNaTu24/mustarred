@@ -25,9 +25,18 @@
   <meta name="theme-color" content="#4b4ba3" />
   <meta name="msapplication-TileColor" content="#4b4ba3" />
 
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RQ3J9MKB9E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RQ3J9MKB9E');
+  </script>
+
   <!-- Security Headers -->
   <meta http-equiv="Content-Security-Policy"
-                                                                                                      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://chimpstatic.com https://formsubmit.co https://hook.eu2.make.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co https://hook.eu2.make.com https://mail.google.com; frame-ancestors 'none';" />
+                                                                                                      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://chimpstatic.com https://formsubmit.co https://hook.eu2.make.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co https://hook.eu2.make.com https://mail.google.com https://www.google-analytics.com https://analytics.google.com; frame-ancestors 'none';" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="DENY" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />

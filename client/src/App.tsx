@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { ModalProvider } from "@/contexts/ModalContext";
+import { usePageTracking } from "@/hooks/usePageTracking";
 import Chatbot from "@/components/Chatbot";
 import Home from "@/pages/Home";
 import Blog from "@/pages/Blog";
@@ -19,6 +20,9 @@ import Insights from "@/pages/Insights";
 import NotFound from "@/pages/not-found";
 
 function Router() {
+    // Track page views for Google Analytics
+    usePageTracking();
+
     return (
         <Switch>
             <Route path="/" component={Home} />

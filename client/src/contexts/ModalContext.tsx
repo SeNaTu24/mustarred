@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Check, X } from "lucide-react";
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '@/lib/emailjs-config';
+import { trackEvent, trackFormSubmit, trackDownload } from '@/lib/analytics';
 
 interface FormData {
     name: string;
@@ -35,6 +36,10 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
     const [showThankYou, setShowThankYou] = useState(false);
 
     const openModal = (title: string, description?: string) => {
+        trackEvent('modal_open', {
+            event_category: 'engagement',
+            event_label: title
+        });
         setModalTitle(title);
         setModalDescription(description || "");
         setIsOpen(true);
@@ -46,6 +51,7 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
         
         // If it's GAID download, send email notification and trigger download
         if (modalDescription?.includes("GAID")) {
+            trackDownload('GAID Guidelines PDF');
             try {
                 // Send email notification via EmailJS
                 const emailMessage = `
@@ -109,6 +115,7 @@ Time: ${new Date().toLocaleString()}
             }
         } else {
             // For other forms, try to send email
+            trackFormSubmit(modalTitle);
             try {
                 await emailjs.send(
                     EMAILJS_CONFIG.SERVICE_ID,
