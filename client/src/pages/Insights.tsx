@@ -45,73 +45,137 @@ export default function Insights() {
                 </div>
             </section>
 
-            {/* Featured Resource Spotlight */}
-            <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-100">
+            {/* Featured Resources - Consistent Card Layout */}
+            <section className="py-16 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-8 items-center">
-                        <div className="order-2 lg:order-1">
-                            <div className="flex flex-wrap items-center gap-2 mb-4">
-                                <span className="bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">
-                                    Featured Resource
-                                </span>
-                                <span className="bg-green-600 text-white px-2 py-1 rounded-full text-xs font-medium">
-                                    Free Download
-                                </span>
-                            </div>
-                            
-                            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3">
-                                Are You GAID-Ready?
-                            </h2>
-                            
-                            <p className="text-lg md:text-xl text-gray-700 mb-6">
-                                Essential GAID 2025 Guidelines for DPOS and SMES
-                            </p>
+                    {/* Section Header */}
+                    <div className="text-center mb-12">
+                        <span className="inline-block bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
+                            Free Resources
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                            Essential Compliance Guides
+                        </h2>
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Download our comprehensive guides to stay ahead of regulatory requirements
+                        </p>
+                    </div>
 
-                            <div className="mb-6">
-                                <h3 className="text-base font-semibold text-gray-900 mb-3">
-                                    What's Inside:
+                    {/* Cards Grid */}
+                    <div className="grid md:grid-cols-2 gap-8">
+                        {/* GAID Guide Card */}
+                        <div className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                            {/* Image Container */}
+                            <div className="relative aspect-[4/3] bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
+                                <img
+                                    src="/assets/images/blog/gaidCanva.png"
+                                    alt="GAID Guidelines"
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                />
+                                <div className="absolute top-4 right-4 flex gap-2">
+                                    <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                        Featured
+                                    </span>
+                                    <span className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                        Free
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Content */}
+                            <div className="p-6 flex flex-col">
+                                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                                    Are You GAID-Ready?
                                 </h3>
-                                <ul className="space-y-2 text-sm">
-                                    <li className="flex items-start text-gray-700">
-                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                                        <span>Definition of Acronyms</span>
-                                    </li>
-                                    <li className="flex items-start text-gray-700">
-                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                                        <span>Introduction & Governance Registration</span>
-                                    </li>
-                                    <li className="flex items-start text-gray-700">
-                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                                        <span>Core Processing Principles & Lawful Bases</span>
-                                    </li>
-                                    <li className="flex items-start text-gray-700">
-                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                                        <span>Technical & Operational Measures</span>
-                                    </li>
-                                    <li className="flex items-start text-gray-700">
-                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                                        <span>Transparency & Data Subject Rights</span>
-                                    </li>
-                                </ul>
-                            </div>
+                                <p className="text-gray-600 mb-4 text-sm">
+                                    Essential GAID 2025 Guidelines for DPOs and SMEs
+                                </p>
 
-                            <Button
-                                size="lg"
-                                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 w-full sm:w-auto"
-                                onClick={() => openModal("Free Resources", "I'd like to download the GAID 2025 Guidelines")}
-                            >
-                                <Download className="mr-2 h-4 w-4" />
-                                Download Free Guide
-                            </Button>
+                                {/* Features */}
+                                <div className="space-y-2 mb-6 flex-grow">
+                                    <div className="flex items-start text-sm text-gray-700">
+                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
+                                        <span>Governance Registration & Principles</span>
+                                    </div>
+                                    <div className="flex items-start text-sm text-gray-700">
+                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
+                                        <span>Technical & Security Measures</span>
+                                    </div>
+                                    <div className="flex items-start text-sm text-gray-700">
+                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
+                                        <span>Data Subject Rights Framework</span>
+                                    </div>
+                                </div>
+
+                                <Button
+                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5"
+                                    onClick={() => openModal("Free Resources", "I'd like to download the GAID 2025 Guidelines")}
+                                >
+                                    <Download className="mr-2 h-4 w-4" />
+                                    Download Guide
+                                </Button>
+
+                                <p className="text-xs text-center text-gray-500 mt-3">
+                                    Join 1,000+ DPOs who downloaded this
+                                </p>
+                            </div>
                         </div>
 
-                        <div className="relative order-1 lg:order-2">
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                        {/* SME Guide Card */}
+                        <div id="sme-guide" className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                            {/* Image Container */}
+                            <div className="relative aspect-[4/3] bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
                                 <img
-                                    src="/assets/images/blog/gaidImage.PNG"
-                                    alt="GAID Guidelines"
-                                    className="w-full h-64 md:h-96 object-cover"
+                                    src="/assets/images/blog/smeCanva.png"
+                                    alt="SME Compliance Guide"
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 />
+                                <div className="absolute top-4 right-4 flex gap-2">
+                                    <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                        Featured
+                                    </span>
+                                    <span className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                        Free
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Content */}
+                            <div className="p-6 flex flex-col">
+                                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                                    SME Compliance Guide
+                                </h3>
+                                <p className="text-gray-600 mb-4 text-sm">
+                                    Comprehensive Framework for Small & Medium Enterprises
+                                </p>
+
+                                {/* Features */}
+                                <div className="space-y-2 mb-6 flex-grow">
+                                    <div className="flex items-start text-sm text-gray-700">
+                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
+                                        <span>Regulatory Requirements for SMEs</span>
+                                    </div>
+                                    <div className="flex items-start text-sm text-gray-700">
+                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
+                                        <span>Compliance Checklist & Templates</span>
+                                    </div>
+                                    <div className="flex items-start text-sm text-gray-700">
+                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
+                                        <span>Risk Assessment Framework</span>
+                                    </div>
+                                </div>
+
+                                <Button
+                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5"
+                                    onClick={() => openModal("Free Resources", "I'd like to download the SME Compliance Guide (GAID)")}
+                                >
+                                    <Download className="mr-2 h-4 w-4" />
+                                    Download Guide
+                                </Button>
+
+                                <p className="text-xs text-center text-gray-500 mt-3">
+                                    Trusted by 500+ SMEs across Africa
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -138,18 +202,18 @@ export default function Insights() {
                                     }}
                                 ></div>
                                 
-                                <div className="p-4">
-                                    <div className="mb-2">
-                                        <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">
+                                <div className="p-5">
+                                    <div className="mb-3">
+                                        <span className="bg-blue-100 text-blue-800 px-2.5 py-1 rounded text-xs font-medium">
                                             {post.category}
                                         </span>
                                     </div>
                                     
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                                    <h3 className="text-base md:text-lg font-bold text-gray-900 mb-2 line-clamp-2">
                                         {post.title}
                                     </h3>
                                     
-                                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs text-gray-500 mb-3">
+                                    <div className="flex items-center gap-3 text-xs text-gray-500 mb-4">
                                         <div className="flex items-center">
                                             <Calendar className="h-3 w-3 mr-1" />
                                             {new Date(post.date).toLocaleDateString()}
@@ -162,12 +226,11 @@ export default function Insights() {
                                     
                                     <Button
                                         variant="outline"
-                                        size="sm"
-                                        className="w-full"
+                                        className="w-full py-2"
                                         onClick={() => window.location.href = `/blog/${post.id}?from=insights`}
                                     >
                                         Read More
-                                        <ArrowRight className="ml-1 h-4 w-4" />
+                                        <ArrowRight className="ml-2 h-4 w-4" />
                                     </Button>
                                 </div>
                             </div>

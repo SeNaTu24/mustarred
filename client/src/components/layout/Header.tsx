@@ -65,6 +65,11 @@ export default function Header() {
                         <a href="/our-insights" className="text-yellow-300 hover:text-yellow-200 underline ml-1 transition-colors">
                             Download guide →
                         </a>
+                        <span className="mx-6">|</span>
+                        📘 SME Compliance Guide 
+                        <a href="/our-insights#sme-guide" className="text-yellow-300 hover:text-yellow-200 underline ml-1 transition-colors">
+                            Download now →
+                        </a>
                     </div>
                 </div>
             )}

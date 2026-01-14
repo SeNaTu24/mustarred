@@ -101,42 +101,42 @@ export default function Home() {
                 <img
                   src="/assets/icons/cleva-logo2.svg"
                   alt="Cleva"
-                  className="h-12 w-32 object-contain flex-shrink-0"
+                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/fincra.png"
                   alt="Fincra"
-                  className="h-12 w-32 object-contain flex-shrink-0"
+                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/heala_logo.svg"
                   alt="Heala"
-                  className="h-12 w-32 object-contain flex-shrink-0"
+                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/renmoney.jpeg"
                   alt="Renmoney"
-                  className="h-12 w-32 object-contain flex-shrink-0"
+                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/enta_afrika.jpg"
                   alt="Enta Afrika"
-                  className="h-12 w-32 object-contain flex-shrink-0"
+                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/radease.png"
                   alt="Radease"
-                  className="h-12 w-32 object-contain flex-shrink-0"
+                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/roqqu.png"
                   alt="Roqqu"
-                  className="h-12 w-32 object-contain flex-shrink-0"
+                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/oa_logo.png"
                   alt="OA Logo"
-                  className="h-12 w-32 object-contain flex-shrink-0"
+                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
               </div>
             </div>
@@ -186,27 +186,27 @@ export default function Home() {
                 <img
                   src="/assets/icons/heala_logo.svg"
                   alt="Heala"
-                  className="h-8 w-20 object-contain flex-shrink-0"
+                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/iwajoo.png"
                   alt="Iwajoo"
-                  className="h-8 w-20 object-contain flex-shrink-0"
+                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/legaltechbro.png"
                   alt="Legal Tech Bro"
-                  className="h-8 w-20 object-contain flex-shrink-0"
+                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/pecb-slogan-bottom-logo-800.png"
                   alt="PECB"
-                  className="h-8 w-20 object-contain flex-shrink-0"
+                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/vaspa.png"
                   alt="VASPA"
-                  className="h-8 w-20 object-contain flex-shrink-0"
+                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
               </div>
             </div>

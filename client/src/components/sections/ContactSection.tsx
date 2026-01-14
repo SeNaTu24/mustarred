@@ -30,12 +30,12 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                                     <MessageSquare className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                                     Get in Touch
                                 </h3>
-                                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                                <div className="flex flex-col sm:flex-row gap-3">
                                     <Button
                                         size="lg"
                                         data-testid="button-contact"
                                         onClick={() => openModal("Contact Us", "Get in touch with our team")}
-                                        className="w-full sm:w-auto text-sm sm:text-base"
+                                        className="w-full sm:w-auto py-3 text-base"
                                     >
                                         Contact Us
                                     </Button>
@@ -44,9 +44,9 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                                             variant="outline"
                                             size="lg"
                                             onClick={onResourcesClick}
-                                            className="flex items-center gap-2 w-full sm:w-auto text-sm sm:text-base"
+                                            className="flex items-center gap-2 w-full sm:w-auto py-3 text-base"
                                         >
-                                            <Download className="h-3 w-3 sm:h-4 sm:w-4" />
+                                            <Download className="h-4 w-4" />
                                             Free Resources
                                         </Button>
                                     )}
@@ -60,7 +60,7 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                                 </h3>
                                 <button
                                     onClick={() => openModal("Contact Us", "Send us an email")}
-                                    className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+                                    className="text-base text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                                 >
                                     info@mustarred.com
                                 </button>
