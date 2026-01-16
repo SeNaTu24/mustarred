@@ -32,21 +32,19 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                                 </h3>
                                 <div className="flex flex-col sm:flex-row gap-3">
                                     <Button
-                                        size="lg"
                                         data-testid="button-contact"
                                         onClick={() => openModal("Contact Us", "Get in touch with our team")}
-                                        className="w-full sm:w-auto py-3 text-base"
+                                        className="w-full sm:w-auto px-4 py-2 text-sm"
                                     >
                                         Contact Us
                                     </Button>
                                     {onResourcesClick && (
                                         <Button
                                             variant="outline"
-                                            size="lg"
                                             onClick={onResourcesClick}
-                                            className="flex items-center gap-2 w-full sm:w-auto py-3 text-base"
+                                            className="flex items-center gap-2 w-full sm:w-auto px-4 py-2 text-sm"
                                         >
-                                            <Download className="h-4 w-4" />
+                                            <Download className="h-3.5 w-3.5" />
                                             Free Resources
                                         </Button>
                                     )}

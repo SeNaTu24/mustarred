@@ -91,19 +91,25 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
             }
         }
         
-        // If it's GAID download, send email notification and trigger download
-        if (modalDescription?.includes("GAID")) {
-            trackDownload('GAID Guidelines PDF');
+        // If it's GAID or SME download, send email notification and trigger download
+        if (modalDescription?.includes("GAID") || modalDescription?.includes("SME")) {
+            const isGAID = modalDescription?.includes("GAID");
+            const resourceName = isGAID ? 'GAID 2025 Guidelines' : 'SME Compliance Guide';
+            const fileName = isGAID ? 'Are You GAID-Ready 3.pdf' : 'SME GUIDEE.pdf';
+            const emoji = isGAID ? '🎯' : '📊';
+            
+            trackDownload(`${resourceName} PDF`);
             try {
                 // Send email notification via EmailJS
                 const emailMessage = `
-New GAID PDF Download Request
+New ${resourceName} Download Request
 
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone || 'Not provided'}
 Company: ${formData.company || 'Not provided'}
-Resource: GAID 2025 Guidelines
+Resource: ${resourceName}
+Newsletter Consent: ${formData.subscribeNewsletter ? 'Yes' : 'No'}
 Time: ${new Date().toLocaleString()}
                 `.trim();
 
@@ -114,14 +120,13 @@ Time: ${new Date().toLocaleString()}
                         to_email: 'info@mustarred.com',
                         from_name: formData.name,
                         from_email: formData.email,
-                        subject: '🎯 New GAID PDF Download',
+                        subject: `${emoji} New ${resourceName} Download`,
                         message: emailMessage
                     },
                     EMAILJS_CONFIG.PUBLIC_KEY
                 );
                 
                 // Trigger PDF download
-                const fileName = 'Are You GAID-Ready 3.pdf';
                 const filePath = `/assets/resources/${encodeURIComponent(fileName)}`;
                 
                 // Method 1: Create download link
@@ -141,12 +146,11 @@ Time: ${new Date().toLocaleString()}
                 
                 setShowThankYou(true);
             } catch (error) {
-                console.error('GAID email notification failed:', error);
+                console.error(`${resourceName} email notification failed:`, error);
                 // Still show success and download even if email fails
                 setShowThankYou(true);
                 
                 // Trigger download anyway
-                const fileName = 'Are You GAID-Ready 3.pdf';
                 const filePath = `/assets/resources/${encodeURIComponent(fileName)}`;
                 const link = document.createElement('a');
                 link.href = filePath;
@@ -256,7 +260,7 @@ Time: ${new Date().toLocaleString()}
                                             onChange={(e) => setFormData({...formData, company: e.target.value})}
                                         />
                                     </div>
-                                    {!modalDescription?.includes("GAID") && (
+                                    {!modalDescription?.includes("GAID") && !modalDescription?.includes("SME") && (
                                         <div>
                                             <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                                                 {modalTitle.includes("Resource") ? "Which resources do you need?" : "How can we help you?"} *
@@ -307,7 +311,7 @@ Time: ${new Date().toLocaleString()}
                                         type="submit"
                                         className="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-2.5 sm:py-3 mt-4 sm:mt-6 text-sm sm:text-base"
                                     >
-                                        {modalDescription?.includes("GAID") ? "Download Now" : "Submit Request"}
+                                        {(modalDescription?.includes("GAID") || modalDescription?.includes("SME")) ? "Download Now" : "Submit Request"}
                                     </Button>
                                 </form>
                             </>
@@ -320,7 +324,7 @@ Time: ${new Date().toLocaleString()}
                                     Thank You!
                                 </h3>
                                 <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4">
-                                    {modalDescription?.includes("GAID") 
+                                    {(modalDescription?.includes("GAID") || modalDescription?.includes("SME"))
                                         ? `Download should start automatically. Check your downloads folder!`
                                         : `Thank you for your submission. Our team will contact you within 24 hours.`
                                     }

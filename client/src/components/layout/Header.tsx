@@ -82,11 +82,11 @@ export default function Header() {
                         <img
                             src="/assets/brand/logo.png"
                             alt="Mustarred-logo"
-                            className="h-16 sm:h-20 md:h-20 lg:h-32 w-auto object-contain"
+                            className="h-20 sm:h-22 md:h-24 lg:h-28 w-auto object-contain"
                         />
                     </div>
 
-                    <nav className="hidden md:flex items-center gap-8">
+                    <nav className="hidden md:flex items-center gap-4 lg:gap-6">
                         {navLinks.map((link, i) => (
                             <a
                                 key={i}
@@ -107,7 +107,8 @@ export default function Header() {
 
                     <div className="flex items-center gap-2">
                         <Button
-                            className="hidden md:inline-flex font-heading"
+                            size="sm"
+                            className="hidden md:inline-flex font-heading text-xs px-2.5 py-1 h-7"
                             data-testid="button-header-contact"
                             onClick={() => openModal("Contact Us", "Get in touch with our team")}
                         >
@@ -146,7 +147,8 @@ export default function Header() {
                                 </a>
                             ))}
                             <Button
-                                className="w-full mt-2"
+                                size="sm"
+                                className="w-full mt-2 text-xs py-1.5 h-8"
                                 data-testid="button-mobile-contact"
                                 onClick={() => openModal("Contact Us", "Get in touch with our team")}
                             >

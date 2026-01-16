@@ -21,12 +21,12 @@ export default function Insights() {
             <Header />
 
             {/* Hero Section */}
-            <section className="pt-32 pb-16 bg-background">
-                <div className="max-w-7xl mx-auto px-6 text-center">
-                    <h1 className="text-3xl md:text-4xl font-bold mb-4 text-black">
+            <section className="pt-24 sm:pt-28 pb-12 sm:pb-16 bg-background">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-black">
                         Our Insights and Updates
                     </h1>
-                    <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-6">
+                    <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto mb-4 sm:mb-6">
                         Stay informed with expert insights on compliance, regulations, and governance best practices for African businesses.
                     </p>
 
@@ -38,7 +38,7 @@ export default function Insights() {
                                 placeholder="Search articles..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="pl-10"
+                                className="pl-10 text-sm"
                             />
                         </div>
                     </div>
@@ -46,23 +46,23 @@ export default function Insights() {
             </section>
 
             {/* Featured Resources - Consistent Card Layout */}
-            <section className="py-16 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-6">
+            <section className="py-12 sm:py-16 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     {/* Section Header */}
-                    <div className="text-center mb-12">
-                        <span className="inline-block bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
+                    <div className="text-center mb-8 sm:mb-12">
+                        <span className="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">
                             Free Resources
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
                             Essential Compliance Guides
                         </h2>
-                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
                             Download our comprehensive guides to stay ahead of regulatory requirements
                         </p>
                     </div>
 
                     {/* Cards Grid */}
-                    <div className="grid md:grid-cols-2 gap-8">
+                    <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
                         {/* GAID Guide Card */}
                         <div className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
                             {/* Image Container */}
@@ -83,39 +83,39 @@ export default function Insights() {
                             </div>
 
                             {/* Content */}
-                            <div className="p-6 flex flex-col">
-                                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                            <div className="p-4 sm:p-6 flex flex-col">
+                                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">
                                     Are You GAID-Ready?
                                 </h3>
-                                <p className="text-gray-600 mb-4 text-sm">
+                                <p className="text-gray-600 mb-3 sm:mb-4 text-xs sm:text-sm">
                                     Essential GAID 2025 Guidelines for DPOs and SMEs
                                 </p>
 
                                 {/* Features */}
-                                <div className="space-y-2 mb-6 flex-grow">
-                                    <div className="flex items-start text-sm text-gray-700">
+                                <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 flex-grow">
+                                    <div className="flex items-start text-xs sm:text-sm text-gray-700">
                                         <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
                                         <span>Governance Registration & Principles</span>
                                     </div>
-                                    <div className="flex items-start text-sm text-gray-700">
+                                    <div className="flex items-start text-xs sm:text-sm text-gray-700">
                                         <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
                                         <span>Technical & Security Measures</span>
                                     </div>
-                                    <div className="flex items-start text-sm text-gray-700">
+                                    <div className="flex items-start text-xs sm:text-sm text-gray-700">
                                         <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
                                         <span>Data Subject Rights Framework</span>
                                     </div>
                                 </div>
 
                                 <Button
-                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5"
+                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium px-3 py-2 text-sm"
                                     onClick={() => openModal("Free Resources", "I'd like to download the GAID 2025 Guidelines")}
                                 >
-                                    <Download className="mr-2 h-4 w-4" />
+                                    <Download className="mr-2 h-3.5 w-3.5" />
                                     Download Guide
                                 </Button>
 
-                                <p className="text-xs text-center text-gray-500 mt-3">
+                                <p className="text-xs text-center text-gray-500 mt-2 sm:mt-3">
                                     Join 1,000+ DPOs who downloaded this
                                 </p>
                             </div>
@@ -141,39 +141,39 @@ export default function Insights() {
                             </div>
 
                             {/* Content */}
-                            <div className="p-6 flex flex-col">
-                                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                            <div className="p-4 sm:p-6 flex flex-col">
+                                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">
                                     SME Compliance Guide
                                 </h3>
-                                <p className="text-gray-600 mb-4 text-sm">
+                                <p className="text-gray-600 mb-3 sm:mb-4 text-xs sm:text-sm">
                                     Comprehensive Framework for Small & Medium Enterprises
                                 </p>
 
                                 {/* Features */}
-                                <div className="space-y-2 mb-6 flex-grow">
-                                    <div className="flex items-start text-sm text-gray-700">
+                                <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 flex-grow">
+                                    <div className="flex items-start text-xs sm:text-sm text-gray-700">
                                         <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
                                         <span>Regulatory Requirements for SMEs</span>
                                     </div>
-                                    <div className="flex items-start text-sm text-gray-700">
+                                    <div className="flex items-start text-xs sm:text-sm text-gray-700">
                                         <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
                                         <span>Compliance Checklist & Templates</span>
                                     </div>
-                                    <div className="flex items-start text-sm text-gray-700">
+                                    <div className="flex items-start text-xs sm:text-sm text-gray-700">
                                         <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
                                         <span>Risk Assessment Framework</span>
                                     </div>
                                 </div>
 
                                 <Button
-                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5"
-                                    onClick={() => openModal("Free Resources", "I'd like to download the SME Compliance Guide (GAID)")}
+                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium px-3 py-2 text-sm"
+                                    onClick={() => openModal("Free Resources", "I'd like to download the SME Compliance Guide")}
                                 >
-                                    <Download className="mr-2 h-4 w-4" />
+                                    <Download className="mr-2 h-3.5 w-3.5" />
                                     Download Guide
                                 </Button>
 
-                                <p className="text-xs text-center text-gray-500 mt-3">
+                                <p className="text-xs text-center text-gray-500 mt-2 sm:mt-3">
                                     Trusted by 500+ SMEs across Africa
                                 </p>
                             </div>
@@ -183,37 +183,37 @@ export default function Insights() {
             </section>
 
             {/* Latest Insights */}
-            <section className="py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-6">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+            <section className="py-12 sm:py-16 md:py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-12 text-center">
                         Latest Insights
                     </h2>
                     
-                    <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                    <div className="columns-1 md:columns-2 lg:columns-3 gap-4 sm:gap-6 space-y-4 sm:space-y-6">
                         {filteredPosts.map((post, i) => (
                             <div 
                                 key={i}
                                 className="break-inside-avoid bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
                             >
                                 <div 
-                                    className="h-48 bg-cover bg-center"
+                                    className="h-40 sm:h-48 bg-cover bg-center"
                                     style={{
                                         backgroundImage: `url(${post.image})`,
                                     }}
                                 ></div>
                                 
-                                <div className="p-5">
-                                    <div className="mb-3">
-                                        <span className="bg-blue-100 text-blue-800 px-2.5 py-1 rounded text-xs font-medium">
+                                <div className="p-4 sm:p-5">
+                                    <div className="mb-2 sm:mb-3">
+                                        <span className="bg-blue-100 text-blue-800 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded text-xs font-medium">
                                             {post.category}
                                         </span>
                                     </div>
                                     
-                                    <h3 className="text-base md:text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+                                    <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900 mb-2 line-clamp-2">
                                         {post.title}
                                     </h3>
                                     
-                                    <div className="flex items-center gap-3 text-xs text-gray-500 mb-4">
+                                    <div className="flex items-center gap-2 sm:gap-3 text-xs text-gray-500 mb-3 sm:mb-4">
                                         <div className="flex items-center">
                                             <Calendar className="h-3 w-3 mr-1" />
                                             {new Date(post.date).toLocaleDateString()}
@@ -226,11 +226,12 @@ export default function Insights() {
                                     
                                     <Button
                                         variant="outline"
-                                        className="w-full py-2"
+                                        size="sm"
+                                        className="w-full text-xs sm:text-sm"
                                         onClick={() => window.location.href = `/blog/${post.id}?from=insights`}
                                     >
                                         Read More
-                                        <ArrowRight className="ml-2 h-4 w-4" />
+                                        <ArrowRight className="ml-1 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                                     </Button>
                                 </div>
                             </div>
