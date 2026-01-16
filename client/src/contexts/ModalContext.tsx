@@ -13,6 +13,7 @@ interface FormData {
     company: string;
     message: string;
     selectedResource?: string;
+    subscribeNewsletter: boolean;
 }
 
 interface ModalContextType {
@@ -31,7 +32,8 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
         phone: "",
         company: "",
         message: "",
-        selectedResource: ""
+        selectedResource: "",
+        subscribeNewsletter: false
     });
     const [showThankYou, setShowThankYou] = useState(false);
 
@@ -48,6 +50,46 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        // Subscribe to newsletter if consent given
+        if (formData.subscribeNewsletter && formData.email && formData.name) {
+            try {
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.name = 'mailchimp-iframe';
+                document.body.appendChild(iframe);
+
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'https://mustarred.us12.list-manage.com/subscribe/post';
+                form.target = 'mailchimp-iframe';
+                
+                const fields = [
+                    { name: 'u', value: 'cdd12424c1d674fa391e8e63e' },
+                    { name: 'id', value: '22107e23a3' },
+                    { name: 'EMAIL', value: formData.email },
+                    { name: 'FNAME', value: formData.name }
+                ];
+                
+                fields.forEach(field => {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = field.name;
+                    input.value = field.value;
+                    form.appendChild(input);
+                });
+                
+                document.body.appendChild(form);
+                form.submit();
+                
+                setTimeout(() => {
+                    document.body.removeChild(form);
+                    document.body.removeChild(iframe);
+                }, 1000);
+            } catch (error) {
+                console.error('Newsletter subscription failed:', error);
+            }
+        }
         
         // If it's GAID download, send email notification and trigger download
         if (modalDescription?.includes("GAID")) {
@@ -139,7 +181,7 @@ Time: ${new Date().toLocaleString()}
         setTimeout(() => {
             setIsOpen(false);
             setShowThankYou(false);
-            setFormData({ name: "", email: "", phone: "", company: "", message: "", selectedResource: "" });
+            setFormData({ name: "", email: "", phone: "", company: "", message: "", selectedResource: "", subscribeNewsletter: false });
             document.getElementById("more-content")?.scrollIntoView({ behavior: "smooth" });
         }, 3000);
     };
@@ -249,6 +291,18 @@ Time: ${new Date().toLocaleString()}
                                             )}
                                         </div>
                                     )}
+                                    <div className="flex items-start gap-2 pt-2">
+                                        <input
+                                            type="checkbox"
+                                            id="newsletter-consent"
+                                            className="mt-1 h-4 w-4 rounded border-gray-300 text-slate-900 focus:ring-slate-500"
+                                            checked={formData.subscribeNewsletter}
+                                            onChange={(e) => setFormData({...formData, subscribeNewsletter: e.target.checked})}
+                                        />
+                                        <label htmlFor="newsletter-consent" className="text-xs sm:text-sm text-gray-600 cursor-pointer">
+                                            I'd like to receive compliance insights and updates via email
+                                        </label>
+                                    </div>
                                     <Button
                                         type="submit"
                                         className="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-2.5 sm:py-3 mt-4 sm:mt-6 text-sm sm:text-base"

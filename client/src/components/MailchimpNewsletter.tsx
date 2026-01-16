@@ -70,7 +70,7 @@ export default function MailchimpNewsletter() {
       {status === 'success' ? (
         <div className="text-center py-3 sm:py-4">
           <p className="text-sm sm:text-base text-green-600 font-semibold">
-            ✅ Successfully subscribed! Check your email for confirmation.
+            ✅ Thank you for subscribing! You're all set.
           </p>
         </div>
       ) : (
