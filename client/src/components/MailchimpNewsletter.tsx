@@ -29,17 +29,13 @@ export default function MailchimpNewsletter() {
         }
       );
       
+      // With no-cors, we can't read the response, so assume success
       setStatus('success');
       setEmail('');
       setFirstName('');
     } catch (error) {
       console.error('Newsletter subscription failed:', error);
       setStatus('error');
-    } finally {
-      // Ensure loading state is cleared
-      if (status === 'loading') {
-        setTimeout(() => setStatus('idle'), 100);
-      }
     }
   };
 
