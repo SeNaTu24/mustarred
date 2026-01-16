@@ -10,33 +10,50 @@ export default function MailchimpNewsletter() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
     
+    if (!email) return;
+    
+    setStatus('loading');
     trackFormSubmit('Newsletter Signup');
 
-    const formData = new FormData();
-    formData.append('EMAIL', email);
-    formData.append('FNAME', firstName);
-    formData.append('tags', '12386815');
+    // Create hidden iframe for form submission
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.name = 'mailchimp-iframe';
+    document.body.appendChild(iframe);
 
-    try {
-      await fetch(
-        'https://mustarred.us12.list-manage.com/subscribe/post?u=cdd12424c1d674fa391e8e63e&id=22107e23a3&f_id=00f4e7e0f0',
-        {
-          method: 'POST',
-          body: formData,
-          mode: 'no-cors'
-        }
-      );
-      
-      // With no-cors, we can't read the response, so assume success
+    // Create form
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://mustarred.us12.list-manage.com/subscribe/post';
+    form.target = 'mailchimp-iframe';
+    
+    const fields = [
+      { name: 'u', value: 'cdd12424c1d674fa391e8e63e' },
+      { name: 'id', value: '22107e23a3' },
+      { name: 'EMAIL', value: email },
+      { name: 'FNAME', value: firstName }
+    ];
+    
+    fields.forEach(field => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = field.name;
+      input.value = field.value;
+      form.appendChild(input);
+    });
+    
+    document.body.appendChild(form);
+    form.submit();
+    
+    // Clean up and show success
+    setTimeout(() => {
+      document.body.removeChild(form);
+      document.body.removeChild(iframe);
       setStatus('success');
       setEmail('');
       setFirstName('');
-    } catch (error) {
-      console.error('Newsletter subscription failed:', error);
-      setStatus('error');
-    }
+    }, 1000);
   };
 
   return (
