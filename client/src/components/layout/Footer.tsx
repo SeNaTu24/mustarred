@@ -63,7 +63,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <button
-                                    onClick={() => handleFooterNavigation("#about")}
+                                    onClick={() => handleFooterNavigation("/about")}
                                     className="hover:text-white hover:translate-x-1 transition-all duration-200 text-left flex items-center group"
                                 >
                                     <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
@@ -72,7 +72,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <button
-                                    onClick={() => handleFooterNavigation("#services")}
+                                    onClick={() => handleFooterNavigation("/services")}
                                     className="hover:text-white hover:translate-x-1 transition-all duration-200 text-left flex items-center group"
                                 >
                                     <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
@@ -97,7 +97,7 @@ export default function Footer() {
                         <ul className="space-y-2 text-gray-300 text-sm mb-4">
                             <li>
                                 <button
-                                    onClick={() => handleFooterNavigation("/blog")}
+                                    onClick={() => handleFooterNavigation("/our-insights")}
                                     className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
                                 >
                                     <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
@@ -170,7 +170,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <button
-                                    onClick={() => handleFooterNavigation("#about")}
+                                    onClick={() => handleFooterNavigation("/about")}
                                     className="hover:text-white hover:translate-x-1 transition-all duration-200 text-left flex items-center group"
                                 >
                                     <span className="w-2 h-2 bg-purple-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
@@ -179,7 +179,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <button
-                                    onClick={() => handleFooterNavigation("#services")}
+                                    onClick={() => handleFooterNavigation("/services")}
                                     className="hover:text-white hover:translate-x-1 transition-all duration-200 text-left flex items-center group"
                                 >
                                     <span className="w-2 h-2 bg-purple-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
@@ -203,7 +203,7 @@ export default function Footer() {
                         <ul className="space-y-3 text-gray-300">
                             <li>
                                 <button
-                                    onClick={() => handleFooterNavigation("/blog")}
+                                    onClick={() => handleFooterNavigation("/our-insights")}
                                     className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
                                 >
                                     <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>

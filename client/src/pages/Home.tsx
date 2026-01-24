@@ -172,11 +172,13 @@ export default function Home() {
                   alt="Legal Tech Bro"
                   className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
-                <img
-                  src="/assets/icons/pecb-slogan-bottom-logo-800.png"
-                  alt="PECB"
-                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
-                />
+                <a href="https://pecb.com/en" target="_blank" rel="noopener noreferrer">
+                  <img
+                    src="/assets/icons/pecb-slogan-bottom-logo-800.png"
+                    alt="PECB"
+                    className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
+                  />
+                </a>
                 <img
                   src="/assets/icons/vaspa.png"
                   alt="VASPA"
@@ -198,11 +200,13 @@ export default function Home() {
                   alt="Legal Tech Bro"
                   className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
-                <img
-                  src="/assets/icons/pecb-slogan-bottom-logo-800.png"
-                  alt="PECB"
-                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
-                />
+                <a href="https://pecb.com/en" target="_blank" rel="noopener noreferrer">
+                  <img
+                    src="/assets/icons/pecb-slogan-bottom-logo-800.png"
+                    alt="PECB"
+                    className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
+                  />
+                </a>
                 <img
                   src="/assets/icons/vaspa.png"
                   alt="VASPA"

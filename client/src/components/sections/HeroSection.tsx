@@ -363,12 +363,12 @@ export default function HeroSection() {
                         onClick={() => {
                             trackEvent('cta_click', {
                                 event_category: 'engagement',
-                                event_label: 'Get NDPA Compliant - Hero'
+                                event_label: 'Register as a DCMI - Hero'
                             });
                             window.location.href = '/dcmi-compliance';
                         }}
                     >
-                        Get NDPA Compliant
+                        Register as a DCMI
                     </Button>
                 </div>
 

@@ -53,7 +53,9 @@ export default function Training() {
                 {/* Hero Section */}
                 <section className="relative py-12 sm:py-16 md:py-20 lg:py-32 bg-slate-900 text-white overflow-hidden">
                     <div className="absolute inset-0 opacity-60">
-                        <img src="/pecb.png" alt="" className="w-full h-full object-cover" />
+                        <a href="https://pecb.com/en" target="_blank" rel="noopener noreferrer">
+                            <img src="/pecb.png" alt="PECB Official Training Partner" className="w-full h-full object-cover" />
+                        </a>
                     </div>
                     <div className="absolute inset-0 bg-slate-900/40"></div>
                     
