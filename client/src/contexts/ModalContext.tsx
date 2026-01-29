@@ -99,8 +99,20 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
             const emoji = isGAID ? '🎯' : '📊';
             
             trackDownload(`${resourceName} PDF`);
+            
+            // Always trigger download first
+            const filePath = `/assets/resources/${encodeURIComponent(fileName)}`;
+            const link = document.createElement('a');
+            link.href = filePath;
+            link.download = fileName;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Try to send email notification (but don't fail if it doesn't work)
             try {
-                // Send email notification via EmailJS
                 const emailMessage = `
 New ${resourceName} Download Request
 
@@ -125,61 +137,57 @@ Time: ${new Date().toLocaleString()}
                     },
                     EMAILJS_CONFIG.PUBLIC_KEY
                 );
-                
-                // Trigger PDF download
-                const filePath = `/assets/resources/${encodeURIComponent(fileName)}`;
-                
-                // Method 1: Create download link
-                const link = document.createElement('a');
-                link.href = filePath;
-                link.download = fileName;
-                link.target = '_blank';
-                link.rel = 'noopener noreferrer';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                
-                // Method 2: Fallback to window.open
-                setTimeout(() => {
-                    window.open(filePath, '_blank');
-                }, 100);
-                
-                setShowThankYou(true);
             } catch (error) {
                 console.error(`${resourceName} email notification failed:`, error);
-                // Still show success and download even if email fails
-                setShowThankYou(true);
-                
-                // Trigger download anyway
-                const filePath = `/assets/resources/${encodeURIComponent(fileName)}`;
-                const link = document.createElement('a');
-                link.href = filePath;
-                link.download = fileName;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                // Email failed but download still works
             }
+            
+            setShowThankYou(true);
         } else {
-            // For other forms, try to send email
+            // For other forms, use FormSubmit with hidden form
             trackFormSubmit(modalTitle);
-            try {
-                await emailjs.send(
-                    EMAILJS_CONFIG.SERVICE_ID,
-                    EMAILJS_CONFIG.TEMPLATES.CONTACT_FORM,
-                    {
-                        name: formData.name,
-                        email: formData.email,
-                        title: modalTitle,
-                        message: formData.message
-                    },
-                    EMAILJS_CONFIG.PUBLIC_KEY
-                );
-                setShowThankYou(true);
-            } catch (error) {
-                console.error('Failed to send email:', error);
-                alert('Failed to send email. Please try again or contact us directly.');
-                return;
-            }
+            
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.name = 'formsubmit-iframe';
+            document.body.appendChild(iframe);
+            
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'https://formsubmit.co/solusesi03@gmail.com';
+            form.target = 'formsubmit-iframe';
+            form.style.display = 'none';
+            
+            const fields = [
+                { name: 'name', value: formData.name },
+                { name: 'email', value: formData.email },
+                { name: 'phone', value: formData.phone || 'Not provided' },
+                { name: 'company', value: formData.company || 'Not provided' },
+                { name: 'subject', value: `📋 ${modalTitle} Request` },
+                { name: 'message', value: modalTitle.includes("Resource") ? `Resource Requested: ${formData.selectedResource}` : formData.message },
+                { name: 'newsletter', value: formData.subscribeNewsletter ? 'Yes' : 'No' },
+                { name: '_next', value: window.location.href },
+                { name: '_captcha', value: 'false' }
+            ];
+            
+            fields.forEach(field => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = field.name;
+                input.value = field.value;
+                form.appendChild(input);
+            });
+            
+            document.body.appendChild(form);
+            form.submit();
+            
+            // Show success immediately since FormSubmit doesn't provide feedback
+            setShowThankYou(true);
+            
+            setTimeout(() => {
+                document.body.removeChild(form);
+                document.body.removeChild(iframe);
+            }, 1000);
         }
         
         setTimeout(() => {
@@ -326,7 +334,7 @@ Time: ${new Date().toLocaleString()}
                                 <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4">
                                     {(modalDescription?.includes("GAID") || modalDescription?.includes("SME"))
                                         ? `Download should start automatically. Check your downloads folder!`
-                                        : `Thank you for your submission. Our team will contact you within 24 hours.`
+                                        : `Thank you for your request. We'll contact you within 24 hours with the requested resources.`
                                     }
                                 </p>
                                 <p className="text-xs sm:text-sm text-gray-500">
