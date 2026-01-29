@@ -122,7 +122,7 @@ export default function Footer() {
                                     className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
                                 >
                                     <span className="w-1.5 h-1.5 bg-red-400 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
-                                    Privacy Policy
+                                    Privacy Notice
                                 </button>
                             </li>
                             <li>
@@ -231,7 +231,7 @@ export default function Footer() {
                                     className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
                                 >
                                     <span className="w-2 h-2 bg-red-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
-                                    Privacy Policy
+                                    Privacy Notice
                                 </button>
                             </li>
                             <li>

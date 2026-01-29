@@ -108,7 +108,7 @@ export default function Header() {
                     <div className="flex items-center gap-2">
                         <Button
                             size="sm"
-                            className="hidden md:inline-flex font-heading text-xs px-2.5 py-1 h-7"
+                            className="hidden md:inline-flex font-heading text-xs px-3 py-1.5 min-h-[36px]"
                             data-testid="button-header-contact"
                             onClick={() => openModal("Contact Us", "Get in touch with our team")}
                         >
@@ -141,14 +141,14 @@ export default function Header() {
                                         e.preventDefault();
                                         handleNavigation(link.href);
                                     }}
-                                    className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left"
+                                    className="text-base py-2.5 min-h-[44px] text-muted-foreground hover:text-foreground transition-colors text-left flex items-center"
                                 >
                                     {link.label}
                                 </a>
                             ))}
                             <Button
                                 size="sm"
-                                className="w-full mt-2 text-xs py-1.5 h-8"
+                                className="w-full mt-2 text-sm py-2.5 min-h-[48px]"
                                 data-testid="button-mobile-contact"
                                 onClick={() => openModal("Contact Us", "Get in touch with our team")}
                             >

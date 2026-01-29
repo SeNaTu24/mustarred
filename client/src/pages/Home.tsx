@@ -44,13 +44,13 @@ export default function Home() {
         </div>
 
         {/* Why Choose Us Section */}
-        <section className="py-8 md:py-12 lg:py-16 bg-gray-50">
+        <section className="py-10 md:py-12 lg:py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            <div className="text-center mb-3 md:mb-4">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-1 md:mb-2 text-black">
+            <div className="text-center mb-6 md:mb-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3 text-black">
                 Why Choose us?
               </h2>
-              <p className="text-base md:text-lg text-muted-foreground">
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
                 We are trusted by leading organizations
               </p>
             </div>
@@ -144,13 +144,13 @@ export default function Home() {
         </section>
 
         {/* Partnership and Collaborations Section */}
-        <section className="pt-16 md:pt-24 lg:pt-32 pb-12 md:pb-16 lg:pb-20 bg-white">
+        <section className="pt-12 md:pt-20 lg:pt-28 pb-10 md:pb-14 lg:pb-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            <div className="text-center mb-3 md:mb-4">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-1 md:mb-2 text-black">
+            <div className="text-center mb-6 md:mb-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3 text-black">
                 Partnership and Collaborations
               </h2>
-              <p className="text-base md:text-lg text-muted-foreground">
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
                 Building stronger ecosystems together
               </p>
             </div>

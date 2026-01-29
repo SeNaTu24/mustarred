@@ -34,17 +34,12 @@ export default function ServicesSection() {
             <div className="max-w-7xl mx-auto px-6 md:px-8">
                 <div className="text-center mb-6">
                     <h2
-                        className="font-heading mb-4"
-                        style={{
-                            color: "black",
-                            fontSize: "16px",
-                            fontWeight: "bold",
-                        }}
+                        className="font-heading mb-3 md:mb-4 text-xs sm:text-sm md:text-base font-bold text-black"
                     >
                         HOW WE HELP OUR CLIENTS
                     </h2>
-                    <div className="max-w-4xl mx-auto">
-                        <p className="text-5xl text-black leading-tight">
+                    <div className="max-w-4xl mx-auto px-4">
+                        <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-black leading-tight">
                             Let our experts hand-hold you through your tests and
                             triumphs.
                         </p>
@@ -77,7 +72,7 @@ export default function ServicesSection() {
                             </p>
                             <button
                                 onClick={() => window.location.href = '/services'}
-                                className="text-[#4b4ba3] font-semibold hover:underline"
+                                className="text-[#4b4ba3] font-semibold hover:underline min-h-[44px] py-2 touch-manipulation"
                             >
                                 Learn More →
                             </button>
@@ -88,7 +83,7 @@ export default function ServicesSection() {
                 <div className="text-center">
                     <button
                         onClick={() => window.location.href = '/services'}
-                        className="bg-[#4b4ba3] text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-[#3a3a8a] transition-colors"
+                        className="bg-[#4b4ba3] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-[#3a3a8a] transition-colors w-full sm:w-auto min-h-[48px] touch-manipulation"
                     >
                         View All Services
                     </button>

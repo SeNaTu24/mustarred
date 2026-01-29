@@ -19,7 +19,7 @@ const greeting = "Welcome to Mustarred! I'm here to help you with business advis
 
 const quickReplies: QuickReply[] = [
   { text: "Company Incorporation", action: "incorporation" },
-  { text: "Data Protection (NDPR)", action: "ndpr" },
+  { text: "Data Protection (NDPR & GAID)", action: "ndpr" },
   { text: "Compliance Services", action: "compliance" },
   { text: "Corporate Governance", action: "governance" },
   { text: "Contact Our Team", action: "contact" },

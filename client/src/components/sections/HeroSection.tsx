@@ -337,7 +337,7 @@ export default function HeroSection() {
 
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-3 md:gap-4 mb-8 px-4">
                     <Button
-                        className="modern-button w-full sm:w-auto px-4 py-2 relative overflow-hidden group text-sm"
+                        className="modern-button w-full sm:w-auto px-6 py-3 min-h-[48px] sm:min-h-[52px] relative overflow-hidden group text-sm sm:text-base"
                         style={{
                             fontFamily: "Satoshi, sans-serif",
                             fontWeight: "600",
@@ -355,7 +355,7 @@ export default function HeroSection() {
                     </Button>
                     
                     <Button
-                        className="w-full sm:w-auto bg-white/10 border-2 border-white text-white px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition-all duration-300 backdrop-blur-sm text-sm"
+                        className="w-full sm:w-auto bg-white/10 border-2 border-white text-white px-6 py-3 min-h-[48px] sm:min-h-[52px] rounded-lg font-semibold hover:bg-white/20 transition-all duration-300 backdrop-blur-sm text-sm sm:text-base"
                         style={{
                             fontFamily: "Satoshi, sans-serif",
                             fontWeight: "600",
@@ -374,7 +374,7 @@ export default function HeroSection() {
 
                 <button
                     onClick={scrollToAbout}
-                    className="absolute bottom-12 left-1/2 -translate-x-1/2 text-muted-foreground hover-elevate active-elevate-2 p-2 rounded-full"
+                    className="absolute bottom-12 left-1/2 -translate-x-1/2 text-muted-foreground hover-elevate active-elevate-2 p-3 rounded-full min-h-[48px] min-w-[48px] flex items-center justify-center touch-manipulation"
                     aria-label="Scroll to content"
                     data-testid="button-scroll-down"
                 >

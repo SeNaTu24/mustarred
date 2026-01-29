@@ -271,6 +271,12 @@
     font-family: var(--font-sans);
     overflow-x: hidden;
     background-color: white;
+    /* Improve text readability on mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent text size adjustment on orientation change */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   html {
@@ -327,6 +333,25 @@
   img {
     max-width: 100%;
     height: auto;
+    display: block;
+  }
+
+  /* Responsive touch targets for mobile */
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    touch-action: manipulation;
+  }
+
+  /* Ensure minimum touch target size on mobile (44x44px per WCAG) */
+  @media (max-width: 767px) {
+    button:not(.no-min-touch),
+    a.btn:not(.no-min-touch) {
+      min-height: 44px;
+      min-width: 44px;
+    }
   }
 
   /* Refined Typography System */
@@ -340,35 +365,41 @@
     font-weight: 500;
     letter-spacing: -0.02em;
     line-height: 1.3;
+    /* Ensure headings wrap properly on mobile */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-medium;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl font-medium;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium;
   }
 
   h3 {
-    @apply text-3xl md:text-3xl font-medium;
+    @apply text-xl sm:text-2xl md:text-3xl font-medium;
   }
 
   h4 {
-    @apply text-sm sm:text-base md:text-2xl font-normal;
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl font-normal;
   }
 
   h5 {
-    @apply text-lg md:text-xl font-normal;
+    @apply text-base sm:text-lg md:text-xl font-normal;
   }
 
   h6 {
-    @apply text-base md:text-lg font-normal;
+    @apply text-sm sm:text-base md:text-lg font-normal;
   }
 
   p {
-    @apply leading-relaxed;
+    @apply leading-relaxed text-sm sm:text-base;
     color: hsl(var(--muted-foreground));
+    /* Better line breaking on mobile */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   /* Refined Button Styles */
@@ -376,10 +407,19 @@
     background-color: hsl(var(--brand-primary));
     color: white;
     font-weight: 600;
-    padding: 0.75rem 2rem;
+    padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
     transition: all 0.2s ease;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15);
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  @media (min-width: 640px) {
+    .btn-primary {
+      padding: 0.75rem 2rem;
+      min-height: 48px;
+    }
   }
 
   .btn-primary:hover {
@@ -388,15 +428,28 @@
     transform: translateY(-1px);
   }
 
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
   .btn-secondary {
     background-color: white;
     color: hsl(var(--brand-primary));
     font-weight: 600;
-    padding: 0.75rem 2rem;
+    padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
     transition: all 0.2s ease;
     border: 2px solid hsl(var(--brand-primary));
     box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  @media (min-width: 640px) {
+    .btn-secondary {
+      padding: 0.75rem 2rem;
+      min-height: 48px;
+    }
   }
 
   .btn-secondary:hover {
@@ -404,6 +457,10 @@
     color: white;
     transform: translateY(-1px);
     box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-secondary:active {
+    transform: translateY(0);
   }
 }
 
@@ -428,6 +485,27 @@
  * need to be distinguished from eachother visually.
  */
 @layer utilities {
+  /* Responsive utilities for mobile-first design */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  /* Optimized text rendering for mobile */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
 
   /* Services page animations */
   @keyframes dark-bg-shift {

@@ -144,18 +144,14 @@ Time: ${new Date().toLocaleString()}
             
             setShowThankYou(true);
         } else {
-            // For other forms, use FormSubmit with hidden form
+            // For other forms, use direct FormSubmit
             trackFormSubmit(modalTitle);
             
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.name = 'formsubmit-iframe';
-            document.body.appendChild(iframe);
+            console.log('Submitting form to FormSubmit...');
             
             const form = document.createElement('form');
             form.method = 'POST';
             form.action = 'https://formsubmit.co/solusesi03@gmail.com';
-            form.target = 'formsubmit-iframe';
             form.style.display = 'none';
             
             const fields = [
@@ -170,6 +166,8 @@ Time: ${new Date().toLocaleString()}
                 { name: '_captcha', value: 'false' }
             ];
             
+            console.log('Form data being sent:', fields);
+            
             fields.forEach(field => {
                 const input = document.createElement('input');
                 input.type = 'hidden';
@@ -179,15 +177,19 @@ Time: ${new Date().toLocaleString()}
             });
             
             document.body.appendChild(form);
-            form.submit();
             
-            // Show success immediately since FormSubmit doesn't provide feedback
+            // Show success before submitting to avoid page redirect issues
             setShowThankYou(true);
             
+            // Submit after a brief delay
             setTimeout(() => {
-                document.body.removeChild(form);
-                document.body.removeChild(iframe);
-            }, 1000);
+                form.submit();
+                console.log('Form submitted to FormSubmit');
+                setTimeout(() => {
+                    document.body.removeChild(form);
+                    console.log('Cleaned up form');
+                }, 2000);
+            }, 100);
         }
         
         setTimeout(() => {
@@ -205,7 +207,7 @@ Time: ${new Date().toLocaleString()}
             <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
                 <Dialog.Portal>
                     <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50" />
-                    <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl p-4 sm:p-6 md:p-8 w-full max-w-sm sm:max-w-md mx-4 shadow-2xl z-50 max-h-[90vh] overflow-y-auto">
+                    <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl p-4 sm:p-6 md:p-8 w-full max-w-sm sm:max-w-md mx-4 shadow-2xl z-50 max-h-[90vh] overflow-y-auto overflow-x-hidden">
                         <Dialog.Close className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 hover:bg-gray-100 rounded-full">
                             <X className="h-4 w-4" />
                         </Dialog.Close>
@@ -276,20 +278,14 @@ Time: ${new Date().toLocaleString()}
                                             {modalTitle.includes("Resource") ? (
                                                 <select
                                                     required
-                                                    className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+                                                    className="w-full max-w-full px-3 py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent overflow-hidden text-ellipsis"
+                                                    style={{ wordWrap: 'normal' }}
                                                     value={formData.selectedResource}
                                                     onChange={(e) => setFormData({...formData, selectedResource: e.target.value})}
                                                 >
                                                     <option value="">Select a resource...</option>
-                                                    <option value="GAID Compliance Guide">GAID Compliance Guide</option>
-                                                    <option value="Data Protection Templates">Data Protection Templates</option>
-                                                    <option value="Privacy Policy Template">Privacy Policy Template</option>
-                                                    <option value="Terms of Service Template">Terms of Service Template</option>
-                                                    <option value="Cookie Policy Template">Cookie Policy Template</option>
-                                                    <option value="GDPR Compliance Checklist">GDPR Compliance Checklist</option>
-                                                    <option value="AI Governance Framework">AI Governance Framework</option>
-                                                    <option value="Risk Assessment Template">Risk Assessment Template</option>
-                                                    <option value="All Resources Package">All Resources Package</option>
+                                                    <option value="Essential GAID 2025 Guidelines for DPOs and SMEs" title="Essential GAID 2025 Guidelines for DPOs and SMEs">Essential GAID 2025 Guidelines for DPOs and SMEs</option>
+                                                    <option value="Comprehensive Framework for Small & Medium Enterprise" title="Comprehensive Framework for Small & Medium Enterprise">Comprehensive Framework for Small & Medium Enterprise</option>
                                                 </select>
                                             ) : (
                                                 <textarea
