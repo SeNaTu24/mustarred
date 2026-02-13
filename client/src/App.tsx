@@ -18,6 +18,8 @@ import Consultation from "@/pages/Consultation";
 import DCMICompliance from "@/pages/DCMICompliance";
 import Incorporation from "@/pages/Incorporation";
 import Insights from "@/pages/Insights";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import TermsOfService from "@/pages/TermsOfService";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -36,6 +38,8 @@ function Router() {
             <Route path="/our-insights" component={Insights} />
             <Route path="/blog" component={Blog} />
             <Route path="/blog/:id" component={BlogPost} />
+            <Route path="/privacy-policy" component={PrivacyPolicy} />
+            <Route path="/terms-of-service" component={TermsOfService} />
             <Route component={NotFound} />
         </Switch>
     );

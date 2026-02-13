@@ -12,20 +12,46 @@ import {
 } from "lucide-react";
 import { SiX, SiLinkedin, SiInstagram } from "react-icons/si";
 import { useParams, useLocation } from "wouter";
+import { useState, useEffect } from "react";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import ReactMarkdown from "react-markdown";
-import { getPostById } from "@/data/blog-posts";
+import { getPostBySlug } from "@/lib/sanity-queries";
+import { BlogPost as BlogPostType } from "@/data/blog-types";
 import { formatDate } from "@/data/blog-config";
 
 export default function BlogPost() {
     const { id } = useParams<{ id: string }>();
     const [location] = useLocation();
-    const post = getPostById(id!);
+    const [post, setPost] = useState<BlogPostType | null>(null);
+    const [loading, setLoading] = useState(true);
+    
+    useEffect(() => {
+        if (id) {
+            getPostBySlug(id)
+                .then(setPost)
+                .catch(console.error)
+                .finally(() => setLoading(false));
+        }
+    }, [id]);
     
     // Determine back URL based on query parameter or default to /our-insights
     const searchParams = new URLSearchParams(location.split('?')[1]);
     const from = searchParams.get('from');
     const backUrl = from === 'blog' ? '/blog' : '/our-insights';
+
+    if (loading) {
+        return (
+            <div className="min-h-screen">
+                <BlogHeader />
+                <main className="pt-16">
+                    <div className="max-w-4xl mx-auto px-6 md:px-8 py-16 text-center">
+                        <p className="text-muted-foreground">Loading article...</p>
+                    </div>
+                </main>
+                <Footer />
+            </div>
+        );
+    }
 
     if (!post) {
         return (

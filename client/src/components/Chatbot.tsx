@@ -12,7 +12,7 @@ interface Message {
 
 interface QuickReply {
   text: string;
-  action: string;
+  action: string; 
 }
 
 const greeting = "Welcome to Mustarred! I'm here to help you with business advisory services. What would you like to know about?";

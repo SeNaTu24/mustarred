@@ -4,14 +4,24 @@ import { Download, ArrowRight, Calendar, Clock, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useModal } from "@/contexts/ModalContext";
-import { blogPosts } from "@/data/blog-posts";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getAllPosts } from "@/lib/sanity-queries";
+import { BlogPost } from "@/data/blog-types";
 
 export default function Insights() {
     const { openModal } = useModal();
     const [searchTerm, setSearchTerm] = useState("");
+    const [posts, setPosts] = useState<BlogPost[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    const filteredPosts = blogPosts.filter(post => 
+    useEffect(() => {
+        getAllPosts()
+            .then(setPosts)
+            .catch(console.error)
+            .finally(() => setLoading(false));
+    }, []);
+
+    const filteredPosts = posts.filter(post => 
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -189,6 +199,15 @@ export default function Insights() {
                         Latest Insights
                     </h2>
                     
+                    {loading ? (
+                        <div className="text-center py-12">
+                            <p className="text-gray-500">Loading articles...</p>
+                        </div>
+                    ) : filteredPosts.length === 0 ? (
+                        <div className="text-center py-12">
+                            <p className="text-gray-500">No articles found. {searchTerm && "Try a different search term."}</p>
+                        </div>
+                    ) : (
                     <div className="columns-1 md:columns-2 lg:columns-3 gap-4 sm:gap-6 space-y-4 sm:space-y-6">
                         {filteredPosts.map((post, i) => (
                             <div 
@@ -237,6 +256,7 @@ export default function Insights() {
                             </div>
                         ))}
                     </div>
+                    )}
                 </div>
             </section>
 
