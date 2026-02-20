@@ -6,7 +6,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { ModalProvider } from "@/contexts/ModalContext";
 import { usePageTracking } from "@/hooks/usePageTracking";
-import { Analytics } from "@vercel/analytics/react";
 import Chatbot from "@/components/Chatbot";
 import Home from "@/pages/Home";
 import Blog from "@/pages/Blog";
@@ -54,7 +53,6 @@ function App() {
                         <Toaster />
                         <Router />
                         <Chatbot />
-                        <Analytics />
                     </ModalProvider>
                 </TooltipProvider>
             </QueryClientProvider>
