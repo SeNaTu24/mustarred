@@ -13,7 +13,7 @@ function convertSanityPost(sanityPost: SanityBlogPost): BlogPost {
     content: sanityPost.content,
     author: sanityPost.author,
     date: sanityPost.publishedAt,
-    category: sanityPost.category,
+    category: sanityPost.category as any,
     image: sanityPost.featuredImage 
       ? urlFor(sanityPost.featuredImage).width(1200).url() 
       : '/assets/images/blog/default.jpg',
