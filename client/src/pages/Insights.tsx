@@ -4,22 +4,15 @@ import { Download, ArrowRight, Calendar, Clock, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useModal } from "@/contexts/ModalContext";
-import { useState, useEffect } from "react";
-import { getAllPosts } from "@/lib/sanity-queries";
+import { useState } from "react";
+import { blogPosts } from "@/data/blog-posts";
 import { BlogPost } from "@/data/blog-types";
 
 export default function Insights() {
     const { openModal } = useModal();
     const [searchTerm, setSearchTerm] = useState("");
-    const [posts, setPosts] = useState<BlogPost[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        getAllPosts()
-            .then(setPosts)
-            .catch(console.error)
-            .finally(() => setLoading(false));
-    }, []);
+    const [posts] = useState<BlogPost[]>(blogPosts);
+    const loading = false;
 
     const filteredPosts = posts.filter(post => 
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

@@ -15,7 +15,7 @@ import { useParams, useLocation } from "wouter";
 import { useState, useEffect } from "react";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import ReactMarkdown from "react-markdown";
-import { getPostBySlug } from "@/lib/sanity-queries";
+import { getPostById } from "@/data/blog-posts";
 import { BlogPost as BlogPostType } from "@/data/blog-types";
 import { formatDate } from "@/data/blog-config";
 
@@ -27,10 +27,9 @@ export default function BlogPost() {
     
     useEffect(() => {
         if (id) {
-            getPostBySlug(id)
-                .then(setPost)
-                .catch(console.error)
-                .finally(() => setLoading(false));
+            const foundPost = getPostById(id);
+            setPost(foundPost || null);
+            setLoading(false);
         }
     }, [id]);
     
