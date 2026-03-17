@@ -10,12 +10,13 @@ import {
     Mail,
     MessageSquare,
 } from "lucide-react";
-import { SiX, SiLinkedin, SiInstagram } from "react-icons/si";
+import { SiX, SiInstagram } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa";
 import { useParams, useLocation } from "wouter";
 import { useState, useEffect } from "react";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import ReactMarkdown from "react-markdown";
-import { getPostById } from "@/data/blog-posts";
+import { getPostBySlug } from "@/lib/sanity-queries";
 import { BlogPost as BlogPostType } from "@/data/blog-types";
 import { formatDate } from "@/data/blog-config";
 
@@ -26,11 +27,21 @@ export default function BlogPost() {
     const [loading, setLoading] = useState(true);
     
     useEffect(() => {
-        if (id) {
-            const foundPost = getPostById(id);
-            setPost(foundPost || null);
-            setLoading(false);
+        async function fetchPost() {
+            if (id) {
+                setLoading(true);
+                try {
+                    const foundPost = await getPostBySlug(id);
+                    setPost(foundPost || null);
+                } catch (error) {
+                    console.error("Error fetching post:", error);
+                    setPost(null);
+                } finally {
+                    setLoading(false);
+                }
+            }
         }
+        fetchPost();
     }, [id]);
     
     // Determine back URL based on query parameter or default to /our-insights
@@ -403,7 +414,7 @@ export default function BlogPost() {
                                                     href: "https://x.com/mustarred",
                                                 },
                                                 {
-                                                    icon: SiLinkedin,
+                                                    icon: FaLinkedin,
                                                     label: "LinkedIn",
                                                     href: "https://www.linkedin.com/company/mustarred/about/",
                                                 },
