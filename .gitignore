@@ -6,6 +6,7 @@ vite.config.ts.*
 *.tar.gz
 Editor Configuration (VS Code)
 .vscode/
+client/.env
 
 # Temporary files
 next-article.txt
