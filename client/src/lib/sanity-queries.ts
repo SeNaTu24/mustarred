@@ -3,6 +3,16 @@ import { SanityBlogPost } from './sanity-types';
 import { BlogPost } from '../data/blog-types';
 import { calculateReadTime } from '../data/blog-config';
 import { urlFor } from './sanity';
+import { blogPosts as hardcodedPosts } from '../data/blog-posts';
+
+// Merge hardcoded posts with Sanity posts.
+// Sanity posts take precedence (deduplicated by id), sorted newest first.
+function mergePosts(sanityPosts: BlogPost[]): BlogPost[] {
+  const sanityIds = new Set(sanityPosts.map(p => p.id));
+  const uniqueHardcoded = hardcodedPosts.filter(p => !sanityIds.has(p.id));
+  const combined = [...sanityPosts, ...uniqueHardcoded];
+  return combined.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
 
 // Convert Sanity post to app BlogPost format
 function convertSanityPost(sanityPost: SanityBlogPost): BlogPost {
@@ -21,7 +31,7 @@ function convertSanityPost(sanityPost: SanityBlogPost): BlogPost {
   };
 }
 
-// Fetch all blog posts
+// Fetch all blog posts (Sanity + hardcoded, merged and sorted)
 export async function getAllPosts(): Promise<BlogPost[]> {
   const query = `*[_type == "blogPost"] | order(publishedAt desc) {
     _id,
@@ -38,11 +48,16 @@ export async function getAllPosts(): Promise<BlogPost[]> {
     seoDescription
   }`;
   
-  const posts = await client.fetch<SanityBlogPost[]>(query);
-  return posts.map(convertSanityPost);
+  try {
+    const posts = await client.fetch<SanityBlogPost[]>(query);
+    return mergePosts(posts.map(convertSanityPost));
+  } catch {
+    // If Sanity is unreachable, fall back to hardcoded posts only
+    return hardcodedPosts;
+  }
 }
 
-// Fetch single post by slug
+// Fetch single post by slug (checks Sanity first, then hardcoded)
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   const query = `*[_type == "blogPost" && slug.current == $slug][0] {
     _id,
@@ -59,11 +74,18 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     seoDescription
   }`;
   
-  const post = await client.fetch<SanityBlogPost>(query, { slug });
-  return post ? convertSanityPost(post) : null;
+  try {
+    const post = await client.fetch<SanityBlogPost>(query, { slug });
+    if (post) return convertSanityPost(post);
+  } catch {
+    // fall through to hardcoded lookup
+  }
+  
+  // Fall back to hardcoded post
+  return hardcodedPosts.find(p => p.id === slug) ?? null;
 }
 
-// Fetch posts by category
+// Fetch posts by category (merged)
 export async function getPostsByCategory(category: string): Promise<BlogPost[]> {
   if (category === 'All') {
     return getAllPosts();
@@ -84,27 +106,21 @@ export async function getPostsByCategory(category: string): Promise<BlogPost[]> 
     seoDescription
   }`;
   
-  const posts = await client.fetch<SanityBlogPost[]>(query, { category });
-  return posts.map(convertSanityPost);
+  try {
+    const posts = await client.fetch<SanityBlogPost[]>(query, { category });
+    const sanityConverted = posts.map(convertSanityPost);
+    const hardcodedFiltered = hardcodedPosts.filter(p => p.category === category);
+    const sanityIds = new Set(sanityConverted.map(p => p.id));
+    const uniqueHardcoded = hardcodedFiltered.filter(p => !sanityIds.has(p.id));
+    const combined = [...sanityConverted, ...uniqueHardcoded];
+    return combined.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  } catch {
+    return hardcodedPosts.filter(p => p.category === category);
+  }
 }
 
-// Fetch latest posts
+// Fetch latest N posts (merged, newest first)
 export async function getLatestPosts(count: number = 3): Promise<BlogPost[]> {
-  const query = `*[_type == "blogPost"] | order(publishedAt desc) [0...${count}] {
-    _id,
-    _createdAt,
-    title,
-    slug,
-    excerpt,
-    content,
-    author,
-    publishedAt,
-    category,
-    featuredImage,
-    seoTitle,
-    seoDescription
-  }`;
-  
-  const posts = await client.fetch<SanityBlogPost[]>(query);
-  return posts.map(convertSanityPost);
+  const all = await getAllPosts();
+  return all.slice(0, count);
 }
