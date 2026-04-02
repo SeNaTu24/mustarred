@@ -225,11 +225,11 @@ export default function Insights() {
                             <p className="text-gray-500">No articles found. {searchTerm && "Try a different search term."}</p>
                         </div>
                     ) : (
-                    <div className="columns-1 md:columns-2 lg:columns-3 gap-4 sm:gap-6 space-y-4 sm:space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                         {filteredPosts.map((post, i) => (
                             <div 
                                 key={i}
-                                className="break-inside-avoid bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+                                className="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
                             >
                                 <div 
                                     className="h-40 sm:h-48 bg-cover bg-center"
