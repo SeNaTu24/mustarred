@@ -14,6 +14,15 @@ function mergePosts(sanityPosts: BlogPost[]): BlogPost[] {
   return combined.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
+// Extract plain text from Portable Text blocks for read-time calculation
+function extractPlainText(blocks: SanityBlogPost['content']): string {
+  if (typeof blocks === 'string') return blocks;
+  return blocks
+    .filter((b: any) => b._type === 'block' && Array.isArray(b.children))
+    .map((b: any) => b.children.map((c: any) => c.text ?? '').join(''))
+    .join(' ');
+}
+
 // Convert Sanity post to app BlogPost format
 function convertSanityPost(sanityPost: SanityBlogPost): BlogPost {
   return {
@@ -27,7 +36,7 @@ function convertSanityPost(sanityPost: SanityBlogPost): BlogPost {
     image: sanityPost.featuredImage 
       ? urlFor(sanityPost.featuredImage).width(1200).url() 
       : '/assets/images/blog/default.jpg',
-    readTime: calculateReadTime(sanityPost.content),
+    readTime: calculateReadTime(extractPlainText(sanityPost.content)),
   };
 }
 
