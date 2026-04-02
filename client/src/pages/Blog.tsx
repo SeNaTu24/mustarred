@@ -34,6 +34,17 @@ export default function Blog() {
     const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
 
+    const getContentAsText = (content: BlogPost["content"]): string => {
+        if (typeof content === "string") {
+            return content;
+        }
+
+        return content
+            .filter((block: any) => block?._type === "block" && Array.isArray(block.children))
+            .map((block: any) => block.children.map((child: any) => child?.text ?? "").join(""))
+            .join(" ");
+    };
+
     useEffect(() => {
         async function fetchPosts() {
             setLoading(true);
@@ -63,7 +74,7 @@ export default function Blog() {
                 (post) =>
                     post.title.toLowerCase().includes(searchLower) ||
                     post.excerpt.toLowerCase().includes(searchLower) ||
-                    post.content.toLowerCase().includes(searchLower)
+                    getContentAsText(post.content).toLowerCase().includes(searchLower)
             );
         }
 
