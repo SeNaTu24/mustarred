@@ -230,65 +230,36 @@ export default function BlogPost() {
                     </header>
 
                     {/* Article Content */}
-                    {post.category === "Mustarred Insights" ? (
-                        <div className="grid md:grid-cols-2 gap-8 mb-12">
-                            <div
-                                className="prose prose-sm md:prose-lg max-w-none dark:prose-invert text-foreground"
-                                style={{ fontFamily: "Satoshi, sans-serif" }}
-                            >
-                                {isPortableText(post.content) ? (
-                                    <PortableText
-                                        value={post.content}
-                                        components={portableTextComponents}
-                                    />
-                                ) : (
-                                    <ReactMarkdown components={markdownComponents}>
-                                        {post.content as string}
-                                    </ReactMarkdown>
-                                )}
-                            </div>
-                            <div className="flex items-start">
-                                <img
-                                    src={post.image}
-                                    alt={post.title}
-                                    className="w-full h-auto object-contain rounded-lg shadow-lg"
-                                    onError={(e) => {
-                                        e.currentTarget.style.display = "none";
-                                    }}
-                                    loading="lazy"
-                                />
-                            </div>
-                        </div>
-                    ) : (
-                        <>
+                    <>
+                        {post.image && (
                             <div className="mb-8 md:mb-12">
                                 <img
                                     src={post.image}
                                     alt={post.title}
-                                    className="w-full h-48 md:h-64 lg:h-80 object-cover rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02]"
+                                    className="w-full h-auto object-cover rounded-lg shadow-lg"
                                     onError={(e) => {
                                         e.currentTarget.style.display = "none";
                                     }}
                                     loading="lazy"
                                 />
                             </div>
-                            <div
-                                className="prose prose-sm md:prose-lg max-w-none dark:prose-invert text-foreground"
-                                style={{ fontFamily: "Satoshi, sans-serif" }}
-                            >
-                                {isPortableText(post.content) ? (
-                                    <PortableText
-                                        value={post.content}
-                                        components={portableTextComponents}
-                                    />
-                                ) : (
-                                    <ReactMarkdown components={markdownComponents}>
-                                        {post.content as string}
-                                    </ReactMarkdown>
-                                )}
-                            </div>
-                        </>
-                    )}
+                        )}
+                        <div
+                            className="prose prose-sm md:prose-lg max-w-none dark:prose-invert text-foreground"
+                            style={{ fontFamily: "Satoshi, sans-serif" }}
+                        >
+                            {isPortableText(post.content) ? (
+                                <PortableText
+                                    value={post.content}
+                                    components={portableTextComponents}
+                                />
+                            ) : (
+                                <ReactMarkdown components={markdownComponents}>
+                                    {post.content as string}
+                                </ReactMarkdown>
+                            )}
+                        </div>
+                    </>
 
                     {/* Article Footer */}
                     <footer className="mt-16 pt-8 border-t">
