@@ -44,10 +44,13 @@ function Router() {
     );
 }
 
+import { SEO } from "@/components/SEO";
+
 function App() {
     return (
         <ErrorBoundary>
             <QueryClientProvider client={queryClient}>
+                <SEO />
                 <TooltipProvider>
                     <ModalProvider>
                         <Toaster />

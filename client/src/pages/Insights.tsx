@@ -4,15 +4,34 @@ import { Download, ArrowRight, Calendar, Clock, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useModal } from "@/contexts/ModalContext";
-import { useState } from "react";
-import { blogPosts } from "@/data/blog-posts";
+import { useState, useEffect } from "react";
 import { BlogPost } from "@/data/blog-types";
+import { getAllPosts } from "@/lib/sanity-queries";
 
 export default function Insights() {
     const { openModal } = useModal();
     const [searchTerm, setSearchTerm] = useState("");
-    const [posts] = useState<BlogPost[]>(blogPosts);
-    const loading = false;
+    const [posts, setPosts] = useState<BlogPost[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        async function fetchPosts() {
+            setLoading(true);
+            try {
+                const fetchedPosts = await getAllPosts();
+                console.log("Fetched posts successfully on frontend:", fetchedPosts);
+                setPosts(fetchedPosts);
+                setError(null);
+            } catch (error: any) {
+                console.error("Failed to fetch posts:", error);
+                setError(error?.message || "An unknown error occurred");
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchPosts();
+    }, []);
 
     const filteredPosts = posts.filter(post => 
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -196,16 +215,21 @@ export default function Insights() {
                         <div className="text-center py-12">
                             <p className="text-gray-500">Loading articles...</p>
                         </div>
+                    ) : error ? (
+                        <div className="text-center py-12">
+                            <p className="text-red-500 font-bold">Error loading articles:</p>
+                            <p className="text-gray-500">{error}</p>
+                        </div>
                     ) : filteredPosts.length === 0 ? (
                         <div className="text-center py-12">
                             <p className="text-gray-500">No articles found. {searchTerm && "Try a different search term."}</p>
                         </div>
                     ) : (
-                    <div className="columns-1 md:columns-2 lg:columns-3 gap-4 sm:gap-6 space-y-4 sm:space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                         {filteredPosts.map((post, i) => (
                             <div 
                                 key={i}
-                                className="break-inside-avoid bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+                                className="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
                             >
                                 <div 
                                     className="h-40 sm:h-48 bg-cover bg-center"

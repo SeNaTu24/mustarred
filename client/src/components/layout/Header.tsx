@@ -8,10 +8,18 @@ export default function Header() {
     const { openModal } = useModal();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isHomePage, setIsHomePage] = useState(false);
+    const [currentPath, setCurrentPath] = useState("");
 
     useEffect(() => {
-        setIsHomePage(window.location.pathname === '/');
+        const path = window.location.pathname;
+        setIsHomePage(path === '/');
+        setCurrentPath(path);
     }, []);
+
+    const isActive = useCallback((href: string) => {
+        if (href.startsWith("#")) return currentPath === "/";
+        return currentPath === href;
+    }, [currentPath]);
 
     const navLinks = useMemo(() => [
         { label: "Home", href: "#home" },
@@ -95,7 +103,11 @@ export default function Header() {
                                     e.preventDefault();
                                     handleNavigation(link.href);
                                 }}
-                                className="font-heading text-sm font-medium transition-colors duration-300 hover:underline underline-offset-4"
+                                className={`font-heading text-sm font-medium transition-colors duration-300 underline-offset-4 ${
+                                    isActive(link.href)
+                                        ? "text-blue-600 underline font-semibold"
+                                        : "hover:underline hover:text-blue-600"
+                                }`}
                                 data-testid={`nav-${link.label
                                     .toLowerCase()
                                     .replace(/\s+/g, "-")}`}
@@ -141,7 +153,11 @@ export default function Header() {
                                         e.preventDefault();
                                         handleNavigation(link.href);
                                     }}
-                                    className="text-base py-2.5 min-h-[44px] text-muted-foreground hover:text-foreground transition-colors text-left flex items-center"
+                                    className={`text-base py-2.5 min-h-[44px] transition-colors text-left flex items-center font-medium ${
+                                        isActive(link.href)
+                                            ? "text-blue-600 font-semibold border-l-4 border-blue-600 pl-3"
+                                            : "text-muted-foreground hover:text-foreground pl-0"
+                                    }`}
                                 >
                                     {link.label}
                                 </a>

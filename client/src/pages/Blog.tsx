@@ -15,24 +15,58 @@ import {
     Download,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { SiX, SiLinkedin, SiInstagram } from "react-icons/si";
-import React, { useState } from "react";
+import { SiX, SiInstagram } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import EbookDownloadModal from "@/components/EbookDownloadModal";
-import { getPostsByCategory } from "@/data/blog-posts";
+import { getAllPosts } from "@/lib/sanity-queries";
 import { BLOG_CATEGORIES } from "@/data/blog-config";
 import { formatDate } from "@/data/blog-config";
-import { BlogCategory } from "@/data/blog-types";
+import { BlogCategory, BlogPost } from "@/data/blog-types";
 
 export default function Blog() {
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCategory, setSelectedCategory] =
         useState<BlogCategory>("All");
     const [isModalOpen, setIsModalOpen] = useState(false);
+    
+    const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    const getContentAsText = (content: BlogPost["content"]): string => {
+        if (typeof content === "string") {
+            return content;
+        }
+
+        return content
+            .filter((block: any) => block?._type === "block" && Array.isArray(block.children))
+            .map((block: any) => block.children.map((child: any) => child?.text ?? "").join(""))
+            .join(" ");
+    };
+
+    useEffect(() => {
+        async function fetchPosts() {
+            setLoading(true);
+            try {
+                const posts = await getAllPosts();
+                setAllPosts(posts);
+            } catch (error) {
+                console.error("Failed to fetch posts:", error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchPosts();
+    }, []);
 
     // Optimized filtering with better performance
     const filteredPosts = React.useMemo(() => {
-        let posts = getPostsByCategory(selectedCategory);
+        let posts = allPosts;
+        
+        if (selectedCategory !== "All") {
+            posts = posts.filter(post => post.category === selectedCategory);
+        }
 
         if (searchTerm) {
             const searchLower = searchTerm.toLowerCase();
@@ -40,12 +74,12 @@ export default function Blog() {
                 (post) =>
                     post.title.toLowerCase().includes(searchLower) ||
                     post.excerpt.toLowerCase().includes(searchLower) ||
-                    post.content.toLowerCase().includes(searchLower)
+                    getContentAsText(post.content).toLowerCase().includes(searchLower)
             );
         }
 
         return posts;
-    }, [searchTerm, selectedCategory]);
+    }, [searchTerm, selectedCategory, allPosts]);
 
     return (
         <div className="min-h-screen">
@@ -240,7 +274,11 @@ export default function Blog() {
                             ))}
                         </div>
 
-                        {filteredPosts.length === 0 && (
+                        {loading ? (
+                            <div className="text-center py-12">
+                                <p className="text-muted-foreground">Loading articles...</p>
+                            </div>
+                        ) : filteredPosts.length === 0 && (
                             <div className="text-center py-12">
                                 <p className="text-muted-foreground">
                                     No articles found matching your criteria.
@@ -311,7 +349,7 @@ export default function Blog() {
                                                     href: "https://x.com/mustarred",
                                                 },
                                                 {
-                                                    icon: SiLinkedin,
+                                                    icon: FaLinkedin,
                                                     label: "LinkedIn",
                                                     href: "https://www.linkedin.com/company/mustarred/about/",
                                                 },

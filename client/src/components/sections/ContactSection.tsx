@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Mail, MessageSquare, Download } from "lucide-react";
-import { SiX, SiLinkedin, SiInstagram } from "react-icons/si";
+import { SiX, SiInstagram } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import { useModal } from "@/contexts/ModalContext";
 
@@ -76,7 +77,7 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                                             href: "https://x.com/mustarred",
                                         },
                                         {
-                                            icon: SiLinkedin,
+                                            icon: FaLinkedin,
                                             label: "LinkedIn",
                                             href: "https://www.linkedin.com/company/mustarred/about/",
                                         },
