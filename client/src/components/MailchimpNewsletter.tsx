@@ -10,50 +10,34 @@ export default function MailchimpNewsletter() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!email) return;
-    
+
     setStatus('loading');
     trackFormSubmit('Newsletter Signup');
 
-    // Create hidden iframe for form submission
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.name = 'mailchimp-iframe';
-    document.body.appendChild(iframe);
+    try {
+      const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_MAILERLITE_API_KEY}`,
+        },
+        body: JSON.stringify({
+          email,
+          fields: { name: firstName },
+        }),
+      });
 
-    // Create form
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = 'https://mustarred.us12.list-manage.com/subscribe/post';
-    form.target = 'mailchimp-iframe';
-    
-    const fields = [
-      { name: 'u', value: 'cdd12424c1d674fa391e8e63e' },
-      { name: 'id', value: '22107e23a3' },
-      { name: 'EMAIL', value: email },
-      { name: 'FNAME', value: firstName }
-    ];
-    
-    fields.forEach(field => {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = field.name;
-      input.value = field.value;
-      form.appendChild(input);
-    });
-    
-    document.body.appendChild(form);
-    form.submit();
-    
-    // Clean up and show success
-    setTimeout(() => {
-      document.body.removeChild(form);
-      document.body.removeChild(iframe);
-      setStatus('success');
-      setEmail('');
-      setFirstName('');
-    }, 1000);
+      if (response.ok || response.status === 200 || response.status === 201) {
+        setStatus('success');
+        setEmail('');
+        setFirstName('');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -62,9 +46,7 @@ export default function MailchimpNewsletter() {
         Get Exclusive Insights to Stay Ahead
       </h3>
       <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">
-        Stay ahead of the curve with the latest compliance
-        insights, regulatory updates, and expert guidance
-        delivered to your inbox.
+        Stay ahead of the curve with the latest compliance insights, regulatory updates, and expert guidance delivered to your inbox.
       </p>
 
       {status === 'success' ? (
@@ -75,25 +57,21 @@ export default function MailchimpNewsletter() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
-          <div>
-            <Input
-              type="text"
-              placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              className="w-full text-sm sm:text-base"
-            />
-          </div>
-          <div>
-            <Input
-              type="email"
-              placeholder="Email Address *"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full text-sm sm:text-base"
-            />
-          </div>
+          <Input
+            type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className="w-full text-sm sm:text-base"
+          />
+          <Input
+            type="email"
+            placeholder="Email Address *"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full text-sm sm:text-base"
+          />
           <Button
             type="submit"
             disabled={status === 'loading' || !email}
@@ -110,8 +88,7 @@ export default function MailchimpNewsletter() {
       )}
 
       <p className="text-xs text-muted-foreground mt-3 sm:mt-4">
-        Join 10K+ business professionals who stay compliant
-        and ahead of the curve
+        Join 10K+ business professionals who stay compliant and ahead of the curve
       </p>
     </div>
   );
