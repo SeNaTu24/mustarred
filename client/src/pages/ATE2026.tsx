@@ -93,23 +93,31 @@ export default function ATE2026() {
   const roundedTotal = Math.round(totalScore / 25) * 25 as ScoreKey;
 
   return (
-    <div className="min-h-screen" style={{ background: 'rgb(12, 8, 30)' }}>
+    <div className="min-h-screen bg-gray-50">
       <Header />
 
       {/* Hero */}
-      <div className="pt-16 sm:pt-20 md:pt-24">
-        <div className="relative overflow-hidden" style={{ maxHeight: 500 }}>
-          <img src="/afrotech.webp" alt="ATE 2026" className="w-full object-cover object-top" style={{ maxHeight: 500 }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(12,8,30,0.1) 0%, rgba(12,8,30,0.9) 100%)' }} />
-          <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-12 pb-10 sm:pb-14">
-            <div className="max-w-5xl mx-auto">
-              <p className="text-yellow-400 text-xs font-black uppercase tracking-[0.2em] mb-3">Official Event Partner · Mustarred Africa</p>
-              <h1 className="text-white font-black leading-none mb-3" style={{ fontSize: 'clamp(2rem, 6vw, 4rem)' }}>
-                Africa Technology<br />Expo <span className="text-yellow-400">2026</span>
-              </h1>
-              <div className="flex flex-wrap gap-3 mt-4">
-                <span className="bg-yellow-400 text-gray-900 text-xs font-black px-4 py-2 rounded-full">June 26 & 27, 2026</span>
-                <span className="text-white/70 text-xs font-semibold px-4 py-2 rounded-full border border-white/20">National Theatre, Iganmu, Lagos</span>
+      <div className="pt-16 sm:pt-20 md:pt-24 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-10 py-10 flex flex-col md:flex-row items-center gap-8">
+          <img
+            src="/afrotech 1.jpeg"
+            alt="Africa Technology Expo 2026"
+            className="w-full md:w-3/5 rounded-2xl shadow-lg flex-shrink-0"
+          />
+          <div className="flex-1">
+            <p className="text-xs font-black uppercase tracking-widest mb-3" style={{ color: 'rgb(30,17,56)' }}>ATE 2026</p>
+            <h2 className="text-2xl sm:text-3xl font-black leading-tight mb-4" style={{ color: 'rgb(30,17,56)' }}>We will be exhibiting at Africa Technology Expo (ATE) 2026.</h2>
+            <p className="text-gray-600 text-sm font-medium leading-relaxed mb-3">As businesses grow, so do the expectations around compliance, data privacy, governance, and risk management.</p>
+            <p className="text-gray-600 text-sm font-medium leading-relaxed mb-3">We will be at ATE <span className="font-bold text-gray-800">@techexpohq</span> connecting with founders, business leaders, and innovators on how to build organisations that are secure, compliant, and prepared for growth.</p>
+            <p className="text-gray-600 text-sm font-medium leading-relaxed mb-5">Visit our booth to meet the team, explore our solutions, and take part in the activities and giveaways we have planned throughout the event.</p>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-3">
+                <span className="text-lg">📅</span>
+                <span className="text-gray-900 font-black text-sm">June 26th – 27th</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-lg">📍</span>
+                <span className="text-gray-900 font-black text-sm">National Theatre, Lagos</span>
               </div>
             </div>
           </div>
@@ -117,8 +125,8 @@ export default function ATE2026() {
       </div>
 
       {/* Intro strip */}
-      <div className="border-b border-white/5" style={{ background: 'rgba(255,255,255,0.03)' }}>
-        <div className="max-w-5xl mx-auto px-6 sm:px-12 py-8">
+      <div className="border-b border-gray-200" style={{ background: 'rgb(30,17,56)' }}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-10 py-8">
           <h2 className="text-white font-black text-2xl sm:text-3xl mb-2">Basic Regulatory Readiness Check</h2>
           <p className="text-white/60 text-base font-medium max-w-2xl leading-relaxed">
             A quick self-assessment across four key compliance areas. Answer Yes or No — your score calculates automatically at the end of each section.
@@ -297,7 +305,7 @@ export default function ATE2026() {
         </div>
 
         {/* Privacy */}
-        <div className="mt-4 mb-10 rounded-xl px-5 py-4 bg-white" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.3)' }}>
+        <div className="mt-4 mb-10 rounded-xl px-5 py-4 bg-white" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.1)' }}>
           <p className="text-gray-500 text-xs font-medium leading-relaxed">
             <strong className="text-gray-700 font-black">Privacy Notice:</strong> No personal data is retained by Mustarred Africa when you complete this assessment. Where you voluntarily provide contact information, it will be processed in accordance with Mustarred Africa's Privacy Notice at{' '}
             <a href="https://mustarred.com" className="text-[#4b4ba3] underline font-semibold">mustarred.com</a>.

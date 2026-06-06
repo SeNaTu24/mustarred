@@ -27,7 +27,6 @@ export default function Header() {
         { label: "Services", href: "/services" },
         { label: "Our Training", href: "/training" },
         { label: "Our Insights", href: "/our-insights" },
-        { label: "Testimonials", href: "#testimonials" },
         { label: "CAC Registration", href: "/cac-registration" },
         { label: "🌍 ATE2026", href: "/ate2026" },
     ], []);

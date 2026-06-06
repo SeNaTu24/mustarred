@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser';
 import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
 import {
   FormField,
   TextInput,
@@ -214,7 +215,7 @@ export default function CACRegistration() {
     if (currentStep.id === 'applicant') {
       if (!formData.applicantName.trim()) errs.applicantName = 'Your full name is required';
       if (!formData.applicantEmail.trim()) errs.applicantEmail = 'Your email is required';
-      else if (!/[\s@]+@[\s@]+\.[\s@]+$/.test(formData.applicantEmail)) errs.applicantEmail = 'Invalid email address';
+      else if (!validateEmail(formData.applicantEmail)) errs.applicantEmail = 'Invalid email address';
       if (!formData.applicantPhone.trim()) errs.applicantPhone = 'Your phone number is required';
     }
 
@@ -380,8 +381,8 @@ export default function CACRegistration() {
   if (submitted) {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col">
-        <SimpleNav />
-        <div className="flex-1 flex items-center justify-center py-16 px-4">
+        <Header />
+        <div className="flex-1 flex items-center justify-center pt-32 pb-16 px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -432,10 +433,10 @@ export default function CACRegistration() {
   if (!country) {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col">
-        <SimpleNav />
+        <Header />
         {/* Hero */}
         <div
-          className="py-16 px-4 text-center text-white"
+          className="pt-32 pb-16 px-4 text-center text-white"
           style={{ background: 'linear-gradient(135deg, rgb(30,17,56) 0%, #4b4ba3 100%)' }}
         >
           <motion.div
@@ -513,11 +514,11 @@ export default function CACRegistration() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <SimpleNav />
+      <Header />
 
       {/* Compact header bar */}
       <div
-        className="px-4 py-4 flex items-center gap-3"
+        className="px-4 py-2 flex items-center gap-3 mt-16 sm:mt-20 md:mt-24"
         style={{ background: 'rgb(30,17,56)' }}
       >
         <button
@@ -545,7 +546,7 @@ export default function CACRegistration() {
         </div>
       </div>
 
-      <div className="flex-1 max-w-2xl mx-auto w-full px-4 py-8">
+      <div className="flex-1 max-w-2xl mx-auto w-full px-3 sm:px-4 py-4 sm:py-8">
         {/* Progress */}
         <StepProgress
           current={stepIndex + 1}
@@ -561,7 +562,43 @@ export default function CACRegistration() {
             exit={{ opacity: 0, x: direction * -30 }}
             transition={{ duration: 0.25 }}
           >
-            <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-6 sm:p-8">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-8">
+              {/* ── Step: Applicant Details ───────────────────────────── */}
+              {currentStep?.id === 'applicant' && (
+                <div className="space-y-5">
+                  <QuestionHeader
+                    question="Tell us about yourself."
+                    description="We'll use these details to keep you updated on your application."
+                  />
+                  <FormField label="Full Name" required error={errors.applicantName}>
+                    <TextInput
+                      placeholder="e.g. Jane Adebayo"
+                      value={formData.applicantName}
+                      onChange={(e) => { set('applicantName', e.target.value); clearError('applicantName'); }}
+                      error={!!errors.applicantName}
+                    />
+                  </FormField>
+                  <FormField label="Email Address" required error={errors.applicantEmail}>
+                    <TextInput
+                      type="email"
+                      placeholder="jane@example.com"
+                      value={formData.applicantEmail}
+                      onChange={(e) => { set('applicantEmail', e.target.value); clearError('applicantEmail'); }}
+                      error={!!errors.applicantEmail}
+                    />
+                  </FormField>
+                  <FormField label="Phone Number" required error={errors.applicantPhone}>
+                    <TextInput
+                      type="tel"
+                      placeholder="+234 800 000 0000"
+                      value={formData.applicantPhone}
+                      onChange={(e) => { set('applicantPhone', e.target.value); clearError('applicantPhone'); }}
+                      error={!!errors.applicantPhone}
+                    />
+                  </FormField>
+                </div>
+              )}
+
               {/* ── Step: Company Names ────────────────────────────────── */}
               {currentStep?.id === 'company_names' && (
                 <div className="space-y-5">
@@ -1667,7 +1704,7 @@ function SimpleNav() {
     <nav className="bg-white border-b border-gray-100 shadow-sm sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
         <a href="/" className="flex items-center gap-2">
-          <img src="/assets/brand/logo.png" alt="Mustarred" className="h-20 sm:h-24 w-auto object-contain" />
+          <img src="/assets/brand/logo.png" alt="Mustarred" className="h-10 sm:h-14 w-auto object-contain" />
         </a>
         <a
           href="/#contact"
