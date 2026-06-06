@@ -1697,26 +1697,6 @@ export default function CACRegistration() {
   );
 }
 
-// ─── Small helpers ────────────────────────────────────────────────────────────
-
-function SimpleNav() {
-  return (
-    <nav className="bg-white border-b border-gray-100 shadow-sm sticky top-0 z-40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-2">
-          <img src="/assets/brand/logo.png" alt="Mustarred" className="h-10 sm:h-14 w-auto object-contain" />
-        </a>
-        <a
-          href="/#contact"
-          className="text-sm font-medium text-[#4b4ba3] border border-[#4b4ba3]/30 px-4 py-2 rounded-lg hover:bg-[#4b4ba3]/5 transition-colors"
-        >
-          Need Help?
-        </a>
-      </div>
-    </nav>
-  );
-}
-
 interface ReviewRowProps {
   label: string;
   value?: string;
