@@ -16,9 +16,11 @@ import Training from "@/pages/Training";
 import Consultation from "@/pages/Consultation";
 import DCMICompliance from "@/pages/DCMICompliance";
 import Incorporation from "@/pages/Incorporation";
+import CACRegistration from "@/pages/CACRegistration";
 import Insights from "@/pages/Insights";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
+import ATE2026 from "@/pages/ATE2026";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -34,11 +36,13 @@ function Router() {
             <Route path="/consultation" component={Consultation} />
             <Route path="/dcmi-compliance" component={DCMICompliance} />
             <Route path="/incorporation" component={Incorporation} />
+            <Route path="/cac-registration" component={CACRegistration} />
             <Route path="/our-insights" component={Insights} />
             <Route path="/blog" component={Blog} />
             <Route path="/blog/:id" component={BlogPost} />
             <Route path="/privacy-policy" component={PrivacyPolicy} />
             <Route path="/terms-of-service" component={TermsOfService} />
+            <Route path="/ate2026" component={ATE2026} />
             <Route component={NotFound} />
         </Switch>
     );

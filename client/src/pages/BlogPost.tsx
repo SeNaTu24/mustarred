@@ -253,6 +253,8 @@ export default function BlogPost() {
                                     value={post.content}
                                     components={portableTextComponents}
                                 />
+                            ) : post.content.toString().trim().startsWith('<') ? (
+                                <div dangerouslySetInnerHTML={{ __html: post.content as string }} />
                             ) : (
                                 <ReactMarkdown components={markdownComponents}>
                                     {post.content as string}

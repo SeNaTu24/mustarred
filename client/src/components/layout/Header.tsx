@@ -28,6 +28,8 @@ export default function Header() {
         { label: "Our Training", href: "/training" },
         { label: "Our Insights", href: "/our-insights" },
         { label: "Testimonials", href: "#testimonials" },
+        { label: "CAC Registration", href: "/cac-registration" },
+        { label: "🌍 ATE2026", href: "/ate2026" },
     ], []);
 
     const handleNavigation = useCallback((href: string) => {
@@ -78,6 +80,11 @@ export default function Header() {
                         <a href="/our-insights#sme-guide" className="text-yellow-300 hover:text-yellow-200 underline ml-1 transition-colors">
                             Download now →
                         </a>
+                        <span className="mx-6">|</span>
+                        🌍 Africa Technology Expo 2026 
+                        <a href="/ate2026" className="text-yellow-300 hover:text-yellow-200 underline ml-1 transition-colors">
+                            Check your readiness →
+                        </a>
                     </div>
                 </div>
             )}
@@ -94,7 +101,7 @@ export default function Header() {
                         />
                     </div>
 
-                    <nav className="hidden md:flex items-center gap-4 lg:gap-6">
+                    <nav className="hidden md:flex items-center gap-3 lg:gap-5">
                         {navLinks.map((link, i) => (
                             <a
                                 key={i}
@@ -103,7 +110,7 @@ export default function Header() {
                                     e.preventDefault();
                                     handleNavigation(link.href);
                                 }}
-                                className={`font-heading text-sm font-medium transition-colors duration-300 underline-offset-4 ${
+                                className={`font-heading text-xs font-medium whitespace-nowrap transition-colors duration-300 underline-offset-4 ${
                                     isActive(link.href)
                                         ? "text-blue-600 underline font-semibold"
                                         : "hover:underline hover:text-blue-600"

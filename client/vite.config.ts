@@ -12,6 +12,14 @@ export default defineConfig({
   server: {
     host: true,
     port: 5173,
+    proxy: {
+      '/wp-api': {
+        target: 'https://mustarredblog.infinityfreeapp.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/wp-api/, '/wp/wp-json/wp/v2'),
+        secure: false,
+      },
+    },
   },
   build: {
     outDir: "dist",
