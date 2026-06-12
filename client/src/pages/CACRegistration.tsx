@@ -222,8 +222,17 @@ export default function CACRegistration() {
     if (currentStep.id === 'company_names') {
       if (!formData.companyName1.trim()) errs.companyName1 = 'First name option is required';
       if (!formData.companyName2.trim()) errs.companyName2 = 'Second name option is required';
-      if (country === 'kenya' && !formData.companyName3.trim())
-        errs.companyName3 = 'Third name option is required for Kenya';
+      else if (formData.companyName2.trim() === formData.companyName1.trim())
+        errs.companyName2 = 'Second name must be different from the first name';
+      if (country === 'kenya') {
+        if (!formData.companyName3.trim())
+          errs.companyName3 = 'Third name option is required for Kenya';
+        else if (
+          formData.companyName3.trim() === formData.companyName1.trim() ||
+          formData.companyName3.trim() === formData.companyName2.trim()
+        )
+          errs.companyName3 = 'Third name must be different from the other two names';
+      }
     }
 
     if (currentStep.id === 'company_details') {
