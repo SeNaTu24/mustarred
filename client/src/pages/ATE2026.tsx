@@ -100,57 +100,24 @@ export default function ATE2026() {
   const modalRating = modalScore !== null ? getRating(modalScore) : null;
 
   return (
-    <div className="min-h-screen" style={{ background: 'rgb(12, 8, 30)' }}>
+    <div className="min-h-screen" style={{ background: 'rgb(10, 6, 24)', fontFamily: "'Inter', 'DM Sans', system-ui, sans-serif" }}>
       <Header />
 
       {/* Hero */}
-      <div className="pt-16 sm:pt-20 md:pt-24" style={{ background: 'linear-gradient(135deg, rgb(20,10,45) 0%, rgb(40,20,80) 50%, rgb(20,10,45) 100%)' }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-8 py-12 sm:py-16 md:py-20">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-5">
-                <span className="w-8 h-0.5 bg-yellow-400" />
-                <span className="text-yellow-400 text-xs font-black uppercase tracking-[0.2em]">Live Appearance</span>
-              </div>
-              <h1 className="text-white font-black text-3xl sm:text-4xl md:text-5xl leading-tight mb-4">
-                Mustarred Will Be{' '}
-                <span className="text-yellow-400">Live</span> at Africa Technology Expo 2026
-              </h1>
-              <p className="text-white/60 text-sm sm:text-base font-medium leading-relaxed mb-6 max-w-xl">
-                As businesses grow, so do the expectations around compliance, data privacy, governance, and risk management. We will be at ATE <span className="text-yellow-400 font-bold">@techexpohq</span> connecting with founders, business leaders, and innovators on how to build organisations that are secure, compliant, and prepared for growth.
-              </p>
-              <p className="text-white/70 text-sm font-medium leading-relaxed mb-8">
-                Visit our booth to meet the team, explore our solutions, and take part in the activities and giveaways we have planned throughout the event.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <div className="flex items-center gap-2 rounded-xl px-4 py-2.5" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                  <span className="text-yellow-400">📅</span>
-                  <div>
-                    <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest">Date</p>
-                    <p className="text-white text-sm font-black">June 26th – 27th</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 rounded-xl px-4 py-2.5" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                  <span className="text-yellow-400">📍</span>
-                  <div>
-                    <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest">Venue</p>
-                    <p className="text-white text-sm font-black">National Theatre, Lagos</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex-shrink-0 md:w-60">
-              <div className="rounded-2xl p-6 text-center" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                <img src="/assets/brand/logo.png" alt="Mustarred" className="h-12 w-auto mx-auto mb-4 brightness-200" />
-                <p className="text-white/50 text-xs font-bold uppercase tracking-widest mb-1">See you at</p>
-                <p className="text-white font-black text-xl mb-1">ATE 2026</p>
-                <p className="text-yellow-400 font-bold text-sm">@techexpohq</p>
-                <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-                  <p className="text-white/40 text-xs leading-relaxed">Compliance · Data Privacy · Governance · Risk</p>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="pt-16 sm:pt-20 md:pt-24" style={{ background: 'linear-gradient(160deg, rgba(10,6,24,0.85) 0%, rgba(15,30,20,0.75) 60%, rgba(10,6,24,0.85) 100%), url("/nat.jpg") center/cover no-repeat' }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-8 py-10 sm:py-14 text-center">
+          <img src="/ate-logo.svg" alt="Africa Technology Expo" className="h-9 w-auto mx-auto mb-4" />
+          <h2 className="font-black uppercase mb-3" style={{ color: '#B3F00E', fontSize: 'clamp(1.25rem, 4vw, 2rem)', letterSpacing: '0.08em' }}>Africa Tech Expo 2026</h2>
+          <p className="text-xs font-black uppercase tracking-[0.3em] mb-4" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            Regulatory Readiness Check
+          </p>
+          <h1 style={{ color: '#ffffff', fontWeight: 900, fontSize: 'clamp(1.75rem, 5vw, 2.75rem)', lineHeight: 1.15, letterSpacing: '-0.02em' }}>
+            How Compliant Is{' '}
+            <span style={{ color: '#B3F00E' }}>Your Business?</span>
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9375rem', lineHeight: 1.7, marginTop: '1rem', maxWidth: '32rem', marginLeft: 'auto', marginRight: 'auto' }}>
+            Answer 16 quick questions across Security, Data Privacy, Legal, and AI Governance — and get your score instantly.
+          </p>
         </div>
       </div>
 
@@ -158,10 +125,10 @@ export default function ATE2026() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
 
         {/* Header */}
-        <div className="mb-8" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '1.5rem' }}>
-          <span className="text-yellow-400 text-xs font-black uppercase tracking-widest">Mustarred Africa</span>
-          <h2 className="text-white font-black text-2xl sm:text-3xl mt-1 mb-2">Basic Regulatory Readiness Check</h2>
-          <p className="text-white/50 text-sm font-medium leading-relaxed">
+        <div className="mb-8" style={{ borderBottom: '1px solid rgba(179,240,14,0.15)', paddingBottom: '1.5rem' }}>
+          <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#B3F00E' }}>Mustarred Africa</span>
+          <h2 style={{ color: '#fff', fontWeight: 900, fontSize: '1.5rem', letterSpacing: '-0.02em', marginTop: '0.25rem', marginBottom: '0.5rem' }}>Basic Regulatory Readiness Check</h2>
+          <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.875rem', lineHeight: 1.7 }}>
             Tap on any section below to begin. Answer 4 quick questions and get your score instantly.
           </p>
         </div>
@@ -242,9 +209,9 @@ export default function ATE2026() {
 
         {/* Rating Scale */}
         <div className="rounded-2xl overflow-hidden mb-4" style={{ background: '#fff', boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}>
-          <div className="px-5 sm:px-6 py-4" style={{ background: 'rgb(30,17,56)' }}>
-            <p className="text-yellow-400 text-[11px] font-black uppercase tracking-widest mb-0.5">Reference</p>
-            <h3 className="text-white text-base font-black">Rating Scale</h3>
+          <div className="px-5 sm:px-6 py-4" style={{ background: 'rgb(10,6,24)', borderBottom: '2px solid #B3F00E' }}>
+            <p className="text-[11px] font-black uppercase tracking-widest mb-0.5" style={{ color: '#B3F00E' }}>Reference</p>
+            <h3 className="text-white text-base font-black" style={{ letterSpacing: '-0.01em' }}>Rating Scale</h3>
           </div>
           {([0, 25, 50, 75, 100] as const).map((s, i) => {
             const r = RATINGS[s];
@@ -265,8 +232,8 @@ export default function ATE2026() {
 
         {/* Next Steps */}
         <div className="rounded-2xl overflow-hidden mb-4" style={{ background: '#fff', boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}>
-          <div className="px-5 sm:px-6 py-4" style={{ background: 'rgb(30,17,56)' }}>
-            <h3 className="text-white text-base font-black">Next Steps</h3>
+          <div className="px-5 sm:px-6 py-4" style={{ background: 'rgb(10,6,24)', borderBottom: '2px solid #B3F00E' }}>
+            <h3 className="text-white text-base font-black" style={{ letterSpacing: '-0.01em' }}>Next Steps</h3>
           </div>
           <div className="p-5 sm:p-6 space-y-4">
             <p className="text-gray-700 text-sm font-medium leading-relaxed">
@@ -277,25 +244,25 @@ export default function ATE2026() {
                 <p className="text-orange-700 font-black text-sm mb-1">Scored 75 and below?</p>
                 <p className="text-gray-600 text-xs font-medium leading-relaxed">Your next step is a focused remediation conversation. We help you identify exactly which gaps to close first, in what order, without overwhelming you.</p>
               </div>
-              <div className="rounded-xl p-4 border-2 border-green-100 bg-green-50">
-                <p className="text-green-700 font-black text-sm mb-1">Scored 100?</p>
+              <div className="rounded-xl p-4" style={{ border: '2px solid #d1fae5', background: '#f0fdf4' }}>
+                <p className="font-black text-sm mb-1" style={{ color: '#15803d' }}>Scored 100?</p>
                 <p className="text-gray-600 text-xs font-medium leading-relaxed">Great work. Let us help you maintain and sharpen that compliance posture as regulations evolve. The landscape does not stand still.</p>
               </div>
             </div>
-            <div className="rounded-xl p-5" style={{ background: 'linear-gradient(135deg, rgb(30,17,56) 0%, #4b4ba3 100%)' }}>
-              <p className="text-white font-black text-base mb-1">Ready to close those gaps?</p>
-              <p className="text-white/70 text-sm font-medium leading-relaxed mb-4">
+            <div className="rounded-xl p-5" style={{ background: 'linear-gradient(135deg, rgb(10,6,24) 0%, rgb(15,40,20) 100%)', border: '1px solid rgba(179,240,14,0.25)' }}>
+              <p className="text-white font-black text-base mb-1" style={{ letterSpacing: '-0.01em' }}>Ready to close those gaps?</p>
+              <p className="text-sm font-medium leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.6)' }}>
                 Whether you scored 10 or 90, there is a clear path forward. Mustarred Africa builds roadmaps, not lectures.
               </p>
               <a
                 href="mailto:info@mustarred.com?subject=Regulatory Readiness Check — ATE2026"
-                className="inline-flex items-center gap-2 text-gray-900 font-black text-sm px-5 py-2.5 rounded-xl hover:bg-yellow-300 transition-colors"
-                style={{ background: '#facc15' }}
+                className="inline-flex items-center gap-2 font-black text-sm px-5 py-2.5 rounded-xl transition-opacity hover:opacity-90"
+                style={{ background: '#B3F00E', color: 'rgb(10,6,24)' }}
               >
                 Email us: info@mustarred.com →
               </a>
-              <p className="text-white/40 text-xs mt-3">
-                Visit <a href="https://mustarred.com" className="text-yellow-400 underline">mustarred.com</a> or speak to our team at the Mustarred Africa stand.
+              <p className="text-xs mt-3" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                Visit <a href="https://mustarred.com" className="underline" style={{ color: '#B3F00E' }}>mustarred.com</a> or speak to our team at the Mustarred Africa stand.
               </p>
             </div>
           </div>
@@ -320,10 +287,10 @@ export default function ATE2026() {
           <div className="w-full max-w-lg rounded-2xl overflow-hidden" style={{ background: '#fff', boxShadow: '0 24px 64px rgba(0,0,0,0.6)', maxHeight: '90vh', overflowY: 'auto' }}>
 
             {/* Modal header */}
-            <div className="px-6 py-5 flex items-start justify-between gap-4 sticky top-0" style={{ background: 'rgb(30,17,56)' }}>
+            <div className="px-6 py-5 flex items-start justify-between gap-4 sticky top-0" style={{ background: 'rgb(10,6,24)', borderBottom: '2px solid #B3F00E' }}>
               <div>
-                <p className="text-yellow-400 text-[11px] font-black uppercase tracking-widest mb-1">{activeSection.part}</p>
-                <h3 className="text-white text-lg font-black leading-tight">{activeSection.title}</h3>
+                <p className="text-[11px] font-black uppercase tracking-widest mb-1" style={{ color: '#B3F00E' }}>{activeSection.part}</p>
+                <h3 className="text-white text-lg font-black leading-tight" style={{ letterSpacing: '-0.02em' }}>{activeSection.title}</h3>
               </div>
               <button
                 type="button"
@@ -344,11 +311,11 @@ export default function ATE2026() {
                   style={{ borderBottom: '1px solid #f1f5f9', background: ans ? '#f8fafc' : '#fff' }}
                 >
                   <div className="flex items-start gap-3">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-black" style={{ background: 'rgb(30,17,56)', color: '#fff' }}>
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-black" style={{ background: '#B3F00E', color: 'rgb(10,6,24)' }}>
                       {qi + 1}
                     </span>
                     <div>
-                      <p className="text-gray-900 text-sm font-semibold leading-snug">{q}</p>
+                      <p className="text-gray-900 text-sm leading-snug" style={{ fontWeight: 600, letterSpacing: '-0.01em' }}>{q}</p>
                       {note && <p className="text-gray-400 text-xs mt-1 italic leading-relaxed">{note}</p>}
                     </div>
                   </div>
@@ -400,8 +367,8 @@ export default function ATE2026() {
                 {modalComplete && (
                   <button
                     onClick={() => setActiveModal(null)}
-                    className="px-5 py-2.5 rounded-xl text-sm font-black text-white transition-all"
-                    style={{ background: 'rgb(30,17,56)' }}
+                    className="px-5 py-2.5 rounded-xl text-sm font-black transition-all"
+                    style={{ background: '#B3F00E', color: 'rgb(10,6,24)' }}
                   >
                     Done
                   </button>
