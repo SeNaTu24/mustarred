@@ -18,7 +18,8 @@ import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import ReactMarkdown from "react-markdown";
 import { PortableText } from "@portabletext/react";
 import type { PortableTextBlock } from "@portabletext/react";
-import { getPostBySlug } from "@/lib/sanity-queries";
+import { getWPPostBySlug } from "@/lib/wordpress";
+import { blogPosts as staticPosts } from "@/data/blog-posts";
 import { BlogPost as BlogPostType } from "@/data/blog-types";
 import { formatDate } from "@/data/blog-config";
 
@@ -106,7 +107,7 @@ export default function BlogPost() {
             if (id) {
                 setLoading(true);
                 try {
-                    const foundPost = await getPostBySlug(id);
+                    const foundPost = await getWPPostBySlug(id) ?? staticPosts.find(p => p.id === id) ?? null;
                     setPost(foundPost || null);
                 } catch (error) {
                     console.error("Error fetching post:", error);

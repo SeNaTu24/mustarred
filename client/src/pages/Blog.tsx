@@ -20,7 +20,7 @@ import { FaLinkedin } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import EbookDownloadModal from "@/components/EbookDownloadModal";
-import { getAllPosts } from "@/lib/sanity-queries";
+import { getWPPosts } from "@/lib/wordpress";
 import { BLOG_CATEGORIES } from "@/data/blog-config";
 import { formatDate } from "@/data/blog-config";
 import { BlogCategory, BlogPost } from "@/data/blog-types";
@@ -49,7 +49,7 @@ export default function Blog() {
         async function fetchPosts() {
             setLoading(true);
             try {
-                const posts = await getAllPosts();
+                const posts = await getWPPosts();
                 setAllPosts(posts);
             } catch (error) {
                 console.error("Failed to fetch posts:", error);

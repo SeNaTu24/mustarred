@@ -3,7 +3,6 @@ import { CheckCircle, ArrowLeft, ArrowRight, AlertCircle, Shield, FileText, User
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Footer from "@/components/layout/Footer";
-import { secureStorage } from "@/lib/storage";
 import { trackEvent, trackFormSubmit } from '@/lib/analytics';
 
 interface FormData {
@@ -239,9 +238,6 @@ export default function DCMICompliance() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(emailData),
             });
-
-            secureStorage.removeItem("dcmi-form-data");
-            secureStorage.removeItem("dcmi-current-step");
         } catch (error) {
             console.error("Big Table email failed:", error);
         }
@@ -283,8 +279,6 @@ export default function DCMICompliance() {
             });
 
             if (result.ok) {
-                secureStorage.removeItem("dcmi-form-data");
-                secureStorage.removeItem("dcmi-current-step");
                 setTimeout(() => {
                     setIsSubmitting(false);
                     setShowThankYou(true);

@@ -6,37 +6,30 @@ import { Input } from "@/components/ui/input";
 import { useModal } from "@/contexts/ModalContext";
 import { useState, useEffect } from "react";
 import { BlogPost } from "@/data/blog-types";
-import { getAllPosts } from "@/lib/sanity-queries";
+import { getWPPosts } from "@/lib/wordpress";
+import { blogPosts as staticPosts } from "@/data/blog-posts";
 
 export default function Insights() {
     const { openModal } = useModal();
     const [searchTerm, setSearchTerm] = useState("");
-    const [posts, setPosts] = useState<BlogPost[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [latestPosts, setLatestPosts] = useState<BlogPost[]>([]);
+    const [loadingLatest, setLoadingLatest] = useState(true);
 
     useEffect(() => {
-        async function fetchPosts() {
-            setLoading(true);
-            try {
-                const fetchedPosts = await getAllPosts();
-                console.log("Fetched posts successfully on frontend:", fetchedPosts);
-                setPosts(fetchedPosts);
-                setError(null);
-            } catch (error: any) {
-                console.error("Failed to fetch posts:", error);
-                setError(error?.message || "An unknown error occurred");
-            } finally {
-                setLoading(false);
-            }
-        }
-        fetchPosts();
+        getWPPosts().then(posts => {
+            setLatestPosts(posts);
+            setLoadingLatest(false);
+        });
     }, []);
 
-    const filteredPosts = posts.filter(post => 
-        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filterPosts = (posts: BlogPost[]) =>
+        posts.filter(post =>
+            post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+    const filteredLatest = filterPosts(latestPosts);
+    const filteredStatic = filterPosts(staticPosts);
 
     return (
         <div className="min-h-screen bg-white">
@@ -204,80 +197,94 @@ export default function Insights() {
                 </div>
             </section>
 
-            {/* Latest Insights */}
+            {/* Latest Insights - WordPress */}
             <section className="py-12 sm:py-16 md:py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-12 text-center">
-                        Latest Insights
+                        Latest
                     </h2>
-                    
-                    {loading ? (
+
+                    {loadingLatest ? (
                         <div className="text-center py-12">
-                            <p className="text-gray-500">Loading articles...</p>
+                            <p className="text-gray-500">Loading latest articles...</p>
                         </div>
-                    ) : error ? (
-                        <div className="text-center py-12">
-                            <p className="text-red-500 font-bold">Error loading articles:</p>
-                            <p className="text-gray-500">{error}</p>
-                        </div>
-                    ) : filteredPosts.length === 0 ? (
-                        <div className="text-center py-12">
-                            <p className="text-gray-500">No articles found. {searchTerm && "Try a different search term."}</p>
+                    ) : filteredLatest.length === 0 ? (
+                        <div className="text-center py-8">
+                            <p className="text-gray-400 text-sm">{searchTerm ? 'No latest articles match your search.' : 'No latest articles yet. Check back soon.'}</p>
                         </div>
                     ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                        {filteredPosts.map((post, i) => (
-                            <div 
-                                key={i}
-                                className="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
-                            >
-                                <div 
-                                    className="h-40 sm:h-48 bg-cover bg-center"
-                                    style={{
-                                        backgroundImage: `url(${post.image})`,
-                                    }}
-                                ></div>
-                                
-                                <div className="p-4 sm:p-5">
-                                    <div className="mb-2 sm:mb-3">
-                                        <span className="bg-blue-100 text-blue-800 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded text-xs font-medium">
-                                            {post.category}
-                                        </span>
-                                    </div>
-                                    
-                                    <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900 mb-2 line-clamp-2">
-                                        {post.title}
-                                    </h3>
-                                    
-                                    <div className="flex items-center gap-2 sm:gap-3 text-xs text-gray-500 mb-3 sm:mb-4">
-                                        <div className="flex items-center">
-                                            <Calendar className="h-3 w-3 mr-1" />
-                                            {new Date(post.date).toLocaleDateString()}
-                                        </div>
-                                        <div className="flex items-center">
-                                            <Clock className="h-3 w-3 mr-1" />
-                                            {post.readTime}
-                                        </div>
-                                    </div>
-                                    
-                                    <Button
-                                        variant="outline"
-                                        size="sm"
-                                        className="w-full text-xs sm:text-sm"
-                                        onClick={() => window.location.href = `/blog/${post.id}?from=insights`}
-                                    >
-                                        Read More
-                                        <ArrowRight className="ml-1 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4" />
-                                    </Button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                            {filteredLatest.map((post, i) => (
+                                <PostCard key={i} post={post} />
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </section>
+
+            {/* More Articles - Static */}
+            <section className="py-12 sm:py-16 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-12 text-center">
+                        More Articles
+                    </h2>
+                    {filteredStatic.length === 0 ? (
+                        <div className="text-center py-8">
+                            <p className="text-gray-400 text-sm">No articles match your search.</p>
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                            {filteredStatic.map((post, i) => (
+                                <PostCard key={i} post={post} />
+                            ))}
+                        </div>
                     )}
                 </div>
             </section>
 
             <Footer />
+        </div>
+    );
+}
+
+function PostCard({ post }: { post: BlogPost }) {
+    return (
+        <div className="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer">
+            <div
+                className="h-40 sm:h-48 bg-cover bg-center bg-gray-100"
+                style={{ backgroundImage: post.image ? `url(${post.image})` : undefined }}
+            />
+            <div className="p-4 sm:p-5">
+                <div className="mb-2 sm:mb-3">
+                    <span className="bg-blue-100 text-blue-800 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded text-xs font-medium">
+                        {post.category}
+                    </span>
+                </div>
+                <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+                    {post.title}
+                </h3>
+                <div className="flex items-center gap-2 sm:gap-3 text-xs text-gray-500 mb-3 sm:mb-4">
+                    <div className="flex items-center">
+                        <Calendar className="h-3 w-3 mr-1" />
+                        {new Date(post.date).toLocaleDateString()}
+                    </div>
+                    {post.readTime && (
+                        <div className="flex items-center">
+                            <Clock className="h-3 w-3 mr-1" />
+                            {post.readTime}
+                        </div>
+                    )}
+                </div>
+                <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full text-xs sm:text-sm"
+                    onClick={() => window.location.href = `/blog/${post.id}?from=insights`}
+                >
+                    Read More
+                    <ArrowRight className="ml-1 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+                </Button>
+            </div>
         </div>
     );
 }

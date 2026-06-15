@@ -14,10 +14,10 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/wp-api': {
-        target: 'https://mustarredblog.infinityfreeapp.com',
+        target: 'https://public-api.wordpress.com/wp/v2/sites/mustarredblog.wordpress.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/wp-api/, '/wp/wp-json/wp/v2'),
-        secure: false,
+        rewrite: (path) => path.replace(/^\/wp-api/, ''),
+        secure: true,
       },
     },
   },

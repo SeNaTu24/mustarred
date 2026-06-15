@@ -3,7 +3,7 @@ import { calculateReadTime } from '../data/blog-config';
 
 const WP_URL = import.meta.env.DEV 
   ? '/wp-api'
-  : 'https://mustarredblog.infinityfreeapp.com/wp/wp-json/wp/v2';
+  : 'https://public-api.wordpress.com/wp/v2/sites/mustarredblog.wordpress.com';
 
 interface WPPost {
   id: number;
@@ -25,7 +25,7 @@ function stripHtml(html: string): string {
 }
 
 function convertWPPost(wp: WPPost): BlogPost {
-  const image = wp._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? '';
+  const image = wp._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? (wp as any).jetpack_featured_media_url ?? '';
   const category = wp._embedded?.['wp:term']?.[0]?.[0]?.name ?? 'Mustarred Insights';
   const author = wp._embedded?.author?.[0]?.name ?? 'Admin Mustarred';
   const content = wp.content.rendered;
