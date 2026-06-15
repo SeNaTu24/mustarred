@@ -182,7 +182,7 @@ export function PersonCard({
         <FormField label="Phone Number" required error={errors[`${prefix}_phone`]}>
           <TextInput
             type="tel"
-            placeholder="+234 800 000 0000"
+            placeholder="e.g. 0800 000 0000"
             value={person.phone}
             onChange={(e) => set('phone', e.target.value)}
             error={!!errors[`${prefix}_phone`]}

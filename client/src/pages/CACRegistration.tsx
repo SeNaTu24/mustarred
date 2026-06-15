@@ -152,6 +152,10 @@ function validateEmail(v: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 }
 
+function validatePhone(v: string) {
+  return v.replace(/[\s\-().+]/g, '').length >= 10;
+}
+
 function validatePersons(
   persons: PersonEntry[],
   role: string,
@@ -164,6 +168,7 @@ function validatePersons(
     if (!p.email.trim()) errs[`${pre}_email`] = 'Email is required';
     else if (!validateEmail(p.email)) errs[`${pre}_email`] = 'Invalid email address';
     if (!p.phone.trim()) errs[`${pre}_phone`] = 'Phone is required';
+    else if (!validatePhone(p.phone)) errs[`${pre}_phone`] = 'Enter a valid phone number (at least 10 digits)';
     if (!p.address.trim()) errs[`${pre}_address`] = 'Address is required';
     if (opts.dob && !p.dateOfBirth) errs[`${pre}_dob`] = 'Date of birth is required';
     if (opts.nationality && !p.nationality?.trim())
@@ -217,6 +222,7 @@ export default function CACRegistration() {
       if (!formData.applicantEmail.trim()) errs.applicantEmail = 'Your email is required';
       else if (!validateEmail(formData.applicantEmail)) errs.applicantEmail = 'Invalid email address';
       if (!formData.applicantPhone.trim()) errs.applicantPhone = 'Your phone number is required';
+      else if (!validatePhone(formData.applicantPhone)) errs.applicantPhone = 'Enter a valid phone number (at least 10 digits)';
     }
 
     if (currentStep.id === 'company_names') {
@@ -322,6 +328,7 @@ export default function CACRegistration() {
   // ── Submit ─────────────────────────────────────────────────────────────────
 
   const handleSubmit = async () => {
+    if (!validate()) return;
     setSubmitting(true);
     setSubmitError('');
 
@@ -599,7 +606,7 @@ export default function CACRegistration() {
                   <FormField label="Phone Number" required error={errors.applicantPhone}>
                     <TextInput
                       type="tel"
-                      placeholder="+234 800 000 0000"
+                      placeholder="e.g. 0800 000 0000"
                       value={formData.applicantPhone}
                       onChange={(e) => { set('applicantPhone', e.target.value); clearError('applicantPhone'); }}
                       error={!!errors.applicantPhone}
