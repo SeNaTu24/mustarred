@@ -5,6 +5,10 @@
     {
       "source": "/wp-proxy/:path*",
       "destination": "https://public-api.wordpress.com/wp/v2/sites/mustarredblog.wordpress.com/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
