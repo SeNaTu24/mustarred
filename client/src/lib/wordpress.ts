@@ -1,10 +1,9 @@
 import { BlogPost } from '../data/blog-types';
 import { calculateReadTime } from '../data/blog-config';
 
-const WP_SITE = 'mustarredblog.wordpress.com';
 const WP_URL = import.meta.env.DEV
   ? '/wp-api'
-  : `https://public-api.wordpress.com/wp/v2/sites/${WP_SITE}`;
+  : '/wp-proxy';
 
 interface WPPost {
   id: number;
