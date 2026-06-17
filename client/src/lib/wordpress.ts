@@ -1,9 +1,10 @@
 import { BlogPost } from '../data/blog-types';
 import { calculateReadTime } from '../data/blog-config';
 
-const WP_URL = import.meta.env.DEV 
+const WP_SITE = 'mustarredblog.wordpress.com';
+const WP_URL = import.meta.env.DEV
   ? '/wp-api'
-  : 'https://public-api.wordpress.com/wp/v2/sites/mustarredblog.wordpress.com';
+  : `https://public-api.wordpress.com/wp/v2/sites/${WP_SITE}`;
 
 interface WPPost {
   id: number;
@@ -45,13 +46,11 @@ function convertWPPost(wp: WPPost): BlogPost {
 }
 
 export async function getWPPosts(): Promise<BlogPost[]> {
-  console.log('Fetching from WordPress...');
+  console.log('Fetching from WordPress API:', `${WP_URL}/posts?_embed&per_page=100`);
   const res = await fetch(`${WP_URL}/posts?_embed&per_page=100`);
   console.log('WordPress response status:', res.status);
   if (!res.ok) throw new Error(`WordPress API error: ${res.status}`);
-  const text = await res.text();
-  console.log('WordPress raw response:', text.slice(0, 200));
-  const posts: WPPost[] = JSON.parse(text);
+  const posts: WPPost[] = await res.json();
   console.log('WordPress posts fetched:', posts.length);
   return posts.map(convertWPPost);
 }
