@@ -3,7 +3,7 @@ import { calculateReadTime } from '../data/blog-config';
 
 const WP_URL = import.meta.env.DEV
   ? '/wp-api'
-  : 'https://public-api.wordpress.com/wp/v2/sites/mustarredblog.wordpress.com';
+  : '/wp-proxy';
 
 interface WPPost {
   id: number;
