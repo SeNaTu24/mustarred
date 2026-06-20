@@ -21,7 +21,14 @@ interface WPPost {
 }
 
 function stripHtml(html: string): string {
-  return html.replace(/<[^>]*>/g, '').trim();
+  const decoded = html
+    .replace(/&amp;/g, '&')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'");
+  return decoded.replace(/<[^>]*>/g, '').trim();
 }
 
 function convertWPPost(wp: WPPost): BlogPost {

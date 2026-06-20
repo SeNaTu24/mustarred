@@ -255,7 +255,7 @@ export default function BlogPost() {
                                     components={portableTextComponents}
                                 />
                             ) : post.content.toString().trim().startsWith('<') ? (
-                                <div dangerouslySetInnerHTML={{ __html: post.content as string }} />
+                                <div className="space-y-4 leading-relaxed [&>p]:mb-4 [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mt-8 [&>h2]:mb-3 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:pl-6 [&>ul]:mb-4 [&>ol]:pl-6 [&>ol]:mb-4 [&>li]:mb-1" dangerouslySetInnerHTML={{ __html: post.content as string }} />
                             ) : (
                                 <ReactMarkdown components={markdownComponents}>
                                     {post.content as string}

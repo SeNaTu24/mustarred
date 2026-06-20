@@ -306,6 +306,11 @@ export default function CACRegistration() {
       if (!formData.shareCapital.trim()) errs.shareCapital = 'Share capital is required';
     }
 
+    if (currentStep.id === 'review') {
+      const consentBox = document.querySelector('input[type="checkbox"]') as HTMLInputElement | null;
+      if (!consentBox?.checked) errs.consent = 'You must confirm this before submitting';
+    }
+
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -1655,6 +1660,35 @@ export default function CACRegistration() {
                   )}
 
                   <DocumentsNotice />
+
+                  {/* Consent Notice */}
+                  <div className="rounded-xl border-2 border-[#4b4ba3]/20 bg-[#4b4ba3]/5 p-5 space-y-3">
+                    <label className="flex items-start gap-3 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        required
+                        className="mt-1 w-4 h-4 accent-[#4b4ba3] flex-shrink-0"
+                        onChange={(e) => setErrors(prev => {
+                          const next = { ...prev };
+                          if (e.target.checked) delete next.consent;
+                          else next.consent = 'You must confirm this before submitting';
+                          return next;
+                        })}
+                      />
+                      <span className="text-sm font-semibold text-gray-800">
+                        I confirm that the information provided is accurate to the best of my knowledge.
+                      </span>
+                    </label>
+                    <p className="text-xs text-gray-500 leading-relaxed pl-7">
+                      By submitting this form, you consent to Mustarred Africa processing the information provided for the purpose of facilitating your CAC registration, in accordance with the Nigerian Data Protection Act 2023 and our{' '}
+                      <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#4b4ba3] underline font-medium">
+                        Privacy Notice
+                      </a>.
+                    </p>
+                    {errors.consent && (
+                      <p className="text-red-500 text-xs pl-7">{errors.consent}</p>
+                    )}
+                  </div>
 
                   <FormField label="Additional Notes (Optional)">
                     <TextArea
