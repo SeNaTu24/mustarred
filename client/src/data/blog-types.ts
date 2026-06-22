@@ -4,20 +4,18 @@
  * This file contains all TypeScript interfaces and types for the blog system.
  * Update these types when adding new fields or changing data structure.
  */
-import type { PortableTextBlock } from '@portabletext/react';
-
 export interface BlogPost {
   id: string;
   title: string;
   excerpt: string;
-  content: PortableTextBlock[] | string; // PortableTextBlock[] from Sanity, string from hardcoded posts
+  content: string;
   author: string;
-  date: string; // Format: YYYY-MM-DD
+  date: string;
   category: BlogCategory;
-  image: string; // Path relative to public folder (e.g., "/image.webp")
-  readTime?: string; // Auto-calculated, don't set manually
-  tags?: string[]; // Optional tags for future use
-  featured?: boolean; // Optional featured flag
+  image: string;
+  readTime?: string;
+  tags?: string[];
+  featured?: boolean;
 }
 
 export type BlogCategory = 

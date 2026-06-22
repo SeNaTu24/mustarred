@@ -16,67 +16,13 @@ import { useParams, useLocation } from "wouter";
 import { useState, useEffect } from "react";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import ReactMarkdown from "react-markdown";
-import { PortableText } from "@portabletext/react";
-import type { PortableTextBlock } from "@portabletext/react";
 import { getWPPostBySlug } from "@/lib/wordpress";
 import { blogPosts as staticPosts } from "@/data/blog-posts";
 import { BlogPost as BlogPostType } from "@/data/blog-types";
 import { formatDate } from "@/data/blog-config";
 
-// Determines if content is Portable Text (array) vs legacy plain string
-const isPortableText = (content: unknown): content is PortableTextBlock[] =>
-    Array.isArray(content);
-
-// Shared custom components for PortableText rendering
-const portableTextComponents = {
-    block: {
-        normal: ({ children }: any) => <p className="text-foreground mb-4 leading-relaxed">{children}</p>,
-        h1: ({ children }: any) => <h1 className="text-foreground font-bold text-xl md:text-2xl mb-4 mt-8">{children}</h1>,
-        h2: ({ children }: any) => <h2 className="text-foreground font-bold text-lg md:text-xl mb-3 mt-6">{children}</h2>,
-        h3: ({ children }: any) => <h3 className="text-foreground font-semibold text-base md:text-lg mb-2 mt-4">{children}</h3>,
-        h4: ({ children }: any) => <h4 className="text-foreground font-semibold text-sm md:text-base mb-2 mt-3">{children}</h4>,
-        blockquote: ({ children }: any) => <blockquote className="border-l-4 border-primary pl-4 italic my-4 text-muted-foreground">{children}</blockquote>,
-    },
-    list: {
-        bullet: ({ children }: any) => <ul className="mb-4 pl-6 list-disc">{children}</ul>,
-        number: ({ children }: any) => <ol className="mb-4 pl-6 list-decimal">{children}</ol>,
-    },
-    listItem: {
-        bullet: ({ children }: any) => <li className="text-foreground mb-1 leading-relaxed">{children}</li>,
-        number: ({ children }: any) => <li className="text-foreground mb-1 leading-relaxed">{children}</li>,
-    },
-    marks: {
-        strong: ({ children }: any) => <strong className="text-foreground font-semibold">{children}</strong>,
-        em: ({ children }: any) => <em className="italic">{children}</em>,
-        underline: ({ children }: any) => <span className="underline">{children}</span>,
-        code: ({ children }: any) => <code className="bg-muted px-1 py-0.5 rounded text-sm font-mono">{children}</code>,
-        link: ({ value, children }: any) => (
-            <a
-                href={value?.href}
-                target={value?.blank ? '_blank' : '_self'}
-                rel="noopener noreferrer"
-                className="text-primary hover:text-primary/80 underline transition-colors duration-200"
-            >
-                {children}
-            </a>
-        ),
-    },
-    types: {
-        image: ({ value }: any) => (
-            <figure className="my-6">
-                <img
-                    src={value?.asset?.url ?? ''}
-                    alt={value?.alt ?? ''}
-                    className="w-full rounded-lg shadow-md"
-                    loading="lazy"
-                />
-                {value?.caption && (
-                    <figcaption className="text-sm text-muted-foreground text-center mt-2">{value.caption}</figcaption>
-                )}
-            </figure>
-        ),
-    },
-};
+// Determines if content is HTML vs markdown
+const isHtml = (content: string): boolean => content.trim().startsWith('<');
 
 // Shared ReactMarkdown components for legacy hardcoded string posts
 const markdownComponents = {
@@ -249,16 +195,11 @@ export default function BlogPost() {
                             className="prose prose-sm md:prose-lg max-w-none dark:prose-invert text-foreground"
                             style={{ fontFamily: "Satoshi, sans-serif" }}
                         >
-                            {isPortableText(post.content) ? (
-                                <PortableText
-                                    value={post.content}
-                                    components={portableTextComponents}
-                                />
-                            ) : post.content.toString().trim().startsWith('<') ? (
-                                <div className="space-y-4 leading-relaxed [&>p]:mb-4 [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mt-8 [&>h2]:mb-3 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:pl-6 [&>ul]:mb-4 [&>ol]:pl-6 [&>ol]:mb-4 [&>li]:mb-1" dangerouslySetInnerHTML={{ __html: post.content as string }} />
+                            {isHtml(post.content) ? (
+                                <div className="space-y-4 leading-relaxed [&>p]:mb-4 [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mt-8 [&>h2]:mb-3 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:pl-6 [&>ul]:mb-4 [&>ol]:pl-6 [&>ol]:mb-4 [&>li]:mb-1" dangerouslySetInnerHTML={{ __html: post.content }} />
                             ) : (
                                 <ReactMarkdown components={markdownComponents}>
-                                    {post.content as string}
+                                    {post.content}
                                 </ReactMarkdown>
                             )}
                         </div>
