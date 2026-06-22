@@ -55,11 +55,11 @@ const SECTIONS = [
 ];
 
 const RATINGS = {
-  0:   { label: 'Critical Gaps Detected', color: '#dc2626', light: '#fef2f2', border: '#fca5a5', message: 'Your compliance posture requires urgent attention. You are operating with significant regulatory exposure.' },
-  25:  { label: 'At Risk',                color: '#ea580c', light: '#fff7ed', border: '#fdba74', message: 'Meaningful gaps remain. A structured remediation plan will get you to safe ground faster than you expect.' },
-  50:  { label: 'Partially Compliant',    color: '#b45309', light: '#fefce8', border: '#fcd34d', message: 'You are halfway there. A targeted review will close the remaining gaps without reinventing the wheel.' },
-  75:  { label: 'Mostly Compliant',       color: '#1d4ed8', light: '#eff6ff', border: '#93c5fd', message: 'You are making genuine progress. One gap is all that stands between you and full compliance.' },
-  100: { label: 'Fully Compliant',        color: '#15803d', light: '#f0fdf4', border: '#86efac', message: 'Outstanding. A perfect score reflects sustained commitment to governance. Keep it up.' },
+  0:   { label: 'Critical Gaps Detected', color: '#6b7280', light: '#f9fafb', border: '#e5e7eb', message: 'Your compliance posture requires urgent attention. You are operating with significant regulatory exposure.' },
+  25:  { label: 'At Risk',                color: '#6b7280', light: '#f9fafb', border: '#e5e7eb', message: 'Meaningful gaps remain. A structured remediation plan will get you to safe ground faster than you expect.' },
+  50:  { label: 'Partially Compliant',    color: '#4b5563', light: '#f3f4f6', border: '#d1d5db', message: 'You are halfway there. A targeted review will close the remaining gaps without reinventing the wheel.' },
+  75:  { label: 'Mostly Compliant',       color: '#2BC9A3', light: '#f0fdf9', border: '#99f6e4', message: 'You are making genuine progress. One gap is all that stands between you and full compliance.' },
+  100: { label: 'Fully Compliant',        color: '#B3F00E', light: '#f7ffe6', border: '#d9f99d', message: 'Outstanding. A perfect score reflects sustained commitment to governance. Keep it up.' },
 } as const;
 
 const OVERALL_MESSAGES = {
@@ -156,11 +156,11 @@ export default function ATE2026() {
               >
                 <div className="flex items-start justify-between gap-2 mb-3">
                   <div>
-                    <p className="text-xs font-black uppercase tracking-widest mb-0.5" style={{ color: complete && rating ? rating.color : '#9ca3af' }}>{section.part}</p>
-                    <h3 className="font-black text-base leading-tight" style={{ color: complete && rating ? rating.color : '#111827' }}>{section.title}</h3>
+                    <p className="text-xs font-semibold uppercase tracking-widest mb-0.5" style={{ color: complete && rating ? rating.color : '#9ca3af' }}>{section.part}</p>
+                    <h3 className="font-semibold text-base leading-tight" style={{ color: complete && rating ? rating.color : '#111827' }}>{section.title}</h3>
                   </div>
                   {complete && rating ? (
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-black text-lg" style={{ background: rating.border, color: rating.color }}>
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg" style={{ background: rating.border, color: rating.color }}>
                       {score}
                     </div>
                   ) : (
@@ -179,7 +179,7 @@ export default function ATE2026() {
                     }}
                   />
                 </div>
-                <p className="text-xs font-semibold mt-2" style={{ color: complete && rating ? rating.color : '#9ca3af' }}>
+                <p className="text-xs font-medium mt-2" style={{ color: complete && rating ? rating.color : '#9ca3af' }}>
                   {complete && rating ? rating.label : answeredCount === 0 ? 'Tap to start' : `${answeredCount} of 4 answered`}
                 </p>
               </button>
@@ -199,8 +199,8 @@ export default function ATE2026() {
                 </div>
               </div>
               <div className="text-center sm:text-left">
-                <p className="text-white/50 text-xs font-black uppercase tracking-widest mb-2">Overall Regulatory Readiness</p>
-                <p className="text-white text-2xl sm:text-3xl font-black mb-2">{getRating(roundedTotal).label}</p>
+                <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-2">Overall Regulatory Readiness</p>
+                <p className="text-white text-2xl sm:text-3xl font-bold mb-2">{getRating(roundedTotal).label}</p>
                 <p className="text-white/70 text-sm font-medium leading-relaxed max-w-lg">{OVERALL_MESSAGES[roundedTotal]}</p>
               </div>
             </div>
@@ -210,8 +210,8 @@ export default function ATE2026() {
         {/* Rating Scale */}
         <div className="rounded-2xl overflow-hidden mb-4" style={{ background: '#fff', boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}>
           <div className="px-5 sm:px-6 py-4" style={{ background: 'rgb(10,6,24)', borderBottom: '2px solid #B3F00E' }}>
-            <p className="text-[11px] font-black uppercase tracking-widest mb-0.5" style={{ color: '#B3F00E' }}>Reference</p>
-            <h3 className="text-white text-base font-black" style={{ letterSpacing: '-0.01em' }}>Rating Scale</h3>
+            <p className="text-[11px] font-semibold uppercase tracking-widest mb-0.5" style={{ color: '#B3F00E' }}>Reference</p>
+            <h3 className="text-white text-base font-semibold" style={{ letterSpacing: '-0.01em' }}>Rating Scale</h3>
           </div>
           {([0, 25, 50, 75, 100] as const).map((s, i) => {
             const r = RATINGS[s];
@@ -222,8 +222,8 @@ export default function ATE2026() {
                   <p className="text-gray-400 text-xs font-semibold">/100</p>
                 </div>
                 <div className="flex-1 pt-1">
-                  <p className="text-sm font-black mb-0.5" style={{ color: r.color }}>{r.label}</p>
-                  <p className="text-gray-600 text-sm font-medium leading-relaxed">{r.message}</p>
+                  <p className="text-sm font-semibold mb-0.5" style={{ color: r.color }}>{r.label}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">{r.message}</p>
                 </div>
               </div>
             );
@@ -233,7 +233,7 @@ export default function ATE2026() {
         {/* Next Steps */}
         <div className="rounded-2xl overflow-hidden mb-4" style={{ background: '#fff', boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}>
           <div className="px-5 sm:px-6 py-4" style={{ background: 'rgb(10,6,24)', borderBottom: '2px solid #B3F00E' }}>
-            <h3 className="text-white text-base font-black" style={{ letterSpacing: '-0.01em' }}>Next Steps</h3>
+            <h3 className="text-white text-base font-semibold" style={{ letterSpacing: '-0.01em' }}>Next Steps</h3>
           </div>
           <div className="p-5 sm:p-6 space-y-4">
             <p className="text-gray-700 text-sm font-medium leading-relaxed">
@@ -241,16 +241,16 @@ export default function ATE2026() {
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="rounded-xl p-4 border-2 border-orange-100 bg-orange-50">
-                <p className="text-orange-700 font-black text-sm mb-1">Scored 75 and below?</p>
+                <p className="text-orange-700 font-semibold text-sm mb-1">Scored 75 and below?</p>
                 <p className="text-gray-600 text-xs font-medium leading-relaxed">Your next step is a focused remediation conversation. We help you identify exactly which gaps to close first, in what order, without overwhelming you.</p>
               </div>
               <div className="rounded-xl p-4" style={{ border: '2px solid #d1fae5', background: '#f0fdf4' }}>
-                <p className="font-black text-sm mb-1" style={{ color: '#15803d' }}>Scored 100?</p>
+                <p className="font-semibold text-sm mb-1" style={{ color: '#15803d' }}>Scored 100?</p>
                 <p className="text-gray-600 text-xs font-medium leading-relaxed">Great work. Let us help you maintain and sharpen that compliance posture as regulations evolve. The landscape does not stand still.</p>
               </div>
             </div>
             <div className="rounded-xl p-5" style={{ background: 'linear-gradient(135deg, rgb(10,6,24) 0%, rgb(15,40,20) 100%)', border: '1px solid rgba(179,240,14,0.25)' }}>
-              <p className="text-white font-black text-base mb-1" style={{ letterSpacing: '-0.01em' }}>Ready to close those gaps?</p>
+              <p className="text-white font-semibold text-base mb-1" style={{ letterSpacing: '-0.01em' }}>Ready to close those gaps?</p>
               <p className="text-sm font-medium leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.6)' }}>
                 Whether you scored 10 or 90, there is a clear path forward. Mustarred Africa builds roadmaps, not lectures.
               </p>
@@ -289,8 +289,8 @@ export default function ATE2026() {
             {/* Modal header */}
             <div className="px-6 py-5 flex items-start justify-between gap-4 sticky top-0" style={{ background: 'rgb(10,6,24)', borderBottom: '2px solid #B3F00E' }}>
               <div>
-                <p className="text-[11px] font-black uppercase tracking-widest mb-1" style={{ color: '#B3F00E' }}>{activeSection.part}</p>
-                <h3 className="text-white text-lg font-black leading-tight" style={{ letterSpacing: '-0.02em' }}>{activeSection.title}</h3>
+                <p className="text-[11px] font-semibold uppercase tracking-widest mb-1" style={{ color: '#B3F00E' }}>{activeSection.part}</p>
+                <h3 className="text-white text-lg font-semibold leading-tight" style={{ letterSpacing: '-0.02em' }}>{activeSection.title}</h3>
               </div>
               <button
                 type="button"
@@ -315,7 +315,7 @@ export default function ATE2026() {
                       {qi + 1}
                     </span>
                     <div>
-                      <p className="text-gray-900 text-sm leading-snug" style={{ fontWeight: 600, letterSpacing: '-0.01em' }}>{q}</p>
+                      <p className="text-gray-900 text-sm leading-snug" style={{ fontWeight: 500, letterSpacing: '-0.01em' }}>{q}</p>
                       {note && <p className="text-gray-400 text-xs mt-1 italic leading-relaxed">{note}</p>}
                     </div>
                   </div>
@@ -348,15 +348,15 @@ export default function ATE2026() {
             {/* Modal score footer */}
             <div className="px-6 py-5 flex items-center justify-between gap-4" style={{ background: '#f8fafc', borderTop: '2px solid #f1f5f9' }}>
               <div>
-                <p className="text-gray-400 text-xs font-black uppercase tracking-widest">{activeSection.scoreLabel}</p>
+                <p className="text-gray-400 text-xs font-semibold uppercase tracking-widest">{activeSection.scoreLabel}</p>
                 {modalComplete && modalRating
-                  ? <p className="text-base font-black mt-1" style={{ color: modalRating.color }}>{modalRating.label}</p>
+                  ? <p className="text-base font-semibold mt-1" style={{ color: modalRating.color }}>{modalRating.label}</p>
                   : <p className="text-gray-300 text-sm mt-1">Answer all 4 to see your score</p>
                 }
               </div>
               <div className="flex items-center gap-3">
                 <div
-                  className="w-16 h-16 rounded-xl flex items-center justify-center font-black text-2xl flex-shrink-0"
+                  className="w-16 h-16 rounded-xl flex items-center justify-center font-bold text-2xl flex-shrink-0"
                   style={modalComplete && modalRating
                     ? { background: modalRating.light, border: `2px solid ${modalRating.border}`, color: modalRating.color }
                     : { background: '#f1f5f9', border: '2px solid #e2e8f0', color: '#cbd5e1' }
@@ -367,7 +367,7 @@ export default function ATE2026() {
                 {modalComplete && (
                   <button
                     onClick={() => setActiveModal(null)}
-                    className="px-5 py-2.5 rounded-xl text-sm font-black transition-all"
+                    className="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all"
                     style={{ background: '#B3F00E', color: 'rgb(10,6,24)' }}
                   >
                     Done
