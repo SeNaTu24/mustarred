@@ -531,16 +531,7 @@ For expert guidance on developing compliance frameworks tailored to your specifi
   }
 ];
 
-const getContentAsText = (content: BlogPost["content"]): string => {
-  if (typeof content === "string") {
-    return content;
-  }
-
-  return content
-    .filter((block: any) => block?._type === "block" && Array.isArray(block.children))
-    .map((block: any) => block.children.map((child: any) => child?.text ?? "").join(""))
-    .join(" ");
-};
+const getContentAsText = (content: string): string => content;
 
 // Export blog posts with calculated read times
 export const blogPosts: BlogPost[] = rawBlogPosts.map(post => ({
