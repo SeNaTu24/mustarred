@@ -214,14 +214,15 @@ Time: ${new Date().toLocaleString()}
                         
                         {!showThankYou ? (
                             <>
-                                <Dialog.Title className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 pr-8">
+                                <Dialog.Title className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-1 pr-8">
                                     {modalTitle}
                                 </Dialog.Title>
                                 {modalDescription && (
-                                    <Dialog.Description className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
+                                    <Dialog.Description className="text-sm sm:text-base text-gray-600 mb-1">
                                         {modalDescription}
                                     </Dialog.Description>
                                 )}
+                                <p className="text-xs text-gray-400 mb-4 sm:mb-5">Business hours: Mon–Fri, 9AM–5PM WAT. We'll respond within 24 hours.</p>
                                 
                                 <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                                     <div>
@@ -231,6 +232,7 @@ Time: ${new Date().toLocaleString()}
                                         <input
                                             type="text"
                                             required
+                                            placeholder="e.g. Jane Adebayo"
                                             className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
                                             value={formData.name}
                                             onChange={(e) => setFormData({...formData, name: e.target.value})}
@@ -243,6 +245,7 @@ Time: ${new Date().toLocaleString()}
                                         <input
                                             type="email"
                                             required
+                                            placeholder="e.g. jane@company.com"
                                             className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
                                             value={formData.email}
                                             onChange={(e) => setFormData({...formData, email: e.target.value})}
@@ -254,6 +257,7 @@ Time: ${new Date().toLocaleString()}
                                         </label>
                                         <input
                                             type="tel"
+                                            placeholder="e.g. 0800 000 0000"
                                             className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
                                             value={formData.phone}
                                             onChange={(e) => setFormData({...formData, phone: e.target.value})}
@@ -265,6 +269,7 @@ Time: ${new Date().toLocaleString()}
                                         </label>
                                         <input
                                             type="text"
+                                            placeholder="e.g. Apex Fintech Ltd"
                                             className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
                                             value={formData.company}
                                             onChange={(e) => setFormData({...formData, company: e.target.value})}

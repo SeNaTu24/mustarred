@@ -66,6 +66,14 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                             </div>
 
                             <div>
+                                <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">
+                                    🕒 Business Hours
+                                </h3>
+                                <p className="text-sm text-muted-foreground">Monday – Friday: <span className="font-medium text-gray-800">9:00 AM – 5:00 PM WAT</span></p>
+                                <p className="text-xs text-muted-foreground mt-1">We respond to all enquiries within 24 hours.</p>
+                            </div>
+
+                            <div>
                                 <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
                                     Follow Us
                                 </h3>
