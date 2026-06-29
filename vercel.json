@@ -5,7 +5,7 @@
       "destination": "https://public-api.wordpress.com/wp/v2/sites/mustarredblog.wordpress.com/:path*"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!googlee994ce320ff09469.html).*)",
       "destination": "/index.html"
     }
   ]
