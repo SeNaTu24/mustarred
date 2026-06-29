@@ -65,6 +65,7 @@ export function SEO() {
 
   return (
     <Helmet>
+      <meta name="google-site-verification" content="ieSDkRzEIQjMy_M8s8f6JhvlgObneddV_dvVjkZEQsA" />
       <title>{meta.title}</title>
       <meta name="description" content={meta.description} />
       <meta property="og:title" content={meta.title} />
