@@ -14,6 +14,7 @@ import { SiX, SiInstagram } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import { useParams, useLocation } from "wouter";
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import ReactMarkdown from "react-markdown";
 import { getWPPostBySlug } from "@/lib/wordpress";
@@ -112,6 +113,17 @@ export default function BlogPost() {
 
     return (
         <div className="min-h-screen">
+            <Helmet>
+                <title>{post.title} | Mustarred Africa</title>
+                <meta name="description" content={post.excerpt.slice(0, 160)} />
+                <meta property="og:title" content={`${post.title} | Mustarred Africa`} />
+                <meta property="og:description" content={post.excerpt.slice(0, 160)} />
+                {post.image && <meta property="og:image" content={post.image} />}
+                <meta property="og:type" content="article" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={`${post.title} | Mustarred Africa`} />
+                <meta name="twitter:description" content={post.excerpt.slice(0, 160)} />
+            </Helmet>
             <BlogHeader />
             <main className="pt-24">
                 <article className="max-w-4xl mx-auto px-6 md:px-8 py-16">
