@@ -59,22 +59,29 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
 };
 
+const BASE_URL = "https://mustarred.com";
+
 export function SEO() {
   const [location] = useLocation();
   const meta = PAGE_META[location] ?? { title: DEFAULT_TITLE, description: DEFAULT_DESC };
+  const canonical = `${BASE_URL}${location === "/" ? "" : location}`;
 
   return (
     <Helmet>
       <meta name="google-site-verification" content="ieSDkRzEIQjMy_M8s8f6JhvlgObneddV_dvVjkZEQsA" />
       <title>{meta.title}</title>
       <meta name="description" content={meta.description} />
+      <link rel="canonical" href={canonical} />
       <meta property="og:title" content={meta.title} />
       <meta property="og:description" content={meta.description} />
-      <meta property="og:image" content="/assets/brand/logo.png" />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:image" content="https://mustarred.com/assets/brand/logo.png" />
       <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Mustarred Africa" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.description} />
+      <meta name="twitter:site" content="@mustarred" />
     </Helmet>
   );
 }

@@ -74,6 +74,23 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                             </div>
 
                             <div>
+                                <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">
+                                    📍 Location
+                                </h3>
+                                <address className="not-italic text-sm text-muted-foreground leading-relaxed">
+                                    Lagos, Nigeria<br />
+                                    <a
+                                        href="https://maps.google.com/?q=Lagos,Nigeria"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-primary hover:underline text-xs mt-1 inline-block"
+                                    >
+                                        View on Google Maps →
+                                    </a>
+                                </address>
+                            </div>
+
+                            <div>
                                 <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
                                     Follow Us
                                 </h3>

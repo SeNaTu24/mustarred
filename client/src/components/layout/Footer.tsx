@@ -212,6 +212,33 @@ export default function Footer() {
                             </li>
                             <li>
                                 <button
+                                    onClick={() => handleFooterNavigation("/blog")}
+                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
+                                >
+                                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
+                                    Blog
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    onClick={() => handleFooterNavigation("/cac-registration")}
+                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
+                                >
+                                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
+                                    CAC Registration
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    onClick={() => handleFooterNavigation("/dcmi-compliance")}
+                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
+                                >
+                                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
+                                    DCMI Compliance
+                                </button>
+                            </li>
+                            <li>
+                                <button
                                     onClick={() => openModal("Free Resources", "Access our compliance guides and templates")}
                                     className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
                                 >
@@ -252,6 +279,10 @@ export default function Footer() {
                         <p className="text-gray-400">
                             &copy; {new Date().getFullYear()} Mustarred. All rights reserved.
                         </p>
+                        <address className="not-italic text-xs text-gray-500 flex items-center gap-1">
+                            📍 Lagos, Nigeria &mdash;
+                            <a href="mailto:info@mustarred.com" className="hover:text-gray-300 transition-colors">info@mustarred.com</a>
+                        </address>
                         <div className="flex items-center gap-6 text-sm text-gray-400">
                             <span>Made with ❤️ for African businesses</span>
                         </div>

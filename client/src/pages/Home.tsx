@@ -59,91 +59,97 @@ export default function Home() {
               <div className="flex animate-scroll-reverse gap-8 sm:gap-10 md:gap-12">
                 <img
                   src="/assets/icons/cleva-logo2.svg"
-                  alt="Cleva"
+                  alt="Cleva - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/fincra.png"
-                  alt="Fincra"
+                  alt="Fincra - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/heala_logo.svg"
-                  alt="Heala"
+                  alt="Heala - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/renmoney.jpeg"
-                  alt="Renmoney"
+                  alt="Renmoney - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/enta_afrika.jpg"
-                  alt="Enta Afrika"
+                  alt="Enta Afrika - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/radease.png"
-                  alt="Radease"
+                  alt="Radease - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/roqqu.png"
-                  alt="Roqqu"
+                  alt="Roqqu - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/oa_logo.png"
-                  alt="OA Logo"
+                  alt="OA - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 {/* Duplicate for seamless loop */}
                 <img
                   src="/assets/icons/cleva-logo2.svg"
-                  alt="Cleva"
+                  alt="Cleva - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/fincra.png"
-                  alt="Fincra"
+                  alt="Fincra - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/heala_logo.svg"
-                  alt="Heala"
+                  alt="Heala - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/renmoney.jpeg"
-                  alt="Renmoney"
+                  alt="Renmoney - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/enta_afrika.jpg"
-                  alt="Enta Afrika"
+                  alt="Enta Afrika - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/radease.png"
-                  alt="Radease"
+                  alt="Radease - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/roqqu.png"
-                  alt="Roqqu"
+                  alt="Roqqu - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/oa_logo.png"
-                  alt="OA Logo"
+                  alt="OA - Mustarred compliance client"
                   className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
                 />
               </div>
             </div>
+            <div className="text-center mt-8">
+              <a
+                href="/services"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#4b4ba3] hover:underline"
+              >
+                View all our services →
+              </a>
+            </div>
           </div>
         </section>
-
-        {/* Partnership and Collaborations Section */}
         <section className="pt-12 md:pt-20 lg:pt-28 pb-10 md:pb-14 lg:pb-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div className="text-center mb-6 md:mb-8">
@@ -159,57 +165,57 @@ export default function Home() {
               <div className="flex animate-scroll-reverse gap-8 sm:gap-10 md:gap-12">
                 <img
                   src="/assets/icons/heala_logo.svg"
-                  alt="Heala"
+                  alt="Heala - Mustarred partner"
                   className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/iwajoo.png"
-                  alt="Iwajoo"
+                  alt="Iwajoo - Mustarred partner"
                   className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/legaltechbro.png"
-                  alt="Legal Tech Bro"
+                  alt="Legal Tech Bro - Mustarred partner"
                   className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
                 <a href="https://pecb.com/en" target="_blank" rel="noopener noreferrer">
                   <img
                     src="/assets/icons/pecb-slogan-bottom-logo-800.png"
-                    alt="PECB"
+                    alt="PECB - Mustarred certified training partner"
                     className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                   />
                 </a>
                 <img
                   src="/assets/icons/vaspa.png"
-                  alt="VASPA"
+                  alt="VASPA - Mustarred partner"
                   className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
                 {/* Duplicate for seamless loop */}
                 <img
                   src="/assets/icons/heala_logo.svg"
-                  alt="Heala"
+                  alt="Heala - Mustarred partner"
                   className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/iwajoo.png"
-                  alt="Iwajoo"
+                  alt="Iwajoo - Mustarred partner"
                   className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
                 <img
                   src="/assets/icons/legaltechbro.png"
-                  alt="Legal Tech Bro"
+                  alt="Legal Tech Bro - Mustarred partner"
                   className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
                 <a href="https://pecb.com/en" target="_blank" rel="noopener noreferrer">
                   <img
                     src="/assets/icons/pecb-slogan-bottom-logo-800.png"
-                    alt="PECB"
+                    alt="PECB - Mustarred certified training partner"
                     className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                   />
                 </a>
                 <img
                   src="/assets/icons/vaspa.png"
-                  alt="VASPA"
+                  alt="VASPA - Mustarred partner"
                   className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
                 />
               </div>
