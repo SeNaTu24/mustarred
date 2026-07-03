@@ -11,6 +11,14 @@
       "dest": "/googlee994ce320ff09469.html"
     },
     {
+      "src": "/sitemap.xml",
+      "dest": "/sitemap.xml"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/robots.txt"
+    },
+    {
       "src": "/wp-proxy/(.*)",
       "dest": "https://public-api.wordpress.com/wp/v2/sites/mustarredblog.wordpress.com/$1"
     },

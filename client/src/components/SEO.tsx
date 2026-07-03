@@ -59,7 +59,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
 };
 
-const BASE_URL = "https://mustarred.com";
+const BASE_URL = "https://www.mustarred.com";
 
 export function SEO() {
   const [location] = useLocation();
