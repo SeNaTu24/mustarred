@@ -60,7 +60,7 @@ export default function DCMICompliance() {
         { id: 1, title: 'About You', icon: Users },
         { id: 2, title: 'Quick Check', icon: Shield },
         { id: 3, title: 'Registration Details', icon: FileText },
-        { id: 4, title: 'Payment', icon: Shield }
+        { id: 4, title: 'Review & Submit', icon: Shield }
     ];
 
     const validateEmail = (email: string) => {
@@ -244,7 +244,6 @@ export default function DCMICompliance() {
     };
 
     const handleSubmit = async () => {
-        if (!validateStep(4)) return;
         
         trackFormSubmit('DCMI Registration');
         setIsSubmitting(true);
@@ -301,9 +300,9 @@ export default function DCMICompliance() {
                         <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 sm:mb-8">
                             <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-green-600" />
                         </div>
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">Payment Successful!</h1>
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">Registration Submitted!</h1>
                         <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 leading-relaxed">
-                            Your DCMI/DCPMI registration is being processed. You will receive your certificate and compliance documents within 5 working days.
+                            Thank you for submitting your DCMI/DCPMI registration. Our team will review your details and reach out to you shortly with next steps.
                         </p>
                         <div className="bg-gray-50 rounded-lg p-4 sm:p-6 mb-6 sm:mb-8">
                             <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">What happens next:</h3>
@@ -430,7 +429,7 @@ export default function DCMICompliance() {
 
                             <div className="bg-green-50 border border-green-200 rounded-lg p-4 sm:p-6 mb-6 sm:mb-8">
                                 <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
-                                    After completing the form and payment, you will receive:
+                                    After completing the form, you will receive:
                                 </h3>
                                 <ul className="text-left text-sm sm:text-base text-gray-700 space-y-1 sm:space-y-2">
                                     <li>✓ Your DCMI/DCPMI Registration Certificate (within 5 working days)</li>
@@ -571,7 +570,7 @@ export default function DCMICompliance() {
                                                 type="tel"
                                                 value={formData.phone}
                                                 onChange={(e) => updateFormData("phone", e.target.value)}
-                                                placeholder="+234 xxx xxx xxxx"
+                                                placeholder="e.g. 0800 000 0000"
                                                 className={`w-full p-4 border-2 rounded-lg transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
                                                     errors.phone ? 'border-red-300 bg-red-50' : 'border-gray-200 hover:border-gray-300'
                                                 }`}
@@ -857,27 +856,17 @@ export default function DCMICompliance() {
                                     </div>
                                 )}
 
-                                {/* Step 4: Payment */}
+                                {/* Step 4: Review & Submit */}
                                 {currentStep === 4 && (
                                     <div className="text-center">
-                                        <div className="bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl p-4 sm:p-6 md:p-8 text-white mb-6 sm:mb-8">
-                                            <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">₦100,000</h3>
-                                            <div className="bg-white/95 rounded-lg p-4 sm:p-6 mb-4 sm:mb-6">
-                                                <p className="text-sm sm:text-base md:text-lg text-gray-800 mb-3 sm:mb-4">
-                                                    Kindly pay ₦100,000 to finalize your submission. We will deliver your certificate in 5 working days and send you your tailored compliance documents.
-                                                </p>
-                                            </div>
-
-                                            <div className="bg-white/95 rounded-lg p-3 sm:p-4">
-                                                <h4 className="text-sm sm:text-base font-semibold mb-2 text-gray-800">What's included:</h4>
-                                                <ul className="text-xs sm:text-sm space-y-1 text-gray-700">
-                                                    <li>✓ DCMI/DCPMI Registration Certificate</li>
-                                                    <li>✓ Tailored Privacy Notice</li>
-                                                    <li>✓ Data Processing Agreement (DPA)</li>
-                                                    <li>✓ Cookie Policy</li>
-                                                    <li>✓ Data Retention Policy</li>
-                                                </ul>
-                                            </div>
+                                        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 sm:p-6 md:p-8 mb-6 sm:mb-8 text-left">
+                                            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">What happens next:</h3>
+                                            <ul className="text-sm sm:text-base text-gray-700 space-y-2">
+                                                <li>✓ Our team will review your submission</li>
+                                                <li>✓ We will reach out to you with an invoice</li>
+                                                <li>✓ Upon payment, you will receive your DCMI/DCPMI Registration Certificate within 5 working days</li>
+                                                <li>✓ Tailored Privacy Notice, DPA, Cookie Policy & Data Retention Policy included</li>
+                                            </ul>
                                         </div>
 
                                         {submitError && (
@@ -904,9 +893,6 @@ export default function DCMICompliance() {
                                                 <span className="text-sm sm:text-base">Submit Registration</span>
                                             )}
                                         </Button>
-                                        <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4">
-                                            Secure payment processing • 256-bit SSL encryption
-                                        </p>
                                     </div>
                                 )}
 

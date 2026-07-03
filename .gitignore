@@ -1,4 +1,4 @@
-node_modules
+Itnode_modules
 dist
 .DS_Store
 server/public
