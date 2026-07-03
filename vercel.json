@@ -1,24 +1,12 @@
 {
-  "routes": [
+  "rewrites": [
     {
-      "src": "/googlee994ce320ff09469.html",
-      "dest": "/googlee994ce320ff09469.html"
+      "source": "/wp-proxy/:path*",
+      "destination": "https://public-api.wordpress.com/wp/v2/sites/mustarredblog.wordpress.com/:path*"
     },
     {
-      "src": "/sitemap.xml",
-      "dest": "/sitemap.xml"
-    },
-    {
-      "src": "/robots.txt",
-      "dest": "/robots.txt"
-    },
-    {
-      "src": "/wp-proxy/(.*)",
-      "dest": "https://public-api.wordpress.com/wp/v2/sites/mustarredblog.wordpress.com/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/((?!sitemap\\.xml|robots\\.txt|googlee994ce320ff09469\\.html|assets/).*)",
+      "destination": "/index.html"
     }
   ]
 }
