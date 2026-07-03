@@ -1,10 +1,4 @@
 {
-  "rewrites": [
-    {
-      "source": "/wp-proxy/:path*",
-      "destination": "https://public-api.wordpress.com/wp/v2/sites/mustarredblog.wordpress.com/:path*"
-    }
-  ],
   "routes": [
     {
       "src": "/googlee994ce320ff09469.html",
