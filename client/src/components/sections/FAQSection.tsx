@@ -1,70 +1,43 @@
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion";
-import { faqs } from "@/data/faqs";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
-export default function FAQSection() {
-    return (
-        <section id="faq" className="py-8 md:py-12 bg-white">
-            <div className="max-w-4xl mx-auto px-6 md:px-8">
-                <div className="text-center mb-8">
-                    <h2
-                        className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-black leading-tight"
-                        style={{
-                            fontFamily: "Satoshi, sans-serif",
-                        }}
-                    >
-                        {/* Frequently Asked Questions */}
-                    </h2>
-                    <p
-                        className="leading-relaxed text-muted-foreground"
-                        style={{
-                            fontFamily: "Satoshi, sans-serif",
-                            fontSize: "18px",
-                            fontWeight: "bolder",
-                        }}
-                    >
-                        Got questions? We've got answers. Find everything you
-                        need to know about our compliance services.
-                    </p>
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface FAQSectionProps {
+  faqs: FAQ[];
+  title?: string;
+}
+
+export default function FAQSection({ faqs, title = "Frequently Asked Questions" }: FAQSectionProps) {
+  const [open, setOpen] = useState<number | null>(null);
+
+  return (
+    <section className="py-12 md:py-16 bg-white">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 text-black">{title}</h2>
+        <div className="space-y-3">
+          {faqs.map((faq, i) => (
+            <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                className="w-full flex justify-between items-center px-5 py-4 text-left font-medium text-gray-900 hover:bg-gray-50 transition-colors"
+                onClick={() => setOpen(open === i ? null : i)}
+                aria-expanded={open === i}
+              >
+                <span>{faq.question}</span>
+                <ChevronDown className={`h-5 w-5 flex-shrink-0 text-gray-500 transition-transform ${open === i ? "rotate-180" : ""}`} />
+              </button>
+              {open === i && (
+                <div className="px-5 pb-4 text-gray-600 text-sm leading-relaxed">
+                  {faq.answer}
                 </div>
-
-                <Accordion type="single" collapsible className="w-full">
-                    {faqs.map((faq, i) => (
-                        <AccordionItem
-                            key={i}
-                            value={`item-${i}`}
-                            data-testid={`faq-item-${i}`}
-                        >
-                            <AccordionTrigger
-                                className="text-left py-4 hover:no-underline"
-                                style={{
-                                    color: "hsl(var(--brand-text))",
-                                    fontFamily: "Satoshi, sans-serif",
-                                    fontSize: "18px",
-                                    fontWeight: "400",
-                                }}
-                            >
-                                {faq.question}
-                            </AccordionTrigger>
-                            <AccordionContent
-                                className="pb-4 leading-relaxed"
-                                style={{
-                                    color: "hsl(var(--brand-text))",
-                                    fontFamily: "Satoshi, sans-serif",
-                                    fontSize: "16px",
-                                    fontWeight: "400",
-                                }}
-                            >
-                                {faq.answer}
-                            </AccordionContent>
-                        </AccordionItem>
-                    ))}
-                </Accordion>
+              )}
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

@@ -223,6 +223,17 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Trusted Authorities - External Links */}
+        <section className="py-8 bg-gray-50 border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 text-center">
+            <p className="text-xs text-gray-500 mb-4">Regulated and aligned with</p>
+            <div className="flex flex-wrap justify-center gap-6 text-sm">
+              <a href="https://ndpc.gov.ng" target="_blank" rel="noopener noreferrer" className="text-[#4b4ba3] hover:underline font-medium">NDPC — Nigeria Data Protection Commission</a>
+              <a href="https://www.cac.gov.ng" target="_blank" rel="noopener noreferrer" className="text-[#4b4ba3] hover:underline font-medium">CAC — Corporate Affairs Commission</a>
+              <a href="https://pecb.com/en" target="_blank" rel="noopener noreferrer" className="text-[#4b4ba3] hover:underline font-medium">PECB — Certified Training Partner</a>
+            </div>
+          </div>
+        </section>
         <ContactSection onResourcesClick={() => openModal("Free Resources", "Access our compliance guides and templates")} />
       </main>
       <Footer />

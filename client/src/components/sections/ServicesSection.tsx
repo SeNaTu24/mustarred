@@ -70,12 +70,12 @@ export default function ServicesSection() {
                             <p className="text-gray-600 mb-6">
                                 {service.description}
                             </p>
-                            <button
-                                onClick={() => window.location.href = '/services'}
-                                className="text-[#4b4ba3] font-semibold hover:underline min-h-[44px] py-2 touch-manipulation"
+                            <a
+                                href="/services"
+                                className="text-[#4b4ba3] font-semibold hover:underline min-h-[44px] py-2 touch-manipulation inline-block"
                             >
                                 Learn More →
-                            </button>
+                            </a>
                         </div>
                     ))}
                 </div>

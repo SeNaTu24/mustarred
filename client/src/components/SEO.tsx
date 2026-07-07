@@ -82,6 +82,7 @@ export function SEO() {
       <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.description} />
       <meta name="twitter:site" content="@mustarred" />
+      <meta name="robots" content="index, follow" />
     </Helmet>
   );
 }

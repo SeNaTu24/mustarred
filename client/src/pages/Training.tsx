@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { courses, courseCategories } from "@/data/courses";
 import * as Tabs from "@radix-ui/react-tabs";
 import * as Accordion from "@radix-ui/react-accordion";
@@ -50,6 +51,7 @@ export default function Training() {
         <div className="min-h-screen bg-white">
             <Header />
             <main className="bg-white" style={{ paddingTop: "96px" }}>
+                <Breadcrumbs crumbs={[{ label: "Home", href: "/" }, { label: "Training" }]} />
                 {/* Hero Section */}
                 <section className="relative py-12 sm:py-16 md:py-20 lg:py-32 bg-slate-900 text-white overflow-hidden">
                     <div className="absolute inset-0 opacity-60">

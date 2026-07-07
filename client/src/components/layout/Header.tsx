@@ -138,11 +138,12 @@ export default function Header() {
                             className="md:hidden"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             data-testid="button-mobile-menu"
+                            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
                         >
                             {mobileMenuOpen ? (
-                                <X className="h-5 w-5" />
+                                <X className="h-5 w-5" aria-hidden="true" />
                             ) : (
-                                <Menu className="h-5 w-5" />
+                                <Menu className="h-5 w-5" aria-hidden="true" />
                             )}
                         </Button>
                     </div>

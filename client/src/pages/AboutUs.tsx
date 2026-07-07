@@ -1,5 +1,6 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { useLocation } from "wouter";
 import {
     Shield,
@@ -19,6 +20,7 @@ export default function AboutUs() {
         <div className="min-h-screen bg-white">
             <Header />
 
+            <Breadcrumbs crumbs={[{ label: "Home", href: "/" }, { label: "About Us" }]} />
             {/* Hero Banner */}
             <section className="relative bg-[#1e1038] pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20">
                 <div className="absolute inset-0 bg-black/10"></div>
@@ -334,6 +336,15 @@ export default function AboutUs() {
                             Get Started Today
                             <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                         </button>
+                    </div>
+                    <div className="flex flex-wrap justify-center gap-4 mt-6 text-sm">
+                        <a href="/services" className="text-[#4b4ba3] hover:underline">Our Services</a>
+                        <span className="text-gray-300">|</span>
+                        <a href="/cac-registration" className="text-[#4b4ba3] hover:underline">CAC Registration</a>
+                        <span className="text-gray-300">|</span>
+                        <a href="/training" className="text-[#4b4ba3] hover:underline">Training</a>
+                        <span className="text-gray-300">|</span>
+                        <a href="/our-insights" className="text-[#4b4ba3] hover:underline">Insights</a>
                     </div>
                 </div>
             </section>

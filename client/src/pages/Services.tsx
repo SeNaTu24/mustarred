@@ -1,5 +1,6 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { Shield, Lock, FileCheck, Users, Target, Search, ArrowRight, CheckCircle, Sparkles, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useModal } from "@/contexts/ModalContext";
@@ -222,6 +223,7 @@ export default function Services() {
         <div className="min-h-screen bg-white overflow-hidden">
             <Header />
 
+            <Breadcrumbs crumbs={[{ label: "Home", href: "/" }, { label: "Services" }]} />
             {/* Animated Hero Section */}
             <section ref={heroRef} className="relative min-h-screen flex items-center justify-center pt-24 sm:pt-32 pb-16 sm:pb-20 overflow-hidden animated-dark-bg">
                 {/* Background Image */}
@@ -497,6 +499,10 @@ export default function Services() {
                                     Get Started with This Service
                                     <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                                 </Button>
+                                <p className="text-xs text-center text-gray-400 mt-3">
+                                    By contacting us you agree to our{" "}
+                                    <a href="/privacy-policy" className="underline hover:text-gray-600">Privacy Policy</a>.
+                                </p>
                             </div>
                         </>
                     )}

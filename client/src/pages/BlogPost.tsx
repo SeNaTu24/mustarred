@@ -10,7 +10,7 @@ import {
     Mail,
     MessageSquare,
 } from "lucide-react";
-import { SiX, SiInstagram } from "react-icons/si";
+import { SiX, SiInstagram, SiWhatsapp } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import { useParams, useLocation } from "wouter";
 import { useState, useEffect } from "react";
@@ -219,7 +219,7 @@ export default function BlogPost() {
 
                     {/* Article Footer */}
                     <footer className="mt-16 pt-8 border-t">
-                        <div className="flex items-center justify-between">
+                        <div className="flex flex-wrap items-center justify-between gap-4">
                             <Button
                                 variant="outline"
                                 onClick={() => (window.location.href = backUrl)}
@@ -227,28 +227,48 @@ export default function BlogPost() {
                                 <ArrowLeft className="h-4 w-4 mr-2" />
                                 More Articles
                             </Button>
-                            <Button
-                                variant="outline"
-                                onClick={() => {
-                                    if (navigator.share) {
-                                        navigator.share({
-                                            title: post.title,
-                                            text: post.title,
-                                            url: window.location.href,
-                                        });
-                                    } else {
-                                        navigator.clipboard.writeText(
-                                            window.location.href
-                                        );
-                                        alert(
-                                            "Article link copied to clipboard!"
-                                        );
-                                    }
-                                }}
-                            >
-                                <Share2 className="h-4 w-4 mr-2" />
-                                Share Article
-                            </Button>
+                            <div className="flex items-center gap-2">
+                                <span className="text-sm text-muted-foreground">Share:</span>
+                                <a
+                                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`}
+                                    target="_blank" rel="noopener noreferrer"
+                                    aria-label="Share on X"
+                                    className="p-2 rounded-lg border hover:bg-gray-50 transition-colors"
+                                >
+                                    <SiX className="h-4 w-4" />
+                                </a>
+                                <a
+                                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`}
+                                    target="_blank" rel="noopener noreferrer"
+                                    aria-label="Share on LinkedIn"
+                                    className="p-2 rounded-lg border hover:bg-gray-50 transition-colors"
+                                >
+                                    <FaLinkedin className="h-4 w-4" />
+                                </a>
+                                <a
+                                    href={`https://wa.me/?text=${encodeURIComponent(post.title + ' ' + window.location.href)}`}
+                                    target="_blank" rel="noopener noreferrer"
+                                    aria-label="Share on WhatsApp"
+                                    className="p-2 rounded-lg border hover:bg-gray-50 transition-colors"
+                                >
+                                    <SiWhatsapp className="h-4 w-4 text-green-500" />
+                                </a>
+                            </div>
+                        </div>
+                        {/* Internal links */}
+                        <div className="mt-8 p-4 bg-gray-50 rounded-lg">
+                            <p className="text-sm font-semibold text-gray-700 mb-3">Explore our services</p>
+                            <div className="flex flex-wrap gap-3 text-sm">
+                                <a href="/services" className="text-[#4b4ba3] hover:underline">Our Services</a>
+                                <span className="text-gray-300">|</span>
+                                <a href="/cac-registration" className="text-[#4b4ba3] hover:underline">CAC Registration</a>
+                                <span className="text-gray-300">|</span>
+                                <a href="/dcmi-compliance" className="text-[#4b4ba3] hover:underline">DCMI Compliance</a>
+                                <span className="text-gray-300">|</span>
+                                <a href="/training" className="text-[#4b4ba3] hover:underline">Training</a>
+                                <span className="text-gray-300">|</span>
+                                <a href="/our-insights" className="text-[#4b4ba3] hover:underline">More Insights</a>
+                            </div>
                         </div>
                     </footer>
                 </article>

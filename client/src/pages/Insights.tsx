@@ -1,5 +1,6 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { Download, ArrowRight, Calendar, Clock, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -38,6 +39,7 @@ export default function Insights() {
             {/* Hero Section */}
             <section className="pt-24 sm:pt-28 pb-12 sm:pb-16 bg-background">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+                    <Breadcrumbs crumbs={[{ label: "Home", href: "/" }, { label: "Insights & Updates" }]} />
                     <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-black">
                         Our Insights and Updates
                     </h1>

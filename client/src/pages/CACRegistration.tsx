@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import {
   FormField,
   TextInput,
@@ -460,6 +461,7 @@ export default function CACRegistration() {
           className="pt-32 pb-16 px-4 text-center text-white"
           style={{ background: 'linear-gradient(135deg, rgb(30,17,56) 0%, #4b4ba3 100%)' }}
         >
+          <Breadcrumbs crumbs={[{ label: "Home", href: "/" }, { label: "CAC Registration" }]} />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
