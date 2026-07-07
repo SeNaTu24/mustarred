@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Mail, MessageSquare, Download } from "lucide-react";
+import { Mail, MessageSquare, Download, Phone } from "lucide-react";
 import { SiX, SiInstagram } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
@@ -39,6 +39,15 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                                     >
                                         Contact Us
                                     </Button>
+                                    <a
+                                        href="https://wa.me/2348143708860"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2 text-sm rounded-md border border-green-500 text-green-600 hover:bg-green-50 transition-colors font-medium"
+                                    >
+                                        <Phone className="h-3.5 w-3.5" />
+                                        WhatsApp Us
+                                    </a>
                                     {onResourcesClick && (
                                         <Button
                                             variant="outline"
