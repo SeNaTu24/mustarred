@@ -16,7 +16,7 @@
       "destination": "https://public-api.wordpress.com/wp/v2/sites/mustarredblog.wordpress.com/:path*"
     },
     {
-      "source": "/((?!assets/).*)",
+      "source": "/((?!assets/|sitemap\.xml|robots\.txt).*)",
       "destination": "/index.html"
     }
   ]
