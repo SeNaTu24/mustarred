@@ -10,6 +10,14 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "mustarred.com" }],
+      "destination": "https://www.mustarred.com/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/wp-proxy/:path*",

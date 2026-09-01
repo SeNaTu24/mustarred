@@ -172,6 +172,7 @@ export default function Chatbot() {
       <div className="fixed bottom-6 right-6 z-50">
         <Button
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close chat" : "Open chat"}
           className="w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
           style={{
             background: 'linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-accent)))'

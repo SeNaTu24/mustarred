@@ -130,7 +130,7 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                                             className="p-2 sm:p-3 rounded-lg bg-card hover-elevate active-elevate-2"
                                             data-testid={`link-social-${social.label.toLowerCase()}`}
                                         >
-                                            <social.icon className="h-4 w-4 sm:h-5 sm:w-5" />
+                                            <social.icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
                                         </a>
                                     ))}
                                 </div>
