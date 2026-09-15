@@ -32,7 +32,7 @@ function stripHtml(html: string): string {
 }
 
 function convertWPPost(wp: WPPost): BlogPost {
-  const image = wp._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? (wp as any).jetpack_featured_media_url ?? '';
+  const image = wp._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? '';
   const category = wp._embedded?.['wp:term']?.[0]?.[0]?.name ?? 'Mustarred Insights';
   const author = wp._embedded?.author?.[0]?.name ?? 'Admin Mustarred';
   const content = wp.content.rendered;

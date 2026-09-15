@@ -14,7 +14,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/wp-api': {
-        target: 'https://public-api.wordpress.com/wp/v2/sites/mustarredblog.wordpress.com',
+        target: 'https://cms.mustarred.com/wp-json/wp/v2',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/wp-api/, ''),
         secure: true,

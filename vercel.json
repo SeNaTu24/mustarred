@@ -21,7 +21,7 @@
   "rewrites": [
     {
       "source": "/wp-proxy/:path*",
-      "destination": "https://public-api.wordpress.com/wp/v2/sites/mustarredblog.wordpress.com/:path*"
+      "destination": "https://cms.mustarred.com/wp-json/wp/v2/:path*"
     },
     {
       "source": "/((?!assets/|sitemap.xml|robots.txt).*)",
