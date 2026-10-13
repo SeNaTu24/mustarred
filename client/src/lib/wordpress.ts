@@ -1,9 +1,11 @@
 import { BlogPost } from '../data/blog-types';
 import { calculateReadTime } from '../data/blog-config';
 
-const WP_URL = import.meta.env.DEV
-  ? '/wp-api'
-  : '/wp-proxy';
+const WP_URL = import.meta.env.VITE_WP_URL
+  ? import.meta.env.VITE_WP_URL
+  : import.meta.env.DEV
+    ? '/wp-api'
+    : '/wp-proxy';
 
 interface WPPost {
   id: number;
