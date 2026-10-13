@@ -8,9 +8,8 @@ interface ServicesCatalogProps {
     onContact: (service: ServiceOffering) => void;
 }
 
-function ServiceCard({ service, index, imageFirst, onContact }: {
+function ServiceCard({ service, imageFirst, onContact }: {
     service: ServiceOffering;
-    index: number;
     imageFirst: boolean;
     onContact: (s: ServiceOffering) => void;
 }) {

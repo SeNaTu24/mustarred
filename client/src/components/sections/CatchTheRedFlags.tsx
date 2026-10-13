@@ -489,7 +489,7 @@ export default function CatchTheRedFlags() {
                 )}
             </div>
 
-            {!isResult && phase !== "idle" && (
+            {(phase === "playing" || phase === "paused") && (
                 <div
                     ref={arenaRef}
                     className={`relative h-[264px] w-full overflow-hidden border border-[#a49fe7]/45 outline-none sm:h-[286px] ${phase === "playing" ? "touch-none focus-visible:ring-2 focus-visible:ring-[#d8d5ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a0d33]" : ""}`}
@@ -498,10 +498,9 @@ export default function CatchTheRedFlags() {
                         backgroundImage: "linear-gradient(var(--game-grid) 1px, transparent 1px), linear-gradient(90deg, var(--game-grid) 1px, transparent 1px)",
                         backgroundSize: "24px 24px",
                     }}
-                    role={phase === "idle" ? undefined : "group"}
-                    aria-label={phase === "idle" ? undefined : "Runner game. Jump over red flags and collect three protective controls."}
+                    role="group"
+                    aria-label="Runner game. Jump over red flags and collect three protective controls."
                     aria-keyshortcuts="Space ArrowUp W"
-                    aria-hidden={phase === "idle" ? true : undefined}
                     tabIndex={phase === "playing" ? 0 : -1}
                     onPointerDown={onArenaPointerDown}
                     onKeyDown={onArenaKeyDown}
@@ -521,27 +520,15 @@ export default function CatchTheRedFlags() {
                         aria-hidden="true"
                     />
 
-                    {phase === "idle" && (
-                        <div aria-hidden="true">
-                            {previewMarkers.map((marker) => (
-                                <div key={`${marker.kind}-${marker.left}`} className="absolute" style={{ left: marker.left, bottom: marker.bottom, transform: "translateX(-50%)" }}>
-                                    <EntityGlyph kind={marker.kind} icon={marker.icon} preview />
-                                </div>
-                            ))}
-                        </div>
-                    )}
-
-                    {(phase === "idle" || phase === "playing" || phase === "paused") && (
-                        <span
-                            ref={playerElementRef}
-                            className="absolute z-20 flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#d8d5ff] bg-[#1a0d33] text-[#d8d5ff] shadow-[0_0_0_3px_rgba(164,159,231,0.16)]"
-                            style={{ left: `${RUNNER_X_RATIO * 100}%`, bottom: `${GROUND_OFFSET_PX}px`, transform: "translate3d(-50%, 0, 0)" }}
-                            role={phase === "idle" ? undefined : "img"}
-                            aria-label={phase === "idle" ? undefined : "Your runner"}
-                        >
-                            <ShieldCheck aria-hidden="true" className="h-[18px] w-[18px]" />
-                        </span>
-                    )}
+                    <span
+                        ref={playerElementRef}
+                        className="absolute z-20 flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#d8d5ff] bg-[#1a0d33] text-[#d8d5ff] shadow-[0_0_0_3px_rgba(164,159,231,0.16)]"
+                        style={{ left: `${RUNNER_X_RATIO * 100}%`, bottom: `${GROUND_OFFSET_PX}px`, transform: "translate3d(-50%, 0, 0)" }}
+                        role="img"
+                        aria-label="Your runner"
+                    >
+                        <ShieldCheck aria-hidden="true" className="h-[18px] w-[18px]" />
+                    </span>
 
                     {phase === "playing" && activeEntities.map((entity) => (
                         <RunnerEntityMarker key={entity.instanceId} entity={entity} elementRefs={entityElementRefs} />

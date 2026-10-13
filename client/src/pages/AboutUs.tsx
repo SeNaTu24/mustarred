@@ -1,7 +1,6 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { useLocation } from "wouter";
-import { Italic } from "lucide-react";
 
 const eyebrow: React.CSSProperties = {
     fontSize: "11px",
@@ -68,7 +67,6 @@ export default function AboutUs() {
                                 lineHeight: 1.7,
                                 fontFamily: "Satoshi, sans-serif",
                                 fontWeight: 600,
-                                fontStyle: Italic,
                             }}
                         >
                             Transforming African startups through expert
