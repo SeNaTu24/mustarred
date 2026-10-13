@@ -4,6 +4,106 @@ import { SiX, SiInstagram } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import { useModal } from "@/contexts/ModalContext";
+import { useState } from "react";
+
+const socials = [
+    { label: "X", href: "https://x.com/mustarred", icon: <SiX size={18} aria-hidden="true" /> },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/mustarred/about/", icon: <FaLinkedin size={18} aria-hidden="true" /> },
+    { label: "Instagram", href: "https://www.instagram.com/mustarred_africa?igsh=MW5wbW45MTltNXJudQ==", icon: <SiInstagram size={18} aria-hidden="true" /> },
+];
+
+function FollowUsButton() {
+    const [open, setOpen] = useState(false);
+    return (
+        <div
+            style={{ position: "relative", display: "inline-block" }}
+            onMouseEnter={() => setOpen(true)}
+            onMouseLeave={() => setOpen(false)}
+        >
+            <button
+                style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    padding: "10px 22px",
+                    borderRadius: "999px",
+                    background: open ? "#4b4ba3" : "#1e1038",
+                    color: "white",
+                    border: "1px solid rgba(164,159,231,0.4)",
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    fontFamily: "Satoshi, sans-serif",
+                    cursor: "pointer",
+                    transform: open ? "translateY(-2px)" : "translateY(0)",
+                    boxShadow: open ? "0 0 18px rgba(75,75,163,0.5)" : "none",
+                    transition: "all 0.25s ease",
+                    letterSpacing: "0.04em",
+                }}
+                aria-haspopup="true"
+                aria-expanded={open}
+            >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14" aria-hidden="true">
+                    <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                </svg>
+                Follow Us
+            </button>
+
+            <div
+                role="menu"
+                style={{
+                    position: "absolute",
+                    top: "calc(100% + 0px)",
+                    paddingTop: "14px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    background: "white",
+                    borderRadius: "12px",
+                    boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
+                    padding: "10px 14px",
+                    display: "flex",
+                    gap: "8px",
+                    alignItems: "center",
+                    opacity: open ? 1 : 0,
+                    pointerEvents: open ? "auto" : "none",
+                    transition: "opacity 0.2s ease",
+                    whiteSpace: "nowrap",
+                    zIndex: 50,
+                }}
+            >
+                <div style={{
+                    position: "absolute", top: "-6px", left: "50%",
+                    transform: "translateX(-50%) rotate(45deg)",
+                    width: "12px", height: "12px",
+                    background: "white",
+                    boxShadow: "-2px -2px 4px rgba(0,0,0,0.06)",
+                }} />
+                {socials.map((s) => (
+                    <a
+                        key={s.label}
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={s.label}
+                        role="menuitem"
+                        data-testid={`link-social-${s.label.toLowerCase()}`}
+                        style={{
+                            display: "flex", alignItems: "center", justifyContent: "center",
+                            width: "38px", height: "38px",
+                            borderRadius: "8px",
+                            color: "#1e1038",
+                            transition: "background 0.15s ease, color 0.15s ease",
+                        }}
+                        onMouseEnter={e => { e.currentTarget.style.background = "#f0effe"; e.currentTarget.style.color = "#4b4ba3"; }}
+                        onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#1e1038"; }}
+                    >
+                        {s.icon}
+                    </a>
+                ))}
+            </div>
+        </div>
+    );
+}
 
 interface ContactSectionProps {
     onResourcesClick?: () => void;
@@ -99,42 +199,7 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                                 </address>
                             </div>
 
-                            <div>
-                                <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
-                                    Follow Us
-                                </h3>
-                                <div className="flex gap-3 sm:gap-4">
-                                    {[
-                                        {
-                                            icon: SiX,
-                                            label: "X",
-                                            href: "https://x.com/mustarred",
-                                        },
-                                        {
-                                            icon: FaLinkedin,
-                                            label: "LinkedIn",
-                                            href: "https://www.linkedin.com/company/mustarred/about/",
-                                        },
-                                        {
-                                            icon: SiInstagram,
-                                            label: "Instagram",
-                                            href: "https://www.instagram.com/mustarred_africa?igsh=MW5wbW45MTltNXJudQ==",
-                                        },
-                                    ].map((social, i) => (
-                                        <a
-                                            key={i}
-                                            href={social.href}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            aria-label={social.label}
-                                            className="p-2 sm:p-3 rounded-lg bg-card hover-elevate active-elevate-2"
-                                            data-testid={`link-social-${social.label.toLowerCase()}`}
-                                        >
-                                            <social.icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
-                                        </a>
-                                    ))}
-                                </div>
-                            </div>
+                                            <FollowUsButton />
                         </div>
                     </div>
 

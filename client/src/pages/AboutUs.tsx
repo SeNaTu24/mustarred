@@ -1,17 +1,40 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import { useLocation } from "wouter";
-import {
-    Shield,
-    Users,
-    Target,
-    CheckCircle,
-    ArrowRight,
-    Globe,
-    Lightbulb,
-    TrendingUp,
-} from "lucide-react";
+import { Italic } from "lucide-react";
+
+const eyebrow: React.CSSProperties = {
+    fontSize: "11px",
+    letterSpacing: "0.18em",
+    textTransform: "uppercase",
+    fontWeight: 700,
+    color: "#a49fe7",
+    marginBottom: "0",
+};
+
+const serifH1: React.CSSProperties = {
+    fontFamily: "Georgia, serif",
+    fontWeight: 400,
+    fontSize: "clamp(44px, 6vw, 80px)",
+    lineHeight: 1.05,
+    letterSpacing: "-0.04em",
+    color: "white",
+    margin: "20px 0 24px",
+};
+
+const serifH2: React.CSSProperties = {
+    fontFamily: "Georgia, serif",
+    fontWeight: 400,
+    fontSize: "clamp(32px, 4vw, 56px)",
+    lineHeight: 1.09,
+    letterSpacing: "-0.04em",
+    margin: "16px 0 24px",
+};
+
+const wrap: React.CSSProperties = {
+    width: "min(1200px, 90%)",
+    margin: "auto",
+};
 
 export default function AboutUs() {
     const [, setLocation] = useLocation();
@@ -20,336 +43,490 @@ export default function AboutUs() {
         <div className="min-h-screen bg-white">
             <Header />
 
-            <Breadcrumbs crumbs={[{ label: "Home", href: "/" }, { label: "About Us" }]} />
-            {/* Hero Banner */}
-            <section className="relative bg-[#1e1038] pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20">
-                <div className="absolute inset-0 bg-black/10"></div>
-                <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-                        About Mustarred
-                    </h1>
-                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 leading-relaxed">
-                        Transforming African startups through expert compliance
-                        guidance
-                    </p>
-                </div>
-            </section>
-
-            {/* Story Section */}
-            <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6">
-                    <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-                        <div>
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 md:mb-8">
-                                Our Story
-                            </h2>
-                            <div className="space-y-4 sm:space-y-6 text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
-                                <p>
-                                    Founded with a vision to democratize
-                                    business compliance across Africa, Mustarred
-                                    emerged from the recognition that regulatory
-                                    complexity was stifling innovation in the
-                                    continent's most promising startups.
-                                </p>
-                                <p>
-                                    Our founders, seasoned professionals with
-                                    decades of experience in African business
-                                    landscapes, witnessed countless brilliant
-                                    ideas fail not due to lack of merit, but due
-                                    to regulatory hurdles.
-                                </p>
-                                <p>
-                                    Today, we stand as the bridge between
-                                    ambitious entrepreneurs and the complex
-                                    world of compliance, turning obstacles into
-                                    opportunities.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="relative w-full">
-                            <div className="bg-gradient-to-br from-[#a49fe7]/20 to-[#4b4ba3]/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 w-full">
-                                <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12">
-                                    <div className="text-center">
-                                        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#4b4ba3] mb-2 sm:mb-4">
-                                            500+
-                                        </div>
-                                        <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold text-gray-700">
-                                            Startups Guided
-                                        </div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#4b4ba3] mb-2 sm:mb-4">
-                                            15+
-                                        </div>
-                                        <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold text-gray-700">
-                                            African Countries
-                                        </div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#4b4ba3] mb-2 sm:mb-4">
-                                            98%
-                                        </div>
-                                        <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold text-gray-700">
-                                            Success Rate
-                                        </div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#4b4ba3] mb-2 sm:mb-4">
-                                            24/7
-                                        </div>
-                                        <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold text-gray-700">
-                                            Support
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Values Grid */}
-            <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#f5f5fa]">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    <div className="text-center mb-8 sm:mb-12 md:mb-16">
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">
-                            Our Core Values
-                        </h2>
-                        <p className="text-base sm:text-lg md:text-xl text-gray-600">
-                            The principles that guide everything we do
+            {/* Hero */}
+            <section
+                style={{
+                    paddingTop: "140px",
+                    paddingBottom: "110px",
+                    position: "relative",
+                    overflow: "hidden",
+                    backgroundImage: "url(/assets/images/newimage.avif)",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                }}
+            >
+                <div style={wrap}>
+                    <div style={{ maxWidth: "820px" }}>
+                        <h1 style={{ ...serifH1, color: "black" }}>
+                            Mustarred.
+                        </h1>
+                        <p
+                            style={{
+                                maxWidth: "560px",
+                                color: "#000000",
+                                fontSize: "17px",
+                                lineHeight: 1.7,
+                                fontFamily: "Satoshi, sans-serif",
+                                fontWeight: 600,
+                                fontStyle: Italic,
+                            }}
+                        >
+                            Transforming African startups through expert
+                            compliance guidance.
                         </p>
                     </div>
+                </div>
+            </section>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-                        <div className="bg-white rounded-xl p-4 sm:p-6 md:p-8 shadow-sm hover:shadow-lg transition-shadow">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-[#a49fe7] rounded-lg flex items-center justify-center mb-4 sm:mb-6">
-                                <Shield className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-white" />
-                            </div>
-                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 sm:mb-4">
-                                Integrity
-                            </h3>
-                            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                                We maintain the highest ethical standards in all
-                                our advisory services, ensuring transparent and
-                                honest guidance for every client.
+            {/* Story — split layout */}
+            <section style={{ padding: "100px 0", background: "white" }}>
+                <div style={wrap}>
+                    <div style={eyebrow}>Our Story</div>
+                    <div
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "1fr 1fr",
+                            gap: "65px",
+                            alignItems: "center",
+                            marginTop: "0",
+                        }}
+                        className="about-split"
+                    >
+                        <div>
+                            <h2 style={{ ...serifH2, color: "#142338" }}>
+                                Our{" "}
+                                <em
+                                    style={{
+                                        color: "#4b4ba3",
+                                        fontStyle: "italic",
+                                    }}
+                                >
+                                    Story.
+                                </em>
+                            </h2>
+                            <p
+                                style={{
+                                    fontSize: "19px",
+                                    lineHeight: 1.8,
+                                    color: "#536376",
+                                    maxWidth: "520px",
+                                    marginBottom: "20px",
+                                }}
+                            >
+                                Founded with a vision to democratize business
+                                compliance across Africa, Mustarred emerged from
+                                the recognition that regulatory complexity was
+                                stifling innovation in the continent's most
+                                promising startups.
+                            </p>
+                            <p
+                                style={{
+                                    fontSize: "16px",
+                                    lineHeight: 1.8,
+                                    color: "#536376",
+                                    maxWidth: "520px",
+                                    marginBottom: "20px",
+                                }}
+                            >
+                                Our founders, seasoned professionals with
+                                decades of experience in African business
+                                landscapes, witnessed countless brilliant ideas
+                                fail not due to lack of merit, but due to
+                                regulatory hurdles.
+                            </p>
+                            <p
+                                style={{
+                                    fontSize: "16px",
+                                    lineHeight: 1.8,
+                                    color: "#536376",
+                                    maxWidth: "520px",
+                                }}
+                            >
+                                Today, we stand as the bridge between ambitious
+                                entrepreneurs and the complex world of
+                                compliance, turning obstacles into
+                                opportunities.
                             </p>
                         </div>
 
-                        <div className="bg-white rounded-xl p-4 sm:p-6 md:p-8 shadow-sm hover:shadow-lg transition-shadow">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-[#4b4ba3] rounded-lg flex items-center justify-center mb-4 sm:mb-6">
-                                <Lightbulb className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-white" />
-                            </div>
-                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 sm:mb-4">
-                                Innovation
-                            </h3>
-                            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                                We continuously evolve our methodologies to stay
-                                ahead of regulatory changes and provide
-                                cutting-edge compliance solutions.
-                            </p>
-                        </div>
-
-                        <div className="bg-white rounded-xl p-4 sm:p-6 md:p-8 shadow-sm hover:shadow-lg transition-shadow sm:col-span-2 lg:col-span-1">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-[#a49fe7] rounded-lg flex items-center justify-center mb-4 sm:mb-6">
-                                <Globe className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-white" />
-                            </div>
-                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 sm:mb-4">
-                                Pan-African Focus
-                            </h3>
-                            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                                Deep understanding of diverse African markets
-                                enables us to provide contextually relevant
-                                advice across the continent.
-                            </p>
+                        {/* Stats grid */}
+                        <div
+                            style={{
+                                display: "grid",
+                                gridTemplateColumns: "1fr 1fr",
+                                gap: "2px",
+                                background: "#e8e8f0",
+                            }}
+                        >
+                            {[
+                                { stat: "500+", label: "Startups Guided" },
+                                { stat: "15+", label: "African Countries" },
+                                { stat: "98%", label: "Success Rate" },
+                                { stat: "24/7", label: "Support" },
+                            ].map(({ stat, label }) => (
+                                <div
+                                    key={label}
+                                    style={{
+                                        background: "white",
+                                        padding: "28px 24px",
+                                        textAlign: "center",
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            fontFamily: "Georgia, serif",
+                                            fontSize: "clamp(28px, 3vw, 42px)",
+                                            fontWeight: 400,
+                                            color: "#4b4ba3",
+                                            letterSpacing: "-0.03em",
+                                            lineHeight: 1,
+                                        }}
+                                    >
+                                        {stat}
+                                    </div>
+                                    <div
+                                        style={{
+                                            fontSize: "12px",
+                                            color: "#677383",
+                                            marginTop: "8px",
+                                            letterSpacing: "0.05em",
+                                            textTransform: "uppercase",
+                                            fontWeight: 600,
+                                        }}
+                                    >
+                                        {label}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Mission & Vision Cards */}
-            <section className="py-12 md:py-20 lg:py-24 bg-white">
-                <div className="max-w-6xl mx-auto px-4 md:px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-                        <div className="relative">
-                            <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-r from-[#a49fe7] to-[#4b4ba3] rounded-xl md:rounded-2xl opacity-10"></div>
-                            <div className="relative bg-white border border-gray-100 rounded-lg md:rounded-xl p-6 md:p-8 lg:p-10">
-                                <div className="flex flex-col sm:flex-row sm:items-center mb-4 md:mb-6">
-                                    <div className="w-10 h-10 md:w-12 md:h-12 bg-[#a49fe7] rounded-lg flex items-center justify-center mb-3 sm:mb-0 sm:mr-4">
-                                        <Target className="h-5 w-5 md:h-6 md:w-6 text-white" />
-                                    </div>
-                                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                                        Our Mission
-                                    </h2>
-                                </div>
-                                <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-4 md:mb-6">
-                                    To empower African startups by simplifying
-                                    complex regulatory landscapes, enabling
-                                    entrepreneurs to focus on innovation while
-                                    maintaining excellence in governance.
-                                </p>
-                                <div className="space-y-2 md:space-y-3">
-                                    <div className="flex items-start text-gray-600">
-                                        <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-[#a49fe7] mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-                                        <span className="text-sm md:text-base">
-                                            Simplify compliance processes
-                                        </span>
-                                    </div>
-                                    <div className="flex items-start text-gray-600">
-                                        <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-[#a49fe7] mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-                                        <span className="text-sm md:text-base">
-                                            Enable sustainable growth
-                                        </span>
-                                    </div>
-                                    <div className="flex items-start text-gray-600">
-                                        <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-[#a49fe7] mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-                                        <span className="text-sm md:text-base">
-                                            Foster innovation ecosystem
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="relative">
-                            <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-r from-[#4b4ba3] to-[#a49fe7] rounded-xl md:rounded-2xl opacity-10"></div>
-                            <div className="relative bg-white border border-gray-100 rounded-lg md:rounded-xl p-6 md:p-8 lg:p-10">
-                                <div className="flex flex-col sm:flex-row sm:items-center mb-4 md:mb-6">
-                                    <div className="w-10 h-10 md:w-12 md:h-12 bg-[#4b4ba3] rounded-lg flex items-center justify-center mb-3 sm:mb-0 sm:mr-4">
-                                        <TrendingUp className="h-5 w-5 md:h-6 md:w-6 text-white" />
-                                    </div>
-                                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                                        Our Vision
-                                    </h2>
-                                </div>
-                                <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-4 md:mb-6">
-                                    To be Africa's premier business advisory
-                                    firm, creating an ecosystem where compliance
-                                    becomes a competitive advantage for startups
-                                    across the continent.
-                                </p>
-                                <div className="space-y-2 md:space-y-3">
-                                    <div className="flex items-start text-gray-600">
-                                        <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-[#4b4ba3] mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-                                        <span className="text-sm md:text-base">
-                                            Leading advisory excellence
-                                        </span>
-                                    </div>
-                                    <div className="flex items-start text-gray-600">
-                                        <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-[#4b4ba3] mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-                                        <span className="text-sm md:text-base">
-                                            Continental market leadership
-                                        </span>
-                                    </div>
-                                    <div className="flex items-start text-gray-600">
-                                        <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-[#4b4ba3] mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-                                        <span className="text-sm md:text-base">
-                                            Transformative impact
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Why Choose Us */}
-            <section className="py-12 md:py-20 lg:py-24 bg-[#1e1038]">
-                <div className="max-w-6xl mx-auto px-4 md:px-6 text-center">
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6">
-                        Why Startups Choose Mustarred
+            {/* What Guides Us */}
+            <section style={{ padding: "100px 0", background: "#f7f6f2" }}>
+                <div style={wrap}>
+                    <div style={eyebrow}>What Guides Us</div>
+                    <h2 style={{ ...serifH2, color: "#142338" }}>
+                        The principles behind our work.
                     </h2>
-                    <p className="text-base md:text-lg lg:text-xl text-white/90 mb-8 md:mb-12 lg:mb-16 max-w-3xl mx-auto px-4">
-                        We understand the unique challenges facing African
-                        entrepreneurs
-                    </p>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                        <div className="text-center px-4">
-                            <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                                <Users className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                    <div
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(3, 1fr)",
+                            gap: "16px",
+                        }}
+                        className="about-grid"
+                    >
+                        {[
+                            {
+                                symbol: "✳",
+                                title: "Integrity",
+                                body: "We maintain the highest ethical standards in all our advisory services, ensuring transparent and honest guidance for every client.",
+                            },
+                            {
+                                symbol: "◇",
+                                title: "Innovation",
+                                body: "We continuously evolve our methodologies to stay ahead of regulatory changes and provide cutting-edge compliance solutions.",
+                            },
+                            {
+                                symbol: "↗",
+                                title: "Pan-African Focus",
+                                body: "Deep understanding of diverse African markets enables us to provide contextually relevant advice across the continent.",
+                            },
+                        ].map(({ symbol, title, body }, i) => (
+                            <div
+                                key={title}
+                                className="about-card"
+                                style={{
+                                    background: "white",
+                                    border: "1px solid #e1e4e6",
+                                    padding: "30px",
+                                    minHeight: "250px",
+                                    transition:
+                                        "transform .2s, border-color .2s",
+                                    animationDelay: `${i * 150}ms`,
+                                }}
+                                onMouseEnter={(e) => {
+                                    (
+                                        e.currentTarget as HTMLDivElement
+                                    ).style.transform = "translateY(-4px)";
+                                    (
+                                        e.currentTarget as HTMLDivElement
+                                    ).style.borderColor = "#a49fe7";
+                                }}
+                                onMouseLeave={(e) => {
+                                    (
+                                        e.currentTarget as HTMLDivElement
+                                    ).style.transform = "";
+                                    (
+                                        e.currentTarget as HTMLDivElement
+                                    ).style.borderColor = "#e1e4e6";
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        fontSize: "30px",
+                                        color: "#7b6fc4",
+                                        marginBottom: "16px",
+                                    }}
+                                >
+                                    {symbol}
+                                </div>
+                                <h3
+                                    style={{
+                                        fontFamily: "Georgia, serif",
+                                        fontWeight: 400,
+                                        fontSize: "22px",
+                                        letterSpacing: "-0.03em",
+                                        color: "#142338",
+                                        margin: "0 0 12px",
+                                    }}
+                                >
+                                    {title}
+                                </h3>
+                                <p
+                                    style={{
+                                        color: "#627184",
+                                        lineHeight: 1.7,
+                                        fontSize: "14px",
+                                        margin: 0,
+                                    }}
+                                >
+                                    {body}
+                                </p>
                             </div>
-                            <h3 className="text-lg md:text-xl font-bold text-white mb-2">
-                                Expert Team
-                            </h3>
-                            <p className="text-sm md:text-base text-white/80 leading-relaxed">
-                                Seasoned professionals with deep African market
-                                knowledge
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Mission & Vision */}
+            <section style={{ padding: "100px 0", background: "white" }}>
+                <div style={wrap}>
+                    <div style={eyebrow}>Our Direction</div>
+                    <div
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "1fr 1fr",
+                            gap: "65px",
+                            marginTop: "0",
+                        }}
+                        className="about-split"
+                    >
+                        <div>
+                            <h2 style={{ ...serifH2, color: "#142338" }}>
+                                Our{" "}
+                                <em
+                                    style={{
+                                        color: "#4b4ba3",
+                                        fontStyle: "italic",
+                                    }}
+                                >
+                                    Mission.
+                                </em>
+                            </h2>
+                            <p
+                                style={{
+                                    fontSize: "17px",
+                                    lineHeight: 1.8,
+                                    color: "#536376",
+                                    marginBottom: "24px",
+                                }}
+                            >
+                                To empower African startups by simplifying
+                                complex regulatory landscapes, enabling
+                                entrepreneurs to focus on innovation while
+                                maintaining excellence in governance.
                             </p>
+                            <ul
+                                style={{
+                                    listStyle: "none",
+                                    padding: 0,
+                                    margin: 0,
+                                    display: "grid",
+                                    gap: "12px",
+                                }}
+                            >
+                                {[
+                                    "Simplify compliance processes",
+                                    "Enable sustainable growth",
+                                    "Foster innovation ecosystem",
+                                ].map((item) => (
+                                    <li
+                                        key={item}
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            gap: "12px",
+                                            fontSize: "14px",
+                                            color: "#536376",
+                                        }}
+                                    >
+                                        <span
+                                            style={{
+                                                color: "#a49fe7",
+                                                fontSize: "18px",
+                                            }}
+                                        >
+                                            →
+                                        </span>{" "}
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-
-                        <div className="text-center px-4">
-                            <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                                <Shield className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                            </div>
-                            <h3 className="text-lg md:text-xl font-bold text-white mb-2">
-                                Proven Track Record
-                            </h3>
-                            <p className="text-sm md:text-base text-white/80 leading-relaxed">
-                                500+ successful compliance implementations
+                        <div>
+                            <h2 style={{ ...serifH2, color: "#142338" }}>
+                                Our{" "}
+                                <em
+                                    style={{
+                                        color: "#4b4ba3",
+                                        fontStyle: "italic",
+                                    }}
+                                >
+                                    Vision.
+                                </em>
+                            </h2>
+                            <p
+                                style={{
+                                    fontSize: "17px",
+                                    lineHeight: 1.8,
+                                    color: "#536376",
+                                    marginBottom: "24px",
+                                }}
+                            >
+                                To be Africa's premier business advisory firm,
+                                creating an ecosystem where compliance becomes a
+                                competitive advantage for startups across the
+                                continent.
                             </p>
-                        </div>
-
-                        <div className="text-center px-4">
-                            <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                                <Globe className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                            </div>
-                            <h3 className="text-lg md:text-xl font-bold text-white mb-2">
-                                Continental Reach
-                            </h3>
-                            <p className="text-sm md:text-base text-white/80 leading-relaxed">
-                                Active in 15+ African countries with local
-                                expertise
-                            </p>
-                        </div>
-
-                        <div className="text-center px-4">
-                            <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                                <TrendingUp className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                            </div>
-                            <h3 className="text-lg md:text-xl font-bold text-white mb-2">
-                                Growth Focused
-                            </h3>
-                            <p className="text-sm md:text-base text-white/80 leading-relaxed">
-                                Compliance strategies that enable rapid scaling
-                            </p>
+                            <ul
+                                style={{
+                                    listStyle: "none",
+                                    padding: 0,
+                                    margin: 0,
+                                    display: "grid",
+                                    gap: "12px",
+                                }}
+                            >
+                                {[
+                                    "Leading advisory excellence",
+                                    "Continental market leadership",
+                                    "Transformative impact",
+                                ].map((item) => (
+                                    <li
+                                        key={item}
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            gap: "12px",
+                                            fontSize: "14px",
+                                            color: "#536376",
+                                        }}
+                                    >
+                                        <span
+                                            style={{
+                                                color: "#a49fe7",
+                                                fontSize: "18px",
+                                            }}
+                                        >
+                                            →
+                                        </span>{" "}
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* CTA Section */}
-            <section className="py-12 md:py-16 lg:py-20 bg-white">
-                <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-6 px-4">
-                        Ready to Transform Your Startup?
-                    </h2>
-                    <p className="text-base md:text-lg lg:text-xl text-gray-600 mb-8 md:mb-10 px-4 leading-relaxed">
-                        Join hundreds of African startups who trust Mustarred
-                        for their compliance needs
-                    </p>
-                    <div className="flex justify-center px-4">
+            {/* CTA band */}
+            <section style={{ padding: "85px 0", background: "#1e1038" }}>
+                <div
+                    style={{
+                        ...wrap,
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        gap: "65px",
+                        alignItems: "center",
+                    }}
+                    className="about-split"
+                >
+                    <div>
+                        <div style={{ ...eyebrow, color: "#a49fe7" }}>
+                            The Next Conversation
+                        </div>
+                        <h2
+                            style={{
+                                ...serifH2,
+                                color: "white",
+                                margin: "16px 0 0",
+                            }}
+                        >
+                            Ready to Transform{" "}
+                            <em
+                                style={{
+                                    color: "#a49fe7",
+                                    fontStyle: "italic",
+                                }}
+                            >
+                                Your Startup?
+                            </em>
+                        </h2>
+                    </div>
+                    <div>
+                        <p
+                            style={{
+                                fontSize: "19px",
+                                lineHeight: 1.8,
+                                color: "#c5c0e8",
+                                marginBottom: "32px",
+                            }}
+                        >
+                            Join hundreds of African startups who trust
+                            Mustarred for their compliance needs.
+                        </p>
                         <button
                             onClick={() => setLocation("/dcmi-compliance")}
-                            className="w-full sm:w-auto bg-[#1e1038] hover:bg-[#4b4ba3] text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold transition-colors flex items-center justify-center text-sm md:text-base"
+                            style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: "12px",
+                                padding: "15px 24px",
+                                background: "#4b4ba3",
+                                color: "white",
+                                border: 0,
+                                borderRadius: "3px",
+                                fontWeight: 700,
+                                fontSize: "13px",
+                                cursor: "pointer",
+                                fontFamily: "Satoshi, sans-serif",
+                            }}
                         >
-                            Get Started Today
-                            <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
+                            Get Started Today ↗
                         </button>
-                    </div>
-                    <div className="flex flex-wrap justify-center gap-4 mt-6 text-sm">
-                        <a href="/services" className="text-[#4b4ba3] hover:underline">Our Services</a>
-                        <span className="text-gray-300">|</span>
-                        <a href="/cac-registration" className="text-[#4b4ba3] hover:underline">CAC Registration</a>
-                        <span className="text-gray-300">|</span>
-                        <a href="/training" className="text-[#4b4ba3] hover:underline">Training</a>
-                        <span className="text-gray-300">|</span>
-                        <a href="/our-insights" className="text-[#4b4ba3] hover:underline">Insights</a>
                     </div>
                 </div>
             </section>
 
             <Footer />
+
+            <style>{`
+                @media (max-width: 760px) {
+                    .about-split { grid-template-columns: 1fr !important; gap: 40px !important; }
+                    .about-grid { grid-template-columns: 1fr !important; }
+                }
+                @keyframes card-fade-up {
+                    from { opacity: 0; transform: translateY(24px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                .about-card {
+                    opacity: 0;
+                    animation: card-fade-up 0.5s ease forwards;
+                }
+            `}</style>
         </div>
     );
 }

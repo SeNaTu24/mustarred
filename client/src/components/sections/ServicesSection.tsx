@@ -1,95 +1,98 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { services } from "@/data/services";
-import { useState, useEffect, useRef } from "react";
+
+const serviceImages = [
+    "/assets/images/datapro.avif",
+    "/assets/images/privacyprogram.avif",
+    "/compliance.webp",
+    "/assets/images/startupadvisory.avif",
+    "/assets/images/cybersecurity.avif",
+    "/research.jpg",
+];
 
 export default function ServicesSection() {
-    const [visibleItems, setVisibleItems] = useState(new Set());
-    const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-    const images = ["/assets/images/datapro.avif", "/assets/images/privacyprogram.avif", "/compliance.webp", "/assets/images/startupadvisory.avif", "/assets/images/cybersecurity.avif", "/research.jpg"];
-
-
-    useEffect(() => {
-        const observers = itemRefs.current.map((ref, index) => {
-            if (!ref) return null;
-
-            const observer = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) {
-                        setVisibleItems((prev) => new Set([...prev, index]));
-                    }
-                },
-                { threshold: 0.3 }
-            );
-
-            observer.observe(ref);
-            return observer;
-        });
-
-        return () => {
-            observers.forEach((observer) => observer?.disconnect());
-        };
-    }, []);
+    const featuredServices = services.slice(0, 6);
 
     return (
-        <section id="services" className="py-6 md:py-8 bg-white">
-            <div className="max-w-7xl mx-auto px-6 md:px-8">
-                <div className="text-center mb-6">
-                    <h2
-                        className="font-heading mb-3 md:mb-4 text-xs sm:text-sm md:text-base font-bold text-black"
-                    >
-                        HOW WE HELP OUR CLIENTS
-                    </h2>
-                    <div className="max-w-4xl mx-auto px-4">
-                        <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-black leading-tight">
-                            Let our experts hand-hold you through your tests and
-                            triumphs.
+        <section id="services" className="bg-white py-14 sm:py-16 md:py-24">
+            <div className="mx-auto max-w-7xl px-6 md:px-8">
+                <div className="mb-8 flex flex-col items-center text-center md:mb-12">
+                    <div className="w-full">
+                        <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-[#4b4ba3] sm:text-sm">
+                            HOW WE HELP OUR CLIENTS
                         </p>
+                        <h2 className="mx-auto max-w-3xl text-balance text-3xl font-medium leading-tight text-gray-900 sm:text-4xl md:text-5xl">
+                            Let our experts hand-hold you through your tests and triumphs.
+                        </h2>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                    {services.slice(0, 6).map((service, i) => (
-                        <div
-                            key={i}
-                            ref={(el) => { if (el) itemRefs.current[i] = el; }}
-                            className={`bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-center ${
-                                visibleItems.has(i)
-                                    ? "opacity-100 translate-y-0"
-                                    : "opacity-0 translate-y-8"
-                            }`}
-                            style={{ transitionDelay: `${i * 150}ms` }}
-                        >
-                            <div className="h-48 overflow-hidden rounded-lg mb-6">
-                                <img
-                                    src={images[i]}
-                                    alt={service.name}
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                                {service.name}
-                            </h3>
-                            <p className="text-gray-600 mb-6">
-                                {service.description}
-                            </p>
-                            <a
-                                href="/services"
-                                className="text-[#4b4ba3] font-semibold hover:underline min-h-[44px] py-2 touch-manipulation inline-block"
+
+                <Tabs
+                    defaultValue="service-0"
+                    orientation="vertical"
+                    className="grid overflow-hidden border border-gray-200 bg-white md:grid-cols-[minmax(250px,0.9fr)_minmax(0,1.4fr)]"
+                >
+                    <TabsList
+                        aria-label="Our services"
+                        className="flex h-auto w-full flex-col items-stretch justify-start rounded-none bg-white p-0 text-left"
+                    >
+                        {featuredServices.map((service, index) => (
+                            <TabsTrigger
+                                key={service.name}
+                                value={`service-${index}`}
+                                className="relative flex min-h-[58px] w-full items-center justify-between gap-4 rounded-none border-b border-l-4 border-l-transparent border-gray-200 px-5 py-4 text-left text-sm font-semibold text-gray-800 shadow-none transition-colors hover:bg-gray-50 focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#4b4ba3] data-[state=active]:border-l-[#79aeb4] data-[state=active]:bg-[#e8f1f2] data-[state=active]:text-gray-900 data-[state=active]:shadow-none sm:text-base"
                             >
-                                Learn More →
-                            </a>
-                        </div>
+                                <span>{service.name}</span>
+                                <span aria-hidden="true" className="shrink-0 text-base">↗</span>
+                            </TabsTrigger>
+                        ))}
+                    </TabsList>
+
+                    {featuredServices.map((service, index) => (
+                        <TabsContent
+                            key={service.name}
+                            value={`service-${index}`}
+                            className="m-0 min-w-0 bg-[#e8f1f2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#4b4ba3]"
+                        >
+                            <div className="grid h-full min-h-[360px] grid-cols-1 sm:grid-cols-[minmax(0,1fr)_minmax(200px,0.85fr)]">
+                                <div className="flex flex-col items-start justify-center p-6 sm:p-8 md:p-10">
+                                    <p className="mb-5 text-xs font-bold uppercase tracking-[0.16em] text-[#4b4ba3]">
+                                        {service.name}
+                                    </p>
+                                    <h3 className="mb-4 max-w-lg text-2xl font-medium leading-tight text-gray-900 sm:text-3xl md:text-4xl">
+                                        {service.name}
+                                    </h3>
+                                    <p className="mb-6 max-w-lg text-sm leading-relaxed text-gray-600 sm:text-base">
+                                        {service.description}
+                                    </p>
+                                    <a
+                                        href="/services"
+                                        className="inline-flex min-h-[44px] items-center gap-2 font-semibold text-[#4b4ba3] transition-colors hover:text-[#3a3a8a] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4b4ba3] focus-visible:ring-offset-2"
+                                    >
+                                        Learn More <span aria-hidden="true">→</span>
+                                    </a>
+                                </div>
+                                <div className="min-h-[220px] p-4 pt-0 sm:min-h-0 sm:p-4 sm:pl-0">
+                                    <img
+                                        src={serviceImages[index]}
+                                        alt={service.name}
+                                        className="h-full min-h-[220px] w-full object-cover sm:min-h-[320px]"
+                                        loading={index === 0 ? "eager" : "lazy"}
+                                    />
+                                </div>
+                            </div>
+                        </TabsContent>
                     ))}
-                </div>
-                
-                <div className="text-center">
-                    <button
-                        onClick={() => window.location.href = '/services'}
-                        className="bg-[#4b4ba3] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-[#3a3a8a] transition-colors w-full sm:w-auto min-h-[48px] touch-manipulation"
+                </Tabs>
+
+                <div className="mt-8 text-center">
+                    <a
+                        href="/services"
+                        className="inline-flex min-h-[48px] w-full items-center justify-center bg-[#4b4ba3] px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-[#3a3a8a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4b4ba3] focus-visible:ring-offset-2 sm:w-auto sm:px-8"
                     >
                         View All Services
-                    </button>
+                    </a>
                 </div>
-
-                {/* Second row of cards removed as requested */}
             </div>
         </section>
     );

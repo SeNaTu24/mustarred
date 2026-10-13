@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-// Logo path will be used directly
 import { useState, useCallback, useMemo, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useModal } from "@/contexts/ModalContext";
@@ -9,11 +8,16 @@ export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isHomePage, setIsHomePage] = useState(false);
     const [currentPath, setCurrentPath] = useState("");
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
         const path = window.location.pathname;
         setIsHomePage(path === '/');
         setCurrentPath(path);
+
+        const onScroll = () => setScrolled(window.scrollY > 40);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
     const isActive = useCallback((href: string) => {
@@ -28,7 +32,6 @@ export default function Header() {
         { label: "Our Training", href: "/training" },
         { label: "Our Insights", href: "/our-insights" },
         { label: "CAC Registration", href: "/cac-registration" },
-        { label: "🌍 ATE2026", href: "/ate2026" },
     ], []);
 
     const handleNavigation = useCallback((href: string) => {
@@ -60,7 +63,15 @@ export default function Header() {
 
 
     return (
-        <header className={`fixed left-0 right-0 z-50 backdrop-blur-md bg-white/95 border-b border-gray-200 shadow-sm ${isHomePage ? 'top-0' : 'top-0'}`}>
+        <header style={{
+            position: 'fixed', left: 0, right: 0, top: 0, zIndex: 50,
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            backgroundColor: scrolled ? 'rgba(255,255,255,0.98)' : 'rgba(255,255,255,0.92)',
+            borderBottom: scrolled ? '1px solid rgba(0,0,0,0.08)' : '1px solid transparent',
+            boxShadow: scrolled ? '0 2px 16px rgba(0,0,0,0.07)' : 'none',
+            transition: 'background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
+        }}>
             {isHomePage && (
                 <div className="relative overflow-hidden text-white py-2 text-center text-sm" style={{backgroundColor: 'rgb(30,17,56)'}}>
                     {/* Animated background */}
@@ -79,16 +90,11 @@ export default function Header() {
                         <a href="/our-insights#sme-guide" className="text-yellow-300 hover:text-yellow-200 underline ml-1 transition-colors">
                             Download now →
                         </a>
-                        <span className="mx-6">|</span>
-                        🌍 Africa Technology Expo 2026 
-                        <a href="/ate2026" className="text-yellow-300 hover:text-yellow-200 underline ml-1 transition-colors">
-                            Check your readiness →
-                        </a>
                     </div>
                 </div>
             )}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                <div className="flex items-center justify-between h-16 sm:h-20 md:h-24">
+                <div className="flex items-center justify-between" style={{ height: scrolled ? '60px' : '80px', transition: 'height 0.3s ease' }}>
                     <div
                         className="flex items-center cursor-pointer"
                         onClick={() => (window.location.href = "/")}
@@ -96,31 +102,43 @@ export default function Header() {
                         <img
                             src="/assets/brand/logo.png"
                             alt="Mustarred-logo"
-                            className="h-20 sm:h-22 md:h-24 lg:h-28 w-auto object-contain"
+                            style={{ height: scrolled ? '48px' : '64px', width: 'auto', objectFit: 'contain', transition: 'height 0.3s ease' }}
                         />
                     </div>
 
-                    <nav className="hidden md:flex items-center gap-3 lg:gap-5">
-                        {navLinks.map((link, i) => (
-                            <a
-                                key={i}
-                                href={link.href}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    handleNavigation(link.href);
-                                }}
-                                className={`font-heading text-xs font-medium whitespace-nowrap transition-colors duration-300 underline-offset-4 ${
-                                    isActive(link.href)
-                                        ? "text-blue-600 underline font-semibold"
-                                        : "hover:underline hover:text-blue-600"
-                                }`}
-                                data-testid={`nav-${link.label
-                                    .toLowerCase()
-                                    .replace(/\s+/g, "-")}`}
-                            >
-                                {link.label}
-                            </a>
-                        ))}
+                    <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+                        {navLinks.map((link, i) => {
+                            const active = isActive(link.href);
+                            return (
+                                <a
+                                    key={i}
+                                    href={link.href}
+                                    onClick={(e) => { e.preventDefault(); handleNavigation(link.href); }}
+                                    data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+                                    style={{ position: 'relative', display: 'inline-block', padding: '6px 10px', fontSize: '13px', fontWeight: active ? 600 : 500, color: active ? '#4b4ba3' : '#1a1a2e', whiteSpace: 'nowrap', textDecoration: 'none', transition: 'color 0.2s ease' }}
+                                    onMouseEnter={e => { 
+                                        const span = e.currentTarget.querySelector('span') as HTMLElement;
+                                        if (!active && span) span.style.transform = 'scaleX(1)';
+                                        if (!active) (e.currentTarget as HTMLAnchorElement).style.color = '#4b4ba3';
+                                    }}
+                                    onMouseLeave={e => { 
+                                        const span = e.currentTarget.querySelector('span') as HTMLElement;
+                                        if (!active && span) span.style.transform = 'scaleX(0)';
+                                        if (!active) (e.currentTarget as HTMLAnchorElement).style.color = '#1a1a2e';
+                                    }}
+                                >
+                                    {link.label}
+                                    <span style={{
+                                        position: 'absolute', bottom: 0, left: '10px', right: '10px',
+                                        height: '2px', borderRadius: '2px',
+                                        background: '#4b4ba3',
+                                        transform: active ? 'scaleX(1)' : 'scaleX(0)',
+                                        transformOrigin: 'left',
+                                        transition: 'transform 0.25s ease',
+                                    }} />
+                                </a>
+                            );
+                        })}
                     </nav>
 
                     <div className="flex items-center gap-2">

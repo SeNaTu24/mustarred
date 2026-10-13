@@ -6,6 +6,7 @@ import ServicesSection from "@/components/sections/ServicesSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
+import WhyChooseUsCarousel from "@/components/sections/WhyChooseUsCarousel";
 import { useModal } from "@/contexts/ModalContext";
 
 export default function Home() {
@@ -48,7 +49,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div className="text-center mb-6 md:mb-8">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3 text-black">
-                Why Choose us?
+                Why Choose Us?
               </h2>
               <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
                 We are trusted by leading organizations
@@ -56,89 +57,7 @@ export default function Home() {
             </div>
             
             <div className="overflow-hidden">
-              <div className="flex animate-scroll-reverse gap-8 sm:gap-10 md:gap-12">
-                <img
-                  src="/assets/icons/cleva-logo2.svg"
-                  alt="Cleva - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/fincra.png"
-                  alt="Fincra - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/heala_logo.svg"
-                  alt="Heala - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/renmoney.jpeg"
-                  alt="Renmoney - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/enta_afrika.jpg"
-                  alt="Enta Afrika - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/radease.png"
-                  alt="Radease - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/roqqu.png"
-                  alt="Roqqu - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/oa_logo.png"
-                  alt="OA - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                {/* Duplicate for seamless loop */}
-                <img
-                  src="/assets/icons/cleva-logo2.svg"
-                  alt="Cleva - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/fincra.png"
-                  alt="Fincra - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/heala_logo.svg"
-                  alt="Heala - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/renmoney.jpeg"
-                  alt="Renmoney - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/enta_afrika.jpg"
-                  alt="Enta Afrika - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/radease.png"
-                  alt="Radease - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/roqqu.png"
-                  alt="Roqqu - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/oa_logo.png"
-                  alt="OA - Mustarred compliance client"
-                  className="h-8 sm:h-10 md:h-12 w-20 sm:w-24 md:w-32 object-contain flex-shrink-0"
-                />
-              </div>
+              <WhyChooseUsCarousel />
             </div>
             <div className="text-center mt-8">
               <a

@@ -525,7 +525,7 @@ For expert guidance on developing compliance frameworks tailored to your specifi
     author: "Admin Mustarred",
     date: "2025-05-24",
     category: "Corporate Governance",
-    image: "/assets/images/blog/tamara2.webp",
+    image: "/assets/images/blog/tamara2.avif",
 
 
   }
