@@ -446,10 +446,6 @@ export default function CatchTheRedFlags() {
     };
 
     const isResult = phase === "success" || phase === "timeout";
-    const previewMarkers = [
-        { left: "56%", kind: "control" as const, icon: ShieldCheck, bottom: `${GROUND_OFFSET_PX + 12}px` },
-        { left: "80%", kind: "risk" as const, icon: FileWarning, bottom: `${GROUND_OFFSET_PX}px` },
-    ];
 
     return (
         <section

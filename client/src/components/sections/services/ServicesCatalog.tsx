@@ -109,7 +109,6 @@ export default function ServicesCatalog({ offerings, onContact }: ServicesCatalo
                         <ServiceCard
                             key={service.slug}
                             service={service}
-                            index={index}
                             imageFirst={index % 2 === 1}
                             onContact={onContact}
                         />
