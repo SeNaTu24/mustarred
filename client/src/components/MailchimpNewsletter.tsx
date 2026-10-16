@@ -56,20 +56,26 @@ export default function MailchimpNewsletter() {
           </p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4" autoComplete="off">
+          <input type="text" name="fake_name" style={{ display: 'none' }} />
+          <input type="email" name="fake_email" style={{ display: 'none' }} />
           <Input
             type="text"
+            name="contact_first"
             placeholder="First Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            autoComplete="off"
             className="w-full text-sm sm:text-base"
           />
           <Input
             type="email"
+            name="contact_mail"
             placeholder="Email Address *"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            autoComplete="off"
             className="w-full text-sm sm:text-base"
           />
           <Button

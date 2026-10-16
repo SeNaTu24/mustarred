@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="bg-white" style={{paddingTop: '96px'}}>
+      <main className="bg-white" style={{paddingTop: '0'}}>
         <HeroSection />
         <ServicesSection />
         <AboutSection />
@@ -45,7 +45,7 @@ export default function Home() {
         </div>
 
         {/* Why Choose Us Section */}
-        <section className="py-10 md:py-12 lg:py-16 bg-gray-50">
+        <section className="py-16 md:py-20 lg:py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div className="text-center mb-6 md:mb-8">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3 text-black">
@@ -72,7 +72,7 @@ export default function Home() {
         <section className="pt-12 md:pt-20 lg:pt-28 pb-10 md:pb-14 lg:pb-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div className="text-center mb-6 md:mb-8">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3 text-black">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 md:mb-3 text-black">
                 Partnership and Collaborations
               </h2>
               <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
@@ -80,64 +80,29 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="overflow-hidden">
-              <div className="flex animate-scroll-reverse gap-8 sm:gap-10 md:gap-12">
-                <img
-                  src="/assets/icons/heala_logo.svg"
-                  alt="Heala - Mustarred partner"
-                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
-                />
+            <div className="flex justify-center flex-wrap gap-10 md:gap-16">
                 <img
                   src="/assets/icons/iwajoo.png"
                   alt="Iwajoo - Mustarred partner"
-                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
+                  className="h-8 md:h-10 w-auto object-contain"
                 />
                 <img
                   src="/assets/icons/legaltechbro.png"
                   alt="Legal Tech Bro - Mustarred partner"
-                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
+                  className="h-8 md:h-10 w-auto object-contain"
                 />
                 <a href="https://pecb.com/en" target="_blank" rel="noopener noreferrer">
                   <img
                     src="/assets/icons/pecb-slogan-bottom-logo-800.png"
                     alt="PECB - Mustarred certified training partner"
-                    className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
+                    className="h-8 md:h-10 w-auto object-contain"
                   />
                 </a>
                 <img
                   src="/assets/icons/vaspa.png"
                   alt="VASPA - Mustarred partner"
-                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
+                  className="h-8 md:h-10 w-auto object-contain"
                 />
-                {/* Duplicate for seamless loop */}
-                <img
-                  src="/assets/icons/heala_logo.svg"
-                  alt="Heala - Mustarred partner"
-                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/iwajoo.png"
-                  alt="Iwajoo - Mustarred partner"
-                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
-                />
-                <img
-                  src="/assets/icons/legaltechbro.png"
-                  alt="Legal Tech Bro - Mustarred partner"
-                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
-                />
-                <a href="https://pecb.com/en" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/assets/icons/pecb-slogan-bottom-logo-800.png"
-                    alt="PECB - Mustarred certified training partner"
-                    className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
-                  />
-                </a>
-                <img
-                  src="/assets/icons/vaspa.png"
-                  alt="VASPA - Mustarred partner"
-                  className="h-6 sm:h-7 md:h-8 w-16 sm:w-18 md:w-20 object-contain flex-shrink-0"
-                />
-              </div>
             </div>
           </div>
         </section>
@@ -145,11 +110,11 @@ export default function Home() {
         {/* Trusted Authorities - External Links */}
         <section className="py-8 bg-gray-50 border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 text-center">
-            <p className="text-xs text-gray-500 mb-4">Regulated and aligned with</p>
+            <p className="text-xs text-gray-500 mb-4">Certified by the NDPC as a Data Protection Compliance Organisation</p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <a href="https://ndpc.gov.ng" target="_blank" rel="noopener noreferrer" className="text-[#4b4ba3] hover:underline font-medium">NDPC — Nigeria Data Protection Commission</a>
               <a href="https://www.cac.gov.ng" target="_blank" rel="noopener noreferrer" className="text-[#4b4ba3] hover:underline font-medium">CAC — Corporate Affairs Commission</a>
-              <a href="https://pecb.com/en" target="_blank" rel="noopener noreferrer" className="text-[#4b4ba3] hover:underline font-medium">PECB — Certified Training Partner</a>
+
             </div>
           </div>
         </section>

@@ -11,16 +11,6 @@ const eyebrow: React.CSSProperties = {
     marginBottom: "0",
 };
 
-const serifH1: React.CSSProperties = {
-    fontFamily: "Georgia, serif",
-    fontWeight: 400,
-    fontSize: "clamp(44px, 6vw, 80px)",
-    lineHeight: 1.05,
-    letterSpacing: "-0.04em",
-    color: "white",
-    margin: "20px 0 24px",
-};
-
 const serifH2: React.CSSProperties = {
     fontFamily: "Georgia, serif",
     fontWeight: 400,
@@ -39,7 +29,7 @@ export default function AboutUs() {
     const [, setLocation] = useLocation();
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen" style={{backgroundColor: '#0d0520'}}>
             <Header />
 
             {/* Hero */}
@@ -52,25 +42,27 @@ export default function AboutUs() {
                     backgroundImage: "url(/assets/images/newimage.avif)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
+                    animation: "heroFloat 12s ease-in-out infinite",
                 }}
             >
+                <div style={{
+                    position: 'absolute', inset: 0,
+                    background: 'linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 40%)',
+                    pointerEvents: 'none',
+                }} />
                 <div style={wrap}>
                     <div style={{ maxWidth: "820px" }}>
-                        <h1 style={{ ...serifH1, color: "black" }}>
-                            Mustarred.
-                        </h1>
-                        <p
-                            style={{
-                                maxWidth: "560px",
-                                color: "#000000",
-                                fontSize: "17px",
-                                lineHeight: 1.7,
-                                fontFamily: "Satoshi, sans-serif",
-                                fontWeight: 600,
-                            }}
-                        >
-                            Transforming African startups through expert
-                            compliance guidance.
+                        <p style={{
+                            maxWidth: "560px",
+                            color: "#000000",
+                            fontSize: "22px",
+                            lineHeight: 1.7,
+                            fontFamily: "Satoshi, sans-serif",
+                            fontWeight: 600,
+                            marginTop: "120px",
+                            marginLeft: "0px",
+                        }}>
+                            Transforming African startups through expert compliance guidance.
                         </p>
                     </div>
                 </div>
@@ -300,9 +292,9 @@ export default function AboutUs() {
             </section>
 
             {/* Mission & Vision */}
-            <section style={{ padding: "100px 0", background: "white" }}>
+            <section style={{ padding: "100px 0", background: "#1e1038" }}>
                 <div style={wrap}>
-                    <div style={eyebrow}>Our Direction</div>
+                    <div style={{ ...eyebrow, color: "#a49fe7" }}>Our Direction</div>
                     <div
                         style={{
                             display: "grid",
@@ -313,125 +305,51 @@ export default function AboutUs() {
                         className="about-split"
                     >
                         <div>
-                            <h2 style={{ ...serifH2, color: "#142338" }}>
+                            <h2 style={{ ...serifH2, color: "white" }}>
                                 Our{" "}
-                                <em
-                                    style={{
-                                        color: "#4b4ba3",
-                                        fontStyle: "italic",
-                                    }}
-                                >
+                                <em style={{ color: "#a49fe7", fontStyle: "italic" }}>
                                     Mission.
                                 </em>
                             </h2>
-                            <p
-                                style={{
-                                    fontSize: "17px",
-                                    lineHeight: 1.8,
-                                    color: "#536376",
-                                    marginBottom: "24px",
-                                }}
-                            >
+                            <p style={{ fontSize: "17px", lineHeight: 1.8, color: "#c5c0e8", marginBottom: "24px" }}>
                                 To empower African startups by simplifying
                                 complex regulatory landscapes, enabling
                                 entrepreneurs to focus on innovation while
                                 maintaining excellence in governance.
                             </p>
-                            <ul
-                                style={{
-                                    listStyle: "none",
-                                    padding: 0,
-                                    margin: 0,
-                                    display: "grid",
-                                    gap: "12px",
-                                }}
-                            >
+                            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "12px" }}>
                                 {[
                                     "Simplify compliance processes",
                                     "Enable sustainable growth",
                                     "Foster innovation ecosystem",
                                 ].map((item) => (
-                                    <li
-                                        key={item}
-                                        style={{
-                                            display: "flex",
-                                            alignItems: "center",
-                                            gap: "12px",
-                                            fontSize: "14px",
-                                            color: "#536376",
-                                        }}
-                                    >
-                                        <span
-                                            style={{
-                                                color: "#a49fe7",
-                                                fontSize: "18px",
-                                            }}
-                                        >
-                                            →
-                                        </span>{" "}
-                                        {item}
+                                    <li key={item} style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "14px", color: "#c5c0e8" }}>
+                                        <span style={{ color: "#a49fe7", fontSize: "18px" }}>→</span>{" "}{item}
                                     </li>
                                 ))}
                             </ul>
                         </div>
                         <div>
-                            <h2 style={{ ...serifH2, color: "#142338" }}>
+                            <h2 style={{ ...serifH2, color: "white" }}>
                                 Our{" "}
-                                <em
-                                    style={{
-                                        color: "#4b4ba3",
-                                        fontStyle: "italic",
-                                    }}
-                                >
+                                <em style={{ color: "#a49fe7", fontStyle: "italic" }}>
                                     Vision.
                                 </em>
                             </h2>
-                            <p
-                                style={{
-                                    fontSize: "17px",
-                                    lineHeight: 1.8,
-                                    color: "#536376",
-                                    marginBottom: "24px",
-                                }}
-                            >
+                            <p style={{ fontSize: "17px", lineHeight: 1.8, color: "#c5c0e8", marginBottom: "24px" }}>
                                 To be Africa's premier business advisory firm,
                                 creating an ecosystem where compliance becomes a
                                 competitive advantage for startups across the
                                 continent.
                             </p>
-                            <ul
-                                style={{
-                                    listStyle: "none",
-                                    padding: 0,
-                                    margin: 0,
-                                    display: "grid",
-                                    gap: "12px",
-                                }}
-                            >
+                            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "12px" }}>
                                 {[
                                     "Leading advisory excellence",
                                     "Continental market leadership",
                                     "Transformative impact",
                                 ].map((item) => (
-                                    <li
-                                        key={item}
-                                        style={{
-                                            display: "flex",
-                                            alignItems: "center",
-                                            gap: "12px",
-                                            fontSize: "14px",
-                                            color: "#536376",
-                                        }}
-                                    >
-                                        <span
-                                            style={{
-                                                color: "#a49fe7",
-                                                fontSize: "18px",
-                                            }}
-                                        >
-                                            →
-                                        </span>{" "}
-                                        {item}
+                                    <li key={item} style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "14px", color: "#c5c0e8" }}>
+                                        <span style={{ color: "#a49fe7", fontSize: "18px" }}>→</span>{" "}{item}
                                     </li>
                                 ))}
                             </ul>
@@ -441,7 +359,7 @@ export default function AboutUs() {
             </section>
 
             {/* CTA band */}
-            <section style={{ padding: "85px 0", background: "#1e1038" }}>
+            <section style={{ padding: "85px 0", background: "white" }}>
                 <div
                     style={{
                         ...wrap,
@@ -453,20 +371,20 @@ export default function AboutUs() {
                     className="about-split"
                 >
                     <div>
-                        <div style={{ ...eyebrow, color: "#a49fe7" }}>
+                        <div style={{ ...eyebrow, color: "#4b4ba3" }}>
                             The Next Conversation
                         </div>
                         <h2
                             style={{
                                 ...serifH2,
-                                color: "white",
+                                color: "#142338",
                                 margin: "16px 0 0",
                             }}
                         >
                             Ready to Transform{" "}
                             <em
                                 style={{
-                                    color: "#a49fe7",
+                                    color: "#4b4ba3",
                                     fontStyle: "italic",
                                 }}
                             >
@@ -479,7 +397,7 @@ export default function AboutUs() {
                             style={{
                                 fontSize: "19px",
                                 lineHeight: 1.8,
-                                color: "#c5c0e8",
+                                color: "#536376",
                                 marginBottom: "32px",
                             }}
                         >
@@ -512,6 +430,13 @@ export default function AboutUs() {
             <Footer />
 
             <style>{`
+                @keyframes heroFloat {
+                    0%   { background-position: center center; }
+                    25%  { background-position: 52% 48%; }
+                    50%  { background-position: center 52%; }
+                    75%  { background-position: 48% 50%; }
+                    100% { background-position: center center; }
+                }
                 @media (max-width: 760px) {
                     .about-split { grid-template-columns: 1fr !important; gap: 40px !important; }
                     .about-grid { grid-template-columns: 1fr !important; }

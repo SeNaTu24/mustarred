@@ -1,14 +1,14 @@
 .client-logo-carousel {
-  --client-card-width: clamp(132px, 14vw, 156px);
-  --client-card-height: 176px;
+  --client-card-width: clamp(160px, 16vw, 200px);
+  --client-card-height: 220px;
   --client-carousel-radius: calc(var(--client-card-width) * 1.2071);
 
   position: relative;
   isolation: isolate;
-  width: min(100%, 720px);
-  height: 380px;
+  width: min(100%, 960px);
+  height: 480px;
   margin-inline: auto;
-  perspective: 1100px;
+  perspective: 1400px;
   perspective-origin: 50% 44%;
   outline: none;
 }
@@ -55,7 +55,7 @@
   place-items: center;
   margin-top: calc(var(--client-card-height) / -2);
   margin-left: calc(var(--client-card-width) / -2);
-  padding: 13px;
+  padding: 18px;
   overflow: hidden;
   border: 1px solid rgba(75, 75, 163, 0.13);
   border-radius: 14px;

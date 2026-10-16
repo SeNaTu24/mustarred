@@ -112,10 +112,10 @@ interface ContactSectionProps {
 export default function ContactSection({ onResourcesClick }: ContactSectionProps) {
     const { openModal } = useModal();
     return (
-        <section id="contact" className="py-8 sm:py-12 md:py-16 bg-white">
+        <section id="contact" className="py-16 sm:py-20 md:py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
-                    <div>
+                <div className="flex flex-col lg:flex-row lg:justify-between gap-12 lg:gap-0">
+                    <div className="lg:max-w-md">
                         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4">
                             Let's Connect
                         </h2>
@@ -203,7 +203,7 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                         </div>
                     </div>
 
-                    <div>
+                    <div className="lg:max-w-md">
                         <MailchimpNewsletter />
                     </div>
                 </div>

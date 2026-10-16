@@ -21,7 +21,7 @@ const rawBlogPosts: RawBlogPost[] = [
   {
     id: "vaspa-partnership-2026",
     title: "Mustarred Partners with VASPA for 2026 Mastermind Builders' Luncheon",
-    excerpt: "We are pleased to partner with VASPA as a sponsor of the 2026 Mastermind Builders' Luncheon, standing alongside builders advancing Nigeria's blockchain ecosystem. As the industry continues to evolve, strong compliance, security, and governance frameworks remain critical to building a resilient and sustainable virtual asset ecosystem.\n\nWe remain committed to supporting businesses and stakeholders shaping Nigeria's blockchain and Web3 landscape with bespoke compliance and security expertise",
+    excerpt: "Mustarred is proud to sponsor the 2026 Mastermind Builders' Luncheon alongside VASPA, supporting builders advancing Nigeria's blockchain and Web3 ecosystem with compliance and governance expertise.",
     content: `We are pleased to partner with VASPA as a sponsor of the 2026 Mastermind Builders' Luncheon, standing alongside builders advancing Nigeria's blockchain ecosystem. As the industry continues to evolve, strong compliance, security, and governance frameworks remain critical to building a resilient and sustainable virtual asset ecosystem.
 
 We remain committed to supporting businesses and stakeholders shaping Nigeria's blockchain and Web3 landscape with bespoke compliance and security expertise`,
@@ -33,7 +33,7 @@ We remain committed to supporting businesses and stakeholders shaping Nigeria's 
   {
     id: "regulatory-roundup-may-2025",
     title: "The Scoop: Regulatory Roundup (May 2025)",
-    excerpt: "A comprehensive monthly digest of regulatory developments across Africa and beyond, covering data protection initiatives, digital asset regulations, fintech innovations, and major policy shifts from May 2025.",
+    excerpt: "A monthly digest of key regulatory developments across Africa, covering data protection, digital assets, fintech, and major policy shifts from May 2025.",
     content: `# The Scoop: Regulatory Roundup (May 2025)
 
 ## Data Protection
@@ -103,7 +103,7 @@ The shutdown is part of a [growing trend across Africa](https://techpoint.africa
   {
     id: "regulatory-roundup-july-2025",
     title: "The Scoop: Regulatory Roundup (July 7-18, 2025)",
-    excerpt: "A comprehensive weekly digest of regulatory developments across Africa and beyond, covering AI innovations, financial market updates, data protection enforcement, cryptocurrency regulations, and major policy shifts from July 7-18, 2025.",
+    excerpt: "A weekly digest of regulatory developments across Africa, covering AI, financial markets, data protection enforcement, and cryptocurrency regulations from July 7–18, 2025.",
     content: `# The Scoop: Regulatory Roundup (July 7-18, 2025)
 
 ## Introduction
@@ -205,7 +205,7 @@ Nigeria officially joined BRICS as a partner country in January 2025, a category
   {
     id: "cbn-exposure-draft",
     title: "Navigating the Future of AML Compliance: An Explainer on the CBN's Draft Baseline Standards for Automated AML Solutions",
-    excerpt: "Analysis of the Central Bank of Nigeria's latest exposure draft and its implications for financial service providers and fintech companies.",
+    excerpt: "An explainer on the CBN's exposure draft for automated AML solutions and what it means for financial institutions and fintech companies operating in Nigeria.",
     content: `## Introduction
 
 On May 20, 2025, the Central Bank of Nigeria ("CBN") released an exposure draft titled "Baseline Standards for Automated Anti-Money Laundering (AML) Solutions" ("Draft Standards"). The Draft Standards are based on an assessment of the existing solutions within the financial sector amid the rapid digital transformation of Nigeria's financial sector and the need to align the country's AML practices with global best practices and international regulatory frameworks, including the recommendations of the Financial Action Task Force (FATF).
@@ -316,7 +316,7 @@ FIs have 12 months from the issuance of the final standard to fully implement an
   {
     id: "tamara-compliance-framework",
     title: "Building Robust Compliance Frameworks for Growing Businesses",
-    excerpt: "Essential strategies for implementing effective compliance management systems in dynamic business environments.",
+    excerpt: "Practical strategies for building scalable compliance frameworks that meet regulatory requirements while supporting business growth.",
     content: `# Building Robust Compliance Frameworks for Growing Businesses
 
 ## Introduction

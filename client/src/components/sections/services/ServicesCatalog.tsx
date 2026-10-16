@@ -1,4 +1,4 @@
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, ChevronDown } from "lucide-react";
 import type { ServiceOffering } from "@/data/servicesPage";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
@@ -15,6 +15,7 @@ function ServiceCard({ service, imageFirst, onContact }: {
 }) {
     const ref = useRef<HTMLElement>(null);
     const [visible, setVisible] = useState(false);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         const el = ref.current;
@@ -56,36 +57,47 @@ function ServiceCard({ service, imageFirst, onContact }: {
             <div className={`min-w-0 ${imageFirst ? "md:order-1" : ""}`}>
                 <h3 className="mb-3 text-2xl font-semibold leading-tight tracking-tight text-gray-950 sm:text-3xl">{service.name}</h3>
                 <p className="mb-3 text-base font-medium text-gray-800">{service.shortDesc}</p>
-                <p className="mb-7 text-sm leading-relaxed text-gray-600 sm:text-base">{service.fullDesc}</p>
+                <p className="mb-5 text-sm leading-relaxed text-gray-600 sm:text-base">{service.fullDesc}</p>
 
-                <div className="grid gap-7 sm:grid-cols-2">
-                    <div>
-                        <h4 className="mb-3 text-sm font-semibold text-gray-900">What's included</h4>
-                        <ul className="space-y-2.5">
-                            {service.features.map((feature) => (
-                                <li key={feature} className="flex items-start gap-2 text-sm leading-relaxed text-gray-600">
-                                    <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#4b4ba3]" />
-                                    <span>{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 className="mb-3 text-sm font-semibold text-gray-900">Typical steps</h4>
-                        <ol className="space-y-2.5">
-                            {service.process.map((step, stepIndex) => (
-                                <li key={step} className="flex items-start gap-2.5 text-sm leading-relaxed text-gray-600">
-                                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#e8f1f2] text-[10px] font-bold text-[#4b4ba3]">{stepIndex + 1}</span>
-                                    <span>{step}</span>
-                                </li>
-                            ))}
-                        </ol>
+                {/* Accordion */}
+                <button
+                    onClick={() => setOpen(!open)}
+                    className="flex w-full items-center justify-between rounded-md border border-gray-200 px-4 py-3 text-sm font-semibold text-gray-800 hover:bg-gray-50 transition-colors"
+                >
+                    <span>What's included & typical steps</span>
+                    <ChevronDown className={`h-4 w-4 text-[#4b4ba3] transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
+                </button>
+
+                <div style={{ maxHeight: open ? '600px' : '0', overflow: 'hidden', transition: 'max-height 0.4s ease' }}>
+                    <div className="grid gap-6 sm:grid-cols-2 pt-5 pb-2">
+                        <div>
+                            <h4 className="mb-3 text-sm font-semibold text-gray-900">What's included</h4>
+                            <ul className="space-y-2.5">
+                                {service.features.map((feature) => (
+                                    <li key={feature} className="flex items-start gap-2 text-sm leading-relaxed text-gray-600">
+                                        <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#4b4ba3]" />
+                                        <span>{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 className="mb-3 text-sm font-semibold text-gray-900">Typical steps</h4>
+                            <ol className="space-y-2.5">
+                                {service.process.map((step, stepIndex) => (
+                                    <li key={step} className="flex items-start gap-2.5 text-sm leading-relaxed text-gray-600">
+                                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#e8f1f2] text-[10px] font-bold text-[#4b4ba3]">{stepIndex + 1}</span>
+                                        <span>{step}</span>
+                                    </li>
+                                ))}
+                            </ol>
+                        </div>
                     </div>
                 </div>
 
                 <Button
                     onClick={() => onContact(service)}
-                    className="mt-7 min-h-11 bg-[#4b4ba3] px-5 text-white hover:bg-[#3a3a8a]"
+                    className="mt-5 min-h-11 bg-[#4b4ba3] px-5 text-white hover:bg-[#3a3a8a]"
                 >
                     Talk to an expert <ArrowRight aria-hidden="true" className="ml-2 h-4 w-4" />
                 </Button>

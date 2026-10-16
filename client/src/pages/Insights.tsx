@@ -107,7 +107,7 @@ export default function Insights() {
         <div className="min-h-screen bg-white">
             <Header />
             <main className="pt-24">
-                <section className="border-b border-gray-100 bg-white pb-12 pt-2 sm:pb-14">
+                <section className="border-b border-gray-100 pb-12 pt-2 sm:pb-14" style={{ background: 'radial-gradient(ellipse at 30% 40%, #2a1a4a 0%, #1a0d33 60%, #0d0520 100%)' }}>
                     <div className="mx-auto max-w-7xl">
                         <Breadcrumbs
                             crumbs={[
@@ -117,17 +117,17 @@ export default function Insights() {
                         />
                         <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 md:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)] md:items-end md:gap-12 md:px-8">
                             <div>
-                                <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-gray-950 sm:text-4xl md:text-5xl">
+                                <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
                                     Our Insights and Updates
                                 </h1>
-                                <p className="mt-4 max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">
+                                <p className="mt-4 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg">
                                     Stay informed with expert insights on compliance, regulations, and governance best practices for African businesses.
                                 </p>
                             </div>
                             <div>
                                 <label
                                     htmlFor="insights-search"
-                                    className="mb-2 block text-sm font-semibold text-gray-800"
+                                    className="mb-2 block text-sm font-semibold text-gray-200"
                                 >
                                     Search articles...
                                 </label>

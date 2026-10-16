@@ -1,291 +1,123 @@
-// Logo path will be used directly
+import { SiX, SiInstagram } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa";
 import { useModal } from "@/contexts/ModalContext";
+
+const nav = {
+    Company: [
+        { label: "Home", href: "/" },
+        { label: "About Us", href: "/about" },
+        { label: "Services", href: "/services" },
+        { label: "Our Training", href: "/training" },
+    ],
+    Resources: [
+        { label: "Our Insights", href: "/our-insights" },
+        { label: "CAC Registration", href: "/cac-registration" },
+        { label: "DCMI Compliance", href: "/dcmi-compliance" },
+    ],
+    Legal: [
+        { label: "Privacy Notice", href: "/privacy-policy" },
+        { label: "Terms of Use", href: "/terms-of-service" },
+    ],
+};
+
+const socials = [
+    { label: "X", href: "https://x.com/mustarred", icon: <SiX size={16} /> },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/mustarred/about/", icon: <FaLinkedin size={16} /> },
+    { label: "Instagram", href: "https://www.instagram.com/mustarred_africa?igsh=MW5wbW45MTltNXJudQ==", icon: <SiInstagram size={16} /> },
+];
 
 export default function Footer() {
     const { openModal } = useModal();
-    const handleFooterNavigation = (href: string) => {
-        if (href.startsWith("#")) {
-            const id = href.replace("#", "");
-            const el = document.getElementById(id);
-            
-            // If we're on the homepage and element exists, scroll to it
-            if (el && window.location.pathname === "/") {
-                el.scrollIntoView({ behavior: "smooth" });
-            } else {
-                // If we're on another page, go to homepage with hash
-                window.location.href = `/${href}`;
-            }
-        } else {
-            window.location.href = href;
-        }
-    };
 
     return (
-        <footer className="text-white py-16 mt-0 relative overflow-hidden" style={{backgroundColor: 'rgb(30,17,56)'}}>
-            {/* Background decoration */}
-            <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-                <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
-            </div>
-            
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                {/* Mobile: Logo section spans full width */}
-                <div className="block sm:hidden mb-8">
-                    <div className="flex items-center mb-4">
+        <footer style={{ backgroundColor: '#0d0520', color: 'white' }}>
+            {/* Main footer */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-20">
+                <div className="grid grid-cols-2 md:grid-cols-[2.5fr_1fr_1fr_1fr] gap-12 md:gap-16">
+                    {/* Brand */}
+                    <div className="col-span-2 md:col-span-1">
                         <img
                             src="/assets/brand/logo.png"
                             alt="Mustarred"
-                            className="h-20 w-auto object-contain brightness-0 invert"
+                            className="h-24 w-auto object-contain brightness-0 invert mb-6"
                         />
-                    </div>
-                    <p className="text-gray-300 mb-4 leading-relaxed text-sm">
-                        ...for the startups that scale
-                    </p>
-                    <p className="text-xs text-gray-400">
-                        Legal compliance made simple for African businesses.
-                    </p>
-                </div>
-
-                {/* Desktop and Mobile Grid */}
-                <div className="grid grid-cols-2 sm:hidden gap-6 mb-8">
-                    {/* Mobile: Quick Links */}
-                    <div>
-                        <h4 className="font-semibold mb-4 text-base">Quick Links</h4>
-                        <ul className="space-y-2 text-gray-300 text-sm">
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 text-left flex items-center group"
-                                >
-                                    <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
-                                    Home
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/about")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 text-left flex items-center group"
-                                >
-                                    <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
-                                    About Us
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/services")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 text-left flex items-center group"
-                                >
-                                    <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
-                                    Services
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("#testimonials")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 text-left flex items-center group"
-                                >
-                                    <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
-                                    Testimonials
-                                </button>
-                            </li>
-                        </ul>
+                        <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '12px', lineHeight: 1.7, maxWidth: '260px' }}>
+                            Legal compliance made simple for African businesses and startups.
+                        </p>
+                        <button
+                            onClick={() => openModal("Contact Us", "Get in touch with our team")}
+                            style={{
+                                marginTop: '24px',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                padding: '8px 16px',
+                                background: '#4b4ba3',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: '4px',
+                                fontSize: '11px',
+                                fontWeight: 600,
+                                cursor: 'pointer',
+                            }}
+                        >
+                            Get in Touch ↗
+                        </button>
                     </div>
 
-                    {/* Mobile: Resources & Legal combined */}
-                    <div>
-                        <h4 className="font-semibold mb-4 text-base">Resources</h4>
-                        <ul className="space-y-2 text-gray-300 text-sm mb-4">
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/our-insights")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
-                                >
-                                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
-                                    Our Insights
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => openModal("Free Resources", "Access our compliance guides and templates")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
-                                >
-                                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
-                                    Free Resources
-                                </button>
-                            </li>
-                        </ul>
-                        <h4 className="font-semibold mb-4 text-base">Legal</h4>
-                        <ul className="space-y-2 text-gray-300 text-sm">
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/privacy-policy")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
-                                >
-                                    <span className="w-1.5 h-1.5 bg-red-400 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
-                                    Privacy Notice
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/terms-of-service")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
-                                >
-                                    <span className="w-1.5 h-1.5 bg-red-400 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
-                                    Terms of Use
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                {/* Desktop Grid */}
-                <div className="hidden sm:grid sm:grid-cols-4 gap-8 md:gap-12 lg:gap-16 mb-12">
-                    <div>
-                        <div className="flex items-center mb-6">
-                            <img
-                                src="/assets/brand/logo.png"
-                                alt="Mustarred"
-                                className="h-24 w-auto object-contain brightness-0 invert"
-                            />
+                    {/* Nav columns */}
+                    {Object.entries(nav).map(([title, links]) => (
+                        <div key={title}>
+                            <h4 style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: '20px' }}>
+                                {title}
+                            </h4>
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                                {links.map(link => (
+                                    <li key={link.label}>
+                                        <a
+                                            href={link.href}
+                                            style={{ color: 'rgba(255,255,255,0.65)', fontSize: '12px', textDecoration: 'none', transition: 'color 0.2s' }}
+                                            onMouseEnter={e => (e.currentTarget.style.color = 'white')}
+                                            onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.65)')}
+                                        >
+                                            {link.label}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                        <p className="text-gray-300 mb-6 leading-relaxed">
-                            ...for the startups that scale
-                        </p>
-                        <p className="text-sm text-gray-400">
-                            Legal compliance made simple for African businesses.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h4 className="font-semibold mb-6 text-lg">Quick Links</h4>
-                        <ul className="space-y-3 text-gray-300">
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 text-left flex items-center group"
-                                >
-                                    <span className="w-2 h-2 bg-purple-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
-                                    Home
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/about")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 text-left flex items-center group"
-                                >
-                                    <span className="w-2 h-2 bg-purple-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
-                                    About Us
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/services")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 text-left flex items-center group"
-                                >
-                                    <span className="w-2 h-2 bg-purple-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
-                                    Services
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("#testimonials")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 text-left flex items-center group"
-                                >
-                                    <span className="w-2 h-2 bg-purple-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
-                                    Testimonials
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className="font-semibold mb-6 text-lg">Resources</h4>
-                        <ul className="space-y-3 text-gray-300">
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/our-insights")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
-                                >
-                                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
-                                    Our Insights
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/blog")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
-                                >
-                                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
-                                    Blog
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/cac-registration")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
-                                >
-                                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
-                                    CAC Registration
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/dcmi-compliance")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
-                                >
-                                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
-                                    DCMI Compliance
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => openModal("Free Resources", "Access our compliance guides and templates")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
-                                >
-                                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
-                                    Free Resources
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className="font-semibold mb-6 text-lg">Legal</h4>
-                        <ul className="space-y-3 text-gray-300">
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/privacy-policy")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
-                                >
-                                    <span className="w-2 h-2 bg-red-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
-                                    Privacy Notice
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => handleFooterNavigation("/terms-of-service")}
-                                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
-                                >
-                                    <span className="w-2 h-2 bg-red-400 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
-                                    Terms of Use
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
+                    ))}
                 </div>
+            </div>
 
-                <div className="pt-8 border-t border-gray-700 text-center">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="text-gray-400">
-                            &copy; {new Date().getFullYear()} Mustarred. All rights reserved.
-                        </p>
-                        <address className="not-italic text-xs text-gray-500 flex items-center gap-1">
-                            📍 Lagos, Nigeria &mdash;
-                            <a href="mailto:info@mustarred.com" className="hover:text-gray-300 transition-colors">info@mustarred.com</a>
-                        </address>
-                        <div className="flex items-center gap-6 text-sm text-gray-400">
-                            <span>Made with ❤️ for African businesses</span>
-                        </div>
+            {/* Bottom bar */}
+            <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '11px' }}>
+                        © {new Date().getFullYear()} Mustarred. All rights reserved.
+                    </p>
+                    <div style={{ display: 'flex', gap: '12px' }}>
+                        {socials.map(s => (
+                            <a
+                                key={s.label}
+                                href={s.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={s.label}
+                                style={{
+                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                    width: '34px', height: '34px',
+                                    borderRadius: '6px',
+                                    color: 'rgba(255,255,255,0.5)',
+                                    border: '1px solid rgba(255,255,255,0.1)',
+                                    transition: 'all 0.2s',
+                                }}
+                                onMouseEnter={e => { e.currentTarget.style.color = 'white'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; }}
+                                onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}
+                            >
+                                {s.icon}
+                            </a>
+                        ))}
                     </div>
                 </div>
             </div>

@@ -1,6 +1,5 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import { useModal } from "@/contexts/ModalContext";
 import { serviceOfferings } from "@/data/servicesPage";
 import ClientProofSection from "@/components/sections/services/ClientProofSection";
@@ -23,7 +22,6 @@ export default function Services() {
     return (
         <div className="min-h-screen bg-white">
             <Header />
-            <Breadcrumbs crumbs={[{ label: "Home", href: "/" }, { label: "Services" }]} />
             <main>
                 <ServicesHero onContact={() => openConsultation()} />
                 <ServicePathways />

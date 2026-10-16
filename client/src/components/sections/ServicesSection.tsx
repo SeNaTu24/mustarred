@@ -14,9 +14,9 @@ export default function ServicesSection() {
     const featuredServices = services.slice(0, 6);
 
     return (
-        <section id="services" className="bg-white py-14 sm:py-16 md:py-24">
-            <div className="mx-auto max-w-7xl px-6 md:px-8">
-                <div className="mb-8 flex flex-col items-center text-center md:mb-12">
+        <section id="services" className="bg-white py-20 sm:py-24 md:py-32">
+            <div className="mx-auto max-w-screen-xl px-6 md:px-8">
+                <div className="mb-12 flex flex-col items-center text-center md:mb-16">
                     <div className="w-full">
                         <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-[#4b4ba3] sm:text-sm">
                             HOW WE HELP OUR CLIENTS
@@ -54,7 +54,7 @@ export default function ServicesSection() {
                             value={`service-${index}`}
                             className="m-0 min-w-0 bg-[#e8f1f2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#4b4ba3]"
                         >
-                            <div className="grid h-full min-h-[360px] grid-cols-1 sm:grid-cols-[minmax(0,1fr)_minmax(200px,0.85fr)]">
+                            <div className="grid h-full min-h-[480px] grid-cols-1 sm:grid-cols-[minmax(0,1fr)_minmax(200px,0.85fr)]">
                                 <div className="flex flex-col items-start justify-center p-6 sm:p-8 md:p-10">
                                     <p className="mb-5 text-xs font-bold uppercase tracking-[0.16em] text-[#4b4ba3]">
                                         {service.name}
