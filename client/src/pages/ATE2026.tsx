@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { X } from 'lucide-react';
+import { X, Shield, Lock, Scale, BrainCircuit } from 'lucide-react';
 
 const SECTIONS = [
   {
     id: 'security',
     part: 'Part 1',
     title: 'Basic Security Assessment',
+    description: 'Evaluate your information security foundations.',
+    icon: Shield,
     scoreLabel: 'Security Score',
     questions: [
       { q: 'Do you have a documented Information Security Policy?', note: '' },
@@ -20,6 +22,8 @@ const SECTIONS = [
     id: 'privacy',
     part: 'Part 2',
     title: 'Data Privacy Assessment',
+    description: 'Assess your data protection posture.',
+    icon: Lock,
     scoreLabel: 'Data Privacy Score',
     questions: [
       { q: 'Have you filed your Compliance Audit Return (CAR) with the NDPC?', note: 'Required for Data Controllers and Processors of Major Importance under NDPA 2023' },
@@ -32,6 +36,8 @@ const SECTIONS = [
     id: 'legal',
     part: 'Part 3',
     title: 'Legal Compliance Assessment',
+    description: 'Review your legal and regulatory foundations.',
+    icon: Scale,
     scoreLabel: 'Legal Score',
     questions: [
       { q: 'Is your business duly registered with the Corporate Affairs Commission (CAC)?', note: '' },
@@ -44,6 +50,8 @@ const SECTIONS = [
     id: 'ai',
     part: 'Part 4',
     title: 'AI Governance Assessment',
+    description: 'Examine governance of AI systems you use.',
+    icon: BrainCircuit,
     scoreLabel: 'AI Governance Score',
     questions: [
       { q: 'Do you have a documented AI Use Policy or AI Ethics Policy?', note: '' },
@@ -59,7 +67,7 @@ const RATINGS = {
   25:  { label: 'At Risk',                color: '#6b7280', light: '#f9fafb', border: '#e5e7eb', message: 'Meaningful gaps remain. A structured remediation plan will get you to safe ground faster than you expect.' },
   50:  { label: 'Partially Compliant',    color: '#4b5563', light: '#f3f4f6', border: '#d1d5db', message: 'You are halfway there. A targeted review will close the remaining gaps without reinventing the wheel.' },
   75:  { label: 'Mostly Compliant',       color: '#2BC9A3', light: '#f0fdf9', border: '#99f6e4', message: 'You are making genuine progress. One gap is all that stands between you and full compliance.' },
-  100: { label: 'Fully Compliant',        color: '#B3F00E', light: '#f7ffe6', border: '#d9f99d', message: 'Outstanding. A perfect score reflects sustained commitment to governance. Keep it up.' },
+  100: { label: 'Strong Readiness',       color: '#B3F00E', light: '#f7ffe6', border: '#d9f99d', message: 'Outstanding. A perfect score reflects sustained commitment to governance. Keep it up.' },
 } as const;
 
 const OVERALL_MESSAGES = {
@@ -104,30 +112,37 @@ export default function ATE2026() {
       <Header />
 
       {/* Hero */}
-      <div className="pt-16 sm:pt-20 md:pt-24" style={{ background: 'linear-gradient(160deg, rgba(10,6,24,0.85) 0%, rgba(15,30,20,0.75) 60%, rgba(10,6,24,0.85) 100%), url("/nat.jpg") center/cover no-repeat' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-8 py-10 sm:py-14 text-center">
-          <img src="/ate-logo.svg" alt="Africa Technology Expo" className="h-9 w-auto mx-auto mb-4" />
-          <h2 className="font-black uppercase mb-3" style={{ color: '#B3F00E', fontSize: 'clamp(1.25rem, 4vw, 2rem)', letterSpacing: '0.08em' }}>Africa Tech Expo 2026</h2>
-          <p className="text-xs font-black uppercase tracking-[0.3em] mb-4" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            Regulatory Readiness Check
-          </p>
+      <div className="pt-16 sm:pt-20 md:pt-24" style={{ background: 'linear-gradient(160deg, rgba(10,6,24,0.9) 0%, rgba(30,17,56,0.85) 100%)' }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-8 py-12 sm:py-16 text-center">
+          <span className="text-xs font-black uppercase tracking-[0.3em] mb-4 block" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            Mustarred Africa
+          </span>
           <h1 style={{ color: '#ffffff', fontWeight: 900, fontSize: 'clamp(1.75rem, 5vw, 2.75rem)', lineHeight: 1.15, letterSpacing: '-0.02em' }}>
-            How Compliant Is{' '}
-            <span style={{ color: '#B3F00E' }}>Your Business?</span>
+            Is Your Business Ready to Scale?
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9375rem', lineHeight: 1.7, marginTop: '1rem', maxWidth: '32rem', marginLeft: 'auto', marginRight: 'auto' }}>
-            Answer 16 quick questions across Security, Data Privacy, Legal, and AI Governance — and get your score instantly.
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.05rem', lineHeight: 1.7, marginTop: '1rem', maxWidth: '36rem', marginLeft: 'auto', marginRight: 'auto' }}>
+            Growth brings opportunities. Is your business prepared for the risks that come with it?
+          </p>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9375rem', lineHeight: 1.7, marginTop: '1rem', maxWidth: '36rem', marginLeft: 'auto', marginRight: 'auto' }}>
+            Discover your business's regulatory readiness across four critical areas: Cybersecurity, Data Privacy, Legal Compliance, and AI Governance. Take Mustarred Africa's free Regulatory Readiness Check to identify potential gaps before they become barriers to growth.
+          </p>
+          <p className="mt-4 text-xs font-bold uppercase tracking-widest" style={{ color: '#B3F00E' }}>
+            16 Questions · 4 Key Areas · Instant Results
+          </p>
+          <a href="#assessment" className="inline-flex items-center gap-2 mt-6 font-black text-sm px-6 py-3 rounded-xl transition-opacity hover:opacity-90" style={{ background: '#B3F00E', color: 'rgb(10,6,24)' }}>
+            Start Your Free Assessment
+          </a>
+          <p className="mt-4 text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
+            This assessment is indicative only and does not constitute a formal compliance audit or certification.
           </p>
         </div>
       </div>
 
       {/* Assessment */}
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
-
-        {/* Header */}
+      <div id="assessment" className="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
         <div className="mb-8" style={{ borderBottom: '1px solid rgba(179,240,14,0.15)', paddingBottom: '1.5rem' }}>
           <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#B3F00E' }}>Mustarred Africa</span>
-          <h2 style={{ color: '#fff', fontWeight: 900, fontSize: '1.5rem', letterSpacing: '-0.02em', marginTop: '0.25rem', marginBottom: '0.5rem' }}>Basic Regulatory Readiness Check</h2>
+          <h2 style={{ color: '#fff', fontWeight: 900, fontSize: '1.5rem', letterSpacing: '-0.02em', marginTop: '0.25rem', marginBottom: '0.5rem' }}>Regulatory Readiness Check</h2>
           <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.875rem', lineHeight: 1.7 }}>
             Tap on any section below to begin. Answer 4 quick questions and get your score instantly.
           </p>
@@ -136,6 +151,7 @@ export default function ATE2026() {
         {/* Section cards */}
         <div className="grid sm:grid-cols-2 gap-4 mb-8">
           {SECTIONS.map(section => {
+            const Icon = section.icon;
             const sectionAnswers = answers[section.id];
             const complete = sectionAnswers.every(a => a !== null);
             const score = complete ? getScore(sectionAnswers) : null;
@@ -155,9 +171,15 @@ export default function ATE2026() {
                 }}
               >
                 <div className="flex items-start justify-between gap-2 mb-3">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-widest mb-0.5" style={{ color: complete && rating ? rating.color : '#9ca3af' }}>{section.part}</p>
-                    <h3 className="font-semibold text-base leading-tight" style={{ color: complete && rating ? rating.color : '#111827' }}>{section.title}</h3>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'rgba(30,17,56,0.08)' }}>
+                      <Icon className="w-5 h-5" style={{ color: 'rgb(30,17,56)' }} />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-widest mb-0.5" style={{ color: complete && rating ? rating.color : '#9ca3af' }}>{section.part}</p>
+                      <h3 className="font-semibold text-base leading-tight" style={{ color: complete && rating ? rating.color : '#111827' }}>{section.title}</h3>
+                      <p className="text-xs mt-1" style={{ color: '#6b7280' }}>{section.description}</p>
+                    </div>
                   </div>
                   {complete && rating ? (
                     <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg" style={{ background: rating.border, color: rating.color }}>
@@ -202,6 +224,7 @@ export default function ATE2026() {
                 <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-2">Overall Regulatory Readiness</p>
                 <p className="text-white text-2xl sm:text-3xl font-bold mb-2">{getRating(roundedTotal).label}</p>
                 <p className="text-white/70 text-sm font-medium leading-relaxed max-w-lg">{OVERALL_MESSAGES[roundedTotal]}</p>
+                <p className="text-white/40 text-xs mt-2">A high self-assessment score is not certification or proof of regulatory compliance.</p>
               </div>
             </div>
           </div>
@@ -242,28 +265,25 @@ export default function ATE2026() {
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="rounded-xl p-4 border-2 border-orange-100 bg-orange-50">
                 <p className="text-orange-700 font-semibold text-sm mb-1">Scored 75 and below?</p>
-                <p className="text-gray-600 text-xs font-medium leading-relaxed">Your next step is a focused remediation conversation. We help you identify exactly which gaps to close first, in what order, without overwhelming you.</p>
+                <p className="text-gray-600 text-xs font-medium leading-relaxed">Identify and address your most important regulatory gaps first, in priority order.</p>
               </div>
               <div className="rounded-xl p-4" style={{ border: '2px solid #d1fae5', background: '#f0fdf4' }}>
                 <p className="font-semibold text-sm mb-1" style={{ color: '#15803d' }}>Scored 100?</p>
-                <p className="text-gray-600 text-xs font-medium leading-relaxed">Great work. Let us help you maintain and sharpen that compliance posture as regulations evolve. The landscape does not stand still.</p>
+                <p className="text-gray-600 text-xs font-medium leading-relaxed">Continue monitoring and improving as your business grows and regulations evolve.</p>
               </div>
             </div>
-            <div className="rounded-xl p-5" style={{ background: 'linear-gradient(135deg, rgb(10,6,24) 0%, rgb(15,40,20) 100%)', border: '1px solid rgba(179,240,14,0.25)' }}>
-              <p className="text-white font-semibold text-base mb-1" style={{ letterSpacing: '-0.01em' }}>Ready to close those gaps?</p>
+            <div className="rounded-xl p-5" style={{ background: 'linear-gradient(135deg, rgb(30,17,56) 0%, rgb(15,40,20) 100%)', border: '1px solid rgba(179,240,14,0.25)' }}>
+              <p className="text-white font-semibold text-base mb-1" style={{ letterSpacing: '-0.01em' }}>Ready to strengthen your business?</p>
               <p className="text-sm font-medium leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                Whether you scored 10 or 90, there is a clear path forward. Mustarred Africa builds roadmaps, not lectures.
+                Mustarred Africa helps growing businesses identify governance risks and develop practical roadmaps for sustainable growth.
               </p>
               <a
-                href="mailto:info@mustarred.com?subject=Regulatory Readiness Check — ATE2026"
+                href="mailto:info@mustarred.com"
                 className="inline-flex items-center gap-2 font-black text-sm px-5 py-2.5 rounded-xl transition-opacity hover:opacity-90"
                 style={{ background: '#B3F00E', color: 'rgb(10,6,24)' }}
               >
-                Email us: info@mustarred.com →
+                Contact: info@mustarred.com
               </a>
-              <p className="text-xs mt-3" style={{ color: 'rgba(255,255,255,0.3)' }}>
-                Visit <a href="https://mustarred.com" className="underline" style={{ color: '#B3F00E' }}>mustarred.com</a> or speak to our team at the Mustarred Africa stand.
-              </p>
             </div>
           </div>
         </div>
