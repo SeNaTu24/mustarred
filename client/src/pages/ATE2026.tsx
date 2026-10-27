@@ -66,8 +66,8 @@ const RATINGS = {
   0:   { label: 'Critical Gaps Detected', color: '#6b7280', light: '#f9fafb', border: '#e5e7eb', message: 'Your compliance posture requires urgent attention. You are operating with significant regulatory exposure.' },
   25:  { label: 'At Risk',                color: '#6b7280', light: '#f9fafb', border: '#e5e7eb', message: 'Meaningful gaps remain. A structured remediation plan will get you to safe ground faster than you expect.' },
   50:  { label: 'Partially Compliant',    color: '#4b5563', light: '#f3f4f6', border: '#d1d5db', message: 'You are halfway there. A targeted review will close the remaining gaps without reinventing the wheel.' },
-  75:  { label: 'Mostly Compliant',       color: '#2BC9A3', light: '#f0fdf9', border: '#99f6e4', message: 'You are making genuine progress. One gap is all that stands between you and full compliance.' },
-  100: { label: 'Strong Readiness',       color: '#B3F00E', light: '#f7ffe6', border: '#d9f99d', message: 'Outstanding. A perfect score reflects sustained commitment to governance. Keep it up.' },
+  75:  { label: 'Mostly Compliant',       color: '#5145B5', light: '#E9E5FA', border: '#E9E5FA', message: 'You are making genuine progress. One gap is all that stands between you and full compliance.' },
+  100: { label: 'Strong Readiness',       color: '#5145B5', light: '#f0eefb', border: '#C9C2F0', message: 'Outstanding. A perfect score reflects sustained commitment to governance. Keep it up.' },
 } as const;
 
 const OVERALL_MESSAGES = {
@@ -108,40 +108,34 @@ export default function ATE2026() {
   const modalRating = modalScore !== null ? getRating(modalScore) : null;
 
   return (
-    <div className="min-h-screen" style={{ background: 'rgb(10, 6, 24)', fontFamily: "'Inter', 'DM Sans', system-ui, sans-serif" }}>
+    <div className="min-h-screen" style={{ background: '#160D2B', fontFamily: "'Inter', 'DM Sans', system-ui, sans-serif" }}>
       <Header />
 
       {/* Hero */}
-      <div className="pt-16 sm:pt-20 md:pt-24" style={{ background: 'linear-gradient(160deg, rgba(10,6,24,0.9) 0%, rgba(30,17,56,0.85) 100%)' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-8 py-12 sm:py-16 text-center">
-          <span className="text-xs font-black uppercase tracking-[0.3em] mb-4 block" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            Mustarred Africa
-          </span>
-          <h1 style={{ color: '#ffffff', fontWeight: 900, fontSize: 'clamp(1.75rem, 5vw, 2.75rem)', lineHeight: 1.15, letterSpacing: '-0.02em' }}>
+      <div style={{ background: '#160D2B', paddingTop: '112px', paddingBottom: '40px', paddingLeft: '24px', paddingRight: '24px' }}>
+        <div style={{ maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
+          <h1 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: 'clamp(24px, 4vw, 36px)', lineHeight: 1.15, maxWidth: '850px', margin: '0 auto 20px' }}>
             Is Your Business Ready to Scale?
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.05rem', lineHeight: 1.7, marginTop: '1rem', maxWidth: '36rem', marginLeft: 'auto', marginRight: 'auto' }}>
-            Growth brings opportunities. Is your business prepared for the risks that come with it?
+          <p style={{ color: '#E9E5FA', fontSize: 'clamp(15px, 2vw, 18px)', lineHeight: 1.6, maxWidth: '620px', margin: '0 auto 20px' }}>
+            Check your readiness across Security, Data Privacy, Legal Compliance, and AI Governance.
           </p>
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9375rem', lineHeight: 1.7, marginTop: '1rem', maxWidth: '36rem', marginLeft: 'auto', marginRight: 'auto' }}>
-            Discover your business's regulatory readiness across four critical areas: Cybersecurity, Data Privacy, Legal Compliance, and AI Governance. Take Mustarred Africa's free Regulatory Readiness Check to identify potential gaps before they become barriers to growth.
+          <p style={{ color: '#C9BFFF', fontSize: '13px', fontWeight: 600, marginBottom: '24px' }}>
+            16 Questions · Instant Results
           </p>
-          <p className="mt-4 text-xs font-bold uppercase tracking-widest" style={{ color: '#B3F00E' }}>
-            16 Questions · 4 Key Areas · Instant Results
-          </p>
-          <a href="#assessment" className="inline-flex items-center gap-2 mt-6 font-black text-sm px-6 py-3 rounded-xl transition-opacity hover:opacity-90" style={{ background: '#B3F00E', color: 'rgb(10,6,24)' }}>
-            Start Your Free Assessment
+          <a href="#assessment" onClick={(e) => { e.preventDefault(); const el = document.getElementById('assessment'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }} style={{ display: 'inline-flex', alignItems: 'center', background: '#5145B5', color: '#FFFFFF', fontSize: '15px', fontWeight: 600, padding: '14px 28px', borderRadius: '10px', border: '1px solid #786CD5', textDecoration: 'none' }}>
+            Start Free Assessment
           </a>
-          <p className="mt-4 text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
-            This assessment is indicative only and does not constitute a formal compliance audit or certification.
+          <p style={{ color: '#D1CADF', fontSize: '12px', marginTop: '16px' }}>
+            Self-assessment only · Not a compliance certification
           </p>
         </div>
       </div>
 
       {/* Assessment */}
-      <div id="assessment" className="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
-        <div className="mb-8" style={{ borderBottom: '1px solid rgba(179,240,14,0.15)', paddingBottom: '1.5rem' }}>
-          <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#B3F00E' }}>Mustarred Africa</span>
+      <div id="assessment" className="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-8" style={{ scrollMarginTop: '90px' }}>
+        <div className="mb-5" style={{ borderBottom: '1px solid rgba(179,240,14,0.15)', paddingBottom: '1.5rem' }}>
+          <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#5145B5' }}>Mustarred Africa</span>
           <h2 style={{ color: '#fff', fontWeight: 900, fontSize: '1.5rem', letterSpacing: '-0.02em', marginTop: '0.25rem', marginBottom: '0.5rem' }}>Regulatory Readiness Check</h2>
           <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.875rem', lineHeight: 1.7 }}>
             Tap on any section below to begin. Answer 4 quick questions and get your score instantly.
@@ -149,7 +143,7 @@ export default function ATE2026() {
         </div>
 
         {/* Section cards */}
-        <div className="grid sm:grid-cols-2 gap-4 mb-8">
+        <div className="grid sm:grid-cols-2 gap-3 mb-5">
           {SECTIONS.map(section => {
             const Icon = section.icon;
             const sectionAnswers = answers[section.id];
@@ -173,7 +167,7 @@ export default function ATE2026() {
                 <div className="flex items-start justify-between gap-2 mb-3">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'rgba(30,17,56,0.08)' }}>
-                      <Icon className="w-5 h-5" style={{ color: 'rgb(30,17,56)' }} />
+                      <Icon className="w-5 h-5" style={{ color: '#FFFFFF' }} />
                     </div>
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-widest mb-0.5" style={{ color: complete && rating ? rating.color : '#9ca3af' }}>{section.part}</p>
@@ -197,7 +191,7 @@ export default function ATE2026() {
                     className="h-full rounded-full transition-all duration-500"
                     style={{
                       width: `${(answeredCount / 4) * 100}%`,
-                      background: complete && rating ? rating.color : 'rgb(30,17,56)',
+                      background: complete && rating ? rating.color : '#160D2B',
                     }}
                   />
                 </div>
@@ -211,8 +205,8 @@ export default function ATE2026() {
 
         {/* Overall Score */}
         {allAnswered && (
-          <div className="rounded-2xl overflow-hidden mb-8" style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}>
-            <div className="px-6 sm:px-8 py-8 flex flex-col sm:flex-row items-center gap-6" style={{ background: 'linear-gradient(135deg, rgb(30,17,56) 0%, #4b4ba3 100%)' }}>
+          <div className="rounded-2xl overflow-hidden mb-5" style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}>
+            <div className="px-6 sm:px-8 py-6 flex flex-col sm:flex-row items-center gap-3" style={{ background: 'linear-gradient(135deg, #160D2B 0%, #5145B5 100%)' }}>
               <div className="w-24 h-24 rounded-2xl flex items-center justify-center flex-shrink-0"
                 style={{ background: getRating(roundedTotal).light, border: `3px solid ${getRating(roundedTotal).border}` }}>
                 <div className="text-center">
@@ -231,15 +225,15 @@ export default function ATE2026() {
         )}
 
         {/* Rating Scale */}
-        <div className="rounded-2xl overflow-hidden mb-4" style={{ background: '#fff', boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}>
-          <div className="px-5 sm:px-6 py-4" style={{ background: 'rgb(10,6,24)', borderBottom: '2px solid #B3F00E' }}>
-            <p className="text-[11px] font-semibold uppercase tracking-widest mb-0.5" style={{ color: '#B3F00E' }}>Reference</p>
+        <div className="rounded-2xl overflow-hidden mb-3" style={{ background: '#fff', boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}>
+          <div className="px-5 sm:px-6 py-4" style={{ background: '#160D2B', borderBottom: '2px solid #5145B5' }}>
+            <p className="text-[11px] font-semibold uppercase tracking-widest mb-0.5" style={{ color: '#5145B5' }}>Reference</p>
             <h3 className="text-white text-base font-semibold" style={{ letterSpacing: '-0.01em' }}>Rating Scale</h3>
           </div>
           {([0, 25, 50, 75, 100] as const).map((s, i) => {
             const r = RATINGS[s];
             return (
-              <div key={s} className="px-5 sm:px-6 py-4 flex gap-4 items-start" style={{ borderBottom: i < 4 ? '1px solid #f1f5f9' : 'none' }}>
+              <div key={s} className="px-5 sm:px-6 py-4 flex gap-3 items-start" style={{ borderBottom: i < 4 ? '1px solid #f1f5f9' : 'none' }}>
                 <div className="flex-shrink-0 w-14 pt-0.5">
                   <span className="text-xl font-black" style={{ color: r.color }}>{s}</span>
                   <p className="text-gray-400 text-xs font-semibold">/100</p>
@@ -254,11 +248,11 @@ export default function ATE2026() {
         </div>
 
         {/* Next Steps */}
-        <div className="rounded-2xl overflow-hidden mb-4" style={{ background: '#fff', boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}>
-          <div className="px-5 sm:px-6 py-4" style={{ background: 'rgb(10,6,24)', borderBottom: '2px solid #B3F00E' }}>
+        <div className="rounded-2xl overflow-hidden mb-3" style={{ background: '#fff', boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}>
+          <div className="px-5 sm:px-6 py-4" style={{ background: '#160D2B', borderBottom: '2px solid #5145B5' }}>
             <h3 className="text-white text-base font-semibold" style={{ letterSpacing: '-0.01em' }}>Next Steps</h3>
           </div>
-          <div className="p-5 sm:p-6 space-y-4">
+          <div className="p-4 sm:p-5 space-y-4">
             <p className="text-gray-700 text-sm font-medium leading-relaxed">
               Wherever you have landed on the scale, this is not where the story ends — it is where the work begins.
             </p>
@@ -272,15 +266,15 @@ export default function ATE2026() {
                 <p className="text-gray-600 text-xs font-medium leading-relaxed">Continue monitoring and improving as your business grows and regulations evolve.</p>
               </div>
             </div>
-            <div className="rounded-xl p-5" style={{ background: 'linear-gradient(135deg, rgb(30,17,56) 0%, rgb(15,40,20) 100%)', border: '1px solid rgba(179,240,14,0.25)' }}>
+            <div className="rounded-xl p-5" style={{ background: 'linear-gradient(135deg, #160D2B 0%, #160D2B 100%)', border: '1px solid rgba(81,69,181,0.25)' }}>
               <p className="text-white font-semibold text-base mb-1" style={{ letterSpacing: '-0.01em' }}>Ready to strengthen your business?</p>
-              <p className="text-sm font-medium leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.6)' }}>
+              <p className="text-sm font-medium leading-relaxed mb-3" style={{ color: 'rgba(255,255,255,0.6)' }}>
                 Mustarred Africa helps growing businesses identify governance risks and develop practical roadmaps for sustainable growth.
               </p>
               <a
                 href="mailto:info@mustarred.com"
                 className="inline-flex items-center gap-2 font-black text-sm px-5 py-2.5 rounded-xl transition-opacity hover:opacity-90"
-                style={{ background: '#B3F00E', color: 'rgb(10,6,24)' }}
+                style={{ background: '#5145B5', color: '#FFFFFF' }}
               >
                 Contact: info@mustarred.com
               </a>
@@ -289,10 +283,10 @@ export default function ATE2026() {
         </div>
 
         {/* Privacy */}
-        <div className="mb-10 rounded-xl px-5 py-4 bg-white" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.3)' }}>
+        <div className="mb-6 rounded-xl px-5 py-4 bg-white" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.3)' }}>
           <p className="text-gray-500 text-xs font-medium leading-relaxed">
             <strong className="text-gray-700 font-black">Privacy Notice:</strong> No personal data is retained by Mustarred Africa when you complete this assessment. Where you voluntarily provide contact information, it will be processed in accordance with Mustarred Africa's Privacy Notice at{' '}
-            <a href="https://mustarred.com" className="text-[#4b4ba3] underline font-semibold">mustarred.com</a>.
+            <a href="https://mustarred.com" className="text-[#5145B5] underline font-semibold">mustarred.com</a>.
           </p>
         </div>
       </div>
@@ -307,9 +301,9 @@ export default function ATE2026() {
           <div className="w-full max-w-lg rounded-2xl overflow-hidden" style={{ background: '#fff', boxShadow: '0 24px 64px rgba(0,0,0,0.6)', maxHeight: '90vh', overflowY: 'auto' }}>
 
             {/* Modal header */}
-            <div className="px-6 py-5 flex items-start justify-between gap-4 sticky top-0" style={{ background: 'rgb(10,6,24)', borderBottom: '2px solid #B3F00E' }}>
+            <div className="px-6 py-5 flex items-start justify-between gap-3 sticky top-0" style={{ background: '#160D2B', borderBottom: '2px solid #5145B5' }}>
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-widest mb-1" style={{ color: '#B3F00E' }}>{activeSection.part}</p>
+                <p className="text-[11px] font-semibold uppercase tracking-widest mb-1" style={{ color: '#5145B5' }}>{activeSection.part}</p>
                 <h3 className="text-white text-lg font-semibold leading-tight" style={{ letterSpacing: '-0.02em' }}>{activeSection.title}</h3>
               </div>
               <button
@@ -331,7 +325,7 @@ export default function ATE2026() {
                   style={{ borderBottom: '1px solid #f1f5f9', background: ans ? '#f8fafc' : '#fff' }}
                 >
                   <div className="flex items-start gap-3">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-black" style={{ background: '#B3F00E', color: 'rgb(10,6,24)' }}>
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-black" style={{ background: '#5145B5', color: '#FFFFFF' }}>
                       {qi + 1}
                     </span>
                     <div>
@@ -366,7 +360,7 @@ export default function ATE2026() {
             })}
 
             {/* Modal score footer */}
-            <div className="px-6 py-5 flex items-center justify-between gap-4" style={{ background: '#f8fafc', borderTop: '2px solid #f1f5f9' }}>
+            <div className="px-6 py-5 flex items-center justify-between gap-3" style={{ background: '#f8fafc', borderTop: '2px solid #f1f5f9' }}>
               <div>
                 <p className="text-gray-400 text-xs font-semibold uppercase tracking-widest">{activeSection.scoreLabel}</p>
                 {modalComplete && modalRating
@@ -388,7 +382,7 @@ export default function ATE2026() {
                   <button
                     onClick={() => setActiveModal(null)}
                     className="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all"
-                    style={{ background: '#B3F00E', color: 'rgb(10,6,24)' }}
+                    style={{ background: '#5145B5', color: '#FFFFFF' }}
                   >
                     Done
                   </button>
@@ -403,3 +397,8 @@ export default function ATE2026() {
     </div>
   );
 }
+
+
+
+
+

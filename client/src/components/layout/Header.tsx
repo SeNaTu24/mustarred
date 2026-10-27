@@ -35,7 +35,7 @@ export default function Header() {
         { label: "Our Training", href: "/training" },
         { label: "Our Insights", href: "/our-insights" },
         { label: "Register in Africa", href: "/cac-registration" },
-        { label: "ATE 2026", href: "/ate2026" },
+        { label: "Readiness Check", href: "/ate2026" },
     ], []);
 
     const handleNavigation = useCallback((href: string) => {

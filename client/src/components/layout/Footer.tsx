@@ -13,7 +13,7 @@ const nav = {
         { label: "Our Insights", href: "/our-insights" },
         { label: "CAC Registration", href: "/cac-registration" },
         { label: "DCMI Compliance", href: "/dcmi-compliance" },
-        { label: "ATE 2026", href: "/ate2026" },
+        { label: "Readiness Check", href: "/ate2026" },
     ],
     Legal: [
         { label: "Privacy Notice", href: "/privacy-policy" },
