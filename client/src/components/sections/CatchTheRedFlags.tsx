@@ -548,7 +548,7 @@ export default function CatchTheRedFlags() {
                         onClick={startRound}
                         className="w-full rounded-sm shadow-none hover:translate-y-0 hover:shadow-none active:scale-100 motion-reduce:transition-none motion-reduce:transform-none motion-reduce:active:scale-100 focus-visible:ring-[#d8d5ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a0d33] sm:w-auto"
                     >
-                        PLAY THE CHALLENGE ↗
+                        PLAY THE CHALLENGE
                     </Button>
                 )}
 
@@ -569,7 +569,7 @@ export default function CatchTheRedFlags() {
                                 Play again
                             </Button>
                             <Button type="button" variant="ghost" onClick={contactExpert} className="rounded-sm text-white shadow-none hover:bg-white/10 hover:text-white hover:shadow-none focus-visible:ring-[#d8d5ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a0d33]">
-                                Talk to an Expert ↗
+                                Talk to an Expert
                             </Button>
                         </div>
                     </div>

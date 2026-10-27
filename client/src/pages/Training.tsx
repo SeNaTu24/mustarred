@@ -7,7 +7,7 @@ import * as Tabs from "@radix-ui/react-tabs";
 import * as Accordion from "@radix-ui/react-accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, Award, ChevronDown, Star, ArrowRight, Play } from "lucide-react";
+import { Check, Award, ChevronDown, Star } from "lucide-react";
 import { useModal } from "@/contexts/ModalContext";
 
 export default function Training() {
@@ -50,16 +50,16 @@ export default function Training() {
     return (
         <div className="min-h-screen bg-white">
             <Header />
-            <main className="bg-white" style={{ paddingTop: "96px" }}>
+            <main className="bg-white" style={{ paddingTop: '0' }}>
                 <Breadcrumbs crumbs={[{ label: "Home", href: "/" }, { label: "Training" }]} />
                 {/* Hero Section */}
-                <section className="relative py-12 sm:py-16 md:py-20 lg:py-32 bg-slate-900 text-white overflow-hidden">
+                <section className="relative py-16 sm:py-20 md:py-24 lg:py-28 bg-slate-900 text-white overflow-hidden">
                     <div className="absolute inset-0 opacity-60">
                         <a href="https://pecb.com/en" target="_blank" rel="noopener noreferrer">
                             <img src="/pecb.png" alt="PECB Official Training Partner" className="w-full h-full object-cover" />
                         </a>
                     </div>
-                    <div className="absolute inset-0 bg-slate-900/40"></div>
+                    <div className="absolute inset-0 bg-slate-900/60"></div>
                     
                     <div className="relative max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
                         <div className="text-center">
@@ -68,32 +68,31 @@ export default function Training() {
                                 Official PECB Training Partner
                             </div>
                             
-                            <h1 className="text-2xl sm:text-3xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight">
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
                                 <span className="block sm:inline">Professional</span>{" "}
                                 <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent block sm:inline">
                                     Certifications
                                 </span>
                             </h1>
                             
-                            <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-gray-300 mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed">
+                            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-8 sm:mb-10 max-w-3xl mx-auto leading-relaxed">
                                 Advance your career with globally recognized certifications in AI, Data Protection, and Governance
                             </p>
                             
-                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center mb-8 sm:mb-12 md:mb-16">
+                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 md:mb-16">
                                 <Button
                                     size="lg"
-                                    className="bg-white text-slate-900 hover:bg-gray-100 hover:scale-105 font-semibold px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg shadow-xl transition-all duration-300"
+                                    className="bg-[#4b4ba3] text-white hover:bg-[#3a3a8a] hover:scale-105 font-semibold px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg shadow-xl transition-all duration-300"
                                     onClick={() =>
                                         document.getElementById("courses")?.scrollIntoView({ behavior: "smooth" })
                                     }
                                 >
-                                    <Play className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                                     Explore Courses
                                 </Button>
                                 <Button
                                     size="lg"
                                     variant="outline"
-                                    className="border-2 border-white text-white hover:bg-white hover:text-slate-900 hover:scale-105 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg transition-all duration-300"
+                                    className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-slate-900 hover:scale-105 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg transition-all duration-300"
                                     onClick={() => openModal("Training Information", "Get expert guidance on our certification programs")}
                                 >
                                     Talk to Expert
@@ -233,7 +232,6 @@ export default function Training() {
                                                                 onClick={() => openModal("Enroll Now", course.title)}
                                                             >
                                                                 Enroll Now
-                                                                <ArrowRight className="h-4 w-4 ml-2" />
                                                             </Button>
                                                             
                                                             {/* Includes */}
@@ -272,7 +270,6 @@ export default function Training() {
                             onClick={() => openModal("Get Started Today", "Begin your certification journey")}
                         >
                             Get Started Today
-                            <ArrowRight className="h-5 w-5 ml-2" />
                         </Button>
                     </div>
                 </section>

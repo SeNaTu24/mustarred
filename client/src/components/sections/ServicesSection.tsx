@@ -2,12 +2,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { services } from "@/data/services";
 
 const serviceImages = [
-    "/assets/images/datapro.avif",
-    "/assets/images/privacyprogram.avif",
-    "/compliance.webp",
-    "/assets/images/startupadvisory.avif",
-    "/assets/images/cybersecurity.avif",
-    "/research.jpg",
+    "/assets/images/home-service-training.jpg",
+    "/assets/images/home-service-privacy.jpg",
+    "/assets/images/home-service-compliance.jpg",
+    "/assets/images/home-service-startup.jpg",
+    "/assets/images/home-service-cybersecurity.jpg",
+    "/assets/images/home-service-research.jpg",
 ];
 
 export default function ServicesSection() {
@@ -43,7 +43,6 @@ export default function ServicesSection() {
                                 className="relative flex min-h-[58px] w-full items-center justify-between gap-4 rounded-none border-b border-l-4 border-l-transparent border-gray-200 px-5 py-4 text-left text-sm font-semibold text-gray-800 shadow-none transition-colors hover:bg-gray-50 focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#4b4ba3] data-[state=active]:border-l-[#79aeb4] data-[state=active]:bg-[#e8f1f2] data-[state=active]:text-gray-900 data-[state=active]:shadow-none sm:text-base"
                             >
                                 <span>{service.name}</span>
-                                <span aria-hidden="true" className="shrink-0 text-base">↗</span>
                             </TabsTrigger>
                         ))}
                     </TabsList>

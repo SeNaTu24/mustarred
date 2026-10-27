@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, Calendar, Clock, Download, Search } from "lucide-react";
+import { ArrowRight, Calendar, Clock, Search } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -524,7 +524,6 @@ function GuideCard({ guide, onDownload }: { guide: Guide; onDownload: () => void
                 </ul>
                 <div className="mt-6">
                     <Button type="button" className="w-full" onClick={onDownload}>
-                        <Download aria-hidden="true" className="h-4 w-4" />
                         Download Guide
                     </Button>
                     <p className="mt-3 text-center text-sm text-gray-600">

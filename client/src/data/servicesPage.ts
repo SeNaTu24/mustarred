@@ -26,7 +26,7 @@ export const serviceOfferings: ServiceOffering[] = [
         name: "Training for Data Protection & Privacy",
         shortDesc: "Make data protection rules easy to understand and practical to apply",
         fullDesc: "Many organizations find data protection and privacy confusing, with laws like NDPA and GAID often feeling overwhelming. We provide training that makes these rules easy to understand and practical to apply through hands-on sessions, real-life examples, and interactive exercises.",
-        image: "/assets/images/datapro.avif",
+        image: "/assets/images/home-service-training.jpg",
         features: [
             "Introduction to Data Protection & Privacy (NDPA & GAID)",
             "Principles of Lawful Data Processing",
@@ -51,7 +51,7 @@ export const serviceOfferings: ServiceOffering[] = [
         name: "Privacy Programme Implementation",
         shortDesc: "Design governance frameworks that fit into everyday operations",
         fullDesc: "Implementing privacy programmes can feel daunting. We make privacy compliance practical by designing governance frameworks, policies, and workflows that fit into everyday operations.",
-        image: "/assets/images/privacyprogram.avif",
+        image: "/assets/images/home-service-privacy.jpg",
         features: [
             "Privacy governance framework",
             "NDPA-compliant policies & procedures",
@@ -75,7 +75,7 @@ export const serviceOfferings: ServiceOffering[] = [
         name: "Regulatory and Product Compliance",
         shortDesc: "Navigate regulatory challenges with confidence",
         fullDesc: "We help organizations make compliance manageable by mapping regulatory requirements, reviewing product compliance, and establishing governance frameworks.",
-        image: "/compliance.webp",
+        image: "/assets/images/home-service-compliance.jpg",
         features: [
             "Regulatory mapping and compliance gap analysis",
             "Product compliance assessment across sectors",
@@ -99,7 +99,7 @@ export const serviceOfferings: ServiceOffering[] = [
         name: "Startup Advisory",
         shortDesc: "Build strong foundations for growth",
         fullDesc: "We provide advice that helps founders build strong foundations including guidance on entity selection, equity structuring, and intellectual property protection.",
-        image: "/assets/images/startupadvisory.avif",
+        image: "/assets/images/home-service-startup.jpg",
         features: [
             "Choice of entity and jurisdiction advisory",
             "Founder equity and control structuring",
@@ -124,7 +124,7 @@ export const serviceOfferings: ServiceOffering[] = [
         name: "Cybersecurity Services",
         shortDesc: "Security testing that simulates real-world attacks",
         fullDesc: "We close the gap between having security measures and knowing they work with testing that simulates real-world attacks on your systems.",
-        image: "/assets/images/cybersecurity.avif",
+        image: "/assets/images/home-service-cybersecurity.jpg",
         features: [
             "External & Internal Network Penetration Testing",
             "Web Application Security Testing (OWASP Top 10)",
@@ -154,7 +154,7 @@ export const serviceOfferings: ServiceOffering[] = [
         name: "Policy & Research Services",
         shortDesc: "Formalize operations without unnecessary complexity",
         fullDesc: "We provide policy development and research services that formalize your operations without creating unnecessary complexity.",
-        image: "/research.jpg",
+        image: "/assets/images/home-service-research.jpg",
         features: [
             "Organizational Policy Development",
             "ISO 27001 Policy Framework & Documentation",

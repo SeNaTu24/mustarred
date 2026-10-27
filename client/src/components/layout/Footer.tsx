@@ -13,6 +13,7 @@ const nav = {
         { label: "Our Insights", href: "/our-insights" },
         { label: "CAC Registration", href: "/cac-registration" },
         { label: "DCMI Compliance", href: "/dcmi-compliance" },
+        { label: "ATE 2026", href: "/ate2026" },
     ],
     Legal: [
         { label: "Privacy Notice", href: "/privacy-policy" },
@@ -61,7 +62,7 @@ export default function Footer() {
                                 cursor: 'pointer',
                             }}
                         >
-                            Get in Touch ↗
+                            Get in Touch
                         </button>
                     </div>
 

@@ -77,7 +77,7 @@ export default function HeroSection() {
                                 openModal("Talk to an Expert", "Get expert guidance for your compliance needs");
                             }}
                         >
-                            Talk to an Expert ↗
+                            Talk to an Expert
                         </button>
 
                         <button
@@ -100,7 +100,7 @@ export default function HeroSection() {
                                 window.location.href = '/dcmi-compliance';
                             }}
                         >
-                            Register as a DCMI ↗
+                            Register as a DCMI
                         </button>
                     </div>
                 </div>

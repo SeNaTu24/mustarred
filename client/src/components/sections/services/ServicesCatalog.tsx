@@ -1,4 +1,4 @@
-import { ArrowRight, Check, ChevronDown } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 import type { ServiceOffering } from "@/data/servicesPage";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
@@ -28,8 +28,6 @@ function ServiceCard({ service, imageFirst, onContact }: {
         return () => observer.disconnect();
     }, []);
 
-    const Icon = service.icon;
-
     return (
         <article
             ref={ref}
@@ -49,9 +47,6 @@ function ServiceCard({ service, imageFirst, onContact }: {
                     loading="lazy"
                     decoding="async"
                 />
-                <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-lg bg-white text-[#4b4ba3] shadow-sm sm:left-5 sm:top-5">
-                    <Icon aria-hidden="true" className="h-5 w-5" />
-                </div>
             </div>
 
             <div className={`min-w-0 ${imageFirst ? "md:order-1" : ""}`}>
@@ -64,7 +59,7 @@ function ServiceCard({ service, imageFirst, onContact }: {
                     onClick={() => setOpen(!open)}
                     className="flex w-full items-center justify-between rounded-md border border-gray-200 px-4 py-3 text-sm font-semibold text-gray-800 hover:bg-gray-50 transition-colors"
                 >
-                    <span>What's included & typical steps</span>
+                    <span>View service details</span>
                     <ChevronDown className={`h-4 w-4 text-[#4b4ba3] transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
                 </button>
 
@@ -99,7 +94,7 @@ function ServiceCard({ service, imageFirst, onContact }: {
                     onClick={() => onContact(service)}
                     className="mt-5 min-h-11 bg-[#4b4ba3] px-5 text-white hover:bg-[#3a3a8a]"
                 >
-                    Talk to an expert <ArrowRight aria-hidden="true" className="ml-2 h-4 w-4" />
+                    Talk to an expert
                 </Button>
             </div>
         </article>

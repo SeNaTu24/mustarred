@@ -21,6 +21,8 @@ export default function Header() {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
+    const isTransparent = isHomePage && !scrolled;
+
     const isActive = useCallback((href: string) => {
         if (href.startsWith("#")) return currentPath === "/";
         return currentPath === href;
@@ -32,7 +34,8 @@ export default function Header() {
         { label: "Services", href: "/services" },
         { label: "Our Training", href: "/training" },
         { label: "Our Insights", href: "/our-insights" },
-        { label: "CAC Registration", href: "/cac-registration" },
+        { label: "Register in Africa", href: "/cac-registration" },
+        { label: "ATE 2026", href: "/ate2026" },
     ], []);
 
     const handleNavigation = useCallback((href: string) => {
@@ -63,12 +66,14 @@ export default function Header() {
 
     return (
         <header
-            className="fixed left-0 right-0 top-0 z-50 font-sans text-[var(--nav-foreground)]"
+            className={`fixed left-0 right-0 top-0 z-50 font-sans ${isTransparent ? 'text-white' : 'text-[var(--nav-foreground)]'}`}
             style={{
                 backdropFilter: 'blur(12px)',
                 WebkitBackdropFilter: 'blur(12px)',
-                backgroundColor: 'var(--nav-surface)',
-                borderBottom: scrolled ? '1px solid var(--nav-border)' : '1px solid transparent',
+                backgroundColor: isTransparent ? 'transparent' : 'var(--nav-surface)',
+                borderBottom: isTransparent
+                    ? '1px solid transparent'
+                    : (scrolled ? '1px solid var(--nav-border)' : '1px solid transparent'),
                 boxShadow: scrolled ? '0 2px 16px rgba(0,0,0,0.07)' : 'none',
                 transition: 'background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
             }}
@@ -103,7 +108,7 @@ export default function Header() {
                         <img
                             src="/assets/brand/logo.png"
                             alt="Mustarred-logo"
-                            style={{ height: scrolled ? '64px' : '88px', width: 'auto', objectFit: 'contain', transition: 'height 0.3s ease' }}
+                            style={{ height: scrolled ? '64px' : '88px', width: 'auto', objectFit: 'contain', transition: 'height 0.3s ease, filter 0.3s ease', filter: isTransparent ? 'brightness(0) invert(1)' : 'none' }}
                         />
                     </div>
 
@@ -119,7 +124,7 @@ export default function Header() {
                                     className={`group relative inline-block whitespace-nowrap px-[10px] py-[6px] text-[13px] transition-colors duration-200 ${
                                         active
                                             ? "font-semibold text-[var(--nav-accent)]"
-                                            : "font-medium text-[var(--nav-foreground)] hover:text-[var(--nav-accent)]"
+                                            : `font-medium ${isTransparent ? 'text-white' : 'text-[var(--nav-foreground)]'} hover:text-[var(--nav-accent)]`
                                     }`}
                                 >
                                     {link.label}
@@ -146,7 +151,7 @@ export default function Header() {
                         <Button
                             variant="ghost"
                             size="icon"
-                            className="text-[var(--nav-foreground)] hover:text-[var(--nav-accent)] md:hidden"
+                            className={`${isTransparent ? 'text-white' : 'text-[var(--nav-foreground)]'} hover:text-[var(--nav-accent)] md:hidden`}
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             data-testid="button-mobile-menu"
                             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -177,7 +182,7 @@ export default function Header() {
                                         className={`flex min-h-[44px] items-center border-l-4 py-2.5 text-left text-base transition-colors ${
                                             active
                                                 ? "border-l-[var(--nav-accent)] pl-3 font-semibold text-[var(--nav-accent)]"
-                                                : "border-l-transparent pl-3 font-medium text-[var(--nav-foreground)] hover:text-[var(--nav-accent)]"
+                                                : `border-l-transparent pl-3 font-medium ${isTransparent ? 'text-white' : 'text-[var(--nav-foreground)]'} hover:text-[var(--nav-accent)]`
                                         }`}
                                     >
                                         {link.label}

@@ -8,11 +8,9 @@ import { Badge } from "@/components/ui/badge";
 import {
     Calendar,
     Clock,
-    ArrowRight,
     Search,
     Mail,
     MessageSquare,
-    Download,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { SiX, SiInstagram } from "react-icons/si";
@@ -195,7 +193,6 @@ export default function Blog() {
                                         className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 sm:py-3 text-sm sm:text-base font-semibold"
                                         onClick={() => setIsModalOpen(true)}
                                     >
-                                        <Download className="h-4 w-4 mr-2" />
                                         Download Free Guide
                                     </Button>
                                 </div>
@@ -258,7 +255,6 @@ export default function Blog() {
                                             onClick={() => window.location.href = `/blog/${post.id}?from=blog`}
                                         >
                                             Read More
-                                            <ArrowRight className="ml-1 h-4 w-4" />
                                         </Button>
                                     </div>
                                 </div>

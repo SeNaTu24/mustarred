@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { X, Download } from 'lucide-react';
+import { X } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '@/lib/emailjs-config';
 
@@ -171,10 +171,7 @@ Time: ${new Date().toLocaleString()}
             {isSubmitting ? (
               'Processing...'
             ) : (
-              <>
-                <Download className="h-4 w-4 mr-2" />
-                Download Guide
-              </>
+              'Download Guide'
             )}
           </Button>
         </form>

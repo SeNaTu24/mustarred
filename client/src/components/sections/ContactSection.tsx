@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Mail, MessageSquare, Download, Phone } from "lucide-react";
+import { Mail, MessageSquare, Phone } from "lucide-react";
 import { SiX, SiInstagram } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
@@ -152,9 +152,8 @@ export default function ContactSection({ onResourcesClick }: ContactSectionProps
                                         <Button
                                             variant="outline"
                                             onClick={onResourcesClick}
-                                            className="flex items-center gap-2 w-full sm:w-auto px-4 py-2 text-sm"
+                                            className="w-full sm:w-auto px-4 py-2 text-sm"
                                         >
-                                            <Download className="h-3.5 w-3.5" />
                                             Free Resources
                                         </Button>
                                     )}

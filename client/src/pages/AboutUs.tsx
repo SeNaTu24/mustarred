@@ -1,6 +1,7 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { useLocation } from "wouter";
+import AboutResourcesCta from "@/components/sections/AboutResourcesCta";
+import { useModal } from "@/contexts/ModalContext";
 
 const eyebrow: React.CSSProperties = {
     fontSize: "11px",
@@ -26,7 +27,7 @@ const wrap: React.CSSProperties = {
 };
 
 export default function AboutUs() {
-    const [, setLocation] = useLocation();
+    const { openModal } = useModal();
 
     return (
         <div className="min-h-screen" style={{backgroundColor: '#0d0520'}}>
@@ -35,35 +36,19 @@ export default function AboutUs() {
             {/* Hero */}
             <section
                 style={{
-                    paddingTop: "140px",
-                    paddingBottom: "110px",
+                    paddingTop: "220px",
+                    paddingBottom: "180px",
                     position: "relative",
                     overflow: "hidden",
                     backgroundImage: "url(/assets/images/newimage.avif)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
                     animation: "heroFloat 12s ease-in-out infinite",
                 }}
             >
-                <div style={{
-                    position: 'absolute', inset: 0,
-                    background: 'linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 40%)',
-                    pointerEvents: 'none',
-                }} />
                 <div style={wrap}>
                     <div style={{ maxWidth: "820px" }}>
-                        <p style={{
-                            maxWidth: "560px",
-                            color: "#000000",
-                            fontSize: "22px",
-                            lineHeight: 1.7,
-                            fontFamily: "Satoshi, sans-serif",
-                            fontWeight: 600,
-                            marginTop: "120px",
-                            marginLeft: "0px",
-                        }}>
-                            Transforming African startups through expert compliance guidance.
-                        </p>
                     </div>
                 </div>
             </section>
@@ -71,7 +56,7 @@ export default function AboutUs() {
             {/* Story — split layout */}
             <section style={{ padding: "100px 0", background: "white" }}>
                 <div style={wrap}>
-                    <div style={eyebrow}>Our Story</div>
+                    {/* <div style={eyebrow}></div> */}
                     <div
                         style={{
                             display: "grid",
@@ -220,7 +205,7 @@ export default function AboutUs() {
                                 body: "We continuously evolve our methodologies to stay ahead of regulatory changes and provide cutting-edge compliance solutions.",
                             },
                             {
-                                symbol: "↗",
+                                symbol: "",
                                 title: "Pan-African Focus",
                                 body: "Deep understanding of diverse African markets enables us to provide contextually relevant advice across the continent.",
                             },
@@ -404,25 +389,11 @@ export default function AboutUs() {
                             Join hundreds of African startups who trust
                             Mustarred for their compliance needs.
                         </p>
-                        <button
-                            onClick={() => setLocation("/dcmi-compliance")}
-                            style={{
-                                display: "inline-flex",
-                                alignItems: "center",
-                                gap: "12px",
-                                padding: "15px 24px",
-                                background: "#4b4ba3",
-                                color: "white",
-                                border: 0,
-                                borderRadius: "3px",
-                                fontWeight: 700,
-                                fontSize: "13px",
-                                cursor: "pointer",
-                                fontFamily: "Satoshi, sans-serif",
-                            }}
-                        >
-                            Get Started Today ↗
-                        </button>
+                        <AboutResourcesCta
+                            onContact={() =>
+                                openModal("Talk to Our Team", "Get in touch with our team to discuss your compliance needs.")
+                            }
+                        />
                     </div>
                 </div>
             </section>

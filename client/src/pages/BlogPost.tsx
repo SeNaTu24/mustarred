@@ -5,8 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import {
     Calendar,
     Clock,
-    ArrowLeft,
-    Share2,
     Mail,
     MessageSquare,
 } from "lucide-react";
@@ -101,7 +99,6 @@ export default function BlogPost() {
                         <Button
                             onClick={() => (window.location.href = backUrl)}
                         >
-                            <ArrowLeft className="h-4 w-4 mr-2" />
                             Back to Blog
                         </Button>
                     </div>
@@ -128,14 +125,13 @@ export default function BlogPost() {
             <main className="pt-24">
                 <article className="max-w-4xl mx-auto px-6 md:px-8 py-16">
                     {/* Back Button */}
-                    <Button
-                        variant="ghost"
-                        className="mb-8"
-                        onClick={() => (window.location.href = backUrl)}
-                    >
-                        <ArrowLeft className="h-4 w-4 mr-2" />
-                        Back to {from === 'blog' ? 'Blog' : 'Insights'}
-                    </Button>
+<Button
+                            variant="ghost"
+                            className="mb-8"
+                            onClick={() => (window.location.href = backUrl)}
+                        >
+                            Back to {from === 'blog' ? 'Blog' : 'Insights'}
+                        </Button>
 
                     {/* Article Header */}
                     <header className="mb-12">
@@ -182,7 +178,6 @@ export default function BlogPost() {
                                     }
                                 }}
                             >
-                                <Share2 className="h-4 w-4 mr-2" />
                                 Share
                             </Button>
                         </div>
@@ -224,7 +219,6 @@ export default function BlogPost() {
                                 variant="outline"
                                 onClick={() => (window.location.href = backUrl)}
                             >
-                                <ArrowLeft className="h-4 w-4 mr-2" />
                                 More Articles
                             </Button>
                             <div className="flex items-center gap-2">

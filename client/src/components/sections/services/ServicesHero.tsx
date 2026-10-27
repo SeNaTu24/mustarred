@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ServicesHeroProps {
@@ -23,14 +23,14 @@ export default function ServicesHero({ onContact }: ServicesHeroProps) {
             <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="max-w-4xl">
                     <h1 className="mb-5 text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                        Comprehensive services for <span className="text-[#c1bdf5]">African startups</span>
+                        Compliance, Privacy &amp; Security Solutions for <span className="text-[#c1bdf5]">African Businesses</span>
                     </h1>
                     <p className="mb-8 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-                        From data protection to cybersecurity, we provide end-to-end compliance solutions designed to help your business scale with confidence.
+                        From regulatory compliance and data protection to cybersecurity and business advisory, we help organisations manage risk, meet regulatory obligations, and grow with confidence.
                     </p>
                     <div className="flex flex-col gap-3 sm:flex-row">
                         <Button onClick={onContact} className="min-h-12 justify-center bg-[#4b4ba3] px-6 text-white hover:bg-[#3a3a8a] sm:w-auto">
-                            Talk to an expert <ArrowRight aria-hidden="true" className="ml-2 h-4 w-4" />
+                            Talk to an expert
                         </Button>
                         <a
                             href="#services-catalogue"
