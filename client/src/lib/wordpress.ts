@@ -5,7 +5,7 @@ const WP_URL = import.meta.env.VITE_WP_URL
   ? import.meta.env.VITE_WP_URL
   : import.meta.env.DEV
     ? '/wp-api'
-    : '/wp-proxy';
+    : 'https://cms.mustarred.com/wp-json/wp/v2';
 
 interface WPPost {
   id: number;

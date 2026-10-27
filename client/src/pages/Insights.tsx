@@ -111,7 +111,6 @@ export default function Insights() {
                     <div className="mx-auto max-w-7xl">
                         <Breadcrumbs
                             crumbs={[
-                                { label: "Home", href: "/" },
                                 { label: "Insights & Updates" },
                             ]}
                         />
