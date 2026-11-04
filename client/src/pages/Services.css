@@ -1,0 +1,38 @@
+#root .services-page main > section[aria-labelledby="pathways-heading"],
+#root .services-page main > section[aria-labelledby="engagement-heading"] {
+  background-color: #f7f6fb !important;
+}
+
+#root .services-page main > section[aria-labelledby="services-heading"],
+#root .services-page main > section[aria-labelledby="client-proof-heading"],
+#root .services-page main > #services-contact {
+  background-color: #ffffff !important;
+}
+
+#root .services-page main > section[aria-labelledby="pathways-heading"] article,
+#root .services-page main > section[aria-labelledby="client-proof-heading"] figure {
+  border-color: #e8e4f0 !important;
+  background-color: #ffffff !important;
+}
+
+#root .services-page main > #services-contact > div {
+  background-color: #f7f6fb !important;
+}
+
+#root .services-page main > section:not(.services-hero) :where(h1, h2, h3, h4, p, a, button, label, li, span, strong, blockquote, figcaption) {
+  color: #242033 !important;
+}
+
+#root .services-page main > section:not(.services-hero) a:not([class*="bg-"]),
+#root .services-page main > section:not(.services-hero) :where(.text-\[\#4b4ba3\], .text-\[\#3a3a8a\]) {
+  color: #4b3fbc !important;
+}
+
+#root .services-page main > section:not(.services-hero) :where(button[class*="bg-[#4b4ba3]"], button[class*="bg-[#5145B5]"]) {
+  background-color: #4b3fbc !important;
+  color: #ffffff !important;
+}
+
+#root .services-page main > section[aria-labelledby="engagement-heading"] li {
+  border-color: rgba(75, 63, 188, 0.22) !important;
+}

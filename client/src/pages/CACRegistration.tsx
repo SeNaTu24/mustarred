@@ -5,7 +5,6 @@ import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import {
   FormField,
   TextInput,
@@ -29,6 +28,7 @@ import {
   EMPTY_PSC,
   EMPTY_FORM_DATA,
 } from '@/components/cac/types';
+import './CACRegistration.css';
 
 // ─── EmailJS configuration ────────────────────────────────────────────────────
 // Set these in client/.env:
@@ -402,13 +402,13 @@ export default function CACRegistration() {
   // ─────────────────────────────────────────────────────────────────────────────
   if (submitted) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col">
+      <div className="cac-registration-page cac-registration-success min-h-screen bg-gray-50 flex flex-col">
         <Header />
-        <div className="flex-1 flex items-center justify-center pt-32 pb-16 px-4">
+        <div className="cac-registration-success-content flex-1 flex items-center justify-center pt-32 pb-16 px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white rounded-3xl shadow-xl p-10 max-w-lg w-full text-center"
+            className="cac-registration-success-card bg-white rounded-3xl shadow-xl p-10 max-w-lg w-full text-center"
           >
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-10 h-10 text-green-500" />
@@ -454,15 +454,15 @@ export default function CACRegistration() {
   // ─────────────────────────────────────────────────────────────────────────────
   if (!country) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col">
+      <div className="cac-registration-page min-h-screen bg-gray-50 flex flex-col">
         <Header />
         {/* Hero */}
         <div
-          className="pt-32 pb-16 px-4 text-center text-white"
-          style={{ background: 'linear-gradient(135deg, rgb(30,17,56) 0%, #4b4ba3 100%)' }}
+          className="cac-registration-hero flex min-h-[360px] items-center justify-center border-b border-white/10 px-4 pb-14 pt-28 text-center text-white sm:min-h-[420px] sm:py-20"
+          style={{ background: 'radial-gradient(ellipse at 30% 40%, #2a1a4a 0%, #1a0d33 60%, #0d0520 100%)' }}
         >
-          <Breadcrumbs crumbs={[{ label: "CAC Registration" }]} />
           <motion.div
+            className="w-full"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -470,20 +470,18 @@ export default function CACRegistration() {
             <span className="inline-block text-xs font-semibold text-yellow-300 bg-yellow-400/20 px-3 py-1 rounded-full mb-4">
               Company Registration Service
             </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
+            <h1 className="mx-auto mb-4 max-w-4xl text-balance text-2xl font-bold leading-tight sm:text-3xl md:text-4xl">
               We Register Your Company
-              <br />
               <span className="text-yellow-300">Across Africa & Beyond</span>
             </h1>
-            <p className="text-white/80 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-              Tell us about your company and we handle the entire registration process — no back
-              and forth, no paperwork headaches.
+            <p className="mx-auto max-w-2xl text-pretty text-sm leading-relaxed text-white/80 sm:text-base">
+              Tell us about your company and we handle the entire registration process — no back and forth, no paperwork headaches.
             </p>
           </motion.div>
         </div>
 
         {/* Country cards */}
-        <div className="flex-1 max-w-4xl mx-auto w-full px-4 py-12">
+        <div className="cac-registration-countries flex-1 max-w-4xl mx-auto w-full px-4 py-12">
           <h2 className="text-center text-lg font-bold text-gray-900 mb-2">
             Which country are you registering in?
           </h2>
@@ -536,12 +534,12 @@ export default function CACRegistration() {
   const config = COUNTRIES[country];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="cac-registration-page cac-registration-form-page min-h-screen bg-gray-50 flex flex-col">
       <Header />
 
       {/* Compact header bar */}
       <div
-        className="px-4 py-2 flex items-center gap-3 mt-16 sm:mt-20 md:mt-24"
+        className="cac-registration-step-header px-4 py-2 flex items-center gap-3 mt-16 sm:mt-20 md:mt-24"
         style={{ background: 'rgb(30,17,56)' }}
       >
         <button
@@ -569,7 +567,7 @@ export default function CACRegistration() {
         </div>
       </div>
 
-      <div className="flex-1 max-w-2xl mx-auto w-full px-3 sm:px-4 py-4 sm:py-8">
+      <div className="cac-registration-form flex-1 max-w-2xl mx-auto w-full px-3 sm:px-4 py-4 sm:py-8">
         {/* Progress */}
         <StepProgress
           current={stepIndex + 1}
@@ -585,7 +583,7 @@ export default function CACRegistration() {
             exit={{ opacity: 0, x: direction * -30 }}
             transition={{ duration: 0.25 }}
           >
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-8">
+            <div className="cac-registration-form-card bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-8">
               {/* ── Step: Applicant Details ───────────────────────────── */}
               {currentStep?.id === 'applicant' && (
                 <div className="space-y-5">
@@ -1713,7 +1711,7 @@ export default function CACRegistration() {
         </AnimatePresence>
 
         {/* Navigation */}
-        <div className="flex justify-between items-center mt-6 gap-3">
+        <div className="cac-registration-navigation flex justify-between items-center mt-6 gap-3">
           <Button
             variant="outline"
             onClick={stepIndex === 0 ? () => setCountry(null) : goBack}

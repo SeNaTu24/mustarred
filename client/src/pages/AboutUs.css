@@ -1,0 +1,367 @@
+#root .about-page {
+  min-height: 100vh;
+  background: #f5f2fb;
+  color: #f7f5ff;
+}
+
+#root .about-hero {
+  position: relative;
+  display: flex;
+  min-height: 640px;
+  align-items: center;
+  overflow: hidden;
+  padding: 150px 0 100px;
+  background:
+    radial-gradient(ellipse at 74% 40%, rgba(169, 155, 247, 0.12), transparent 42%),
+    linear-gradient(90deg, rgba(13, 8, 33, 0.72) 0%, rgba(13, 8, 33, 0.48) 43%, rgba(13, 8, 33, 0.08) 100%),
+    linear-gradient(0deg, rgba(13, 8, 33, 0.32), transparent 55%),
+    url("/assets/images/newimage.avif") center 48% / cover no-repeat;
+  animation: about-hero-drift 24s ease-in-out infinite alternate;
+}
+
+#root .about-hero::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(169, 155, 247, 0.45), transparent);
+  content: "";
+}
+
+#root .about-hero-content {
+  max-width: 780px;
+}
+
+#root .about-hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  color: #c4baff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+#root .about-hero-eyebrow::before {
+  width: 30px;
+  height: 1px;
+  background: #c4baff;
+  content: "";
+}
+
+#root .about-hero-title {
+  max-width: none;
+  margin: 0 0 22px;
+  color: #ffffff !important;
+  font-family: Georgia, serif;
+  font-size: clamp(24px, 3.4vw, 46px);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+@media (min-width: 768px) {
+  #root .about-hero-title {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 767px) {
+  #root .about-hero-title {
+    font-size: clamp(32px, 8vw, 40px);
+  }
+}
+
+#root .about-hero-description {
+  max-width: 650px;
+  margin: 0;
+  color: #f0edf8 !important;
+  font-size: clamp(14px, 1.35vw, 16px);
+  font-style: italic;
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+#root .about-story,
+#root .about-cta {
+  padding: 104px 0 !important;
+  background: #f5f2fb !important;
+}
+
+#root .about-story-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr) !important;
+  gap: clamp(44px, 7vw, 88px) !important;
+}
+
+#root .about-story h2,
+#root .about-cta h2 {
+  color: #191132 !important;
+}
+
+#root .about-story h2 em,
+#root .about-cta h2 em {
+  color: #4b3fbc !important;
+}
+
+#root .about-story p,
+#root .about-cta p {
+  color: #514a61 !important;
+  font-size: 16px !important;
+  line-height: 1.8 !important;
+}
+
+#root .about-story p:first-of-type {
+  color: #302844 !important;
+  font-size: 17px !important;
+}
+
+#root .about-story-copy {
+  max-width: 580px;
+  padding: 6px 0;
+}
+
+#root .about-story-copy h2 {
+  margin-top: 0 !important;
+  margin-bottom: 26px !important;
+}
+
+#root .about-story-copy p {
+  margin-bottom: 18px !important;
+}
+
+#root .about-story-copy p:last-child {
+  margin-bottom: 0 !important;
+}
+
+#root .about-stat-grid {
+  gap: 12px !important;
+  background: transparent !important;
+}
+
+#root .about-stat-card {
+  min-height: 152px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px !important;
+  border: 1px solid rgba(75, 63, 188, 0.12);
+  border-radius: 12px;
+  background: #ffffff !important;
+  box-shadow: 0 12px 30px rgba(37, 26, 69, 0.06);
+  text-align: left !important;
+}
+
+#root .about-stat-value {
+  color: #4b3fbc !important;
+  font-size: clamp(30px, 3.2vw, 42px) !important;
+}
+
+#root .about-stat-label {
+  margin-top: 12px !important;
+  color: #655c76 !important;
+  font-size: 10px !important;
+  letter-spacing: 0.09em !important;
+}
+
+#root .about-direction {
+  position: relative;
+  padding: 96px 0 108px !important;
+  border-top: 1px solid rgba(169, 155, 247, 0.22);
+  border-bottom: 1px solid rgba(169, 155, 247, 0.22);
+  background:
+    radial-gradient(ellipse at 10% 100%, rgba(169, 155, 247, 0.18), transparent 44%),
+    radial-gradient(ellipse at 90% 0%, rgba(91, 78, 209, 0.34), transparent 50%),
+    linear-gradient(120deg, #21183f, #30245c 55%, #21183f) !important;
+}
+
+#root .about-direction > div > div:first-child {
+  color: #a99bf7 !important;
+}
+
+#root .about-direction-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 22px !important;
+  margin-top: 18px !important;
+}
+
+#root .about-direction-card {
+  padding: clamp(30px, 4vw, 48px);
+  border: 1px solid rgba(220, 213, 255, 0.22);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(62, 49, 108, 0.76), rgba(37, 28, 72, 0.9));
+  box-shadow: 0 22px 50px rgba(11, 6, 28, 0.2);
+}
+
+#root .about-direction-card h2 {
+  margin-top: 0 !important;
+  color: #f7f5ff !important;
+  font-size: clamp(32px, 4vw, 48px) !important;
+}
+
+#root .about-direction-card h2 em {
+  color: #a99bf7 !important;
+}
+
+#root .about-direction-card p,
+#root .about-direction-card li {
+  color: #e2ddef !important;
+}
+
+#root .about-direction-card p {
+  max-width: 480px;
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+}
+
+#root .about-direction-card ul {
+  gap: 13px !important;
+  padding-top: 5px !important;
+}
+
+#root .about-direction-card li {
+  align-items: flex-start !important;
+  font-size: 13px !important;
+}
+
+#root .about-direction-card li span {
+  color: #c4baff !important;
+}
+
+#root .about-cta {
+  background:
+    radial-gradient(ellipse at 85% 50%, rgba(169, 155, 247, 0.26), transparent 44%),
+    #ebe6f7 !important;
+}
+
+#root .about-cta-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) !important;
+  gap: clamp(36px, 7vw, 88px) !important;
+}
+
+#root .about-cta-grid > div:first-child > div {
+  color: #4b3fbc !important;
+}
+
+#root .about-cta-grid > div:first-child h2 {
+  margin-bottom: 0 !important;
+}
+
+#root .about-cta-grid > div:last-child > p {
+  margin-bottom: 26px !important;
+  font-size: 16px !important;
+}
+
+#root .about-cta button {
+  min-height: 48px;
+  padding: 14px 20px !important;
+  border: 1px solid #5b4ed1 !important;
+  border-radius: 6px !important;
+  background: #4b3fbc !important;
+  color: #ffffff !important;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+#root .about-cta button:hover {
+  background: #5b4ed1 !important;
+  transform: translateY(-1px);
+}
+
+#root .about-cta button:focus-visible {
+  outline: 3px solid #a99bf7;
+  outline-offset: 3px;
+}
+
+#root .about-page footer p,
+#root .about-page footer h4,
+#root .about-page footer a {
+  color: var(--theme-muted-text) !important;
+}
+
+#root .about-page > footer {
+  margin-top: 24px;
+}
+
+@keyframes about-hero-drift {
+  from {
+    background-position: center 45%;
+  }
+  to {
+    background-position: center 54%;
+  }
+}
+
+@keyframes about-body-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  #root .about-story-copy,
+  #root .about-stat-card,
+  #root .about-direction-card,
+  #root .about-cta-grid {
+    animation: about-body-reveal 650ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+}
+
+@media (max-width: 900px) {
+  #root .about-hero {
+    min-height: 560px;
+    padding: 138px 0 76px;
+    background-position: 58% center;
+  }
+
+  #root .about-story,
+  #root .about-direction,
+  #root .about-cta {
+    padding: 72px 0 !important;
+  }
+
+  #root .about-story-grid,
+  #root .about-direction-grid,
+  #root .about-cta-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  #root .about-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  #root .about-hero {
+    min-height: 520px;
+  }
+
+  #root .about-stat-card {
+    min-height: 120px;
+    padding: 18px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #root .about-hero,
+  #root .about-story-copy,
+  #root .about-stat-card,
+  #root .about-direction-card,
+  #root .about-cta-grid {
+    animation: none;
+  }
+
+  #root .about-cta button {
+    transition: none;
+  }
+}

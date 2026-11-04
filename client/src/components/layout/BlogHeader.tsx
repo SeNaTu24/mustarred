@@ -1,8 +1,18 @@
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 
 export default function BlogHeader() {
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 40);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
     return (
-        <header className="fixed left-0 right-0 top-0 z-50 border-b border-[var(--nav-border)] bg-[var(--nav-surface)] font-sans text-[var(--nav-foreground)] shadow-sm backdrop-blur-xl">
+        <header className={`blog-header fixed left-0 right-0 top-0 z-50 border-b border-[var(--nav-border)] bg-[var(--nav-surface)] font-sans text-[var(--nav-foreground)] shadow-sm backdrop-blur-xl ${scrolled ? "is-scrolled" : ""}`}>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
                 <div className="flex h-20 items-center justify-between">
                     <div className="flex cursor-pointer items-center" onClick={() => window.location.href = '/'}>

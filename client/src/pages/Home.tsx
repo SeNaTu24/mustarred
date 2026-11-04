@@ -8,6 +8,7 @@ import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
 import WhyChooseUsCarousel from "@/components/sections/WhyChooseUsCarousel";
 import { useModal } from "@/contexts/ModalContext";
+import "./Home.css";
 
 export default function Home() {
   const { openModal } = useModal();
@@ -32,7 +33,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="home-page min-h-screen bg-white">
       <Header />
       <main className="bg-white" style={{paddingTop: '0'}}>
         <HeroSection />
@@ -45,9 +46,9 @@ export default function Home() {
         </div>
 
         {/* Why Choose Us Section */}
-        <section className="py-16 md:py-20 lg:py-24 bg-gray-50">
+        <section className="home-why-section py-10 md:py-12 lg:py-14 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            <div className="text-center mb-6 md:mb-8">
+            <div className="text-center mb-4 md:mb-5">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3 text-black">
                 Why Choose Us?
               </h2>
@@ -59,7 +60,7 @@ export default function Home() {
             <div className="overflow-hidden">
               <WhyChooseUsCarousel />
             </div>
-            <div className="text-center mt-8">
+            <div className="text-center mt-6">
               <a
                 href="/services"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[#4b4ba3] hover:underline"
@@ -69,9 +70,9 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="pt-12 md:pt-20 lg:pt-28 pb-10 md:pb-14 lg:pb-20 bg-white">
+        <section className="home-partners-section pt-8 md:pt-12 lg:pt-14 pb-8 md:pb-10 lg:pb-12 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            <div className="text-center mb-6 md:mb-8">
+            <div className="text-center mb-4 md:mb-5">
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 md:mb-3 text-black">
                 Partnership and Collaborations
               </h2>
@@ -80,7 +81,7 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="flex justify-center flex-wrap gap-10 md:gap-16">
+            <div className="flex justify-center flex-wrap gap-6 md:gap-10">
                 <img
                   src="/assets/icons/iwajoo.png"
                   alt="Iwajoo - Mustarred partner"
@@ -108,10 +109,10 @@ export default function Home() {
         </section>
 
         {/* Trusted Authorities - External Links */}
-        <section className="py-8 bg-gray-50 border-t border-gray-100">
+        <section className="home-authorities-section py-6 bg-gray-50 border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 text-center">
-            <p className="text-xs text-gray-500 mb-4">Certified by the NDPC as a Data Protection Compliance Organisation</p>
-            <div className="flex flex-wrap justify-center gap-6 text-sm">
+            <p className="text-xs text-gray-500 mb-3">Certified by the NDPC as a Data Protection Compliance Organisation</p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm">
               <a href="https://ndpc.gov.ng" target="_blank" rel="noopener noreferrer" className="text-[#4b4ba3] hover:underline font-medium">NDPC — Nigeria Data Protection Commission</a>
               <a href="https://www.cac.gov.ng" target="_blank" rel="noopener noreferrer" className="text-[#4b4ba3] hover:underline font-medium">CAC — Corporate Affairs Commission</a>
 

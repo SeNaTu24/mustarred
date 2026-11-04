@@ -21,7 +21,7 @@ export default function Header() {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    const isTransparent = isHomePage && !scrolled;
+    const isTransparent = !scrolled;
 
     const isActive = useCallback((href: string) => {
         if (href.startsWith("#")) return currentPath === "/";
@@ -66,7 +66,7 @@ export default function Header() {
 
     return (
         <header
-            className={`fixed left-0 right-0 top-0 z-50 font-sans ${isTransparent ? 'text-white' : 'text-[var(--nav-foreground)]'}`}
+            className={`fixed left-0 right-0 top-0 z-50 font-sans ${scrolled ? 'is-scrolled' : ''} ${isTransparent ? 'text-white' : 'text-[var(--nav-foreground)]'}`}
             style={{
                 backdropFilter: 'blur(12px)',
                 WebkitBackdropFilter: 'blur(12px)',

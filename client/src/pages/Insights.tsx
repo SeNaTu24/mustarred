@@ -3,15 +3,16 @@ import { ArrowRight, Calendar, Clock, Search } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import { useModal } from "@/contexts/ModalContext";
 import { BlogPost } from "@/data/blog-types";
 import { blogPosts as staticPosts } from "@/data/blog-posts";
 import { getWPPosts } from "@/lib/wordpress";
+import "./Insights.css";
 
 type Guide = {
     id?: string;
@@ -104,16 +105,11 @@ export default function Insights() {
     );
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="insights-page min-h-screen bg-white">
             <Header />
-            <main className="pt-24">
-                <section className="border-b border-gray-100 pb-12 pt-2 sm:pb-14" style={{ background: 'radial-gradient(ellipse at 30% 40%, #2a1a4a 0%, #1a0d33 60%, #0d0520 100%)' }}>
+            <main className="insights-main pt-24">
+                <section className="insights-hero border-b border-gray-100 pb-12 pt-2 sm:pb-14" style={{ background: 'radial-gradient(ellipse at 30% 40%, #2a1a4a 0%, #1a0d33 60%, #0d0520 100%)' }}>
                     <div className="mx-auto max-w-7xl">
-                        <Breadcrumbs
-                            crumbs={[
-                                { label: "Insights & Updates" },
-                            ]}
-                        />
                         <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 md:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)] md:items-end md:gap-12 md:px-8">
                             <div>
                                 <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
@@ -151,7 +147,7 @@ export default function Insights() {
 
                 <section
                     aria-labelledby="latest-heading"
-                    className="bg-white py-12 sm:py-16 md:py-20"
+                    className="insights-latest-section bg-white py-12 sm:py-16 md:py-20"
                 >
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
                         <h2
@@ -192,7 +188,7 @@ export default function Insights() {
                             <div>
                                 <LeadArticle key={filteredLatest[0].id} post={filteredLatest[0]} />
                                 {filteredLatest.length > 1 && (
-                                    <div className="mt-10 grid gap-x-10 md:grid-cols-2 md:gap-x-12">
+                                    <div className="insights-latest-grid mt-10 grid gap-x-10 md:grid-cols-2 md:gap-x-12">
                                         {filteredLatest.slice(1).map((post) => (
                                             <LatestArticleRow key={post.id} post={post} />
                                         ))}
@@ -205,7 +201,7 @@ export default function Insights() {
 
                 <section
                     aria-labelledby="more-articles-heading"
-                    className="border-t border-gray-100 bg-white py-12 sm:py-16"
+                    className="insights-archive-section border-t border-gray-100 bg-white py-12 sm:py-16"
                 >
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
                         <h2
@@ -221,7 +217,7 @@ export default function Insights() {
                                 </p>
                             </div>
                         ) : (
-                            <div className="border-t border-gray-200">
+                            <div className="insights-archive-list border-t border-gray-200">
                                 {filteredStatic.map((post) => (
                                     <ArchiveArticleRow key={post.id} post={post} />
                                 ))}
@@ -265,6 +261,15 @@ export default function Insights() {
                         </div>
                     </div>
                 </section>
+
+                <section
+                    aria-label="Subscribe to email updates"
+                    className="insights-newsletter-section py-12 sm:py-16"
+                >
+                    <div className="insights-newsletter mx-auto max-w-3xl px-4 sm:px-6 md:px-8">
+                        <MailchimpNewsletter />
+                    </div>
+                </section>
             </main>
             <Footer />
         </div>
@@ -277,7 +282,7 @@ function LeadArticle({ post }: { post: BlogPost }) {
 
     return (
         <article
-            className={`grid overflow-hidden rounded-2xl border border-gray-200 bg-white ${
+            className={`insights-lead-article grid overflow-hidden rounded-2xl border border-gray-200 bg-white ${
                 hasImage ? "lg:grid-cols-[1.08fr_0.92fr]" : "grid-cols-1"
             }`}
         >
@@ -312,7 +317,7 @@ function LeadArticle({ post }: { post: BlogPost }) {
 
 function LatestArticleRow({ post }: { post: BlogPost }) {
     return (
-        <article className="border-t border-gray-200 py-6 first:border-t-0 md:first:border-t">
+        <article className="insights-latest-article border-t border-gray-200 py-6 first:border-t-0 md:first:border-t">
             <ArticleCategory category={post.category} />
             <h3 className="mt-3 text-xl font-semibold leading-snug text-gray-950">
                 <ArticleTitleLink post={post} />
@@ -330,7 +335,7 @@ function LatestArticleRow({ post }: { post: BlogPost }) {
 
 function ArchiveArticleRow({ post }: { post: BlogPost }) {
     return (
-        <article className="flex flex-col gap-5 border-b border-gray-200 py-6 last:border-b-0 sm:flex-row sm:items-center sm:gap-8 sm:py-7">
+        <article className="insights-archive-article flex flex-col gap-5 border-b border-gray-200 py-6 last:border-b-0 sm:flex-row sm:items-center sm:gap-8 sm:py-7">
             <div className="min-w-0 flex-1">
                 <ArticleCategory category={post.category} />
                 <h3 className="mt-2 text-lg font-semibold leading-snug text-gray-950 sm:text-xl">
@@ -347,7 +352,7 @@ function ArchiveArticleRow({ post }: { post: BlogPost }) {
             <PostImage
                 post={post}
                 className="h-full w-full object-cover"
-                containerClassName="hidden aspect-[16/9] w-48 shrink-0 overflow-hidden rounded-lg bg-gray-100 sm:block"
+                containerClassName="insights-archive-thumbnail hidden aspect-[16/9] w-48 shrink-0 overflow-hidden rounded-lg bg-gray-100 sm:block"
             />
         </article>
     );
@@ -369,7 +374,7 @@ function ArticleReadMore({ post, className = "" }: { post: BlogPost; className?:
         <Link
             href={`/blog/${post.id}?from=insights`}
             aria-label={`Read More: ${post.title}`}
-            className={`group inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-primary hover:underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${className}`}
+            className={`insights-read-more group inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-primary hover:underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${className}`}
         >
             Read More
             <ArrowRight

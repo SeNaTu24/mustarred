@@ -1,0 +1,151 @@
+#root .blog-post-page > header {
+  --nav-surface: #ffffff;
+  --nav-foreground: #0d0821;
+  --nav-accent: #4b3fbc;
+  --nav-border: rgba(13, 8, 33, 0.12);
+  background-color: #ffffff !important;
+  border-bottom: 1px solid rgba(13, 8, 33, 0.12) !important;
+  box-shadow: 0 2px 16px rgba(13, 8, 33, 0.08) !important;
+  color: #0d0821 !important;
+}
+
+#root .blog-post-page > header img[alt="Mustarred-logo"] {
+  filter: none !important;
+}
+
+#root .blog-post-page > header nav a,
+#root .blog-post-page > header button[data-testid="button-mobile-menu"] {
+  color: #0d0821 !important;
+}
+
+#root .blog-post-page,
+#root .blog-post-main,
+#root .blog-post-main > article,
+#root .blog-post-main > section {
+  background-color: #ffffff !important;
+}
+
+#root .blog-post-main {
+  color: #111111;
+}
+
+#root .blog-post-main :where(h1, h2, h3, h4, h5, h6, p, li, span, strong, small) {
+  color: #111111 !important;
+}
+
+#root .blog-post-main :where(.text-muted-foreground, .text-foreground) {
+  color: #514a61 !important;
+}
+
+#root .blog-post-main a {
+  color: #4b3fbc !important;
+}
+
+#root .blog-post-main button {
+  color: #111111 !important;
+}
+
+#root .blog-post-main .blog-post-article {
+  background: #ffffff !important;
+}
+
+#root .blog-post-main .blog-post-article > header h1 {
+  color: #111111 !important;
+}
+
+#root .blog-post-main .blog-post-article > .blog-back-button,
+#root .blog-post-main .blog-post-article > .blog-back-button:hover,
+#root .blog-post-main .blog-post-article > .blog-back-button:active {
+  background-color: #efedf5 !important;
+  color: #29233a !important;
+}
+
+#root .blog-post-main .blog-post-article > .blog-back-button:hover {
+  background-color: #e4dff0 !important;
+}
+
+#root .blog-post-main .blog-post-article > .blog-back-button:active {
+  background-color: #dcd7e8 !important;
+}
+
+#root .blog-post-main .blog-post-article > header > div:first-child > span {
+  border-color: #e4dff0 !important;
+  background-color: #efedf5 !important;
+  color: #4b3fbc !important;
+}
+
+#root .blog-post-main .blog-post-article .prose {
+  --tw-prose-body: #29233a;
+  --tw-prose-headings: #111111;
+  --tw-prose-lead: #514a61;
+  --tw-prose-links: #4b3fbc;
+  --tw-prose-bold: #111111;
+  --tw-prose-counters: #514a61;
+  --tw-prose-bullets: #4b3fbc;
+  --tw-prose-hr: #e8e4f0;
+  --tw-prose-quotes: #29233a;
+  --tw-prose-quote-borders: #c9c1e6;
+  --tw-prose-captions: #625c70;
+  --tw-prose-code: #111111;
+  --tw-prose-pre-code: #29233a;
+  --tw-prose-pre-bg: #f5f3f9;
+  --tw-prose-th-borders: #dcd7e8;
+  --tw-prose-td-borders: #e8e4f0;
+  color: #29233a !important;
+}
+
+#root .blog-post-main .blog-post-article .prose :where(h1, h2, h3, h4, h5, h6, p, li, strong, blockquote) {
+  color: #29233a !important;
+}
+
+#root .blog-post-main .blog-post-article .prose a {
+  color: #4b3fbc !important;
+}
+
+#root .blog-post-main .blog-post-article .prose pre,
+#root .blog-post-main .blog-post-article .prose code {
+  background-color: #f5f3f9 !important;
+  color: #29233a !important;
+}
+
+#root .blog-post-main .blog-post-article .prose img {
+  background: #f5f3f9;
+}
+
+#root .blog-post-main .blog-post-article .bg-gray-50 {
+  background-color: #f7f6fb !important;
+}
+
+#root .blog-post-main .blog-post-article footer {
+  border-color: #e8e4f0 !important;
+}
+
+#root .blog-post-main .blog-related-section h2 {
+  color: #111111 !important;
+}
+
+#root .blog-post-main .blog-related-card {
+  border-color: #e8e4f0 !important;
+  background-color: #ffffff !important;
+  text-decoration: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+#root .blog-post-main .blog-related-card:hover {
+  border-color: #c9c1e6 !important;
+  box-shadow: 0 10px 24px rgba(28, 22, 52, 0.08);
+}
+
+#root .blog-post-main .blog-related-card :where(h3, p) {
+  color: #29233a !important;
+}
+
+#root .blog-post-main .blog-related-card > div > p:first-child {
+  color: #4b3fbc !important;
+}
+
+#root .blog-post-main .blog-newsletter {
+  padding: 8px;
+  border-radius: 18px;
+  background-color: #f5f3f9 !important;
+}

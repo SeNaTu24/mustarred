@@ -1,0 +1,163 @@
+#root .cac-registration-page {
+  background-color: #ffffff !important;
+}
+
+#root .cac-registration-form-page > header.fixed {
+  --nav-surface: rgba(255, 255, 255, 0.97);
+  --nav-foreground: #242033;
+  --nav-accent: #4b3fbc;
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e8e4f0 !important;
+  box-shadow: 0 4px 18px rgba(25, 17, 54, 0.08) !important;
+}
+
+#root .cac-registration-form-page > header.fixed nav[aria-label="Main navigation"] a,
+#root .cac-registration-form-page > header.fixed button[data-testid="button-mobile-menu"] {
+  color: #242033 !important;
+}
+
+#root .cac-registration-form-page > header.fixed nav[aria-label="Main navigation"] a:hover,
+#root .cac-registration-form-page > header.fixed nav[aria-label="Main navigation"] a[class*="text-[var(--nav-accent)]"],
+#root .cac-registration-form-page > header.fixed button[data-testid="button-mobile-menu"]:hover {
+  color: #4b3fbc !important;
+}
+
+#root .cac-registration-form-page > header.fixed img[alt="Mustarred-logo"] {
+  filter: none !important;
+}
+
+#root .cac-registration-form-page > header.fixed nav[aria-label="Mobile navigation"] {
+  border-color: #e8e4f0 !important;
+  background-color: #ffffff !important;
+}
+
+#root .cac-registration-form-page > header.fixed nav[aria-label="Mobile navigation"] a {
+  color: #242033 !important;
+}
+
+#root .cac-registration-countries,
+#root .cac-registration-form,
+#root .cac-registration-success-content {
+  background-color: #f7f6fb !important;
+}
+
+#root .cac-registration-countries :where(h2, h3, p),
+#root .cac-registration-form :where(h1, h2, h3, h4, p, label, li, span, strong, small, dt, dd),
+#root .cac-registration-success-card :where(h1, h2, h3, p, span, strong) {
+  color: #242033 !important;
+}
+
+#root .cac-registration-countries > p {
+  color: #706a7d !important;
+}
+
+#root .cac-registration-countries button {
+  border-color: #e8e4f0 !important;
+  background-color: #ffffff !important;
+  color: #242033 !important;
+  box-shadow: 0 2px 8px rgba(25, 17, 54, 0.04);
+}
+
+#root .cac-registration-countries button:hover {
+  border-color: rgba(75, 63, 188, 0.45) !important;
+  box-shadow: 0 10px 24px rgba(25, 17, 54, 0.08);
+}
+
+#root .cac-registration-countries button :where(h3, p) {
+  color: #242033 !important;
+}
+
+#root .cac-registration-countries button > div > span:first-child {
+  color: #4b3fbc !important;
+}
+
+#root .cac-registration-countries button svg {
+  color: #8c859b !important;
+}
+
+#root .cac-registration-countries a,
+#root .cac-registration-form a {
+  color: #4b3fbc !important;
+}
+
+#root .cac-registration-form-card,
+#root .cac-registration-success-card {
+  border-color: #e8e4f0 !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(25, 17, 54, 0.06);
+}
+
+#root .cac-registration-form :where(.bg-white) {
+  background-color: #ffffff !important;
+}
+
+#root .cac-registration-form :where(.bg-gray-50\/50) {
+  border-color: #e8e4f0 !important;
+  background-color: #f7f6fb !important;
+}
+
+#root .cac-registration-form [class~="bg-[#4b4ba3]/5"],
+#root .cac-registration-form [class~="bg-[#4b4ba3]/10"] {
+  background-color: #f2f0fb !important;
+}
+
+#root .cac-registration-form :where(.border-gray-100, .border-gray-200) {
+  border-color: #e8e4f0 !important;
+}
+
+#root .cac-registration-form :where(input, textarea, select) {
+  border-color: #dcd7e8;
+  background-color: #ffffff !important;
+  color: #29233a !important;
+}
+
+#root .cac-registration-form :where(input, textarea, select)::placeholder {
+  color: #777184 !important;
+}
+
+#root .cac-registration-form :where(input, textarea, select):focus {
+  border-color: #4b3fbc !important;
+}
+
+#root .cac-registration-form :where(.text-red-500, .text-red-600, .text-red-700) {
+  color: #b42335 !important;
+}
+
+#root .cac-registration-form [class~="text-[#4b4ba3]"],
+#root .cac-registration-form a {
+  color: #4b3fbc !important;
+}
+
+#root .cac-registration-navigation > button:first-child {
+  border-color: #dcd7e8 !important;
+  background-color: #ffffff !important;
+  color: #39334a !important;
+}
+
+#root .cac-registration-navigation > button:last-child {
+  border-color: #4b3fbc !important;
+  background: #4b3fbc !important;
+  color: #ffffff !important;
+}
+
+#root .cac-registration-navigation > button:last-child :where(span, svg) {
+  color: #ffffff !important;
+}
+
+#root .cac-registration-success-card > div:first-child {
+  background-color: #e8f7ed !important;
+}
+
+#root .cac-registration-success-card > div:first-child svg {
+  color: #23834b !important;
+}
+
+#root .cac-registration-success-card a {
+  color: #ffffff !important;
+}
+
+#root .cac-registration-success-card button {
+  border-color: #e8e4f0 !important;
+  background-color: #f2f0f8 !important;
+  color: #39334a !important;
+}

@@ -1,0 +1,76 @@
+#root .training-page,
+#root .training-page main,
+#root .training-page main.bg-white {
+  background-color: #ffffff !important;
+}
+
+#root .training-page main > #courses,
+#root .training-page main > #more-content {
+  background-color: #f7f6fb !important;
+}
+
+#root .training-page #courses :where(h2, h3, h4, h5, p, span, li, button, label, strong),
+#root .training-page #more-content :where(h2, h3, h4, h5, p, span, li, button, label, strong) {
+  color: #242033 !important;
+}
+
+#root .training-page #courses .shadcn-card,
+#root .training-page #more-content .shadcn-card {
+  border-color: #e8e4f0 !important;
+  background-color: #ffffff !important;
+}
+
+#root .training-page #courses [class~="bg-gray-50"] {
+  background-color: #f2f0f8 !important;
+}
+
+#root .training-page #courses .training-category-tabs [role="tab"][data-state="active"] {
+  color: #4b3fbc !important;
+}
+
+#root .training-page #courses button.bg-slate-900 {
+  background-color: #4b3fbc !important;
+  color: #ffffff !important;
+  border: 2px solid #342b94 !important;
+  box-shadow: 0 4px 12px rgba(75, 63, 188, 0.3);
+}
+
+#root .training-page #courses button.bg-slate-900:hover {
+  background-color: #392f9f !important;
+  border-color: #29216f !important;
+}
+
+#root .training-page #courses button.bg-slate-900:focus-visible {
+  outline: 3px solid #8a81ed;
+  outline-offset: 3px;
+}
+
+#root .training-page #more-content svg {
+  color: #4b3fbc !important;
+}
+
+#root .training-category-tabs {
+  background-color: #efedf5 !important;
+}
+
+#root .training-category-tabs [role="tab"] {
+  background-color: transparent !important;
+  color: #514a61 !important;
+}
+
+#root .training-category-tabs [role="tab"]:hover:not([data-state="active"]) {
+  background-color: #e4e0ef !important;
+  color: #191132 !important;
+}
+
+#root .training-category-tabs [role="tab"][data-state="active"],
+#root .training-category-tabs [role="tab"][data-state="active"]:hover {
+  background-color: #ffffff !important;
+  color: #4b3fbc !important;
+  box-shadow: 0 1px 4px rgba(37, 26, 69, 0.12);
+}
+
+#root .training-category-tabs [role="tab"]:focus-visible {
+  outline: 2px solid #4b3fbc;
+  outline-offset: 2px;
+}

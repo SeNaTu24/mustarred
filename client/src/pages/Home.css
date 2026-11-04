@@ -1,0 +1,361 @@
+#root .home-page,
+#root .home-page main,
+#root .home-page main.bg-white {
+  background: #ffffff !important;
+}
+
+#root .home-page main > #home {
+  padding-top: 120px !important;
+  padding-bottom: 80px !important;
+}
+
+#root .home-page main > #about {
+  padding-block: 0 !important;
+}
+
+#root .home-page main > #services,
+#root .home-page main > .home-why-section,
+#root .home-page main > .home-authorities-section {
+  background-color: #fbfaff !important;
+}
+
+#root .home-page main > #about,
+#root .home-page main .home-testimonials-section {
+  background-color: #ffffff !important;
+}
+
+#root .home-page main > #contact {
+  background-color: #f5f3f9 !important;
+}
+
+#root .home-page main > .home-partners-section {
+  background-color: #ffffff !important;
+}
+
+#root .home-page main > #services :where(h2, h3, h4, p, a, label, li, span, strong),
+#root .home-page main .home-testimonials-section :where(h2, h3, h4, p, a, label, li, span, strong, blockquote),
+#root .home-page main > .home-why-section :where(h2, h3, h4, p, a, label, li, span, strong),
+#root .home-page main > .home-partners-section :where(h2, h3, h4, p, a, label, li, span, strong),
+#root .home-page main > .home-authorities-section :where(h2, h3, h4, p, a, label, li, span, strong),
+#root .home-page main > #contact :where(h2, h3, h4, p, a, label, li, span, strong) {
+  color: #242033 !important;
+}
+
+#root .home-page main > #services :where(a, [data-state="active"]),
+#root .home-page main > .home-why-section a,
+#root .home-page main > .home-authorities-section a {
+  color: #4b3fbc !important;
+}
+
+#root .home-page main > #services [role="tablist"] {
+  background-color: #ffffff !important;
+}
+
+#root .home-page main > #services [role="tab"] {
+  background-color: #ffffff !important;
+  color: #39354a !important;
+}
+
+#root .home-page main > #services [role="tab"]:hover {
+  background-color: #f5f3f9 !important;
+}
+
+#root .home-page main > #services [role="tab"][data-state="active"] {
+  background-color: #efedf7 !important;
+  color: #242033 !important;
+}
+
+#root .home-page main > #services [role="tabpanel"] {
+  background-color: #f5f3f9 !important;
+}
+
+#root .home-page main > #services .home-services-tabs {
+  border: 0 !important;
+  outline: 0 !important;
+  background-color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+#root .home-page main > #services > div > div > a:last-child,
+#root .home-page main > #contact button[data-testid="button-contact"],
+#root .home-page main > #contact .newsletter-signup-button {
+  background-color: #4b3fbc !important;
+  color: #ffffff !important;
+}
+
+#root .home-page main .home-testimonial-card {
+  min-height: 16rem;
+  border: 1px solid #e8e3f1 !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(25, 17, 54, 0.05);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+#root .home-page main .home-testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: #c9c1eb !important;
+  box-shadow: 0 12px 28px rgba(25, 17, 54, 0.09);
+}
+
+#root .home-page main .home-testimonial-quote-mark {
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  background: #f1effa;
+  color: #4b3fbc !important;
+}
+
+#root .home-page main .home-testimonial-quote {
+  flex: 1;
+  margin: 0 0 1.5rem;
+  color: #39354a !important;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+#root .home-page main .home-testimonial-author {
+  border-top: 1px solid #eeeaf5;
+  padding-top: 0.875rem;
+}
+
+#root .home-page main .home-testimonial-card .home-testimonial-author p:first-child {
+  margin-bottom: 0.25rem;
+  color: #242033 !important;
+}
+
+#root .home-page main .home-testimonial-card .home-testimonial-author p:last-child {
+  color: #706b7d !important;
+}
+
+#root .home-page main .home-testimonial-quote-mark svg {
+  color: #4b3fbc !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #root .home-page main .home-testimonial-card {
+    transition: none;
+  }
+
+  #root .home-page main .home-testimonial-card:hover {
+    transform: none;
+  }
+}
+
+#root .home-page main .home-testimonials-section :where(blockquote, p) {
+  color: #39354a !important;
+}
+
+#root .home-page main > .home-authorities-section {
+  border-color: #e4dff0 !important;
+  border-top: 0 !important;
+}
+
+#root .home-page main > #contact {
+  border-top: 1px solid #e8e4f0;
+}
+
+#root .home-page main > #contact .home-contact-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+}
+
+#root .home-page main > #contact .home-contact-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 42rem;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+#root .home-page main > #contact .home-contact-heading {
+  margin: 0;
+}
+
+#root .home-page main > #contact .home-contact-trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.75rem;
+  color: #242033 !important;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+#root .home-page main > #contact .home-contact-trigger > svg {
+  color: #4b3fbc !important;
+}
+
+#root .home-page main > #contact .home-contact-indicator {
+  display: inline-flex;
+  width: 1.75rem;
+  height: 1.75rem;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  border: 1px solid #d3cde4;
+  border-radius: 999px;
+  color: #4b3fbc;
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+#root .home-page main > #contact .home-contact-heading:focus-visible {
+  border-radius: 0.25rem;
+  outline: 2px solid #4b3fbc;
+  outline-offset: 4px;
+}
+
+#root .home-page main > #contact .home-contact-reveal {
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 240ms ease, margin-top 240ms ease, opacity 180ms ease, visibility 180ms;
+}
+
+#root .home-page main > #contact .home-contact-actions:focus-within .home-contact-reveal {
+  max-height: 20rem;
+  margin-top: 1.25rem;
+  opacity: 1;
+  visibility: visible;
+}
+
+#root .home-page main > #contact .home-contact-actions:focus-within .home-contact-indicator {
+  transform: rotate(45deg);
+}
+
+#root .home-page main > #contact .home-contact-reveal .home-contact-email {
+  margin-top: 1.5rem;
+}
+
+#root .home-page main > #contact .home-contact-email h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.625rem;
+  color: #242033 !important;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+#root .home-page main > #contact .home-contact-email h3 svg {
+  color: #4b3fbc !important;
+}
+
+#root .home-page main > #contact .home-contact-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+#root .home-page main > #contact .home-contact-action-buttons > * {
+  min-height: 2.75rem;
+  padding: 0.7rem 1rem;
+  border-radius: 0.7rem;
+  font-size: 0.875rem;
+  font-weight: 650;
+  line-height: 1.25rem;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+#root .home-page main > #contact .home-contact-action-buttons > *:hover {
+  transform: translateY(-1px);
+}
+
+#root .home-page main > #contact .home-contact-action-buttons .home-contact-primary {
+  border: 1px solid #4b3fbc !important;
+  background: #4b3fbc !important;
+  color: #ffffff !important;
+}
+
+#root .home-page main > #contact .home-contact-action-buttons .home-contact-primary:hover {
+  background: #392f9f !important;
+}
+
+#root .home-page main > #contact .home-contact-action-buttons .home-contact-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid #d3cde4 !important;
+  background: #ffffff !important;
+  color: #4b3fbc !important;
+  text-decoration: none;
+}
+
+#root .home-page main > #contact .home-contact-action-buttons .home-contact-secondary:hover {
+  border-color: #4b3fbc !important;
+  background: #f5f3fc !important;
+}
+
+#root .home-page main > #contact .home-contact-email button {
+  padding: 0;
+  color: #4b3fbc !important;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: #c9c2e6;
+  text-underline-offset: 0.25rem;
+}
+
+#root .home-page main > #contact .home-contact-newsletter {
+  width: 100%;
+  max-width: 42rem;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+#root .home-page main > #contact .newsletter-signup-card {
+  width: 100%;
+  padding: 0;
+  border-color: transparent;
+  background: transparent !important;
+  box-shadow: none;
+}
+
+@media (max-width: 767px) {
+  #root .home-page main > #home {
+    padding-top: 112px !important;
+    padding-bottom: 64px !important;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #root .home-page main > #contact .home-contact-actions:hover .home-contact-reveal {
+    max-height: 20rem;
+    margin-top: 1.25rem;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #root .home-page main > #contact .home-contact-actions:hover .home-contact-indicator {
+    transform: rotate(45deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #root .home-page main > #contact .home-contact-indicator,
+  #root .home-page main > #contact .home-contact-reveal {
+    transition: none;
+  }
+}

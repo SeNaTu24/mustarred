@@ -8,6 +8,7 @@ import ServicePathways from "@/components/sections/services/ServicePathways";
 import ServicesCatalog from "@/components/sections/services/ServicesCatalog";
 import ServicesContactCta from "@/components/sections/services/ServicesContactCta";
 import ServicesHero from "@/components/sections/services/ServicesHero";
+import "./Services.css";
 
 export default function Services() {
     const { openModal } = useModal();
@@ -20,7 +21,7 @@ export default function Services() {
     };
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="services-page min-h-screen bg-white">
             <Header />
             <main>
                 <ServicesHero onContact={() => openConsultation()} />

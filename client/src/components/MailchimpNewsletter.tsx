@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { trackFormSubmit } from '@/lib/analytics';
+import './MailchimpNewsletter.css';
 
 export default function MailchimpNewsletter() {
-  const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const firstNameId = useId();
+  const emailId = useId();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,85 +19,96 @@ export default function MailchimpNewsletter() {
     trackFormSubmit('Newsletter Signup');
 
     try {
-      const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_MAILERLITE_API_KEY}`,
+      const response = await fetch(
+        'https://mustarred.us12.list-manage.com/subscribe/post',
+        {
+          method: 'POST',
+          body: new URLSearchParams({
+            u: 'cdd12424c1d674fa391e8e63e',
+            id: '22107e23a3',
+            FNAME: firstName,
+            EMAIL: email,
+          }),
+          mode: 'no-cors',
         },
-        body: JSON.stringify({
-          email,
-          fields: { name: firstName },
-        }),
-      });
+      );
 
-      if (response.ok || response.status === 200 || response.status === 201) {
+      if (response.ok || response.type === 'opaque') {
         setStatus('success');
-        setEmail('');
         setFirstName('');
+        setEmail('');
       } else {
+        console.error('Newsletter signup failed:', response.status);
         setStatus('error');
       }
-    } catch {
+    } catch (error) {
+      console.error('Newsletter signup request failed:', error);
       setStatus('error');
     }
   };
 
   return (
-    <div className="p-4 sm:p-6 md:p-8 rounded-lg bg-card">
-      <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4">
-        Get Exclusive Insights to Stay Ahead
-      </h3>
-      <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">
-        Stay ahead of the curve with the latest compliance insights, regulatory updates, and expert guidance delivered to your inbox.
+    <div className="newsletter-signup-card">
+      <p className="newsletter-signup-description">
+        Stay ahead of the curve with the latest compliance insights, regulatory
+        updates, and expert guidance delivered to your inbox.
       </p>
-
       {status === 'success' ? (
-        <div className="text-center py-3 sm:py-4">
-          <p className="text-sm sm:text-base text-green-600 font-semibold">
-            ✅ Thank you for subscribing! You're all set.
-          </p>
+        <div role="status" className="newsletter-signup-message">
+          <p>Thanks for subscribing! Check your inbox for a confirmation email.</p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4" autoComplete="off">
-          <input type="text" name="fake_name" style={{ display: 'none' }} />
-          <input type="email" name="fake_email" style={{ display: 'none' }} />
+        <form
+          onSubmit={handleSubmit}
+          className="newsletter-signup-form"
+          autoComplete="off"
+          aria-label="Subscribe to email updates"
+        >
+          <label htmlFor={firstNameId} className="sr-only">
+            First name
+          </label>
           <Input
+            id={firstNameId}
             type="text"
-            name="contact_first"
-            placeholder="First Name"
+            name="FNAME"
+            placeholder="Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            autoComplete="off"
-            className="w-full text-sm sm:text-base"
+            required
+            autoComplete="given-name"
+            className="newsletter-signup-input"
           />
+          <label htmlFor={emailId} className="sr-only">
+            Email address
+          </label>
           <Input
+            id={emailId}
             type="email"
-            name="contact_mail"
+            name="EMAIL"
             placeholder="Email Address *"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
             autoComplete="off"
-            className="w-full text-sm sm:text-base"
+            className="newsletter-signup-input"
           />
           <Button
             type="submit"
             disabled={status === 'loading' || !email}
-            className="w-full text-sm sm:text-base py-2 sm:py-3"
+            className="newsletter-signup-button"
           >
             {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
           </Button>
           {status === 'error' && (
-            <p className="text-red-600 text-xs sm:text-sm">
+            <p role="alert" className="newsletter-signup-error">
               Something went wrong. Please try again.
             </p>
           )}
         </form>
       )}
-
-      <p className="text-xs text-muted-foreground mt-3 sm:mt-4">
-        Join 10K+ business professionals who stay compliant and ahead of the curve
+      <p className="newsletter-signup-proof">
+        Join 10K+ business professionals who stay compliant and ahead of the
+        curve
       </p>
     </div>
   );

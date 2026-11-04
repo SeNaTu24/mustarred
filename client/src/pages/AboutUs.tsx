@@ -2,6 +2,74 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AboutResourcesCta from "@/components/sections/AboutResourcesCta";
 import { useModal } from "@/contexts/ModalContext";
+import { useEffect, useRef, useState } from "react";
+import "./AboutUs.css";
+
+function AnimatedStatValue({ value, suffix }: { value: number; suffix: string }) {
+    const [count, setCount] = useState(0);
+    const valueRef = useRef<HTMLSpanElement>(null);
+
+    useEffect(() => {
+        const element = valueRef.current;
+        if (!element) return;
+
+        if (
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+            !("IntersectionObserver" in window)
+        ) {
+            setCount(value);
+            return;
+        }
+
+        let frameId: number | undefined;
+        const observer = new IntersectionObserver((entries) => {
+            if (!entries.some((entry) => entry.isIntersecting)) return;
+
+            observer.disconnect();
+            const startTime = performance.now();
+            const duration = 1000;
+
+            const updateCount = (time: number) => {
+                const progress = Math.min((time - startTime) / duration, 1);
+                const easedProgress = 1 - Math.pow(1 - progress, 3);
+                setCount(Math.round(value * easedProgress));
+
+                if (progress < 1) {
+                    frameId = requestAnimationFrame(updateCount);
+                }
+            };
+
+            frameId = requestAnimationFrame(updateCount);
+        }, { threshold: 0.35 });
+
+        observer.observe(element);
+
+        return () => {
+            observer.disconnect();
+            if (frameId !== undefined) cancelAnimationFrame(frameId);
+        };
+    }, [value]);
+
+    return (
+        <span
+            ref={valueRef}
+            className="about-stat-value"
+            role="img"
+            aria-label={`${value}${suffix}`}
+            style={{
+                fontFamily: "Georgia, serif",
+                fontSize: "clamp(28px, 3vw, 42px)",
+                fontWeight: 400,
+                color: "#4b4ba3",
+                letterSpacing: "-0.03em",
+                lineHeight: 1,
+                fontVariantNumeric: "tabular-nums",
+            }}
+        >
+            {count}{suffix}
+        </span>
+    );
+}
 
 const eyebrow: React.CSSProperties = {
     fontSize: "11px",
@@ -30,31 +98,23 @@ export default function AboutUs() {
     const { openModal } = useModal();
 
     return (
-        <div className="min-h-screen" style={{backgroundColor: '#0d0520'}}>
+        <div className="about-page min-h-screen">
             <Header />
 
             {/* Hero */}
-            <section
-                style={{
-                    paddingTop: "220px",
-                    paddingBottom: "180px",
-                    position: "relative",
-                    overflow: "hidden",
-                    backgroundImage: "url(/assets/images/newimage.avif)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    animation: "heroFloat 12s ease-in-out infinite",
-                }}
-            >
+            <section className="about-hero">
                 <div style={wrap}>
-                    <div style={{ maxWidth: "820px" }}>
+                    <div className="about-hero-content">
+                        <h1 className="about-hero-title">Clear guidance for doing business across Africa.</h1>
+                        <p className="about-hero-description">
+                            From company registration and startup advisory to data-protection programmes and regulatory compliance, we turn complex requirements into practical next steps.
+                        </p>
                     </div>
                 </div>
             </section>
 
             {/* Story — split layout */}
-            <section style={{ padding: "100px 0", background: "white" }}>
+            <section className="about-story" style={{ padding: "100px 0", background: "white" }}>
                 <div style={wrap}>
                     {/* <div style={eyebrow}></div> */}
                     <div
@@ -65,9 +125,9 @@ export default function AboutUs() {
                             alignItems: "center",
                             marginTop: "0",
                         }}
-                        className="about-split"
+                        className="about-split about-story-grid"
                     >
-                        <div>
+                        <div className="about-story-copy">
                             <h2 style={{ ...serifH2, color: "#142338" }}>
                                 Our{" "}
                                 <em
@@ -88,11 +148,7 @@ export default function AboutUs() {
                                     marginBottom: "20px",
                                 }}
                             >
-                                Founded with a vision to democratize business
-                                compliance across Africa, Mustarred emerged from
-                                the recognition that regulatory complexity was
-                                stifling innovation in the continent's most
-                                promising startups.
+                                Mustarred was founded on a simple belief that business compliance should not stand in the way of business growth.
                             </p>
                             <p
                                 style={{
@@ -103,11 +159,29 @@ export default function AboutUs() {
                                     marginBottom: "20px",
                                 }}
                             >
-                                Our founders, seasoned professionals with
-                                decades of experience in African business
-                                landscapes, witnessed countless brilliant ideas
-                                fail not due to lack of merit, but due to
-                                regulatory hurdles.
+                                Across Africa, many promising businesses have the ideas, ambition and drive to make a real impact. Yet, navigating regulatory requirements, data protection and cybersecurity can be challenging, especially for businesses trying to grow and find their footing.
+                            </p>
+                            <p
+                                style={{
+                                    fontSize: "16px",
+                                    lineHeight: 1.8,
+                                    color: "#536376",
+                                    maxWidth: "520px",
+                                    marginBottom: "20px",
+                                }}
+                            >
+                                We recognised the need for a better way. One where businesses could focus on building, innovating and growing, without being overwhelmed by the complexities of compliance.
+                            </p>
+                            <p
+                                style={{
+                                    fontSize: "16px",
+                                    lineHeight: 1.8,
+                                    color: "#536376",
+                                    maxWidth: "520px",
+                                    marginBottom: "20px",
+                                }}
+                            >
+                                With great experience and a deep understanding of the African business landscape, our founders set out to bridge this gap.
                             </p>
                             <p
                                 style={{
@@ -117,15 +191,13 @@ export default function AboutUs() {
                                     maxWidth: "520px",
                                 }}
                             >
-                                Today, we stand as the bridge between ambitious
-                                entrepreneurs and the complex world of
-                                compliance, turning obstacles into
-                                opportunities.
+                                Today, Mustarred works with businesses to make compliance easier to understand, easier to manage and easier to integrate into everyday operations. We help organisations navigate the complexities of data protection, regulatory compliance and cybersecurity, so they can operate with confidence and build for the future.
                             </p>
                         </div>
 
                         {/* Stats grid */}
                         <div
+                            className="about-stat-grid"
                             style={{
                                 display: "grid",
                                 gridTemplateColumns: "1fr 1fr",
@@ -134,32 +206,23 @@ export default function AboutUs() {
                             }}
                         >
                             {[
-                                { stat: "500+", label: "Startups Guided" },
-                                { stat: "15+", label: "African Countries" },
-                                { stat: "98%", label: "Success Rate" },
-                                { stat: "24/7", label: "Support" },
-                            ].map(({ stat, label }) => (
+                                { value: 500, suffix: "+", label: "Startups Guided" },
+                                { value: 15, suffix: "+", label: "African Countries" },
+                                { value: 98, suffix: "%", label: "Success Rate" },
+                                { value: 24, suffix: "/7", label: "Support" },
+                            ].map(({ value, suffix, label }) => (
                                 <div
                                     key={label}
+                                    className="about-stat-card"
                                     style={{
                                         background: "white",
                                         padding: "28px 24px",
                                         textAlign: "center",
                                     }}
                                 >
+                                    <AnimatedStatValue value={value} suffix={suffix} />
                                     <div
-                                        style={{
-                                            fontFamily: "Georgia, serif",
-                                            fontSize: "clamp(28px, 3vw, 42px)",
-                                            fontWeight: 400,
-                                            color: "#4b4ba3",
-                                            letterSpacing: "-0.03em",
-                                            lineHeight: 1,
-                                        }}
-                                    >
-                                        {stat}
-                                    </div>
-                                    <div
+                                        className="about-stat-label"
                                         style={{
                                             fontSize: "12px",
                                             color: "#677383",
@@ -178,108 +241,9 @@ export default function AboutUs() {
                 </div>
             </section>
 
-            {/* What Guides Us */}
-            <section style={{ padding: "100px 0", background: "#f7f6f2" }}>
-                <div style={wrap}>
-                    <div style={eyebrow}>What Guides Us</div>
-                    <h2 style={{ ...serifH2, color: "#142338" }}>
-                        The principles behind our work.
-                    </h2>
-                    <div
-                        style={{
-                            display: "grid",
-                            gridTemplateColumns: "repeat(3, 1fr)",
-                            gap: "16px",
-                        }}
-                        className="about-grid"
-                    >
-                        {[
-                            {
-                                symbol: "✳",
-                                title: "Integrity",
-                                body: "We maintain the highest ethical standards in all our advisory services, ensuring transparent and honest guidance for every client.",
-                            },
-                            {
-                                symbol: "◇",
-                                title: "Innovation",
-                                body: "We continuously evolve our methodologies to stay ahead of regulatory changes and provide cutting-edge compliance solutions.",
-                            },
-                            {
-                                symbol: "",
-                                title: "Pan-African Focus",
-                                body: "Deep understanding of diverse African markets enables us to provide contextually relevant advice across the continent.",
-                            },
-                        ].map(({ symbol, title, body }, i) => (
-                            <div
-                                key={title}
-                                className="about-card"
-                                style={{
-                                    background: "white",
-                                    border: "1px solid #e1e4e6",
-                                    padding: "30px",
-                                    minHeight: "250px",
-                                    transition:
-                                        "transform .2s, border-color .2s",
-                                    animationDelay: `${i * 150}ms`,
-                                }}
-                                onMouseEnter={(e) => {
-                                    (
-                                        e.currentTarget as HTMLDivElement
-                                    ).style.transform = "translateY(-4px)";
-                                    (
-                                        e.currentTarget as HTMLDivElement
-                                    ).style.borderColor = "#a49fe7";
-                                }}
-                                onMouseLeave={(e) => {
-                                    (
-                                        e.currentTarget as HTMLDivElement
-                                    ).style.transform = "";
-                                    (
-                                        e.currentTarget as HTMLDivElement
-                                    ).style.borderColor = "#e1e4e6";
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        fontSize: "30px",
-                                        color: "#7b6fc4",
-                                        marginBottom: "16px",
-                                    }}
-                                >
-                                    {symbol}
-                                </div>
-                                <h3
-                                    style={{
-                                        fontFamily: "Georgia, serif",
-                                        fontWeight: 400,
-                                        fontSize: "22px",
-                                        letterSpacing: "-0.03em",
-                                        color: "#142338",
-                                        margin: "0 0 12px",
-                                    }}
-                                >
-                                    {title}
-                                </h3>
-                                <p
-                                    style={{
-                                        color: "#627184",
-                                        lineHeight: 1.7,
-                                        fontSize: "14px",
-                                        margin: 0,
-                                    }}
-                                >
-                                    {body}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
             {/* Mission & Vision */}
-            <section style={{ padding: "100px 0", background: "#1e1038" }}>
+            <section className="about-direction" style={{ padding: "100px 0", background: "#1e1038" }}>
                 <div style={wrap}>
-                    <div style={{ ...eyebrow, color: "#a49fe7" }}>Our Direction</div>
                     <div
                         style={{
                             display: "grid",
@@ -287,9 +251,9 @@ export default function AboutUs() {
                             gap: "65px",
                             marginTop: "0",
                         }}
-                        className="about-split"
+                        className="about-split about-direction-grid"
                     >
-                        <div>
+                        <div className="about-direction-card">
                             <h2 style={{ ...serifH2, color: "white" }}>
                                 Our{" "}
                                 <em style={{ color: "#a49fe7", fontStyle: "italic" }}>
@@ -297,10 +261,7 @@ export default function AboutUs() {
                                 </em>
                             </h2>
                             <p style={{ fontSize: "17px", lineHeight: 1.8, color: "#c5c0e8", marginBottom: "24px" }}>
-                                To empower African startups by simplifying
-                                complex regulatory landscapes, enabling
-                                entrepreneurs to focus on innovation while
-                                maintaining excellence in governance.
+                                We help African businesses navigate registration and compliance with clear advice and practical support.
                             </p>
                             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "12px" }}>
                                 {[
@@ -309,12 +270,12 @@ export default function AboutUs() {
                                     "Foster innovation ecosystem",
                                 ].map((item) => (
                                     <li key={item} style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "14px", color: "#c5c0e8" }}>
-                                        <span style={{ color: "#a49fe7", fontSize: "18px" }}>→</span>{" "}{item}
+                                        <span aria-hidden="true" style={{ color: "#a49fe7", fontSize: "18px" }}>•</span>{" "}{item}
                                     </li>
                                 ))}
                             </ul>
                         </div>
-                        <div>
+                        <div className="about-direction-card">
                             <h2 style={{ ...serifH2, color: "white" }}>
                                 Our{" "}
                                 <em style={{ color: "#a49fe7", fontStyle: "italic" }}>
@@ -322,10 +283,7 @@ export default function AboutUs() {
                                 </em>
                             </h2>
                             <p style={{ fontSize: "17px", lineHeight: 1.8, color: "#c5c0e8", marginBottom: "24px" }}>
-                                To be Africa's premier business advisory firm,
-                                creating an ecosystem where compliance becomes a
-                                competitive advantage for startups across the
-                                continent.
+                                An Africa where compliance helps businesses grow instead of holding them back.
                             </p>
                             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "12px" }}>
                                 {[
@@ -334,7 +292,7 @@ export default function AboutUs() {
                                     "Transformative impact",
                                 ].map((item) => (
                                     <li key={item} style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "14px", color: "#c5c0e8" }}>
-                                        <span style={{ color: "#a49fe7", fontSize: "18px" }}>→</span>{" "}{item}
+                                        <span aria-hidden="true" style={{ color: "#a49fe7", fontSize: "18px" }}>•</span>{" "}{item}
                                     </li>
                                 ))}
                             </ul>
@@ -344,7 +302,7 @@ export default function AboutUs() {
             </section>
 
             {/* CTA band */}
-            <section style={{ padding: "85px 0", background: "white" }}>
+            <section className="about-cta" style={{ padding: "85px 0", background: "white" }}>
                 <div
                     style={{
                         ...wrap,
@@ -353,7 +311,7 @@ export default function AboutUs() {
                         gap: "65px",
                         alignItems: "center",
                     }}
-                    className="about-split"
+                    className="about-split about-cta-grid"
                 >
                     <div>
                         <div style={{ ...eyebrow, color: "#4b4ba3" }}>
@@ -399,28 +357,6 @@ export default function AboutUs() {
             </section>
 
             <Footer />
-
-            <style>{`
-                @keyframes heroFloat {
-                    0%   { background-position: center center; }
-                    25%  { background-position: 52% 48%; }
-                    50%  { background-position: center 52%; }
-                    75%  { background-position: 48% 50%; }
-                    100% { background-position: center center; }
-                }
-                @media (max-width: 760px) {
-                    .about-split { grid-template-columns: 1fr !important; gap: 40px !important; }
-                    .about-grid { grid-template-columns: 1fr !important; }
-                }
-                @keyframes card-fade-up {
-                    from { opacity: 0; transform: translateY(24px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-                .about-card {
-                    opacity: 0;
-                    animation: card-fade-up 0.5s ease forwards;
-                }
-            `}</style>
         </div>
     );
 }

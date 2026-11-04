@@ -4,41 +4,35 @@ import { testimonials } from "@/data/testimonials";
 
 export default function TestimonialsSection() {
     return (
-        <section id="testimonials" className="py-6 md:py-8 bg-white">
+        <section id="testimonials" className="home-testimonials-section bg-white py-10 md:py-12">
             <div className="max-w-7xl mx-auto px-6 md:px-8">
-                <div className="text-center mb-8">
-                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground dark:text-blue-400">
+                <div className="mb-6 text-center md:mb-8">
+                    <h2 className="mb-3 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
                         Some of our clients say:
                     </h2>
-                    <p className="text-sm text-gray-600 mb-4">Swipe to see more testimonials →</p>
+                    <p className="text-sm text-gray-600">Swipe to see more testimonials</p>
                 </div>
 
-                {/* Cute Slider */}
-                <div className="overflow-x-auto pb-6">
-                    <div className="flex gap-6 w-max mx-auto">
+                <div className="overflow-x-auto px-1 pb-4">
+                    <div className="mx-auto flex w-max items-stretch gap-5 md:gap-6">
                         {testimonials.map((testimonial, i) => (
                             <Card
                                 key={i}
-                                className="w-80 md:w-96 p-4 bg-gradient-to-br from-purple-50 via-white to-blue-50 border-2 border-purple-100 hover:border-[#a49fe7] hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex-shrink-0 group shadow-md"
+                                className="home-testimonial-card w-80 flex-shrink-0 rounded-2xl p-6 md:w-[22rem]"
                                 data-testid={`card-testimonial-${i}`}
                             >
-                                <CardContent className="space-y-3 p-0">
-                                    <div className="flex items-center justify-between">
-                                        <Quote className="h-6 w-6 text-[#a49fe7]/40 group-hover:text-[#a49fe7]/60 transition-colors" />
-                                        <div className="flex gap-1">
-                                            {[...Array(5)].map((_, star) => (
-                                                <div key={star} className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                                            ))}
-                                        </div>
+                                <CardContent className="flex h-full flex-col space-y-0 p-0">
+                                    <div className="home-testimonial-quote-mark">
+                                        <Quote className="h-5 w-5" aria-hidden="true" />
                                     </div>
-                                    <blockquote className="text-sm leading-relaxed text-gray-700 italic font-medium">
-                                        "{testimonial.quote}"
+                                    <blockquote className="home-testimonial-quote">
+                                        “{testimonial.quote}”
                                     </blockquote>
-                                    <div className="border-t border-gray-200 pt-3">
-                                        <p className="font-semibold text-gray-900 text-sm">
+                                    <div className="home-testimonial-author">
+                                        <p className="font-semibold text-sm">
                                             {testimonial.author}
                                         </p>
-                                        <p className="text-xs text-gray-500">
+                                        <p className="text-xs">
                                             {testimonial.position}
                                         </p>
                                     </div>
@@ -46,13 +40,6 @@ export default function TestimonialsSection() {
                             </Card>
                         ))}
                     </div>
-                </div>
-
-                {/* Scroll Indicators */}
-                <div className="flex justify-center gap-2 mt-4">
-                    {testimonials.map((_, i) => (
-                        <div key={i} className="w-2 h-2 bg-gray-300 rounded-full"></div>
-                    ))}
                 </div>
             </div>
         </section>

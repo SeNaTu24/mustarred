@@ -7,7 +7,7 @@ interface ServicesHeroProps {
 
 export default function ServicesHero({ onContact }: ServicesHeroProps) {
     return (
-        <section className="relative isolate flex min-h-[540px] items-center overflow-hidden bg-[#160f30] py-16 sm:min-h-[580px] sm:py-20">
+        <section className="services-hero relative isolate flex min-h-[540px] items-center overflow-hidden bg-[#160f30] py-16 sm:min-h-[580px] sm:py-20">
             <img
                 src="/assets/images/aboutusimage.png"
                 alt=""
@@ -22,7 +22,7 @@ export default function ServicesHero({ onContact }: ServicesHeroProps) {
 
             <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="max-w-4xl">
-                    <h1 className="mb-5 text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                    <h1 className="mb-5 text-balance text-3xl font-semibold leading-[1.08] tracking-tight text-white sm:text-4xl lg:text-5xl">
                         Compliance, Privacy &amp; Security Solutions for <span className="text-[#c1bdf5]">African Businesses</span>
                     </h1>
                     <p className="mb-8 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Breadcrumbs from "@/components/Breadcrumbs";
+
 import { courses, courseCategories } from "@/data/courses";
 import * as Tabs from "@radix-ui/react-tabs";
 import * as Accordion from "@radix-ui/react-accordion";
@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, Award, ChevronDown, Star } from "lucide-react";
 import { useModal } from "@/contexts/ModalContext";
+import "./Training.css";
 
 export default function Training() {
     const [selectedCategory, setSelectedCategory] = useState<
@@ -48,12 +49,12 @@ export default function Training() {
     );
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="training-page min-h-screen bg-white">
             <Header />
             <main className="bg-white" style={{ paddingTop: '0' }}>
-                <Breadcrumbs crumbs={[{ label: "Home", href: "/" }, { label: "Training" }]} />
+                {/* breadcrumbs removed */}
                 {/* Hero Section */}
-                <section className="relative py-16 sm:py-20 md:py-24 lg:py-28 bg-slate-900 text-white overflow-hidden">
+                <section className="training-hero relative py-16 sm:py-20 md:py-24 lg:py-28 bg-slate-900 text-white overflow-hidden">
                     <div className="absolute inset-0 opacity-60">
                         <a href="https://pecb.com/en" target="_blank" rel="noopener noreferrer">
                             <img src="/pecb.png" alt="PECB Official Training Partner" className="w-full h-full object-cover" />
@@ -133,7 +134,7 @@ export default function Training() {
                         <Tabs.Root value={selectedCategory} onValueChange={(value) => setSelectedCategory(value as any)}>
                             {/* Simple Tab Navigation */}
                             <div className="flex flex-col sm:flex-row justify-center mb-8 sm:mb-10 md:mb-12">
-                                <Tabs.List className="flex flex-col sm:flex-row bg-gray-100 rounded-2xl p-2 gap-2 sm:gap-0">
+                                <Tabs.List className="training-category-tabs flex flex-col sm:flex-row bg-gray-100 rounded-2xl p-2 gap-2 sm:gap-0">
                                     {courseCategories.map((category) => (
                                         <Tabs.Trigger
                                             key={category.id}
@@ -256,7 +257,7 @@ export default function Training() {
                 </section>
 
                 {/* Final CTA */}
-                <section className="py-20 bg-slate-900 text-white">
+                <section className="training-cta py-20 bg-slate-900 text-white">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 text-center">
                         <h2 className="text-4xl md:text-5xl font-bold mb-6">
                             Start Your Certification Journey

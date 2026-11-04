@@ -1,24 +1,23 @@
-import BlogHeader from "@/components/layout/BlogHeader";
+import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
     Calendar,
     Clock,
-    Mail,
-    MessageSquare,
 } from "lucide-react";
-import { SiX, SiInstagram, SiWhatsapp } from "react-icons/si";
+import { SiX, SiWhatsapp } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import { useParams, useLocation } from "wouter";
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import ReactMarkdown from "react-markdown";
-import { getWPPostBySlug } from "@/lib/wordpress";
+import { getWPPostBySlug, getWPPosts } from "@/lib/wordpress";
 import { blogPosts as staticPosts } from "@/data/blog-posts";
 import { BlogPost as BlogPostType } from "@/data/blog-types";
 import { formatDate } from "@/data/blog-config";
+import "./BlogPost.css";
 
 // Determines if content is HTML vs markdown
 const isHtml = (content: string): boolean => content.trim().startsWith('<');
@@ -46,6 +45,7 @@ export default function BlogPost() {
     const [location] = useLocation();
     const [post, setPost] = useState<BlogPostType | null>(null);
     const [loading, setLoading] = useState(true);
+    const [relatedPosts, setRelatedPosts] = useState<BlogPostType[]>([]);
     
     useEffect(() => {
         async function fetchPost() {
@@ -64,6 +64,40 @@ export default function BlogPost() {
         }
         fetchPost();
     }, [id]);
+
+    useEffect(() => {
+        let isCurrentRequest = true;
+
+        getWPPosts()
+            .then((posts) => {
+                if (isCurrentRequest) setRelatedPosts(posts);
+            })
+            .catch((error) => {
+                console.error("Error fetching related articles:", error);
+                if (isCurrentRequest) {
+                    setRelatedPosts(staticPosts);
+                }
+            });
+
+        return () => {
+            isCurrentRequest = false;
+        };
+    }, []);
+
+    const recommendedPosts = post
+        ? relatedPosts
+              .filter((relatedPost) => relatedPost.id !== post.id)
+              .sort((a, b) => {
+                  const categoryMatch =
+                      Number(b.category === post.category) -
+                      Number(a.category === post.category);
+                  return (
+                      categoryMatch ||
+                      new Date(b.date).getTime() - new Date(a.date).getTime()
+                  );
+              })
+              .slice(0, 3)
+        : [];
     
     // Determine back URL based on query parameter or default to /our-insights
     const searchParams = new URLSearchParams(location.split('?')[1]);
@@ -72,9 +106,9 @@ export default function BlogPost() {
 
     if (loading) {
         return (
-            <div className="min-h-screen">
-                <BlogHeader />
-                <main className="pt-16">
+            <div className="blog-post-page min-h-screen">
+                <Header />
+                <main className="blog-post-main pt-16">
                     <div className="max-w-4xl mx-auto px-6 md:px-8 py-16 text-center">
                         <p className="text-muted-foreground">Loading article...</p>
                     </div>
@@ -86,9 +120,9 @@ export default function BlogPost() {
 
     if (!post) {
         return (
-            <div className="min-h-screen">
-                <BlogHeader />
-                <main className="pt-16">
+            <div className="blog-post-page min-h-screen">
+                <Header />
+                <main className="blog-post-main pt-16">
                     <div className="max-w-4xl mx-auto px-6 md:px-8 py-16 text-center">
                         <h1 className="text-2xl font-bold mb-4">
                             Article Not Found
@@ -109,7 +143,7 @@ export default function BlogPost() {
     }
 
     return (
-        <div className="min-h-screen">
+        <div className="blog-post-page min-h-screen">
             <Helmet>
                 <title>{post.title} | Mustarred Africa</title>
                 <meta name="description" content={post.excerpt.slice(0, 160)} />
@@ -121,13 +155,13 @@ export default function BlogPost() {
                 <meta name="twitter:title" content={`${post.title} | Mustarred Africa`} />
                 <meta name="twitter:description" content={post.excerpt.slice(0, 160)} />
             </Helmet>
-            <BlogHeader />
-            <main className="pt-24">
-                <article className="max-w-4xl mx-auto px-6 md:px-8 py-16">
+            <Header />
+            <main className="blog-post-main pt-24">
+                <article className="blog-post-article max-w-4xl mx-auto px-6 md:px-8 py-16">
                     {/* Back Button */}
 <Button
                             variant="ghost"
-                            className="mb-8"
+                            className="blog-back-button mb-8"
                             onClick={() => (window.location.href = backUrl)}
                         >
                             Back to {from === 'blog' ? 'Blog' : 'Insights'}
@@ -214,13 +248,7 @@ export default function BlogPost() {
 
                     {/* Article Footer */}
                     <footer className="mt-16 pt-8 border-t">
-                        <div className="flex flex-wrap items-center justify-between gap-4">
-                            <Button
-                                variant="outline"
-                                onClick={() => (window.location.href = backUrl)}
-                            >
-                                More Articles
-                            </Button>
+                        <div className="flex flex-wrap items-center justify-end gap-4">
                             <div className="flex items-center gap-2">
                                 <span className="text-sm text-muted-foreground">Share:</span>
                                 <a
@@ -267,100 +295,58 @@ export default function BlogPost() {
                     </footer>
                 </article>
 
-                {/* Contact Section */}
-                <section id="contact" className="py-8 md:py-12 bg-card/30">
-                    <div className="max-w-7xl mx-auto px-6 md:px-8">
-                        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-                            <div>
-                                <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                                    Let's Connect
-                                </h2>
-                                <p className="text-lg text-muted-foreground mb-8">
-                                    Ready to protect your business? Contact us
-                                    for a consultation or to learn more about
-                                    how we can assist you.
-                                </p>
-
-                                <div className="space-y-6">
-                                    <div>
-                                        <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                                            <MessageSquare className="h-5 w-5 text-primary" />
-                                            Get in Touch
+                {recommendedPosts.length > 0 && (
+                    <section
+                        aria-labelledby="related-articles-heading"
+                        className="blog-related-section mx-auto max-w-7xl px-6 pb-16 md:px-8"
+                    >
+                        <h2
+                            id="related-articles-heading"
+                            className="mb-8 text-2xl font-semibold tracking-tight md:text-3xl"
+                        >
+                            You May Also Like
+                        </h2>
+                        <div className="grid gap-6 md:grid-cols-3">
+                            {recommendedPosts.map((relatedPost) => (
+                                <a
+                                    key={relatedPost.id}
+                                    href={`/blog/${relatedPost.id}?from=${from === "blog" ? "blog" : "insights"}`}
+                                    className="blog-related-card overflow-hidden rounded-xl border"
+                                >
+                                    {relatedPost.image && (
+                                        <img
+                                            src={relatedPost.image}
+                                            alt=""
+                                            className="aspect-[16/9] w-full object-cover"
+                                            loading="lazy"
+                                        />
+                                    )}
+                                    <div className="p-5">
+                                        <p className="mb-2 text-xs font-semibold uppercase tracking-wide">
+                                            {relatedPost.category}
+                                        </p>
+                                        <h3 className="mb-3 text-lg font-semibold leading-snug">
+                                            {relatedPost.title}
                                         </h3>
-                                        <Button
-                                            size="lg"
-                                            data-testid="button-contact"
-                                            onClick={() =>
-                                                window.open(
-                                                    "https://mail.google.com/mail/?view=cm&to=info@mustarred.com",
-                                                    "_blank"
-                                                )
-                                            }
-                                        >
-                                            Contact Us
-                                        </Button>
+                                        <p className="text-sm leading-relaxed">
+                                            {relatedPost.excerpt}
+                                        </p>
                                     </div>
-
-                                    <div>
-                                        <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                                            <Mail className="h-5 w-5 text-primary" />
-                                            Email
-                                        </h3>
-                                        <a
-                                            href="https://mail.google.com/mail/?view=cm&to=info@mustarred.com"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-muted-foreground hover:text-primary transition-colors"
-                                        >
-                                            info@mustarred.com
-                                        </a>
-                                    </div>
-
-                                    <div>
-                                        <h3 className="text-lg font-semibold mb-4">
-                                            Follow Us
-                                        </h3>
-                                        <div className="flex gap-4">
-                                            {[
-                                                {
-                                                    icon: SiX,
-                                                    label: "X",
-                                                    href: "https://x.com/mustarred",
-                                                },
-                                                {
-                                                    icon: FaLinkedin,
-                                                    label: "LinkedIn",
-                                                    href: "https://www.linkedin.com/company/mustarred/about/",
-                                                },
-                                                {
-                                                    icon: SiInstagram,
-                                                    label: "Instagram",
-                                                    href: "https://www.instagram.com/mustarred__crest/",
-                                                },
-                                            ].map((social, i) => (
-                                                <a
-                                                    key={i}
-                                                    href={social.href}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    aria-label={social.label}
-                                                    className="p-3 rounded-lg bg-card hover-elevate active-elevate-2"
-                                                    data-testid={`link-social-${social.label.toLowerCase()}`}
-                                                >
-                                                    <social.icon className="h-5 w-5" />
-                                                </a>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <MailchimpNewsletter />
-                            </div>
+                                </a>
+                            ))}
                         </div>
+                    </section>
+                )}
+
+                <section
+                    aria-label="Subscribe to email updates"
+                    className="blog-newsletter-section mx-auto max-w-4xl px-6 pb-16 md:px-8"
+                >
+                    <div className="blog-newsletter">
+                        <MailchimpNewsletter />
                     </div>
                 </section>
+
             </main>
             <Footer />
         </div>

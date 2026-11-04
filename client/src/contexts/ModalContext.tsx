@@ -101,12 +101,10 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
             trackDownload(`${resourceName} PDF`);
             
             // Always trigger download first
-            const filePath = `/assets/resources/${encodeURIComponent(fileName)}`;
+            const filePath = `/assets/resources/${fileName}`;
             const link = document.createElement('a');
             link.href = filePath;
             link.download = fileName;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
