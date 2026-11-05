@@ -1079,3 +1079,6 @@ footer a:focus-visible {
   --tw-prose-th-borders: var(--theme-border);
   --tw-prose-td-borders: var(--theme-border);
 }
+/* mobile-quick-fix */
+@media (max-width: 767px) { html, body { overflow-x: hidden; } button, a { min-height: 44px; } }
+
