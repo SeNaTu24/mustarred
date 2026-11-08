@@ -1,14 +1,30 @@
 import { Button } from "@/components/ui/button";
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useMemo, useEffect, type CSSProperties } from "react";
 import { Menu, X } from "lucide-react";
 import { useModal } from "@/contexts/ModalContext";
+
+const DARK_HERO_PATHS = new Set([
+    "/",
+    "/about",
+    "/services",
+    "/training",
+    "/cac-registration",
+    "/ate2026",
+]);
+
+const LIGHT_NAV_VARS = {
+    "--nav-surface": "#ffffff",
+    "--nav-foreground": "#0d0821",
+    "--nav-accent": "#4b3fbc",
+    "--nav-border": "rgba(13, 8, 33, 0.12)",
+} as CSSProperties;
 
 export default function Header() {
     const { openModal } = useModal();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [isHomePage, setIsHomePage] = useState(false);
-    const [currentPath, setCurrentPath] = useState("");
-    const [scrolled, setScrolled] = useState(false);
+    const [isHomePage, setIsHomePage] = useState(() => window.location.pathname === "/");
+    const [currentPath, setCurrentPath] = useState(() => window.location.pathname);
+    const [scrolled, setScrolled] = useState(() => window.scrollY > 40);
 
     useEffect(() => {
         const path = window.location.pathname;
@@ -21,7 +37,7 @@ export default function Header() {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    const isTransparent = !scrolled;
+    const overlayHero = DARK_HERO_PATHS.has(currentPath) && !scrolled;
 
     const isActive = useCallback((href: string) => {
         if (href.startsWith("#")) return currentPath === "/";
@@ -66,15 +82,14 @@ export default function Header() {
 
     return (
         <header
-            className={`fixed left-0 right-0 top-0 z-50 font-sans ${scrolled ? 'is-scrolled' : ''} ${isTransparent ? 'text-white' : 'text-[var(--nav-foreground)]'}`}
+            className={`fixed left-0 right-0 top-0 z-50 font-sans ${scrolled ? 'is-scrolled' : ''} ${overlayHero ? 'nav-over-dark text-white' : 'text-[#0d0821]'}`}
             style={{
-                backdropFilter: 'blur(12px)',
-                WebkitBackdropFilter: 'blur(12px)',
-                backgroundColor: isTransparent ? 'transparent' : 'var(--nav-surface)',
-                borderBottom: isTransparent
-                    ? '1px solid transparent'
-                    : (scrolled ? '1px solid var(--nav-border)' : '1px solid transparent'),
-                boxShadow: scrolled ? '0 2px 16px rgba(0,0,0,0.07)' : 'none',
+                ...(overlayHero ? {} : LIGHT_NAV_VARS),
+                backdropFilter: overlayHero ? 'blur(12px)' : undefined,
+                WebkitBackdropFilter: overlayHero ? 'blur(12px)' : undefined,
+                backgroundColor: overlayHero ? 'transparent' : '#ffffff',
+                borderBottom: overlayHero ? '1px solid transparent' : '1px solid rgba(13, 8, 33, 0.12)',
+                boxShadow: scrolled ? '0 2px 16px rgba(13, 8, 33, 0.07)' : 'none',
                 transition: 'background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
             }}
         >
@@ -108,7 +123,7 @@ export default function Header() {
                         <img
                             src="/assets/brand/logo.png"
                             alt="Mustarred-logo"
-                            style={{ height: scrolled ? '64px' : '88px', width: 'auto', objectFit: 'contain', transition: 'height 0.3s ease, filter 0.3s ease', filter: isTransparent ? 'brightness(0) invert(1)' : 'none' }}
+                            style={{ height: scrolled ? '64px' : '88px', width: 'auto', objectFit: 'contain', transition: 'height 0.3s ease, filter 0.3s ease', filter: overlayHero ? 'brightness(0) invert(1)' : 'none' }}
                         />
                     </div>
 
@@ -124,7 +139,7 @@ export default function Header() {
                                     className={`group relative inline-block whitespace-nowrap px-[10px] py-[6px] text-[13px] transition-colors duration-200 ${
                                         active
                                             ? "font-semibold text-[var(--nav-accent)]"
-                                            : `font-medium ${isTransparent ? 'text-white' : 'text-[var(--nav-foreground)]'} hover:text-[var(--nav-accent)]`
+                                            : `font-medium ${overlayHero ? 'text-white' : 'text-[#0d0821]'} hover:text-[var(--nav-accent)]`
                                     }`}
                                 >
                                     {link.label}
@@ -142,7 +157,7 @@ export default function Header() {
                     <div className="flex items-center gap-2">
                         <Button
                             size="sm"
-                            className="hidden min-h-[36px] px-3 py-1.5 font-heading text-xs md:inline-flex"
+                            className="hidden min-h-[36px] px-3.5 py-1.5 font-sans font-semibold text-xs md:text-sm md:inline-flex"
                             data-testid="button-header-contact"
                             onClick={() => openModal("Contact Us", "Get in touch with our team")}
                         >
@@ -151,7 +166,7 @@ export default function Header() {
                         <Button
                             variant="ghost"
                             size="icon"
-                            className={`${isTransparent ? 'text-white' : 'text-[var(--nav-foreground)]'} hover:text-[var(--nav-accent)] md:hidden`}
+                            className={`${overlayHero ? 'text-white' : 'text-[#0d0821]'} hover:text-[var(--nav-accent)] md:hidden`}
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             data-testid="button-mobile-menu"
                             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -182,7 +197,7 @@ export default function Header() {
                                         className={`flex min-h-[44px] items-center border-l-4 py-2.5 text-left text-base transition-colors ${
                                             active
                                                 ? "border-l-[var(--nav-accent)] pl-3 font-semibold text-[var(--nav-accent)]"
-                                                : `border-l-transparent pl-3 font-medium ${isTransparent ? 'text-white' : 'text-[var(--nav-foreground)]'} hover:text-[var(--nav-accent)]`
+                                                : `border-l-transparent pl-3 font-medium ${overlayHero ? 'text-white' : 'text-[#0d0821]'} hover:text-[var(--nav-accent)]`
                                         }`}
                                     >
                                         {link.label}

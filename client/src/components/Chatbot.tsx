@@ -197,6 +197,14 @@ export default function Chatbot() {
                   <p className="text-xs text-white/80">Professional Business Advisory</p>
                 </div>
               </div>
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="text-white/80 hover:text-white p-1 rounded-md transition-colors"
+                aria-label="Close assistant"
+              >
+                <X className="h-5 w-5" />
+              </button>
             </div>
           </div>
 

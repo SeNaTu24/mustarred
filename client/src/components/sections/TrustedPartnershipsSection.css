@@ -1,0 +1,348 @@
+.trust-partners-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 55% at 5% 15%, rgba(183, 173, 255, 0.22), transparent 70%),
+    radial-gradient(ellipse 70% 55% at 95% 85%, rgba(183, 173, 255, 0.22), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255, 255, 255, 0.6), transparent 80%),
+    #f7f4fd;
+  padding: 5.5rem 0 5rem;
+}
+
+/* Decorative ambient background curves */
+.trust-partners__bg-curve {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(260px, 32vw, 460px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+}
+
+.trust-partners__bg-curve svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.trust-partners__bg-curve--left {
+  left: -20px;
+}
+
+.trust-partners__bg-curve--right {
+  right: -20px;
+}
+
+.trust-partners__inner {
+  position: relative;
+  z-index: 2;
+  width: min(1160px, calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+/* 1. Trusted Organizations Header */
+.trust-partners__header {
+  text-align: center;
+}
+
+.trust-partners__heading {
+  margin: 0;
+  color: #0d0821;
+  font-size: clamp(2.1rem, 3.6vw, 2.85rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.trust-partners__heading em {
+  font-style: italic;
+  color: #4b3fbc;
+  font-weight: 700;
+}
+
+.trust-partners__lede {
+  max-width: 580px;
+  margin: 1.15rem auto 0;
+  color: #4a435e;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* 2. 3D Rotating Client Carousel Area (Closer to Header) */
+.trust-partners__carousel-wrap {
+  position: relative;
+  margin-top: 1.25rem;
+}
+
+.trust-partners__help-link-wrap {
+  text-align: center;
+  margin-top: 1.25rem;
+}
+
+.trust-partners__help-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #4b3fbc;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.trust-partners__help-link:hover {
+  text-decoration: underline;
+  transform: translateX(2px);
+}
+
+.trust-partners__help-link:focus-visible {
+  outline: 2px solid #4b3fbc;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* 3. Partnerships Area: Clean, Deliberate Spacing Below Carousel */
+.trust-partners__partnerships {
+  margin-top: 4rem;
+}
+
+.trust-partners__partnerships-header {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.trust-partners__partnerships-title {
+  margin: 0;
+  color: #0d0821;
+  font-size: clamp(1.5rem, 2.4vw, 1.95rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.trust-partners__partnerships-subtitle {
+  margin: 0.6rem 0 0;
+  color: #4a435e;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Freely moving partner logos without container box, border, or chevrons */
+.trust-partners__marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  outline: none;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 1.25rem 0;
+}
+
+.trust-partners__marquee:focus-visible {
+  outline: 2px solid #4b3fbc;
+  outline-offset: 3px;
+}
+
+/* Subtle edge feathering on the left and right */
+.trust-partners__marquee-viewport {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+.trust-partners__marquee-content {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: marquee-left-to-right 28s linear infinite;
+  will-change: transform;
+}
+
+/* Pause marquee on hover and keyboard focus */
+.trust-partners__marquee:hover .trust-partners__marquee-content,
+.trust-partners__marquee:focus-within .trust-partners__marquee-content {
+  animation-play-state: paused;
+}
+
+/* Continuous Left-to-Right Loop */
+@keyframes marquee-left-to-right {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+.trust-partners__marquee-group {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trust-partners__partner-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(2.25rem, 4vw, 4rem);
+  flex-shrink: 0;
+}
+
+.trust-partners__partner-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  outline: none;
+  border-radius: 6px;
+}
+
+.trust-partners__partner-link:focus-visible {
+  outline: 2px solid #4b3fbc;
+  outline-offset: 3px;
+}
+
+/* Refined, slightly reduced partner logo sizing with preserved aspect ratios */
+.trust-partners__partner-logo {
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: 32px;
+  max-width: 135px;
+  object-fit: contain;
+  opacity: 0.88;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.trust-partners__partner-link:hover .trust-partners__partner-logo,
+.trust-partners__partner-item:hover .trust-partners__partner-logo {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.trust-partners__logo--vaspa {
+  max-height: 26px;
+  max-width: 125px;
+}
+
+.trust-partners__logo--iwajoo {
+  max-height: 24px;
+  max-width: 130px;
+}
+
+.trust-partners__logo--ltb {
+  max-height: 34px;
+  max-width: 50px;
+}
+
+.trust-partners__logo--pecb {
+  max-height: 30px;
+  max-width: 95px;
+}
+
+/* Responsive Rules */
+@media (max-width: 1024px) {
+  .trust-partners-section {
+    padding: 4.5rem 0 4rem;
+  }
+
+  .trust-partners__partnerships {
+    margin-top: 3.25rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .trust-partners-section {
+    padding: 3.75rem 0 3.25rem;
+  }
+
+  .trust-partners__heading {
+    font-size: clamp(1.75rem, 6.2vw, 2.15rem);
+  }
+
+  .trust-partners__lede {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-top: 0.85rem;
+  }
+
+  .trust-partners__carousel-wrap {
+    margin-top: 0.85rem;
+  }
+
+  .trust-partners__help-link-wrap {
+    margin-top: 1rem;
+  }
+
+  .trust-partners__partnerships {
+    margin-top: 2.75rem;
+  }
+
+  .trust-partners__partnerships-header {
+    margin-bottom: 1.35rem;
+  }
+
+  .trust-partners__partnerships-title {
+    font-size: 1.45rem;
+  }
+
+  .trust-partners__partnerships-subtitle {
+    margin-top: 0.45rem;
+  }
+
+  .trust-partners__marquee {
+    padding: 0.85rem 0;
+  }
+
+  .trust-partners__partner-item {
+    padding: 0 1.5rem;
+  }
+
+  .trust-partners__partner-logo {
+    max-height: 24px;
+    max-width: 105px;
+  }
+
+  .trust-partners__logo--vaspa {
+    max-height: 20px;
+  }
+
+  .trust-partners__logo--iwajoo {
+    max-height: 18px;
+  }
+
+  .trust-partners__logo--ltb {
+    max-height: 26px;
+  }
+
+  .trust-partners__logo--pecb {
+    max-height: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trust-partners__marquee-content {
+    animation: none;
+    transform: none;
+  }
+}

@@ -73,7 +73,7 @@ export default function BlogPost() {
                 if (isCurrentRequest) setRelatedPosts(posts);
             })
             .catch((error) => {
-                console.error("Error fetching related articles:", error);
+                console.warn("Using static articles fallback for related articles:", error);
                 if (isCurrentRequest) {
                     setRelatedPosts(staticPosts);
                 }
@@ -183,7 +183,7 @@ export default function BlogPost() {
 
                         <h1
                             className="font-bold mb-6 leading-tight text-2xl md:text-3xl lg:text-4xl"
-                            style={{ fontFamily: "Satoshi, sans-serif" }}
+                            style={{ fontFamily: "var(--font-sans)" }}
                         >
                             {post.title}
                         </h1>
@@ -234,7 +234,7 @@ export default function BlogPost() {
                         )}
                         <div
                             className="prose prose-sm md:prose-lg max-w-none dark:prose-invert text-foreground"
-                            style={{ fontFamily: "Satoshi, sans-serif" }}
+                            style={{ fontFamily: "var(--font-sans)" }}
                         >
                             {isHtml(post.content) ? (
                                 <div className="space-y-4 leading-relaxed [&>p]:mb-4 [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mt-8 [&>h2]:mb-3 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:pl-6 [&>ul]:mb-4 [&>ol]:pl-6 [&>ol]:mb-4 [&>li]:mb-1" dangerouslySetInnerHTML={{ __html: post.content }} />

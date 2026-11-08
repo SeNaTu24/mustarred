@@ -19,6 +19,7 @@ import React, { useState, useEffect } from "react";
 import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import EbookDownloadModal from "@/components/EbookDownloadModal";
 import { getWPPosts } from "@/lib/wordpress";
+import { blogPosts as staticPosts } from "@/data/blog-posts";
 import { BLOG_CATEGORIES } from "@/data/blog-config";
 import { formatDate } from "@/data/blog-config";
 import { BlogCategory, BlogPost } from "@/data/blog-types";
@@ -39,9 +40,14 @@ export default function Blog() {
             setLoading(true);
             try {
                 const posts = await getWPPosts();
-                setAllPosts(posts);
+                if (posts && posts.length > 0) {
+                    setAllPosts(posts);
+                } else {
+                    setAllPosts(staticPosts);
+                }
             } catch (error) {
-                console.error("Failed to fetch posts:", error);
+                console.warn("WordPress API unavailable, using static fallback articles:", error);
+                setAllPosts(staticPosts);
             } finally {
                 setLoading(false);
             }
@@ -77,7 +83,7 @@ export default function Blog() {
                 {/* Hero Section */}
                 <section className="py-16 md:py-24 bg-background">
                     <div className="max-w-7xl mx-auto px-6 md:px-8 text-center">
-                        <h1 className="text-4xl md:text-6xl font-bold mb-6 text-black">
+                        <h1 className="font-serif text-[clamp(2.15rem,4.2vw,3.5rem)] font-normal mb-6 text-black leading-[1.14] tracking-[-0.03em]">
                             Our Insights and Updates
                         </h1>
                         <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
@@ -233,9 +239,11 @@ export default function Blog() {
                                             </span>
                                         </div>
                                         
-                                        <h3 className="text-lg font-bold text-gray-900 mb-2">
-                                            {post.title}
-                                        </h3>
+                                        <a href={`/blog/${post.id}?from=blog`} className="hover:text-[#4B3FBC] transition-colors block">
+                                            <h3 className="text-lg font-bold text-gray-900 mb-2">
+                                                {post.title}
+                                            </h3>
+                                        </a>
                                         
                                         <div className="flex items-center gap-4 text-xs text-gray-500 mb-3">
                                             <div className="flex items-center">
@@ -248,14 +256,12 @@ export default function Blog() {
                                             </div>
                                         </div>
                                         
-                                        <Button
-                                            variant="outline"
-                                            size="sm"
-                                            className="w-full"
-                                            onClick={() => window.location.href = `/blog/${post.id}?from=blog`}
+                                        <a
+                                            href={`/blog/${post.id}?from=blog`}
+                                            className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-semibold text-[#4B3FBC] hover:text-white border-2 border-[#4B3FBC] hover:bg-[#4B3FBC] rounded-xl transition-all duration-200"
                                         >
                                             Read More
-                                        </Button>
+                                        </a>
                                     </div>
                                 </div>
                             ))}

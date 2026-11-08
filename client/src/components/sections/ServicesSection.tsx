@@ -1,98 +1,181 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { services } from "@/data/services";
+import {
+  GraduationCap,
+  ShieldCheck,
+  Briefcase,
+  TrendingUp,
+  Lock,
+  FileText,
+  type LucideIcon,
+} from "lucide-react";
+import "./ServicesSection.css";
 
-const serviceImages = [
-    "/assets/images/home-service-training.jpg",
-    "/assets/images/home-service-privacy.jpg",
-    "/assets/images/home-service-compliance.jpg",
-    "/assets/images/home-service-startup.jpg",
-    "/assets/images/home-service-cybersecurity.jpg",
-    "/assets/images/home-service-research.jpg",
+interface ServiceCardData {
+  name: string;
+  description: string;
+  image: string;
+  href: string;
+  icon: LucideIcon;
+}
+
+const topRowServices: ServiceCardData[] = [
+  {
+    name: "Training for Data Protection & Privacy",
+    description: "Build practical, in-demand data protection skills for your team.",
+    image: "/assets/images/home-service-training.jpg",
+    href: "/training",
+    icon: GraduationCap,
+  },
+  {
+    name: "Privacy Programme Implementation",
+    description: "Design and implement a privacy programme that meets industry standards.",
+    image: "/assets/images/home-service-privacy.jpg",
+    href: "/services#privacy-programme",
+    icon: ShieldCheck,
+  },
 ];
 
+const bottomRowServices: ServiceCardData[] = [
+  {
+    name: "Regulatory and Product Compliance",
+    description: "Avoid compliance risks and bring products to market with confidence.",
+    image: "/assets/images/home-service-compliance.jpg",
+    href: "/services#regulatory-product-compliance",
+    icon: Briefcase,
+  },
+  {
+    name: "Startup Advisory",
+    description: "Get the right regulatory, privacy, and governance support to grow and scale.",
+    image: "/assets/images/home-service-startup.jpg",
+    href: "/services#startup-advisory",
+    icon: TrendingUp,
+  },
+  {
+    name: "Cybersecurity Services",
+    description: "Strengthen your security posture, reduce risk, and protect your business.",
+    image: "/assets/images/home-service-cybersecurity.jpg",
+    href: "/services#cybersecurity-services",
+    icon: Lock,
+  },
+  {
+    name: "Policy & Research Services",
+    description: "Access expert research, policy analysis, and insights for better decisions.",
+    image: "/assets/images/home-service-research.jpg",
+    href: "/services#policy-research",
+    icon: FileText,
+  },
+];
+
+function ServicePanel({
+  service,
+  isLarge = false,
+  priority = false,
+}: {
+  service: ServiceCardData;
+  isLarge?: boolean;
+  priority?: boolean;
+}) {
+  return (
+    <a
+      href={service.href}
+      className={`home-service-panel group ${
+        isLarge ? "home-service-panel--large" : "home-service-panel--small"
+      }`}
+      aria-label={`${service.name} - Explore Service`}
+    >
+      {/* Background Image */}
+      <div className="home-service-panel__bg" aria-hidden="true">
+        <img
+          src={service.image}
+          alt=""
+          className="home-service-panel__img"
+          loading={priority ? "eager" : "lazy"}
+        />
+      </div>
+
+      {/* Dark midnight-purple gradient overlay */}
+      <div className="home-service-panel__overlay" aria-hidden="true" />
+
+      {/* Content */}
+      <div className="home-service-panel__content">
+        {/* Bottom: Text & Button */}
+        <div className="home-service-panel__bottom">
+          <h3
+            className={`home-service-panel__title ${
+              isLarge
+                ? "home-service-panel__title--large"
+                : "home-service-panel__title--small"
+            }`}
+          >
+            {service.name}
+          </h3>
+          <p
+            className={`home-service-panel__desc ${
+              isLarge
+                ? "home-service-panel__desc--large"
+                : "home-service-panel__desc--small"
+            }`}
+          >
+            {service.description}
+          </p>
+          <span className="home-service-panel__btn">
+            Explore Service <span aria-hidden="true" className="home-service-panel__btn-arrow">→</span>
+          </span>
+        </div>
+      </div>
+    </a>
+  );
+}
+
 export default function ServicesSection() {
-    const featuredServices = services.slice(0, 6);
+  return (
+    <section
+      id="services"
+      className="home-services-section py-16 sm:py-20 md:py-24 lg:py-28"
+      aria-labelledby="services-heading"
+    >
+      <div className="relative z-10 mx-auto max-w-[1380px] px-5 sm:px-7 lg:px-8">
+        {/* Section Heading */}
+        <div className="mb-10 text-center sm:mb-12 lg:mb-14">
+          <p className="mb-4 flex items-center justify-center gap-4 text-xs font-bold uppercase tracking-[0.18em] text-[#4B3FBC] sm:text-sm">
+            <span className="h-px w-10 bg-[#6C35E8]" aria-hidden="true" />
+            OUR SERVICES
+            <span className="h-px w-10 bg-[#6C35E8]" aria-hidden="true" />
+          </p>
+          <h2
+            id="services-heading"
+            className="mx-auto max-w-6xl font-serif text-[clamp(2.1rem,4vw,3.25rem)] font-semibold leading-[1.14] tracking-[-0.03em] text-[#171322]"
+          >
+            Comprehensive services for{" "}
+            <em className="font-serif font-normal italic text-[#6532D8]">African startups.</em>
+          </h2>
+          <p className="mx-auto mt-4 sm:mt-5 max-w-3xl text-sm leading-relaxed text-[#29243A] sm:text-base md:text-lg">
+            Expert guidance across compliance, privacy, cybersecurity, and business advisory.
+          </p>
+        </div>
 
-    return (
-        <section id="services" className="bg-white py-12 sm:py-14 md:py-16">
-            <div className="mx-auto max-w-screen-xl px-6 md:px-8">
-                <div className="mb-8 flex flex-col items-center text-center md:mb-10">
-                    <div className="w-full">
-                        <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#4B3FBC] sm:text-sm">
-                            HOW WE HELP OUR CLIENTS
-                        </p>
-                        <h2 className="mx-auto max-w-3xl text-balance text-3xl font-semibold leading-tight text-[#171322] sm:text-4xl md:text-5xl">
-                            Let our experts hand-hold you through your tests and triumphs.
-                        </h2>
-                    </div>
-                </div>
+        {/* Mosaic Grid: Row 1 (2 Large Panels) */}
+        <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-7 xl:mb-7">
+          {topRowServices.map((service, index) => (
+            <ServicePanel
+              key={service.name}
+              service={service}
+              isLarge
+              priority={index < 2}
+            />
+          ))}
+        </div>
 
-                <Tabs
-                    defaultValue="service-0"
-                    orientation="vertical"
-                    className="home-services-tabs grid overflow-hidden rounded-2xl border border-[#E7E3ED] bg-white md:grid-cols-[minmax(250px,0.9fr)_minmax(0,1.4fr)]"
-                >
-                    <TabsList
-                        aria-label="Our services"
-                        className="flex h-auto w-full flex-col items-stretch justify-start rounded-none bg-white p-0 text-left"
-                    >
-                        {featuredServices.map((service, index) => (
-                            <TabsTrigger
-                                key={service.name}
-                                value={`service-${index}`}
-                                className="relative flex min-h-[56px] w-full items-center justify-between gap-4 rounded-none border-b border-[#E7E3ED] border-l-4 border-l-transparent px-5 py-4 text-left text-sm font-medium text-[#4B4654] shadow-none transition-colors hover:bg-[#F3EFF8] focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#4B3FBC] data-[state=active]:border-l-[#4B3FBC] data-[state=active]:bg-[#F3EFF8] data-[state=active]:text-[#171322] data-[state=active]:shadow-none sm:text-base"
-                            >
-                                <span>{service.name}</span>
-                            </TabsTrigger>
-                        ))}
-                    </TabsList>
-
-                    {featuredServices.map((service, index) => (
-                        <TabsContent
-                            key={service.name}
-                            value={`service-${index}`}
-                            className="m-0 min-w-0 bg-[#F3EFF8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#4B3FBC]"
-                        >
-                            <div className="grid h-full min-h-[360px] grid-cols-1 sm:grid-cols-[minmax(0,1fr)_minmax(200px,0.85fr)]">
-                                <div className="flex flex-col items-start justify-center p-6 sm:p-8 md:p-10">
-                                    <p className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-[#4B3FBC]">
-                                        {service.name}
-                                    </p>
-                                    <h3 className="mb-4 max-w-lg text-2xl font-semibold leading-tight text-[#171322] sm:text-3xl">
-                                        {service.name}
-                                    </h3>
-                                    <p className="mb-6 max-w-lg text-sm leading-relaxed text-[#4B4654] sm:text-base">
-                                        {service.description}
-                                    </p>
-                                    <a
-                                        href="/services"
-                                        className="inline-flex min-h-[44px] items-center gap-2 rounded-lg px-4 py-2 font-semibold text-[#4B3FBC] transition-colors hover:text-[#3a3399] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4B3FBC] focus-visible:ring-offset-2"
-                                    >
-                                        Learn More <span aria-hidden="true">→</span>
-                                    </a>
-                                </div>
-                                <div className="min-h-[220px] p-4 pt-0 sm:min-h-0 sm:p-4 sm:pl-0">
-                                    <img
-                                        src={serviceImages[index]}
-                                        alt={service.name}
-                                        className="h-full min-h-[220px] w-full rounded-xl object-cover sm:min-h-[320px]"
-                                        loading={index === 0 ? "eager" : "lazy"}
-                                    />
-                                </div>
-                            </div>
-                        </TabsContent>
-                    ))}
-                </Tabs>
-
-                <div className="mt-6 text-center">
-                    <a
-                        href="/services"
-                        className="inline-flex min-h-[48px] w-full items-center justify-center rounded-lg bg-[#4B3FBC] px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-[#3a3399] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4B3FBC] focus-visible:ring-offset-2 sm:w-auto sm:px-8"
-                    >
-                        View All Services
-                    </a>
-                </div>
-            </div>
-        </section>
-    );
+        {/* Mosaic Grid: Row 2 (4 Smaller Panels) */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
+          {bottomRowServices.map((service) => (
+            <ServicePanel
+              key={service.name}
+              service={service}
+              isLarge={false}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

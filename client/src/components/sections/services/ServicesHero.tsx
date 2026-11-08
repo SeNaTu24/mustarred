@@ -22,8 +22,11 @@ export default function ServicesHero({ onContact }: ServicesHeroProps) {
 
             <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="max-w-4xl">
-                    <h1 className="mb-5 text-balance text-3xl font-semibold leading-[1.08] tracking-tight text-white sm:text-4xl lg:text-5xl">
-                        Compliance, Privacy &amp; Security Solutions for <span className="text-[#c1bdf5]">African Businesses</span>
+                    <h1 className="mb-5 text-balance font-serif text-[clamp(2.15rem,4.2vw,3.5rem)] font-normal leading-[1.12] tracking-[-0.03em] text-white">
+                        Compliance, Privacy &amp; Security Solutions for{" "}
+                        <em className="font-serif italic font-normal text-[#c1bdf5]">
+                            African Businesses
+                        </em>
                     </h1>
                     <p className="mb-8 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
                         From regulatory compliance and data protection to cybersecurity and business advisory, we help organisations manage risk, meet regulatory obligations, and grow with confidence.

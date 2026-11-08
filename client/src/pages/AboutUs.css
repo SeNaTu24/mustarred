@@ -53,26 +53,14 @@
 }
 
 #root .about-hero-title {
-  max-width: none;
+  max-width: 860px;
   margin: 0 0 22px;
   color: #ffffff !important;
-  font-family: Georgia, serif;
-  font-size: clamp(24px, 3.4vw, 46px);
+  font-family: var(--font-serif);
+  font-size: clamp(2.15rem, 4.2vw, 3.5rem);
   font-weight: 400;
-  letter-spacing: -0.045em;
-  line-height: 1.02;
-}
-
-@media (min-width: 768px) {
-  #root .about-hero-title {
-    white-space: nowrap;
-  }
-}
-
-@media (max-width: 767px) {
-  #root .about-hero-title {
-    font-size: clamp(32px, 8vw, 40px);
-  }
+  letter-spacing: -0.035em;
+  line-height: 1.12;
 }
 
 #root .about-hero-description {

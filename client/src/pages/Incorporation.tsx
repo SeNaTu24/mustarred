@@ -302,7 +302,7 @@ export default function Incorporation() {
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back
           </Button>
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Company Incorporation</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2 leading-tight">Company Incorporation</h1>
           <p className="text-gray-600">
             Complete your company registration with our step-by-step process
           </p>

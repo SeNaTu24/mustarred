@@ -12,8 +12,16 @@ export default function NotFound() {
           </div>
 
           <p className="mt-4 text-sm text-gray-600">
-            Did you forget to add the page to the router?
+            The page you are looking for does not exist or has been moved.
           </p>
+          <div className="mt-6">
+            <a
+              href="/"
+              className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-[#4B3FBC] hover:bg-[#3a309e] rounded-lg transition-colors"
+            >
+              Back to Home
+            </a>
+          </div>
         </CardContent>
       </Card>
     </div>

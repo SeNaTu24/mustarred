@@ -125,9 +125,9 @@ export default function Consultation() {
             </nav>
 
             {/* Hero Section */}
-            <div className="bg-gradient-to-br from-[#a49fe7] via-[#8b85d1] to-[#4b4ba3] py-16">
+            <div className="bg-gradient-to-br from-[#34246B] via-[#42338B] to-[#4B3FBC] py-16">
                 <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                    <h1 className="font-serif text-[clamp(2.15rem,4.2vw,3.5rem)] font-normal text-white mb-6 leading-[1.14] tracking-[-0.03em]">
                         Book Your Consultation
                     </h1>
                     <p className="text-xl text-white/90 max-w-2xl mx-auto">

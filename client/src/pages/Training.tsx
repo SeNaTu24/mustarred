@@ -69,11 +69,11 @@ export default function Training() {
                                 Official PECB Training Partner
                             </div>
                             
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+                            <h1 className="font-serif text-[clamp(2.15rem,4.2vw,3.5rem)] font-normal mb-4 sm:mb-6 leading-[1.14] tracking-[-0.03em] text-white">
                                 <span className="block sm:inline">Professional</span>{" "}
-                                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent block sm:inline">
+                                <em className="font-serif italic font-normal text-[#c1bdf5] block sm:inline">
                                     Certifications
-                                </span>
+                                </em>
                             </h1>
                             
                             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-8 sm:mb-10 max-w-3xl mx-auto leading-relaxed">
@@ -93,7 +93,7 @@ export default function Training() {
                                 <Button
                                     size="lg"
                                     variant="outline"
-                                    className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-slate-900 hover:scale-105 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg transition-all duration-300"
+                                    className="border-2 !border-white !bg-transparent !text-white hover:!bg-white hover:!text-slate-900 hover:scale-105 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg transition-all duration-300"
                                     onClick={() => openModal("Training Information", "Get expert guidance on our certification programs")}
                                 >
                                     Talk to Expert
@@ -267,7 +267,7 @@ export default function Training() {
                         </p>
                         <Button
                             size="lg"
-                            className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-4 text-lg"
+                            className="!bg-white !text-slate-900 hover:!bg-gray-100 font-semibold px-8 py-4 text-lg"
                             onClick={() => openModal("Get Started Today", "Begin your certification journey")}
                         >
                             Get Started Today

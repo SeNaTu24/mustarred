@@ -1,50 +1,40 @@
-import { Shield, Lock, FileCheck, Building2, Handshake } from "lucide-react";
-
 export const services = [
     {
-        icon: Shield,
         name: "Training for Data Protection & Privacy",
         description:
-            "Comprehensive compliance solutions for your business needs.",
+            "Build practical, in-demand data protection skills for your team.",
     },
     {
-        icon: Lock,
         name: "Privacy Programme Implementation",
         description:
-            "Secure your data with industry-standard protection measures.",
+            "Design and implement a privacy programme that meets industry standards.",
     },
     {
-        icon: FileCheck,
         name: "Regulatory and Product Compliance",
         description:
-            "Navigate complex regulatory requirements with expert guidance.",
+            "Avoid compliance risks and bring products to market with confidence.",
     },
     {
-        icon: Shield,
         name: "Startup Advisory",
         description:
-            "Comprehensive compliance solutions for your business needs.",
+            "Get the right regulatory, privacy, and governance support to grow and scale.",
     },
     {
-        icon: Lock,
         name: "Cybersecurity Services",
         description:
-            "Secure your data with industry-standard protection measures.",
+            "Strengthen your security posture, reduce risk, and protect your business.",
     },
     {
-        icon: FileCheck,
         name: "Policy & Research Services",
         description:
-            "Navigate complex regulatory requirements with expert guidance.",
+            "Access expert research, policy analysis, and insights for better decisions.",
     },
     {
-        icon: Building2,
         name: "Corporate Governance & IP",
         description:
             "Corporate governance and intellectual property management.",
     },
     {
-        icon: Handshake,
         name: "Transaction Advisory",
         description: "Expert advisory services for business transactions.",
     },

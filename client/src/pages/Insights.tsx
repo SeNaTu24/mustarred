@@ -83,7 +83,7 @@ export default function Insights() {
             })
             .catch((error: unknown) => {
                 if (!isCurrentRequest) return;
-                console.error("Failed to fetch latest insights:", error);
+                console.warn("Latest insights API unavailable:", error);
                 setLatestError(true);
             })
             .finally(() => {
@@ -112,7 +112,7 @@ export default function Insights() {
                     <div className="mx-auto max-w-7xl">
                         <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 md:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)] md:items-end md:gap-12 md:px-8">
                             <div>
-                                <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+                                <h1 className="max-w-3xl font-serif text-[clamp(2.15rem,4.2vw,3.5rem)] font-normal leading-[1.14] tracking-[-0.03em] text-white">
                                     Our Insights and Updates
                                 </h1>
                                 <p className="mt-4 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg">

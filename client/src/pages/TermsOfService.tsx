@@ -41,7 +41,7 @@ export default function TermsOfService() {
 
                     {/* Main Content */}
                     <div className="flex-grow bg-white rounded-lg shadow-sm border border-gray-200 p-6 sm:p-8 md:p-12">
-                        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">Mustarred Limited Terms of Use</h1>
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight">Mustarred Limited Terms of Use</h1>
                         
                         <section id="introduction" className="mb-8">
                             <p className="text-gray-700 leading-relaxed mb-4">

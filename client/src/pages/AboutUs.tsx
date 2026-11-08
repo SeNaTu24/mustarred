@@ -57,7 +57,7 @@ function AnimatedStatValue({ value, suffix }: { value: number; suffix: string })
             role="img"
             aria-label={`${value}${suffix}`}
             style={{
-                fontFamily: "Georgia, serif",
+                fontFamily: "var(--font-serif)",
                 fontSize: "clamp(28px, 3vw, 42px)",
                 fontWeight: 400,
                 color: "#4b4ba3",
@@ -72,7 +72,7 @@ function AnimatedStatValue({ value, suffix }: { value: number; suffix: string })
 }
 
 const eyebrow: React.CSSProperties = {
-    fontSize: "11px",
+    fontSize: "12px",
     letterSpacing: "0.18em",
     textTransform: "uppercase",
     fontWeight: 700,
@@ -81,11 +81,11 @@ const eyebrow: React.CSSProperties = {
 };
 
 const serifH2: React.CSSProperties = {
-    fontFamily: "Georgia, serif",
+    fontFamily: "var(--font-serif)",
     fontWeight: 400,
-    fontSize: "clamp(32px, 4vw, 56px)",
-    lineHeight: 1.09,
-    letterSpacing: "-0.04em",
+    fontSize: "clamp(2rem, 3.8vw, 3.25rem)",
+    lineHeight: 1.14,
+    letterSpacing: "-0.03em",
     margin: "16px 0 24px",
 };
 
@@ -141,7 +141,7 @@ export default function AboutUs() {
                             </h2>
                             <p
                                 style={{
-                                    fontSize: "19px",
+                                    fontSize: "18px",
                                     lineHeight: 1.8,
                                     color: "#536376",
                                     maxWidth: "520px",
@@ -260,7 +260,7 @@ export default function AboutUs() {
                                     Mission.
                                 </em>
                             </h2>
-                            <p style={{ fontSize: "17px", lineHeight: 1.8, color: "#c5c0e8", marginBottom: "24px" }}>
+                            <p style={{ fontSize: "16px", lineHeight: 1.8, color: "#c5c0e8", marginBottom: "24px" }}>
                                 We help African businesses navigate registration and compliance with clear advice and practical support.
                             </p>
                             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "12px" }}>
@@ -282,7 +282,7 @@ export default function AboutUs() {
                                     Vision.
                                 </em>
                             </h2>
-                            <p style={{ fontSize: "17px", lineHeight: 1.8, color: "#c5c0e8", marginBottom: "24px" }}>
+                            <p style={{ fontSize: "16px", lineHeight: 1.8, color: "#c5c0e8", marginBottom: "24px" }}>
                                 An Africa where compliance helps businesses grow instead of holding them back.
                             </p>
                             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "12px" }}>
@@ -338,7 +338,7 @@ export default function AboutUs() {
                     <div>
                         <p
                             style={{
-                                fontSize: "19px",
+                                fontSize: "18px",
                                 lineHeight: 1.8,
                                 color: "#536376",
                                 marginBottom: "32px",

@@ -161,3 +161,78 @@
   background-color: #f2f0f8 !important;
   color: #39334a !important;
 }
+
+/* ==========================================================================
+   Redesigned Hero & Country Selection for Register in Africa
+   ========================================================================== */
+
+.cac-redesign-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 65% 55% at 75% 35%, rgba(108, 53, 232, 0.42) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 50% at 10% 85%, rgba(75, 63, 188, 0.35) 0%, transparent 60%),
+    #13062c;
+  color: #ffffff;
+}
+
+/* Ambient organic curves echoing brand language */
+.cac-redesign-hero::before,
+.cac-redesign-hero::after {
+  position: absolute;
+  z-index: 0;
+  width: min(55vw, 44rem);
+  height: min(85vw, 68rem);
+  border: clamp(40px, 6vw, 85px) solid rgba(171, 126, 255, 0.1);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.cac-redesign-hero::before {
+  top: -30rem;
+  left: -28rem;
+  transform: rotate(26deg);
+}
+
+.cac-redesign-hero::after {
+  right: -30rem;
+  bottom: -45rem;
+  transform: rotate(26deg);
+}
+
+.cac-redesign-countries {
+  background-color: #f6f3fc !important;
+}
+
+.cac-country-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.6rem 1.85rem;
+  border-radius: 20px;
+  border: 1px solid rgba(183, 173, 255, 0.45);
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(75, 63, 188, 0.05);
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cac-country-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(75, 63, 188, 0.12);
+  border-color: rgba(183, 173, 255, 0.85);
+}
+
+.cac-country-card:focus-visible {
+  outline: 2px solid #4b3fbc;
+  outline-offset: 3px;
+}
+

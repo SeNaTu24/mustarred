@@ -28,9 +28,9 @@ export default function AboutResourcesCta({ onContact }: AboutResourcesCtaProps)
                             border: "1px solid rgba(164,159,231,0.5)",
                             borderRadius: "3px",
                             fontWeight: 700,
-                            fontSize: "13px",
+                            fontSize: "14px",
                             cursor: "pointer",
-                            fontFamily: "Satoshi, sans-serif",
+                            fontFamily: "var(--font-sans)",
                         }}
                     >
                         Free Resources
@@ -81,9 +81,9 @@ export default function AboutResourcesCta({ onContact }: AboutResourcesCtaProps)
                     border: 0,
                     borderRadius: "3px",
                     fontWeight: 700,
-                    fontSize: "13px",
+                    fontSize: "14px",
                     cursor: "pointer",
-                    fontFamily: "Satoshi, sans-serif",
+                    fontFamily: "var(--font-sans)",
                 }}
             >
                 Talk to Our Team

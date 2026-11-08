@@ -1,0 +1,372 @@
+.home-registration {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 65% 55% at 85% 15%, rgba(183, 173, 255, 0.22), transparent 70%),
+    radial-gradient(ellipse 50% 50% at 10% 85%, rgba(183, 173, 255, 0.12), transparent 70%),
+    #ede8f8;
+  padding: 5.5rem 0 5.25rem;
+}
+
+.home-registration__inner {
+  position: relative;
+  width: min(1160px, calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+/* 
+  Official illustrated globe image placed on the right, 
+  extending from the header area down behind the upper cards on desktop.
+  Feathered radial mask softly dissolves outer perimeter so no pale halo 
+  or rectangular image boundary is visible.
+  pointer-events: none ensures it never blocks clicks/interactions.
+*/
+.home-registration__art {
+  position: absolute;
+  top: -25px;
+  right: -55px;
+  width: clamp(520px, 48vw, 670px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  -webkit-mask-image: radial-gradient(ellipse 96% 94% at 52% 43%, #000 78%, transparent 100%);
+  mask-image: radial-gradient(ellipse 96% 94% at 52% 43%, #000 78%, transparent 100%);
+}
+
+.home-registration__globe-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.home-registration__header {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2.85rem;
+}
+
+.home-registration__copy {
+  position: relative;
+  z-index: 2;
+  max-width: 530px;
+}
+
+.home-registration__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  background: #e9e4f7;
+  color: #4b3fbc;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.15rem;
+}
+
+.home-registration__badge-icon {
+  width: 14px;
+  height: 14px;
+  color: #4b3fbc;
+  flex-shrink: 0;
+}
+
+.home-registration__copy h2 {
+  margin: 0;
+  color: #0d0821;
+  font-size: clamp(2.1rem, 3.8vw, 2.95rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.home-registration__copy h2 span {
+  color: #4b3fbc;
+}
+
+.home-registration__lede {
+  max-width: 480px;
+  margin: 1.15rem 0 0;
+  color: #4a435e;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+/* 2x2 Country Cards Grid */
+.home-registration__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .home-registration__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.65rem 1.85rem;
+  }
+}
+
+.home-registration__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 1.75rem 2rem;
+  min-height: 114px;
+  border-radius: 20px;
+  border: 1px solid rgba(183, 173, 255, 0.45);
+  background:
+    radial-gradient(ellipse 70% 85% at 100% 50%, rgba(226, 218, 248, 0.45), transparent 75%),
+    linear-gradient(135deg, #ffffff 0%, #fefdff 65%, #f6f1fc 100%);
+  box-shadow: 0 4px 20px rgba(75, 63, 188, 0.05);
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  overflow: hidden;
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.home-registration__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(75, 63, 188, 0.12);
+  border-color: rgba(183, 173, 255, 0.75);
+}
+
+.home-registration__card:focus-visible {
+  outline: 2px solid #4b3fbc;
+  outline-offset: 3px;
+}
+
+/* Flowing decorative shape on the right inside each card */
+.home-registration__card-shape {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: clamp(120px, 32%, 180px);
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.home-registration__card-shape svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.home-registration__flag-wrap {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-registration__flag {
+  display: block;
+  width: 48px;
+  height: 34px;
+  border-radius: 7px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+
+.home-registration__details {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.home-registration__name {
+  color: #0d0821;
+  font-size: 1.28rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.home-registration__tagline {
+  color: #4a435e;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+/* Bottom Footer Row */
+.home-registration__footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-top: 2.85rem;
+}
+
+@media (min-width: 640px) {
+  .home-registration__footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.home-registration__note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  color: #4a435e;
+  font-size: 0.95rem;
+}
+
+.home-registration__note svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: #4b3fbc;
+  flex-shrink: 0;
+}
+
+.home-registration__note button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #4b3fbc;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.home-registration__note button:hover {
+  text-decoration: underline;
+}
+
+.home-registration__note button:focus-visible {
+  outline: 2px solid #4b3fbc;
+  outline-offset: 2px;
+}
+
+.home-registration__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.85rem;
+  border-radius: 999px;
+  background: #4b3fbc;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(75, 63, 188, 0.25);
+  transition: background 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.home-registration__cta:hover {
+  background: #3e33a4;
+  transform: translateY(-1px);
+}
+
+.home-registration__cta:focus-visible {
+  outline: 2px solid #4b3fbc;
+  outline-offset: 3px;
+}
+
+/* Responsive adjustments */
+@media (min-width: 1440px) {
+  .home-registration__art {
+    right: -60px;
+    width: 660px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .home-registration__art {
+    width: clamp(440px, 46vw, 540px);
+    top: -15px;
+    right: -35px;
+  }
+
+  .home-registration__copy {
+    max-width: 480px;
+  }
+}
+
+/*
+  Mobile layout:
+  Reposition the globe lower toward the country-card area so it NEVER overlaps
+  or sits directly behind the heading and supporting paragraph.
+  This guarantees complete text readability and maximum contrast on mobile devices.
+*/
+@media (max-width: 767px) {
+  .home-registration {
+    padding: 3.75rem 0 3.25rem;
+  }
+
+  .home-registration__header {
+    min-height: auto;
+    margin-bottom: 2.25rem;
+  }
+
+  .home-registration__copy h2 {
+    font-size: clamp(1.75rem, 6.2vw, 2.2rem);
+  }
+
+  .home-registration__lede {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-top: 0.85rem;
+  }
+
+  .home-registration__art {
+    top: 220px;
+    right: -25px;
+    width: clamp(280px, 75vw, 360px);
+    opacity: 0.20;
+    -webkit-mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, #000 65%, transparent 100%);
+    mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, #000 65%, transparent 100%);
+  }
+
+  .home-registration__card {
+    padding: 1.25rem 1.35rem;
+    gap: 1.15rem;
+    min-height: auto;
+  }
+
+  .home-registration__name {
+    font-size: 1.15rem;
+  }
+
+  .home-registration__footer {
+    align-items: stretch;
+  }
+
+  .home-registration__cta {
+    width: 100%;
+  }
+}

@@ -1,0 +1,272 @@
+/* ==========================================================================
+   ServicesSection.css
+   Mosaic image-based homepage services section with square corners.
+   ========================================================================== */
+
+.home-services-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #f7f5fc;
+}
+
+/* Ambient organic curves echoing reference mockup */
+.home-services-section::before,
+.home-services-section::after {
+  position: absolute;
+  z-index: 0;
+  width: min(58vw, 46rem);
+  height: min(90vw, 72rem);
+  border: clamp(42px, 7vw, 100px) solid rgba(171, 126, 255, 0.13);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.home-services-section::before {
+  top: -34rem;
+  left: -31rem;
+  transform: rotate(28deg);
+}
+
+.home-services-section::after {
+  right: -34rem;
+  bottom: -57rem;
+  transform: rotate(28deg);
+}
+
+/* Service Panel Base: Strict Square Corners (No border radius) */
+.home-service-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 0 !important; /* Strict square corners */
+  text-decoration: none;
+  background-color: #170a32;
+  box-shadow: 0 10px 24px rgba(22, 10, 48, 0.12);
+  border: 1px solid rgba(138, 105, 215, 0.15);
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 260ms ease,
+              border-color 260ms ease;
+}
+
+.home-service-panel:focus-visible {
+  outline: 2px solid #6532d8;
+  outline-offset: 3px;
+}
+
+.home-service-panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(22, 10, 48, 0.22);
+  border-color: rgba(138, 105, 215, 0.4);
+}
+
+/* Top Row: Large Panels */
+.home-service-panel--large {
+  min-height: 340px;
+}
+
+@media (min-width: 640px) {
+  .home-service-panel--large {
+    min-height: 360px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-service-panel--large {
+    min-height: 380px;
+  }
+}
+
+/* Bottom Row: Smaller Panels */
+.home-service-panel--small {
+  min-height: 360px;
+}
+
+@media (min-width: 640px) {
+  .home-service-panel--small {
+    min-height: 380px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-service-panel--small {
+    min-height: 420px;
+  }
+}
+
+/* Image background layer */
+.home-service-panel__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.home-service-panel__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-service-panel:hover .home-service-panel__img {
+  transform: scale(1.05);
+}
+
+/* Gradient Overlay: Deep midnight-purple at bottom, clear/prominent image above */
+.home-service-panel__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 8, 44, 0.42) 0%,
+    rgba(20, 8, 44, 0.18) 32%,
+    rgba(20, 8, 44, 0.74) 68%,
+    rgba(14, 5, 30, 0.95) 100%
+  );
+  transition: background 300ms ease;
+}
+
+.home-service-panel:hover .home-service-panel__overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(20, 8, 44, 0.36) 0%,
+    rgba(20, 8, 44, 0.14) 32%,
+    rgba(20, 8, 44, 0.78) 68%,
+    rgba(14, 5, 30, 0.97) 100%
+  );
+}
+
+/* Content Area */
+.home-service-panel__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 1.65rem 1.45rem;
+}
+
+@media (min-width: 1024px) {
+  .home-service-panel--large .home-service-panel__content {
+    padding: 2.25rem;
+  }
+  .home-service-panel--small .home-service-panel__content {
+    padding: 1.75rem 1.55rem;
+  }
+}
+
+/* Square Icon Badge in Top-Left */
+.home-service-panel__icon-box {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(54, 22, 126, 0.85);
+  border: 1px solid rgba(175, 142, 255, 0.45);
+  box-shadow: 0 4px 12px rgba(8, 3, 20, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #ffffff;
+  border-radius: 0 !important; /* Strict square corners */
+  margin-bottom: 2rem;
+}
+
+/* Bottom Text Block */
+.home-service-panel__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Titles */
+.home-service-panel__title {
+  margin: 0 0 0.55rem;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.home-service-panel__title--large {
+  font-size: clamp(1.4rem, 2vw, 1.75rem);
+  line-height: 1.22;
+}
+
+.home-service-panel__title--small {
+  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+  line-height: 1.25;
+}
+
+/* Descriptions */
+.home-service-panel__desc {
+  margin: 0 0 1.25rem;
+  color: #f1ecfa;
+  line-height: 1.55;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.home-service-panel__desc--large {
+  font-size: 0.95rem;
+  max-width: 480px;
+}
+
+.home-service-panel__desc--small {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* Explore Service Button (Square Corners, White Surface) */
+.home-service-panel__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  color: #200e4a;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 !important; /* Strict square corners */
+  border: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.home-service-panel__btn-arrow {
+  display: inline-block;
+  transition: transform 200ms ease;
+}
+
+.home-service-panel:hover .home-service-panel__btn {
+  background-color: #fbf9ff;
+  color: #4b20d8;
+}
+
+.home-service-panel:hover .home-service-panel__btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  .home-service-panel,
+  .home-service-panel:hover,
+  .home-service-panel__img,
+  .home-service-panel:hover .home-service-panel__img,
+  .home-service-panel__overlay,
+  .home-service-panel:hover .home-service-panel__overlay,
+  .home-service-panel__btn,
+  .home-service-panel:hover .home-service-panel__btn,
+  .home-service-panel__btn-arrow,
+  .home-service-panel:hover .home-service-panel__btn-arrow {
+    transition: none !important;
+    transform: none !important;
+  }
+}

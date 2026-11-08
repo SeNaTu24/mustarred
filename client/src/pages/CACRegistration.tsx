@@ -5,6 +5,9 @@ import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
+import { useModal } from '@/contexts/ModalContext';
+import AfricaMapGraphic from '@/components/cac/graphics/AfricaMapGraphic';
+import { NigeriaFlag, GhanaFlag, KenyaFlag, CoteDIvoireFlag } from '@/components/cac/CountryFlags';
 import {
   FormField,
   TextInput,
@@ -28,7 +31,12 @@ import {
   EMPTY_PSC,
   EMPTY_FORM_DATA,
 } from '@/components/cac/types';
+import { registrationJurisdictions } from '@/data/registration-jurisdictions';
 import './CACRegistration.css';
+
+const registrationCopy = Object.fromEntries(
+  registrationJurisdictions.map((item) => [item.id, item]),
+) as Record<Country, (typeof registrationJurisdictions)[number]>;
 
 // ─── EmailJS configuration ────────────────────────────────────────────────────
 // Set these in client/.env:
@@ -99,26 +107,26 @@ const UK_STEPS: StepDef[] = [
 const COUNTRIES: Record<Country, CountryConfig> = {
   nigeria: {
     flag: '🇳🇬',
-    label: 'Nigeria',
-    tagline: 'Register via CAC e-portal · Private Limited, Business Name & more',
+    label: registrationCopy.nigeria.label,
+    tagline: registrationCopy.nigeria.tagline,
     steps: NIGERIA_STEPS,
   },
   ghana: {
     flag: '🇬🇭',
-    label: 'Ghana',
-    tagline: 'Register via ORC · Companies Act, 2019 (Act 992)',
+    label: registrationCopy.ghana.label,
+    tagline: registrationCopy.ghana.tagline,
     steps: GHANA_STEPS,
   },
   kenya: {
     flag: '🇰🇪',
-    label: 'Kenya',
-    tagline: 'Register via BRS eCitizen · Business Registration Service',
+    label: registrationCopy.kenya.label,
+    tagline: registrationCopy.kenya.tagline,
     steps: KENYA_STEPS,
   },
   uk: {
     flag: '🇬🇧',
-    label: 'United Kingdom',
-    tagline: 'Register via Companies House · England & Wales, Scotland, N. Ireland',
+    label: registrationCopy.uk.label,
+    tagline: registrationCopy.uk.tagline,
     steps: UK_STEPS,
   },
 };
@@ -184,7 +192,16 @@ function validatePersons(
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function CACRegistration() {
-  const [country, setCountry] = useState<Country | null>(null);
+  const { openModal } = useModal();
+  const [country, setCountry] = useState<Country | null>(() => {
+    if (typeof window !== "undefined") {
+      const param = new URLSearchParams(window.location.search).get("country")?.toLowerCase();
+      if (param && (param === "nigeria" || param === "ghana" || param === "kenya" || param === "uk")) {
+        return param as Country;
+      }
+    }
+    return null;
+  });
   const [stepIndex, setStepIndex] = useState(0); // 0-based within the country's steps array
   const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
   const [formData, setFormData] = useState<CACFormData>(EMPTY_FORM_DATA());
@@ -453,76 +470,171 @@ export default function CACRegistration() {
   // Country selection screen
   // ─────────────────────────────────────────────────────────────────────────────
   if (!country) {
+    const countryCards = [
+      {
+        id: 'nigeria',
+        name: 'Nigeria',
+        code: 'NG',
+        tagline: 'Register via CAC e-portal · Private Limited, Business Name & more',
+        flag: <NigeriaFlag />,
+        onClick: () => {
+          setCountry('nigeria');
+          setStepIndex(0);
+        },
+      },
+      {
+        id: 'ghana',
+        name: 'Ghana',
+        code: 'GH',
+        tagline: 'Register via ORC · Companies Act, 2019 (Act 992)',
+        flag: <GhanaFlag />,
+        onClick: () => {
+          setCountry('ghana');
+          setStepIndex(0);
+        },
+      },
+      {
+        id: 'kenya',
+        name: 'Kenya',
+        code: 'KE',
+        tagline: 'Register via BRS eCitizen · Business Registration Service',
+        flag: <KenyaFlag />,
+        onClick: () => {
+          setCountry('kenya');
+          setStepIndex(0);
+        },
+      },
+      {
+        id: 'cote-divoire',
+        name: 'Côte d’Ivoire',
+        code: 'CI',
+        tagline: 'Company registration through CEPICI.',
+        flag: <CoteDIvoireFlag />,
+        onClick: () => {
+          openModal(
+            'Company Registration — Côte d’Ivoire',
+            'Get in touch with our team regarding company registration in Côte d’Ivoire through CEPICI.',
+          );
+        },
+      },
+    ];
+
     return (
-      <div className="cac-registration-page min-h-screen bg-gray-50 flex flex-col">
+      <div className="cac-registration-page min-h-screen bg-[#f6f3fc] flex flex-col">
         <Header />
+
         {/* Hero */}
-        <div
-          className="cac-registration-hero flex min-h-[360px] items-center justify-center border-b border-white/10 px-4 pb-14 pt-28 text-center text-white sm:min-h-[420px] sm:py-20"
-          style={{ background: 'radial-gradient(ellipse at 30% 40%, #2a1a4a 0%, #1a0d33 60%, #0d0520 100%)' }}
-        >
-          <motion.div
-            className="w-full"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-block text-xs font-semibold text-yellow-300 bg-yellow-400/20 px-3 py-1 rounded-full mb-4">
-              Company Registration Service
-            </span>
-            <h1 className="mx-auto mb-4 max-w-4xl text-balance text-2xl font-bold leading-tight sm:text-3xl md:text-4xl">
-              We Register Your Company
-              <span className="text-yellow-300">Across Africa & Beyond</span>
-            </h1>
-            <p className="mx-auto max-w-2xl text-pretty text-sm leading-relaxed text-white/80 sm:text-base">
-              Tell us about your company and we handle the entire registration process — no back and forth, no paperwork headaches.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Country cards */}
-        <div className="cac-registration-countries flex-1 max-w-4xl mx-auto w-full px-4 py-12">
-          <h2 className="text-center text-lg font-bold text-gray-900 mb-2">
-            Which country are you registering in?
-          </h2>
-          <p className="text-center text-sm text-gray-500 mb-8">
-            Select a country to begin your step-by-step application
-          </p>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {(Object.entries(COUNTRIES) as [Country, CountryConfig][]).map(([code, config]) => (
-              <motion.button
-                key={code}
-                type="button"
-                onClick={() => {
-                  setCountry(code);
-                  setStepIndex(0);
-                }}
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-white rounded-2xl border-2 border-gray-100 hover:border-[#4b4ba3]/40 p-6 text-left shadow-sm hover:shadow-md transition-all duration-200 group"
+        <div className="cac-redesign-hero pt-28 pb-12 sm:pt-30 sm:pb-14 lg:pt-32 lg:pb-16 border-b border-white/10">
+          <div className="relative z-10 max-w-[1240px] mx-auto px-5 sm:px-7 lg:px-8 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+              {/* Left Column: Heading, Description, CTA */}
+              <motion.div
+                className="lg:col-span-7"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
               >
-                <div className="flex items-start gap-4">
-                  <span className="text-4xl">{config.flag}</span>
-                  <div>
-                    <h3 className="font-bold text-gray-900 group-hover:text-[#4b4ba3] transition-colors">
-                      {config.label}
-                    </h3>
-                    <p className="text-xs text-gray-500 mt-1 leading-relaxed">{config.tagline}</p>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-[#4b4ba3] ml-auto mt-1 transition-colors" />
+                <h1 className="font-serif text-[clamp(2.15rem,4.2vw,3.5rem)] font-bold leading-[1.14] tracking-[-0.03em] text-white">
+                  Register your business across{" "}
+                  <em className="font-serif italic font-normal text-[#F4C236]">Africa and beyond.</em>
+                </h1>
+                <p className="mt-4 sm:mt-5 max-w-xl text-sm sm:text-base md:text-lg leading-relaxed text-[#C4BCD7]">
+                  Choose where you want to establish your business. We'll guide you through the registration requirements and next steps.
+                </p>
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const el = document.getElementById('country-selector');
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-white text-[#14072b] font-bold text-sm sm:text-base shadow-lg shadow-black/20 hover:bg-[#f2edfc] hover:shadow-xl transition-all duration-200"
+                  >
+                    <span>Start Registration</span>
+                    <span aria-hidden="true">→</span>
+                  </button>
                 </div>
-              </motion.button>
-            ))}
-          </div>
+              </motion.div>
 
-          <p className="text-center text-xs text-gray-400 mt-8">
-            Don't see your country?{' '}
-            <a href="/#contact" className="text-[#4b4ba3] underline">
-              Contact us
-            </a>{' '}
-            — we handle registrations in more jurisdictions.
-          </p>
+              {/* Right Column: Decorative Africa Map Graphic */}
+              <motion.div
+                className="lg:col-span-5 relative flex items-center justify-center"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                <AfricaMapGraphic className="w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[415px]" />
+              </motion.div>
+            </div>
+          </div>
         </div>
+
+        {/* Country selection section */}
+        <section
+          id="country-selector"
+          className="cac-redesign-countries flex-1 py-16 sm:py-20 lg:py-24"
+          aria-labelledby="country-selection-heading"
+        >
+          <div className="max-w-[1140px] mx-auto px-5 sm:px-7 lg:px-8 w-full">
+            <h2
+              id="country-selection-heading"
+              className="font-serif text-[clamp(1.75rem,3.2vw,2.4rem)] font-bold text-[#0d0821] text-center leading-tight tracking-[-0.025em]"
+            >
+              Which country are you registering in?
+            </h2>
+            <p className="mt-2.5 text-center text-sm sm:text-base text-[#4a435e] max-w-xl mx-auto">
+              Select a country to begin your step-by-step application
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 mt-10 sm:mt-12">
+              {countryCards.map((c) => (
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={c.onClick}
+                  className="cac-country-card group"
+                  aria-label={`${c.name} registration: ${c.tagline}`}
+                >
+                  <div className="flex items-center gap-4 sm:gap-5 min-w-0">
+                    <div className="flex-shrink-0 flex items-center justify-center">
+                      {c.flag}
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="text-base sm:text-lg font-bold text-[#0d0821] group-hover:text-[#4b3fbc] transition-colors leading-snug">
+                        {c.name}
+                      </h3>
+                      <p className="mt-1 text-xs sm:text-sm text-[#4a435e] leading-relaxed">
+                        {c.tagline}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-[#f6f3fc] text-[#4b3fbc] group-hover:bg-[#4b3fbc] group-hover:text-white transition-all duration-200 ml-2">
+                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" />
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            <p className="mt-10 sm:mt-12 text-center text-xs sm:text-sm text-[#4a435e]">
+              Don't see your country?{" "}
+              <button
+                type="button"
+                onClick={() =>
+                  openModal(
+                    "Other Jurisdictions",
+                    "Tell us about the jurisdiction you're interested in registering your business in."
+                  )
+                }
+                className="font-semibold text-[#4b3fbc] underline hover:text-[#382da0] transition-colors"
+              >
+                Contact us
+              </button>{" "}
+              — we handle registrations in more jurisdictions.
+            </p>
+          </div>
+        </section>
         <Footer />
       </div>
     );

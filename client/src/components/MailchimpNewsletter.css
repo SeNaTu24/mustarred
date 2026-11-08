@@ -89,6 +89,115 @@
   line-height: 1.45;
 }
 
-#root .newsletter-signup-card {
-  padding: 12px;
+/* ==========================================================================
+   Footer Variant — Compact single-pill layout matching reference
+   ========================================================================== */
+
+#root .newsletter-signup-card--footer {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+#root .newsletter-signup-card--footer .newsletter-signup-description {
+  max-width: 18rem;
+  margin: 0 0 0.85rem;
+  color: #bfb8d6;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+#root .newsletter-signup-card--footer .newsletter-signup-form--compact {
+  width: 100%;
+  max-width: 290px;
+}
+
+#root .newsletter-signup-card--footer .newsletter-signup-pill {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 3px 4px 3px 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.2s ease, outline 0.2s ease;
+}
+
+#root .newsletter-signup-card--footer .newsletter-signup-pill:focus-within {
+  outline: 2px solid #b7adff;
+  outline-offset: 2px;
+}
+
+#root .newsletter-signup-card--footer .newsletter-signup-pill__input {
+  flex: 1;
+  min-width: 0;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  color: #171133 !important;
+  font-size: 0.82rem;
+  padding: 0.45rem 0.25rem;
+}
+
+#root .newsletter-signup-card--footer .newsletter-signup-pill__input::placeholder {
+  color: #726b85 !important;
+  opacity: 1;
+}
+
+#root .newsletter-signup-card--footer .newsletter-signup-pill__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: #4b3fbc !important;
+  color: #ffffff !important;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+  padding: 0;
+}
+
+#root .newsletter-signup-card--footer .newsletter-signup-pill__submit:hover:not(:disabled) {
+  background: #3e33a4 !important;
+  transform: scale(1.05);
+}
+
+#root .newsletter-signup-card--footer .newsletter-signup-pill__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#root .newsletter-signup-card--footer .newsletter-signup-pill__spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: newsletter-spin 0.6s linear infinite;
+}
+
+@keyframes newsletter-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#root .newsletter-signup-card--footer .newsletter-signup-message {
+  padding: 0.5rem 0;
+  color: #85e8a3;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+#root .newsletter-signup-card--footer .newsletter-signup-error {
+  margin-top: 0.4rem;
+  color: #ff9ca8;
+  font-size: 0.78rem;
 }

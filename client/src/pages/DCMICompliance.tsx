@@ -167,7 +167,7 @@ export default function DCMICompliance() {
                 body: JSON.stringify({
                     _subject: "HIGH PRIORITY: Big Table DCMI Lead",
                     _captcha: "false",
-                    PRIORITY: "🚨 BIG TABLE LEAD",
+                    PRIORITY: "ðŸš¨ BIG TABLE LEAD",
                     Name: formData.fullName,
                     Business: formData.businessName,
                     Email: formData.businessEmail,
@@ -192,7 +192,7 @@ export default function DCMICompliance() {
                 body: JSON.stringify({
                     _subject: "DCMI Registration - Form Submitted",
                     _captcha: "false",
-                    STATUS: "📋 FORM SUBMITTED",
+                    STATUS: "ðŸ“‹ FORM SUBMITTED",
                     Name: formData.fullName,
                     Business: formData.businessName,
                     Email: formData.businessEmail,
@@ -222,7 +222,7 @@ export default function DCMICompliance() {
         }
     };
 
-    // ── Shared input class helper ──────────────────────────────────────────────
+    // â”€â”€ Shared input class helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const inputCls = (hasError: boolean) =>
         `w-full px-4 py-3 border rounded-lg text-sm text-gray-800 outline-none transition-all duration-150 ${
             hasError
@@ -238,7 +238,7 @@ export default function DCMICompliance() {
             </div>
         ) : null;
 
-    // ── Thank You Screen ──────────────────────────────────────────────────────
+    // â”€â”€ Thank You Screen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     if (showThankYou) {
         return (
             <div className="min-h-screen flex flex-col" style={{ background: BRAND_BG }}>
@@ -285,7 +285,7 @@ export default function DCMICompliance() {
         );
     }
 
-    // ── Big Table Screen ──────────────────────────────────────────────────────
+    // â”€â”€ Big Table Screen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     if (showBigTable) {
         return (
             <div className="min-h-screen flex flex-col" style={{ background: BRAND_BG }}>
@@ -294,7 +294,7 @@ export default function DCMICompliance() {
                         <div className="h-2 w-full" style={{ background: `linear-gradient(90deg, ${BRAND}, #a49fe7)` }} />
                         <div className="p-8 sm:p-12 text-center">
                             <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl" style={{ background: '#ede9fe' }}>
-                                🎉
+                                ðŸŽ‰
                             </div>
                             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Welcome to the big table!</h1>
                             <p className="text-gray-500 mb-4 leading-relaxed">
@@ -356,7 +356,7 @@ export default function DCMICompliance() {
         );
     }
 
-    // ── Main Return ───────────────────────────────────────────────────────────
+    // â”€â”€ Main Return â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     return (
         <div className="min-h-screen flex flex-col" style={{ background: '#f5f4fb' }}>
             <div className="flex-1 py-8 px-4">
@@ -366,7 +366,7 @@ export default function DCMICompliance() {
                     <div className="mb-6">
                         <button
                             onClick={() => window.history.back()}
-                            className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-700 transition-colors mb-5"
+                            className="flex items-center gap-1.5 text-sm text-gray-700 hover:text-gray-700 transition-colors mb-5"
                         >
                             <ArrowLeft className="w-4 h-4" />
                             Back
@@ -375,10 +375,10 @@ export default function DCMICompliance() {
                             <div className="w-1 h-7 rounded-full" style={{ background: BRAND }} />
                             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">DCMI/DCPMI Registration</h1>
                         </div>
-                        <p className="text-sm text-gray-400 ml-4">Complete your Nigeria Data Protection Act compliance registration</p>
+                        <p className="text-sm text-gray-700 ml-4">Complete your Nigeria Data Protection Act compliance registration</p>
                     </div>
 
-                    {/* ── Welcome Screen ── */}
+                    {/* â”€â”€ Welcome Screen â”€â”€ */}
                     {currentStep === 0 && (
                         <div>
                             {/* Hero banner */}
@@ -392,9 +392,9 @@ export default function DCMICompliance() {
 
                                 <div className="relative z-10 max-w-2xl">
                                     <span className="inline-block text-xs font-semibold tracking-widest uppercase mb-4 px-3 py-1 rounded-full" style={{ background: 'rgba(164,159,231,0.15)', color: '#a49fe7' }}>
-                                        NDPA 2023 · GAID 2025
+                                        NDPA 2023 Â· GAID 2025
                                     </span>
-                                    <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-snug">🎉 Congratulations!</h2>
+                                    <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-snug">ðŸŽ‰ Congratulations!</h2>
                                     <p className="text-gray-300 leading-relaxed mb-4">
                                         You have taken the first step toward being compliant with the Nigeria Data Protection Act (NDPA) 2023 and the General Application and Implementation Directive (GAID) 2025.
                                     </p>
@@ -409,7 +409,7 @@ export default function DCMICompliance() {
 
                             {/* Deliverables + CTA card */}
                             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-                                <p className="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-5">What you'll receive</p>
+                                <p className="text-xs font-semibold tracking-widest uppercase text-gray-700 mb-5">What you'll receive</p>
                                 <div className="grid sm:grid-cols-2 gap-3 mb-8">
                                     {[
                                         "Your DCMI/DCPMI Registration Certificate (within 5 working days)",
@@ -442,7 +442,7 @@ export default function DCMICompliance() {
                         </div>
                     )}
 
-                    {/* ── Form Steps ── */}
+                    {/* â”€â”€ Form Steps â”€â”€ */}
                     {currentStep > 0 && (
                         <>
                             {/* Progress bar */}
@@ -481,7 +481,7 @@ export default function DCMICompliance() {
                                 <div className="px-6 py-4 border-b border-gray-100 flex items-center gap-3">
                                     <div className="w-1 h-6 rounded-full" style={{ background: BRAND }} />
                                     <h2 className="font-semibold text-gray-800">{steps.find(s => s.id === currentStep)?.title}</h2>
-                                    <span className="ml-auto text-xs text-gray-400">Step {currentStep} of {steps.length}</span>
+                                    <span className="ml-auto text-xs text-gray-700">Step {currentStep} of {steps.length}</span>
                                 </div>
 
                                 <div className="p-6 sm:p-8">
@@ -539,9 +539,9 @@ export default function DCMICompliance() {
                                     <div className="space-y-8">
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700 mb-1">How many people's personal data have you collected in the last 6 months? *</label>
-                                            <p className="text-xs text-gray-400 mb-3">(Names, phone numbers, emails, delivery addresses, payment confirmations, etc.)</p>
+                                            <p className="text-xs text-gray-700 mb-3">(Names, phone numbers, emails, delivery addresses, payment confirmations, etc.)</p>
                                             <div className="space-y-2">
-                                                {[{ label: "1–200", val: "1-200" }, { label: "201–999", val: "201-999" }, { label: "1000 and more", val: "1000+" }].map(opt => (
+                                                {[{ label: "1â€“200", val: "1-200" }, { label: "201â€“999", val: "201-999" }, { label: "1000 and more", val: "1000+" }].map(opt => (
                                                     <label key={opt.val} className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${formData.dataVolume === opt.val ? 'border-indigo-400 bg-indigo-50' : 'border-gray-200 hover:border-gray-300'}`}>
                                                         <input type="radio" name="dataVolume" value={opt.val} checked={formData.dataVolume === opt.val} onChange={e => updateFormData("dataVolume", e.target.value)} className="accent-indigo-600" />
                                                         <span className="text-sm font-medium text-gray-700">{opt.label}</span>
@@ -552,7 +552,7 @@ export default function DCMICompliance() {
                                         </div>
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700 mb-1">Do you handle any sensitive personal data? *</label>
-                                            <p className="text-xs text-gray-400 mb-3">(Health information, biometrics, religion, political beliefs, etc.)</p>
+                                            <p className="text-xs text-gray-700 mb-3">(Health information, biometrics, religion, political beliefs, etc.)</p>
                                             <div className="space-y-2">
                                                 {[{ label: "No", val: false }, { label: "Yes", val: true }].map(opt => (
                                                     <label key={opt.label} className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${formData.sensitiveData === opt.val ? 'border-indigo-400 bg-indigo-50' : 'border-gray-200 hover:border-gray-300'}`}>
@@ -565,7 +565,7 @@ export default function DCMICompliance() {
                                         </div>
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700 mb-1">Do you store or send customer data outside Nigeria? *</label>
-                                            <p className="text-xs text-gray-400 mb-3">(e.g., Google Drive, cloud services, foreign servers, some payment processors)</p>
+                                            <p className="text-xs text-gray-700 mb-3">(e.g., Google Drive, cloud services, foreign servers, some payment processors)</p>
                                             <div className="space-y-2">
                                                 {[{ label: "No", val: false }, { label: "Yes", val: true }].map(opt => (
                                                     <label key={opt.label} className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${formData.internationalStorage === opt.val ? 'border-indigo-400 bg-indigo-50' : 'border-gray-200 hover:border-gray-300'}`}>
@@ -613,7 +613,7 @@ export default function DCMICompliance() {
                                         </div>
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700 mb-1">Would you like us to remind you about your yearly renewal requirement? *</label>
-                                            <p className="text-xs text-gray-400 mb-3">(NDPA/GAID requires yearly renewal for OHL-level businesses.)</p>
+                                            <p className="text-xs text-gray-700 mb-3">(NDPA/GAID requires yearly renewal for OHL-level businesses.)</p>
                                             <div className="space-y-2">
                                                 {[{ label: "Yes, send reminders", val: true }, { label: "No", val: false }].map(opt => (
                                                     <label key={opt.label} className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${formData.renewalReminders === opt.val ? 'border-indigo-400 bg-indigo-50' : 'border-gray-200 hover:border-gray-300'}`}>

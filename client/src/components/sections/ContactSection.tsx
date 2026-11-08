@@ -1,80 +1,60 @@
-import { Button } from "@/components/ui/button";
-import { Mail, MessageSquare, Phone } from "lucide-react";
-import MailchimpNewsletter from "@/components/MailchimpNewsletter";
 import { useModal } from "@/contexts/ModalContext";
+import "./ContactSection.css";
 
-interface ContactSectionProps {
-    onResourcesClick?: () => void;
-}
-
-export default function ContactSection({ onResourcesClick }: ContactSectionProps) {
+export default function ContactSection() {
     const { openModal } = useModal();
 
     return (
-        <section id="contact" className="home-contact-section py-10 sm:py-12 md:py-14 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                <div className="home-contact-layout">
-                    <div className="home-contact-details">
-                        <div className="home-contact-actions">
-                            <h3 className="home-contact-heading" tabIndex={0}>
-                                <span className="home-contact-trigger">
-                                    <MessageSquare className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                                    Get in Touch
-                                    <span className="home-contact-indicator" aria-hidden="true">+</span>
-                                </span>
-                            </h3>
-                            <div
-                                id="home-contact-options"
-                                className="home-contact-reveal"
-                            >
-                                <div className="home-contact-action-buttons">
-                                    <Button
-                                        data-testid="button-contact"
-                                        onClick={() => openModal("Contact Us", "Get in touch with our team")}
-                                        className="home-contact-primary"
-                                    >
-                                        Contact Us
-                                    </Button>
-                                    <a
-                                        href="https://wa.me/2348143708860"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="home-contact-secondary"
-                                    >
-                                        <Phone className="h-3.5 w-3.5" />
-                                        WhatsApp Us
-                                    </a>
-                                    {onResourcesClick && (
-                                        <Button
-                                            variant="outline"
-                                            onClick={onResourcesClick}
-                                            className="home-contact-secondary"
-                                        >
-                                            Free Resources
-                                        </Button>
-                                    )}
-                                </div>
+        <section id="contact" className="home-contact-cta" aria-labelledby="home-contact-heading">
+            <svg
+                className="home-contact-cta__decor home-contact-cta__decor--left"
+                viewBox="0 0 320 220"
+                fill="none"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+            >
+                <path
+                    d="M0,0 C120,20 180,100 130,220 L0,220 Z"
+                    fill="rgba(255, 255, 255, 0.55)"
+                />
+                <path
+                    d="M0,25 C85,45 130,115 85,220 L0,220 Z"
+                    fill="rgba(255, 255, 255, 0.3)"
+                />
+            </svg>
+            <svg
+                className="home-contact-cta__decor home-contact-cta__decor--right"
+                viewBox="0 0 320 220"
+                fill="none"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+            >
+                <path
+                    d="M320,0 C200,20 140,100 190,220 L320,220 Z"
+                    fill="rgba(255, 255, 255, 0.55)"
+                />
+                <path
+                    d="M320,25 C235,45 190,115 235,220 L320,220 Z"
+                    fill="rgba(255, 255, 255, 0.3)"
+                />
+            </svg>
 
-                                <div className="home-contact-email">
-                                    <h3>
-                                        <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                                        Email
-                                    </h3>
-                                    <button
-                                        onClick={() => openModal("Contact Us", "Send us an email")}
-                                        className="text-base text-muted-foreground hover:text-primary transition-colors cursor-pointer"
-                                    >
-                                        info@mustarred.com
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="home-contact-newsletter">
-                        <MailchimpNewsletter />
-                    </div>
+            <div className="home-contact-cta__container">
+                <div className="home-contact-cta__content">
+                    <h2 id="home-contact-heading" className="home-contact-cta__heading">
+                        Let's solve your next challenge.
+                    </h2>
+                    <p className="home-contact-cta__text">
+                        Tell us what your business is working through. We'll help you identify the right next step.
+                    </p>
                 </div>
+                <button
+                    type="button"
+                    className="home-contact-cta__button"
+                    onClick={() => openModal("Contact Us", "Get in touch with our team")}
+                >
+                    Talk to Our Team <span aria-hidden="true">→</span>
+                </button>
             </div>
         </section>
     );

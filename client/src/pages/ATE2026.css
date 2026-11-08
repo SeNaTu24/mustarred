@@ -48,6 +48,75 @@
   filter: none !important;
 }
 
+/* ==========================================================================
+   Redesigned Readiness Check Hero
+   ========================================================================== */
+
+.ate2026-redesign-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 60% at 75% 35%, rgba(108, 53, 232, 0.42) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 50% at 15% 85%, rgba(75, 63, 188, 0.32) 0%, transparent 60%),
+    #13062c;
+  color: #ffffff;
+}
+
+/* Ambient organic curves */
+.ate2026-redesign-hero::before,
+.ate2026-redesign-hero::after {
+  position: absolute;
+  z-index: 0;
+  width: min(55vw, 44rem);
+  height: min(85vw, 68rem);
+  border: clamp(40px, 6vw, 85px) solid rgba(171, 126, 255, 0.1);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.ate2026-redesign-hero::before {
+  top: -30rem;
+  left: -28rem;
+  transform: rotate(26deg);
+}
+
+.ate2026-redesign-hero::after {
+  right: -30rem;
+  bottom: -45rem;
+  transform: rotate(26deg);
+}
+
+/* 3D Dashboard Perspective & Hover */
+.ate2026-dashboard-wrapper {
+  perspective: 1200px;
+}
+
+.ate2026-dashboard-window {
+  transform: rotateY(-6deg) rotateX(4deg);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.ate2026-dashboard-window:hover {
+  transform: rotateY(-3deg) rotateX(2deg) translateY(-4px);
+  box-shadow: 0 25px 60px rgba(10, 4, 25, 0.8), 0 0 50px rgba(123, 66, 246, 0.32);
+}
+
+@media (max-width: 1024px) {
+  .ate2026-dashboard-window {
+    transform: none;
+  }
+  .ate2026-dashboard-window:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.ate2026-cta-button:focus-visible {
+  outline: 3px solid #a99bf7;
+  outline-offset: 3px;
+}
+
 #root .ate2026-hero {
   position: relative;
   isolation: isolate;
@@ -664,6 +733,10 @@
   border-bottom-color: #e5e0ef !important;
 }
 
+#root .ate2026-section-intro > span {
+  color: #4b3fbc !important;
+}
+
 #root .ate2026-section-intro h2 {
   color: #242033 !important;
 }
@@ -697,7 +770,8 @@
   color: #242033 !important;
 }
 
-#root .ate2026-card p {
+#root .ate2026-card p,
+#root .ate2026-card > .flex.items-start > .flex.items-center > div:last-child p:last-child {
   color: #706a7d !important;
 }
 
@@ -832,4 +906,46 @@
   border-color: #b42335 !important;
   background: #b42335 !important;
   color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Redesigned Readiness Check Results, Compact Rating Scale & Next Steps
+   ========================================================================== */
+
+#root .ate2026-result-card {
+  background: linear-gradient(135deg, #13062c 0%, #1e1140 55%, #3e33a4 100%) !important;
+  border: 1px solid rgba(168, 120, 255, 0.28) !important;
+  box-shadow: 0 16px 40px rgba(19, 6, 44, 0.28) !important;
+}
+
+#root .ate2026-result-card h3 {
+  color: #ffffff !important;
+}
+
+#root .ate2026-result-card p {
+  color: #E0DAF5 !important;
+}
+
+#root .ate2026-score-display-box {
+  background: rgba(19, 6, 44, 0.72) !important;
+  border: 2px solid rgba(168, 120, 255, 0.42) !important;
+  box-shadow: 0 0 28px rgba(108, 53, 232, 0.28) !important;
+}
+
+#root .ate2026-score-display-box span.text-5xl,
+#root .ate2026-score-display-box span.text-6xl {
+  color: #ffffff !important;
+}
+
+#root .ate2026-contact {
+  border: 1px solid rgba(75, 63, 188, 0.3) !important;
+  background: linear-gradient(135deg, #160D2B 0%, #231646 100%) !important;
+}
+
+#root .ate2026-contact h4 {
+  color: #ffffff !important;
+}
+
+#root .ate2026-contact p {
+  color: #d3cee4 !important;
 }

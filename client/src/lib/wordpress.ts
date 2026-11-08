@@ -54,19 +54,33 @@ function convertWPPost(wp: WPPost): BlogPost {
 }
 
 export async function getWPPosts(): Promise<BlogPost[]> {
-  console.log('Fetching from WordPress API:', `${WP_URL}/posts?_embed&per_page=100`);
-  const res = await fetch(`${WP_URL}/posts?_embed&per_page=100`);
-  console.log('WordPress response status:', res.status);
-  if (!res.ok) throw new Error(`WordPress API error: ${res.status}`);
-  const posts: WPPost[] = await res.json();
-  console.log('WordPress posts fetched:', posts.length);
-  return posts.map(convertWPPost);
+  try {
+    const res = await fetch(`${WP_URL}/posts?_embed&per_page=100`);
+    if (!res.ok) throw new Error(`WordPress API error: ${res.status}`);
+    const contentType = res.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      throw new Error(`WordPress API returned non-JSON response (${contentType || 'empty'})`);
+    }
+    const posts: WPPost[] = await res.json();
+    return posts.map(convertWPPost);
+  } catch (error) {
+    console.warn('WordPress API unavailable, falling back to static content:', error instanceof Error ? error.message : error);
+    throw error;
+  }
 }
 
 export async function getWPPostBySlug(slug: string): Promise<BlogPost | null> {
-  const res = await fetch(`${WP_URL}/posts?slug=${slug}&_embed`);
-  if (!res.ok) throw new Error(`WordPress API error: ${res.status}`);
-  const posts: WPPost[] = await res.json();
-  if (!posts.length) return null;
-  return convertWPPost(posts[0]);
+  try {
+    const res = await fetch(`${WP_URL}/posts?slug=${slug}&_embed`);
+    if (!res.ok) throw new Error(`WordPress API error: ${res.status}`);
+    const contentType = res.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      throw new Error(`WordPress API returned non-JSON response (${contentType || 'empty'})`);
+    }
+    const posts: WPPost[] = await res.json();
+    if (!posts.length) return null;
+    return convertWPPost(posts[0]);
+  } catch {
+    return null;
+  }
 }

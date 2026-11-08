@@ -52,7 +52,7 @@ export default function ShareButton() {
                     border: "1px solid rgba(164,159,231,0.4)",
                     fontSize: "13px",
                     fontWeight: 700,
-                    fontFamily: "Satoshi, sans-serif",
+                    fontFamily: "var(--font-sans)",
                     cursor: "pointer",
                     transform: hovered ? "translateY(-2px)" : "translateY(0)",
                     boxShadow: hovered ? "0 0 18px rgba(75,75,163,0.55)" : "none",

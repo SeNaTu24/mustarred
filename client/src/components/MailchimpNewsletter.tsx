@@ -1,10 +1,12 @@
 import { useId, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { trackFormSubmit } from '@/lib/analytics';
 import './MailchimpNewsletter.css';
 
-export default function MailchimpNewsletter() {
+interface MailchimpNewsletterProps {
+  variant?: "default" | "footer";
+}
+
+export default function MailchimpNewsletter({ variant = "default" }: MailchimpNewsletterProps) {
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -26,7 +28,7 @@ export default function MailchimpNewsletter() {
           body: new URLSearchParams({
             u: 'cdd12424c1d674fa391e8e63e',
             id: '22107e23a3',
-            FNAME: firstName,
+            FNAME: firstName || '',
             EMAIL: email,
           }),
           mode: 'no-cors',
@@ -46,6 +48,76 @@ export default function MailchimpNewsletter() {
       setStatus('error');
     }
   };
+
+  if (variant === "footer") {
+    return (
+      <div className="newsletter-signup-card newsletter-signup-card--footer">
+        <p className="newsletter-signup-description">
+          Get practical insights on compliance, regulation, and business growth in Africa.
+        </p>
+        {status === 'success' ? (
+          <div role="status" className="newsletter-signup-message">
+            <p>Thanks for subscribing! Check your inbox for a confirmation email.</p>
+          </div>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className="newsletter-signup-form newsletter-signup-form--compact"
+            autoComplete="off"
+            aria-label="Subscribe to email updates"
+          >
+            <label htmlFor={emailId} className="sr-only">
+              Email address
+            </label>
+            <div className="newsletter-signup-pill">
+              <input
+                id={emailId}
+                type="email"
+                name="EMAIL"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                autoComplete="email"
+                className="newsletter-signup-pill__input"
+              />
+              <button
+                type="submit"
+                disabled={status === 'loading' || !email}
+                className="newsletter-signup-pill__submit"
+                aria-label="Subscribe to newsletter"
+              >
+                {status === 'loading' ? (
+                  <span className="newsletter-signup-pill__spinner" aria-hidden="true" />
+                ) : (
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
+              </button>
+            </div>
+            {status === 'error' && (
+              <p role="alert" className="newsletter-signup-error">
+                Something went wrong. Please try again.
+              </p>
+            )}
+          </form>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="newsletter-signup-card">
@@ -67,7 +139,7 @@ export default function MailchimpNewsletter() {
           <label htmlFor={firstNameId} className="sr-only">
             First name
           </label>
-          <Input
+          <input
             id={firstNameId}
             type="text"
             name="FNAME"
@@ -81,7 +153,7 @@ export default function MailchimpNewsletter() {
           <label htmlFor={emailId} className="sr-only">
             Email address
           </label>
-          <Input
+          <input
             id={emailId}
             type="email"
             name="EMAIL"
@@ -92,13 +164,13 @@ export default function MailchimpNewsletter() {
             autoComplete="off"
             className="newsletter-signup-input"
           />
-          <Button
+          <button
             type="submit"
             disabled={status === 'loading' || !email}
             className="newsletter-signup-button"
           >
             {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
-          </Button>
+          </button>
           {status === 'error' && (
             <p role="alert" className="newsletter-signup-error">
               Something went wrong. Please try again.
@@ -107,8 +179,7 @@ export default function MailchimpNewsletter() {
         </form>
       )}
       <p className="newsletter-signup-proof">
-        Join 10K+ business professionals who stay compliant and ahead of the
-        curve
+        Get practical compliance insights and regulatory updates delivered to your inbox.
       </p>
     </div>
   );

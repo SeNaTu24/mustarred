@@ -31,7 +31,7 @@ export default function HeroSection() {
             <div className="wrap grid grid-cols-1 gap-12 xl:grid-cols-[minmax(0,1.55fr)_minmax(360px,1fr)] xl:items-center" style={{ width: 'min(1200px, 90%)', margin: 'auto', position: 'relative' }}>
                 <div style={{ maxWidth: '820px' }}>
                     <h1 style={{
-                        fontFamily: 'Georgia, serif',
+                        fontFamily: 'var(--font-serif)',
                         fontWeight: 400,
                         fontSize: 'clamp(48px, 5.3vw, 72px)',
                         lineHeight: 1.03,
@@ -51,7 +51,7 @@ export default function HeroSection() {
                         fontSize: '17px',
                         lineHeight: 1.7,
                         marginBottom: '40px',
-                        fontFamily: 'Satoshi, sans-serif',
+                        fontFamily: 'var(--font-sans)',
                     }}>
                         We combine robust intelligence and problem-solving capacity to help organisations develop excellent regulatory, compliance, and security frameworks.
                     </p>
@@ -70,7 +70,7 @@ export default function HeroSection() {
                                 fontWeight: 700,
                                 fontSize: '13px',
                                 cursor: 'pointer',
-                                fontFamily: 'Satoshi, sans-serif',
+                                fontFamily: 'var(--font-sans)',
                             }}
                             onClick={() => {
                                 trackEvent('cta_click', { event_category: 'engagement', event_label: 'Talk to Expert - Hero' });
@@ -93,7 +93,7 @@ export default function HeroSection() {
                                 fontWeight: 700,
                                 fontSize: '13px',
                                 cursor: 'pointer',
-                                fontFamily: 'Satoshi, sans-serif',
+                                fontFamily: 'var(--font-sans)',
                             }}
                             onClick={() => {
                                 trackEvent('cta_click', { event_category: 'engagement', event_label: 'Register as a DCMI - Hero' });
