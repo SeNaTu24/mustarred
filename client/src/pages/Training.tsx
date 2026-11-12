@@ -54,7 +54,7 @@ export default function Training() {
             <main className="bg-white" style={{ paddingTop: '0' }}>
                 {/* breadcrumbs removed */}
                 {/* Hero Section */}
-                <section className="training-hero relative py-16 sm:py-20 md:py-24 lg:py-28 bg-slate-900 text-white overflow-hidden">
+                <section className="training-hero relative pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-32 md:pb-24 lg:pt-36 lg:pb-28 bg-slate-900 text-white overflow-hidden">
                     <div className="absolute inset-0 opacity-60">
                         <a href="https://pecb.com/en" target="_blank" rel="noopener noreferrer">
                             <img src="/pecb.png" alt="PECB Official Training Partner" className="w-full h-full object-cover" />

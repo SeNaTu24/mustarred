@@ -205,7 +205,7 @@ Time: ${new Date().toLocaleString()}
             <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
                 <Dialog.Portal>
                     <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50" />
-                    <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl p-4 sm:p-6 md:p-8 w-full max-w-sm sm:max-w-md mx-4 shadow-2xl z-50 max-h-[90vh] overflow-y-auto overflow-x-hidden">
+                    <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl p-4 sm:p-6 md:p-8 w-[calc(100%-2rem)] max-w-sm sm:max-w-md shadow-2xl z-50 max-h-[90vh] overflow-y-auto overflow-x-hidden">
                         <Dialog.Close className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 hover:bg-gray-100 rounded-full">
                             <X className="h-4 w-4" />
                         </Dialog.Close>
@@ -314,12 +314,14 @@ Time: ${new Date().toLocaleString()}
                                             I'd like to receive compliance insights and updates via email
                                         </label>
                                     </div>
-                                    <Button
-                                        type="submit"
-                                        className="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-2.5 sm:py-3 mt-4 sm:mt-6 text-sm sm:text-base"
-                                    >
-                                        {(modalDescription?.includes("GAID") || modalDescription?.includes("SME")) ? "Download Now" : "Submit Request"}
-                                    </Button>
+                                    <div className="flex justify-center pt-2 sm:pt-4">
+                                        <Button
+                                            type="submit"
+                                            className="w-auto min-w-[200px] px-8 py-2.5 sm:py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm sm:text-base"
+                                        >
+                                            {(modalDescription?.includes("GAID") || modalDescription?.includes("SME")) ? "Download Now" : "Submit Request"}
+                                        </Button>
+                                    </div>
                                 </form>
                             </>
                         ) : (

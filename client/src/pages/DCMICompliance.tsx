@@ -167,7 +167,7 @@ export default function DCMICompliance() {
                 body: JSON.stringify({
                     _subject: "HIGH PRIORITY: Big Table DCMI Lead",
                     _captcha: "false",
-                    PRIORITY: "ðŸš¨ BIG TABLE LEAD",
+                    PRIORITY: "🚨 BIG TABLE LEAD",
                     Name: formData.fullName,
                     Business: formData.businessName,
                     Email: formData.businessEmail,
@@ -192,7 +192,7 @@ export default function DCMICompliance() {
                 body: JSON.stringify({
                     _subject: "DCMI Registration - Form Submitted",
                     _captcha: "false",
-                    STATUS: "ðŸ“‹ FORM SUBMITTED",
+                    STATUS: "📋 FORM SUBMITTED",
                     Name: formData.fullName,
                     Business: formData.businessName,
                     Email: formData.businessEmail,
@@ -222,7 +222,7 @@ export default function DCMICompliance() {
         }
     };
 
-    // â”€â”€ Shared input class helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Shared input class helper ──────────────────────────────────────────
     const inputCls = (hasError: boolean) =>
         `w-full px-4 py-3 border rounded-lg text-sm text-gray-800 outline-none transition-all duration-150 ${
             hasError
@@ -238,7 +238,7 @@ export default function DCMICompliance() {
             </div>
         ) : null;
 
-    // â”€â”€ Thank You Screen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Thank You Screen ──────────────────────────────────────────────────
     if (showThankYou) {
         return (
             <div className="min-h-screen flex flex-col" style={{ background: BRAND_BG }}>
@@ -285,7 +285,7 @@ export default function DCMICompliance() {
         );
     }
 
-    // â”€â”€ Big Table Screen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Big Table Screen ──────────────────────────────────────────────────
     if (showBigTable) {
         return (
             <div className="min-h-screen flex flex-col" style={{ background: BRAND_BG }}>
@@ -294,7 +294,7 @@ export default function DCMICompliance() {
                         <div className="h-2 w-full" style={{ background: `linear-gradient(90deg, ${BRAND}, #a49fe7)` }} />
                         <div className="p-8 sm:p-12 text-center">
                             <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl" style={{ background: '#ede9fe' }}>
-                                ðŸŽ‰
+                                🎉
                             </div>
                             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Welcome to the big table!</h1>
                             <p className="text-gray-500 mb-4 leading-relaxed">
@@ -356,7 +356,7 @@ export default function DCMICompliance() {
         );
     }
 
-    // â”€â”€ Main Return â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Main Return ──────────────────────────────────────────────────────────
     return (
         <div className="min-h-screen flex flex-col" style={{ background: '#f5f4fb' }}>
             <div className="flex-1 py-8 px-4">
@@ -378,7 +378,7 @@ export default function DCMICompliance() {
                         <p className="text-sm text-gray-700 ml-4">Complete your Nigeria Data Protection Act compliance registration</p>
                     </div>
 
-                    {/* â”€â”€ Welcome Screen â”€â”€ */}
+                    {/* ── Welcome Screen ── */}
                     {currentStep === 0 && (
                         <div>
                             {/* Hero banner */}
@@ -391,10 +391,7 @@ export default function DCMICompliance() {
                                 <div className="absolute -right-8 -top-8 w-40 h-40 rounded-full opacity-10" style={{ border: `2px solid #a49fe7` }} />
 
                                 <div className="relative z-10 max-w-2xl">
-                                    <span className="inline-block text-xs font-semibold tracking-widest uppercase mb-4 px-3 py-1 rounded-full" style={{ background: 'rgba(164,159,231,0.15)', color: '#a49fe7' }}>
-                                        NDPA 2023 Â· GAID 2025
-                                    </span>
-                                    <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-snug">ðŸŽ‰ Congratulations!</h2>
+                                    <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-snug">Congratulations!</h2>
                                     <p className="text-gray-300 leading-relaxed mb-4">
                                         You have taken the first step toward being compliant with the Nigeria Data Protection Act (NDPA) 2023 and the General Application and Implementation Directive (GAID) 2025.
                                     </p>
@@ -442,7 +439,7 @@ export default function DCMICompliance() {
                         </div>
                     )}
 
-                    {/* â”€â”€ Form Steps â”€â”€ */}
+                    {/* ── Form Steps ── */}
                     {currentStep > 0 && (
                         <>
                             {/* Progress bar */}
@@ -541,7 +538,7 @@ export default function DCMICompliance() {
                                             <label className="block text-sm font-medium text-gray-700 mb-1">How many people's personal data have you collected in the last 6 months? *</label>
                                             <p className="text-xs text-gray-700 mb-3">(Names, phone numbers, emails, delivery addresses, payment confirmations, etc.)</p>
                                             <div className="space-y-2">
-                                                {[{ label: "1â€“200", val: "1-200" }, { label: "201â€“999", val: "201-999" }, { label: "1000 and more", val: "1000+" }].map(opt => (
+                                                {[{ label: "1–200", val: "1-200" }, { label: "201–999", val: "201-999" }, { label: "1000 and more", val: "1000+" }].map(opt => (
                                                     <label key={opt.val} className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${formData.dataVolume === opt.val ? 'border-indigo-400 bg-indigo-50' : 'border-gray-200 hover:border-gray-300'}`}>
                                                         <input type="radio" name="dataVolume" value={opt.val} checked={formData.dataVolume === opt.val} onChange={e => updateFormData("dataVolume", e.target.value)} className="accent-indigo-600" />
                                                         <span className="text-sm font-medium text-gray-700">{opt.label}</span>

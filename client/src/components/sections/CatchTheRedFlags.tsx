@@ -250,7 +250,7 @@ export default function CatchTheRedFlags() {
             jumpVelocityRef.current = 0;
             setRemainingMs(remainingRef.current);
             setFeedback("");
-            setAnnouncement(result === "success" ? "Nice work. Risks spotted." : "Time's up. There is more to protect.");
+            setAnnouncement(result === "success" ? "Well done! You've completed the challenge." : "Time's up. There is more to protect.");
             changePhase(result);
         };
 
@@ -478,9 +478,9 @@ export default function CatchTheRedFlags() {
                 {isResult && (
                     <div>
                         <h2 className="mb-1 font-sans text-lg font-semibold leading-tight text-white sm:text-xl">
-                            {phase === "success" ? "Nice work. Risks spotted." : "Time's up. There is more to protect."}
+                            {phase === "success" ? "Well done! You've completed the challenge." : "Time's up. There is more to protect."}
                         </h2>
-                        <p className="text-sm leading-relaxed text-[#d7d2f3]">{phase === "success" ? "You collected the essential controls in time. Real business risks take more than a quick game to assess." : `You collected ${collectedIds.length} of ${CONTROL_ORDER.length} controls. Every business has more to protect.`}</p>
+                        <p className="text-sm leading-relaxed text-[#d7d2f3]">{phase === "success" ? "You successfully collected the essential controls. But protecting a business from compliance and security risks requires more than a quick challenge." : `You collected ${collectedIds.length} of ${CONTROL_ORDER.length} controls. Every business has more to protect.`}</p>
                     </div>
                 )}
             </div>
@@ -562,7 +562,7 @@ export default function CatchTheRedFlags() {
                 {isResult && (
                     <div>
                         <p className="mb-3 text-sm leading-relaxed text-[#d7d2f3]">
-                            Every business has its own risk profile. Mustarred helps organisations strengthen their regulatory, compliance and security frameworks.
+                            Every organisation faces different risks. Mustarred helps businesses identify those risks, strengthen their compliance processes, and build effective security and regulatory frameworks.
                         </p>
                         <div className="flex flex-wrap items-center gap-2">
                             <Button type="button" onClick={startRound} className="rounded-sm shadow-none hover:translate-y-0 hover:shadow-none active:scale-100 motion-reduce:transition-none motion-reduce:transform-none motion-reduce:active:scale-100 focus-visible:ring-[#d8d5ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a0d33]">

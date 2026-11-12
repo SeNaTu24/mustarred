@@ -36,3 +36,12 @@
 #root .services-page main > section[aria-labelledby="engagement-heading"] li {
   border-color: rgba(75, 63, 188, 0.22) !important;
 }
+
+#root .services-page main > section[aria-labelledby="engagement-heading"] :where(.engagement-eyebrow, .stage-eyebrow, .text-\[\#4b3fbc\]) {
+  color: #4b3fbc !important;
+}
+
+#root .services-page main > section[aria-labelledby="engagement-heading"] .stage-badge-number {
+  color: #ffffff !important;
+  background-color: #4b3fbc !important;
+}
