@@ -73,12 +73,12 @@
 /* 2. 3D Rotating Client Carousel Area (Closer to Header) */
 .trust-partners__carousel-wrap {
   position: relative;
-  margin-top: 1.25rem;
+  margin-top: 0.75rem;
 }
 
 .trust-partners__help-link-wrap {
   text-align: center;
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
 }
 
 .trust-partners__help-link {
@@ -287,11 +287,11 @@
   }
 
   .trust-partners__carousel-wrap {
-    margin-top: 0.85rem;
+    margin-top: 0.5rem;
   }
 
   .trust-partners__help-link-wrap {
-    margin-top: 1rem;
+    margin-top: 1.25rem;
   }
 
   .trust-partners__partnerships {

@@ -7,7 +7,7 @@
   position: relative;
   isolation: isolate;
   width: min(100%, 1080px);
-  height: clamp(290px, 29vw, 325px);
+  height: clamp(332px, 31vw, 386px);
   margin-top: 0;
   margin-inline: auto;
   perspective: 1400px;
@@ -18,7 +18,7 @@
 .client-logo-carousel::after {
   position: absolute;
   z-index: -1;
-  top: 86%;
+  top: 90%;
   left: 50%;
   width: min(76%, 520px);
   height: 28px;
@@ -38,7 +38,10 @@
 
 .client-logo-carousel__ring {
   position: absolute;
-  inset: 0;
+  top: -12px;
+  right: 0;
+  bottom: 12px;
+  left: 0;
   margin: 0;
   padding: 0;
   transform-style: preserve-3d;
@@ -99,16 +102,21 @@
     --client-carousel-radius: calc(var(--client-card-width) * 1.32);
 
     width: 100%;
-    height: clamp(170px, 44vw, 195px);
+    height: clamp(192px, 49vw, 224px);
     margin-top: 0;
     perspective: 850px;
     perspective-origin: 50% 45%;
   }
 
   .client-logo-carousel::after {
-    top: 86%;
+    top: 90%;
     width: 68%;
     height: 18px;
+  }
+
+  .client-logo-carousel__ring {
+    top: -6px;
+    bottom: 6px;
   }
 
   .client-logo-carousel__card {
