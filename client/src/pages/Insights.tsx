@@ -276,40 +276,51 @@ export default function Insights() {
     );
 }
 
+function formatFeaturedExcerpt(excerpt: string, maxChars = 220): string {
+    const clean = excerpt.trim();
+    if (!clean || clean.length <= maxChars) return clean;
+
+    const sliced = clean.slice(0, maxChars);
+    const lastSpace = sliced.lastIndexOf(" ");
+    const boundary = lastSpace > maxChars * 0.6 ? sliced.slice(0, lastSpace) : sliced;
+    return `${boundary.replace(/[,;:\-–—\s]+$/, "")}…`;
+}
+
 function LeadArticle({ post }: { post: BlogPost }) {
     const [imageUnavailable, setImageUnavailable] = useState(false);
     const hasImage = Boolean(post.image) && !imageUnavailable;
+    const featuredExcerpt = formatFeaturedExcerpt(post.excerpt);
 
     return (
         <article
             className={`insights-lead-article grid overflow-hidden rounded-2xl border border-gray-200 bg-white ${
-                hasImage ? "lg:grid-cols-[1.08fr_0.92fr]" : "grid-cols-1"
+                hasImage ? "md:grid-cols-[1.02fr_0.98fr]" : "grid-cols-1"
             }`}
         >
             {hasImage && (
-                <div className="aspect-[16/9] bg-gray-100 lg:aspect-auto lg:min-h-[23rem]">
+                <div className="insights-lead-media flex items-center justify-center bg-[#f5f3f9] md:p-5 lg:p-6">
                     <PostImage
                         post={post}
                         loading="eager"
-                        className="h-full w-full object-contain lg:min-h-[23rem]"
+                        className="block h-auto max-h-full w-full object-contain md:rounded-xl"
                         onUnavailable={() => setImageUnavailable(true)}
                     />
                 </div>
             )}
-            <div className="flex flex-col justify-center p-5 sm:p-8 lg:p-10">
+            <div className="insights-lead-body flex flex-col justify-center p-5 sm:p-7 lg:p-10">
                 <ArticleCategory category={post.category} />
-                <h3 className="mt-4 text-2xl font-semibold leading-tight tracking-tight text-gray-950 sm:text-3xl">
+                <h3 className="mt-3 text-2xl font-semibold leading-snug tracking-tight text-gray-950 sm:text-3xl">
                     <ArticleTitleLink post={post} />
                 </h3>
-                {post.excerpt.trim() && (
-                    <p className="mt-4 whitespace-pre-line text-base leading-relaxed text-gray-700">
-                        {post.excerpt}
+                {featuredExcerpt && (
+                    <p className="insights-lead-excerpt mt-4 max-w-[52ch] whitespace-pre-line text-base leading-[1.7] text-gray-700">
+                        {featuredExcerpt}
                     </p>
                 )}
-                <div className="mt-5">
+                <div className="mt-6">
                     <ArticleMeta post={post} />
                 </div>
-                <ArticleReadMore post={post} className="mt-6" />
+                <ArticleReadMore post={post} className="mt-4" />
             </div>
         </article>
     );
@@ -351,8 +362,8 @@ function ArchiveArticleRow({ post }: { post: BlogPost }) {
             </div>
             <PostImage
                 post={post}
-                className="h-full w-full object-cover"
-                containerClassName="insights-archive-thumbnail hidden aspect-[16/9] w-48 shrink-0 overflow-hidden rounded-lg bg-gray-100 sm:block"
+                className="h-full w-full rounded object-contain"
+                containerClassName="insights-archive-thumbnail hidden aspect-[16/10] w-48 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-[#f5f3f9] p-1.5 sm:flex"
             />
         </article>
     );

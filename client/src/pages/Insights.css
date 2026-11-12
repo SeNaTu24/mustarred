@@ -153,7 +153,7 @@
 }
 
 #root .insights-main .insights-lead-article {
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  grid-template-columns: minmax(0, 1fr);
   overflow: hidden;
   border: 1px solid #e8e5ee !important;
   border-radius: 12px !important;
@@ -161,28 +161,38 @@
   box-shadow: 0 8px 26px rgba(28, 22, 52, 0.06);
 }
 
-#root .insights-main .insights-lead-article > div:first-child {
-  min-height: 380px;
+#root .insights-main .insights-lead-article:has(> .insights-lead-media) {
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+}
+
+#root .insights-main .insights-lead-article > .insights-lead-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 2.2vw, 28px);
   background: #f5f3f9 !important;
 }
 
-#root .insights-main .insights-lead-article > div:first-child img {
+#root .insights-main .insights-lead-article > .insights-lead-media img {
+  display: block;
   width: 100%;
-  height: 100%;
-  min-height: 380px;
-  object-fit: cover !important;
+  height: auto;
+  max-height: 100%;
+  border-radius: 10px;
+  object-fit: contain !important;
 }
 
-#root .insights-main .insights-lead-article > div:last-child {
-  padding: clamp(28px, 4vw, 56px) !important;
+#root .insights-main .insights-lead-article > .insights-lead-body {
+  padding: clamp(24px, 3vw, 44px) clamp(24px, 3.5vw, 48px) !important;
 }
 
 #root .insights-main .insights-lead-article h3 {
-  margin-top: 14px !important;
+  margin-top: 12px !important;
   margin-bottom: 0 !important;
-  font-size: clamp(1.7rem, 3vw, 2.7rem) !important;
-  line-height: 1.15 !important;
-  letter-spacing: -0.04em;
+  font-size: clamp(1.45rem, 2.15vw, 2.05rem) !important;
+  line-height: 1.24 !important;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 
 #root .insights-main .insights-lead-article h3 a {
@@ -197,7 +207,13 @@
 #root .insights-main .insights-lead-article p {
   color: #514a61 !important;
   font-size: 1rem !important;
-  line-height: 1.75 !important;
+  line-height: 1.72 !important;
+}
+
+#root .insights-main .insights-lead-article .insights-lead-excerpt {
+  max-width: 52ch;
+  font-size: 1.02rem !important;
+  line-height: 1.72 !important;
 }
 
 #root .insights-main .insights-lead-article > div:last-child > p:first-child,
@@ -297,14 +313,21 @@
 }
 
 #root .insights-main .insights-archive-thumbnail {
-  display: block !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
   width: 200px !important;
+  aspect-ratio: 16 / 10;
+  padding: 6px;
   border-radius: 8px !important;
   background: #f5f3f9 !important;
 }
 
 #root .insights-main .insights-archive-thumbnail img {
-  object-fit: cover !important;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  object-fit: contain !important;
 }
 
 #root .insights-main [aria-labelledby="guides-heading"] {
@@ -366,17 +389,17 @@
     padding-bottom: 48px !important;
   }
 
-  #root .insights-main .insights-lead-article {
+  #root .insights-main .insights-lead-article,
+  #root .insights-main .insights-lead-article:has(> .insights-lead-media) {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  #root .insights-main .insights-lead-article > div:first-child,
-  #root .insights-main .insights-lead-article > div:first-child img {
-    min-height: 0;
+  #root .insights-main .insights-lead-article > .insights-lead-media {
+    padding: 0;
   }
 
-  #root .insights-main .insights-lead-article > div:first-child {
-    aspect-ratio: 16 / 9;
+  #root .insights-main .insights-lead-article > .insights-lead-media img {
+    border-radius: 0;
   }
 
   #root .insights-main .insights-latest-article {
@@ -417,14 +440,6 @@
   border-color: #e5e0ef !important;
   border-radius: 20px !important;
   box-shadow: 0 18px 48px rgba(25, 17, 54, 0.09);
-}
-
-#root .insights-main .insights-lead-article > div:first-child img {
-  transition: transform 300ms ease;
-}
-
-#root .insights-main .insights-lead-article:hover > div:first-child img {
-  transform: scale(1.025);
 }
 
 #root .insights-main .insights-latest-article {
@@ -554,14 +569,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #root .insights-main .insights-lead-article > div:first-child img,
   #root .insights-main .insights-latest-article,
   #root .insights-main .insights-archive-article,
   #root .insights-main [aria-labelledby="guides-heading"] .shadcn-card {
     transition: none;
   }
 
-  #root .insights-main .insights-lead-article:hover > div:first-child img,
   #root .insights-main .insights-latest-article:hover,
   #root .insights-main [aria-labelledby="guides-heading"] .shadcn-card:hover {
     transform: none;

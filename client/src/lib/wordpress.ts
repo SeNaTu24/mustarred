@@ -22,21 +22,69 @@ interface WPPost {
   };
 }
 
+const NAMED_HTML_ENTITIES: Record<string, string> = {
+  amp: '&',
+  apos: "'",
+  bull: '•',
+  copy: '©',
+  gt: '>',
+  hellip: '…',
+  ldquo: '“',
+  lsquo: '‘',
+  lt: '<',
+  mdash: '—',
+  nbsp: ' ',
+  ndash: '–',
+  quot: '"',
+  rdquo: '”',
+  reg: '®',
+  rsquo: '’',
+  trade: '™',
+};
+
+function decodeHtmlEntities(text: string): string {
+  return text.replace(/&(#x?[0-9a-fA-F]+|[a-zA-Z]+);/g, (match, entity: string) => {
+    if (entity.startsWith('#x') || entity.startsWith('#X')) {
+      const codePoint = Number.parseInt(entity.slice(2), 16);
+      if (Number.isInteger(codePoint) && codePoint > 0 && codePoint <= 0x10ffff) {
+        return String.fromCodePoint(codePoint);
+      }
+      return match;
+    }
+    if (entity.startsWith('#')) {
+      const codePoint = Number.parseInt(entity.slice(1), 10);
+      if (Number.isInteger(codePoint) && codePoint > 0 && codePoint <= 0x10ffff) {
+        return String.fromCodePoint(codePoint);
+      }
+      return match;
+    }
+    const named = NAMED_HTML_ENTITIES[entity.toLowerCase()];
+    return named ?? match;
+  });
+}
+
 function stripHtml(html: string): string {
-  const decoded = html
-    .replace(/&amp;/g, '&')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'");
-  return decoded.replace(/<[^>]*>/g, '').trim();
+  if (!html) return '';
+  // Preserve spacing at block boundaries before stripping HTML tags
+  const withoutTags = html
+    .replace(/<br\s*\/?>/gi, ' ')
+    .replace(/<\/(p|div|li|h[1-6]|blockquote)>/gi, ' ')
+    .replace(/<[^>]*>/g, '');
+
+  // Decode entities once to plain text (never parsed as HTML/DOM)
+  const decoded = decodeHtmlEntities(withoutTags);
+
+  // Normalize WordPress truncation markers like "[&hellip;]" or "[...]" into clean ellipsis
+  return decoded
+    .replace(/\s*\[\s*(?:…|\.\.\.)\s*\]/g, '…')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 function convertWPPost(wp: WPPost): BlogPost {
   const image = wp._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? (wp as any).jetpack_featured_media_url ?? '';
-  const category = wp._embedded?.['wp:term']?.[0]?.[0]?.name ?? 'Mustarred Insights';
-  const author = wp._embedded?.author?.[0]?.name ?? 'Admin Mustarred';
+  const rawCategory = wp._embedded?.['wp:term']?.[0]?.[0]?.name ?? 'Mustarred Insights';
+  const rawAuthor = wp._embedded?.author?.[0]?.name ?? 'Admin Mustarred';
   const content = wp.content.rendered;
   const plainText = stripHtml(content);
 
@@ -45,9 +93,9 @@ function convertWPPost(wp: WPPost): BlogPost {
     title: stripHtml(wp.title.rendered),
     excerpt: stripHtml(wp.excerpt.rendered),
     content,
-    author,
+    author: stripHtml(rawAuthor),
     date: wp.date.split('T')[0],
-    category: category as BlogPost['category'],
+    category: stripHtml(rawCategory) as BlogPost['category'],
     image,
     readTime: calculateReadTime(plainText),
   };

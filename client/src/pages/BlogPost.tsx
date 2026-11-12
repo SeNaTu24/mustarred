@@ -314,12 +314,14 @@ export default function BlogPost() {
                                     className="blog-related-card overflow-hidden rounded-xl border"
                                 >
                                     {relatedPost.image && (
-                                        <img
-                                            src={relatedPost.image}
-                                            alt=""
-                                            className="aspect-[16/9] w-full object-cover"
-                                            loading="lazy"
-                                        />
+                                        <div className="flex aspect-[16/10] w-full items-center justify-center overflow-hidden bg-[#f5f3f9] p-1.5">
+                                            <img
+                                                src={relatedPost.image}
+                                                alt=""
+                                                className="h-full w-full rounded object-contain"
+                                                loading="lazy"
+                                            />
+                                        </div>
                                     )}
                                     <div className="p-5">
                                         <p className="mb-2 text-xs font-semibold uppercase tracking-wide">

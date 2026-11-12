@@ -225,12 +225,21 @@ export default function Blog() {
                                     key={post.id}
                                     className="break-inside-avoid bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
                                 >
-                                    <div 
-                                        className="h-48 bg-cover bg-center"
-                                        style={{
-                                            backgroundImage: `url(${post.image})`,
-                                        }}
-                                    ></div>
+                                    {post.image && (
+                                        <div className="flex aspect-[16/10] w-full items-center justify-center overflow-hidden bg-[#f5f3f9] p-1.5">
+                                            <img
+                                                src={post.image}
+                                                alt={`${post.title} article cover`}
+                                                className="h-full w-full rounded object-contain"
+                                                loading="lazy"
+                                                onError={(e) => {
+                                                    if (e.currentTarget.parentElement) {
+                                                        e.currentTarget.parentElement.style.display = "none";
+                                                    }
+                                                }}
+                                            />
+                                        </div>
+                                    )}
                                     
                                     <div className="p-4">
                                         <div className="mb-2">
