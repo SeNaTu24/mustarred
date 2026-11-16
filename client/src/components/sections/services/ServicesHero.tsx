@@ -23,13 +23,13 @@ export default function ServicesHero({ onContact }: ServicesHeroProps) {
             <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="max-w-4xl">
                     <h1 className="mb-5 text-balance font-serif text-[clamp(2.15rem,4.2vw,3.5rem)] font-normal leading-[1.12] tracking-[-0.03em] text-white">
-                        Compliance, Privacy &amp; Security Solutions for{" "}
+                        Data Protection, Compliance &amp; Cybersecurity Services for{" "}
                         <em className="font-serif italic font-normal text-[#c1bdf5]">
-                            African Businesses
+                            Nigerian and African Businesses
                         </em>
                     </h1>
                     <p className="mb-8 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-                        From regulatory compliance and data protection to cybersecurity and business advisory, we help organisations manage risk, meet regulatory obligations, and grow with confidence.
+                        From NDPA compliance and data protection training to cybersecurity services and startup advisory, we help Nigerian and African organisations meet their regulatory obligations and operate with confidence.
                     </p>
                     <div className="flex flex-col gap-3 sm:flex-row">
                         <Button onClick={onContact} className="min-h-12 justify-center bg-[#4b4ba3] px-6 text-white hover:bg-[#3a3a8a] sm:w-auto">

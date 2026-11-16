@@ -14,8 +14,8 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: "Learn about Mustarred Africa — our mission, team, and commitment to helping African businesses navigate compliance and governance.",
   },
   "/services": {
-    title: "Our Services | Compliance, Governance & Advisory | Mustarred Africa",
-    description: "Explore Mustarred Africa's full range of services including data protection, CAC registration, corporate governance, AI governance, and business advisory.",
+    title: "Data Protection, Compliance & Cybersecurity Services | Mustarred Africa",
+    description: "Mustarred Africa helps Nigerian and African businesses meet NDPA obligations, pass regulatory audits, and strengthen cybersecurity — through practical training, privacy programmes, and compliance advisory.",
   },
   "/cac-registration": {
     title: "CAC Company Registration | Nigeria, Ghana, Kenya, UK | Mustarred Africa",

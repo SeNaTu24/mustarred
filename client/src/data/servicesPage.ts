@@ -49,7 +49,7 @@ export const serviceOfferings: ServiceOffering[] = [
         slug: "privacy-programme",
         icon: Lock,
         name: "Privacy Programme Implementation",
-        shortDesc: "Design governance frameworks that fit into everyday operations",
+        shortDesc: "Build a practical privacy programme aligned with Nigeria's Data Protection Act (NDPA).",
         fullDesc: "Implementing privacy programmes can feel daunting. We make privacy compliance practical by designing governance frameworks, policies, and workflows that fit into everyday operations.",
         image: "/assets/images/home-service-privacy.jpg",
         features: [
@@ -73,7 +73,7 @@ export const serviceOfferings: ServiceOffering[] = [
         slug: "regulatory-product-compliance",
         icon: FileCheck,
         name: "Regulatory and Product Compliance",
-        shortDesc: "Navigate regulatory challenges with confidence",
+        shortDesc: "Map your regulatory obligations and close compliance gaps across Nigerian and African markets",
         fullDesc: "We help organizations make compliance manageable by mapping regulatory requirements, reviewing product compliance, and establishing governance frameworks.",
         image: "/assets/images/home-service-compliance.jpg",
         features: [
