@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
-    "vercel-build": "npm install && npm run build",
+    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist/ssr",
+    "prerender": "node prerender.mjs",
+    "build:full": "npm run build && npm run build:ssr && npm run prerender",
+    "vercel-build": "npm install && npm run build:full",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"

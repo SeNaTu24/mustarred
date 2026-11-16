@@ -22,9 +22,9 @@ const LIGHT_NAV_VARS = {
 export default function Header() {
     const { openModal } = useModal();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [isHomePage, setIsHomePage] = useState(() => window.location.pathname === "/");
-    const [currentPath, setCurrentPath] = useState(() => window.location.pathname);
-    const [scrolled, setScrolled] = useState(() => window.scrollY > 40);
+    const [isHomePage, setIsHomePage] = useState(() => typeof window !== 'undefined' ? window.location.pathname === "/" : false);
+    const [currentPath, setCurrentPath] = useState(() => typeof window !== 'undefined' ? window.location.pathname : '/');
+    const [scrolled, setScrolled] = useState(() => typeof window !== 'undefined' ? window.scrollY > 40 : false);
 
     useEffect(() => {
         const path = window.location.pathname;

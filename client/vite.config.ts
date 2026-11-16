@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [react()],
   resolve: {
     alias: {
@@ -27,11 +27,17 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: {
+        // manualChunks only applies to the browser build — SSR externalises React
+        manualChunks: isSsrBuild ? undefined : {
           vendor: ['react', 'react-dom'],
           ui: ['@radix-ui/react-accordion', '@radix-ui/react-dialog'],
         },
       },
     },
   },
-});
+  // SSR build configuration — used only when running: vite build --ssr src/entry-server.tsx
+  ssr: {
+    // Do not externalise these — they need to be bundled for Node.js compatibility
+    noExternal: ['react-helmet-async', 'wouter'],
+  },
+}));
